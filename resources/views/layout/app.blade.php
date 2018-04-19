@@ -59,7 +59,7 @@
                                     <li><a href="/ourstaff">Teacher</a>
                                     </li>
                                     <li><a href="/contactecopillars">Contact</a></li>
-                                    <li><a href="#">E-Portal</a></li>
+                                    <li><a href="/eportal">E-Portal</a></li>
                                 </ul>
                             </div>
                         </div>
