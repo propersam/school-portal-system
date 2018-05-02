@@ -61,6 +61,12 @@ Route::get('/home', function () {
 });
 
 
+// Route::get('/register', function () {
+//     return view('register');
+// });
+Route::get('/register', 'RegisterController@index');
+Route::post('/register', 'RegisterController@store');
+
  		// Authentication Routes...
 		$this->get('eportal', 'Auth\LoginController@showLoginForm')->name('login');
 		$this->post('eportal', 'Auth\LoginController@login');

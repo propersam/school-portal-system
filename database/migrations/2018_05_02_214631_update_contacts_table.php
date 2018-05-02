@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateClassTable extends Migration
+class UpdateContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class UpdateClassTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function($table) {
-            // $table->dropColumn('level_id');
-            // $table->integer('section_id');
+        Schema::table('emergency_contact', function($table) {
+            $table->string('user_id');
+            $table->string('student_id');
+           
         });
     }
 
@@ -26,10 +27,6 @@ class UpdateClassTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function($table) {
-            // $table->dropColumn('section_id');
-            // $table->integer('level_id');
-        });
-        
+        //
     }
 }

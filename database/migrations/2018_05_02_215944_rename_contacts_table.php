@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateClassTable extends Migration
+class RenameContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,7 @@ class UpdateClassTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function($table) {
-            // $table->dropColumn('level_id');
-            // $table->integer('section_id');
-        });
+        Schema::rename('emergency_contact', 'emergency_contacts');
     }
 
     /**
@@ -26,10 +23,6 @@ class UpdateClassTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function($table) {
-            // $table->dropColumn('section_id');
-            // $table->integer('level_id');
-        });
-        
+        //
     }
 }
