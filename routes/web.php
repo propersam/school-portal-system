@@ -100,4 +100,19 @@ Route::get('/home', function () {
 		   
 		]);
 
+		Route::resources([
+		    'section' => 'SectionController',
+		   
+		]);
+
+		Route::resources([
+		    'level' => 'LevelController',
+		   
+		]);
+
+		Route::resources([
+		    'class' => 'ClassController',
+		   
+		]);
+
 	Route::get('/user/verify/{token}', 'StaffController@verifyUser');

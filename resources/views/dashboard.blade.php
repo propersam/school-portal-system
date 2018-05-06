@@ -95,35 +95,40 @@
 				<li>
 					<a href="javascript:;">
 					<i class="icon-diamond"></i>
-					<span class="title">Manage Classes</span>
+					<span class="title">Manage School</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="#">
+							<a href="/section/create">
 							<i class="icon-home"></i>
+							Create Section</a>
+						</li>
+						<li>
+							<a href="/level/create">
+							<i class="icon-basket"></i>
 							Create Level</a>
 						</li>
 						<li>
-							<a href="#">
-							<i class="icon-basket"></i>
+							<a href="/class/create">
+							<i class="icon-tag"></i>
 							Create Class</a>
 						</li>
 						<li>
-							<a href="#">
-							<i class="icon-tag"></i>
-							Levels</a>
-						</li>
-						<li>
-							<a href="ecommerce_products.html">
+							<a href="/class">
 							<i class="icon-handbag"></i>
 							Classes</a>
 						</li>
-						<!-- <li>
-							<a href="ecommerce_products_edit.html">
+						<li>
+							<a href="/section">
 							<i class="icon-pencil"></i>
-							Product Edit</a>
-						</li> --> 
+							Sections</a>
+						</li>
+						<li>
+							<a href="/level">
+							<i class="icon-pencil"></i>
+							Levels</a>
+						</li> 
 					</ul>
 					
 				</li>

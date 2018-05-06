@@ -9,6 +9,7 @@
         "aws/aws-php-sns-message-validator": "^1.4",
         "aws/aws-sdk-php": "^3.52",
         "doctrine/cache": "^1.6",
+        "doctrine/dbal": "^2.5",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",
