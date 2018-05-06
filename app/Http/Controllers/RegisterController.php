@@ -26,8 +26,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'firstname' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'pref_name' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
+            'gender' => 'required|string|max:255',
+            'dob' => 'required|string|max:255',
+            'origin' => 'required|string|max:255',
+            'siblings_attended' => 'required|string|max:255',
+            'child_position' => 'required|string|max:255',
+            'residential_address' => 'required|string|max:255',
+            'home_number' => 'required|string|max:255',
             'phonenumber' => 'required|string|max:255',
              
             'email' => 'required|string|email|max:255|unique:users',
@@ -44,7 +52,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $request = $request->all();
-        // $this->validator($request)->validate();
+        $this->validator($request)->validate();
         //var_dump($request); die();
         $username = str_random(4);
         $password = str_random(8);
