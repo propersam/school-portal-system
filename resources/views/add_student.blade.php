@@ -65,7 +65,7 @@
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="/dashboard/register-student">
+							<a href="#">
 							<i class="icon-home"></i>
 							Register Pupil</a>
 						</li>
@@ -223,6 +223,11 @@
 	</div>
 	<!-- END SIDEBAR -->
 	
+	@if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+  	@endif
 	@yield('form')
 
 	

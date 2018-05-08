@@ -221,7 +221,7 @@
                                             <input type="text" placeholder="First Name of Mother" id="mother_first_name" name="mother_first_name">
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
-                                            <label>Surname of Father</label>
+                                            <label>Surname of Mother</label>
                                             <input type="text" placeholder="Surname of Mother" id="mother_surname" name="mother_surname">
                                         </div>
                                         <div class="col-sm-12 col-xs-12">

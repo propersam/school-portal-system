@@ -17,3 +17,21 @@ Rounded Portlets
 	border-radius: 0px 0px 4px 4px !important;
 }
 */
+.registration_form{
+	padding: 3em;
+}
+.registration_form , .row{
+	margin-bottom: 30px;
+}
+.registration_form , .form-control{
+	margin-bottom: 10px;
+}
+
+.child_section{
+	border-bottom: solid 3px #efefef;
+	margin-bottom: 60px;
+}
+.father_section{
+	border-bottom: solid 3px #efefef;
+	margin-bottom: 60px;
+}
