@@ -36,7 +36,7 @@ class RegisterController extends Controller
             'child_position' => 'required|string|max:255',
             'residential_address' => 'required|string|max:255',
             'home_number' => 'required|string|max:255',
-            'phonenumber' => 'required|string|max:255',
+            // 'phonenumber' => 'required|string|max:255',
              
             'email' => 'required|string|email|max:255|unique:users',
             
