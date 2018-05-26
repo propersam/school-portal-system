@@ -35,3 +35,29 @@ Rounded Portlets
 	border-bottom: solid 3px #efefef;
 	margin-bottom: 60px;
 }
+
+.student_modal .modal-body{
+	padding: 25px;
+}
+
+.student_modal .modal-body h4{
+	background-color: #efefef;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+
+.student_modal label{
+	font-weight: bold;
+}
+
+.student_modal p{
+	overflow-wrap: break-word;
+}
+.student_modal .col-sm-4{
+	border-right: solid 1px #efefef;
+}
+.student_modal .col-sm-3{
+	border-right: solid 1px #efefef;
+}
+

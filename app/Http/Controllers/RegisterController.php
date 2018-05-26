@@ -9,6 +9,8 @@ use App\Student;
 use App\VerifyUser;
 use App\Parents;
 use App\Emergency_contact;
+use Illuminate\Support\Facades\Auth;
+use Hash;
 
 class RegisterController extends Controller
 {
@@ -36,12 +38,60 @@ class RegisterController extends Controller
             'child_position' => 'required|string|max:255',
             'residential_address' => 'required|string|max:255',
             'home_number' => 'required|string|max:255',
+            'level' => 'required|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
              
             'email' => 'required|string|email|max:255|unique:users',
             
         ]);
     }
+    public function password_change_rules(array $data)
+    {
+      $messages = [
+        'current-password.required' => 'Please enter current password',
+        'password.required' => 'Please enter password',
+      ];
+
+      $validator = Validator::make($data, [
+        'password' => 'required|same:password',
+        'password2' => 'required|same:password',     
+      ], $messages);
+
+      return $validator;
+    } 
+
+    public function changePassword(Request $request)
+    {
+      if(Auth::Check())
+      {
+        $request_data = $request->All();
+        $validator = $this->password_change_rules($request_data);
+        if($validator->fails())
+        {
+          return response()->json(array('error' => $validator->getMessageBag()->toArray()), 400);
+        }
+        else
+        {  
+          $current_password = Auth::User()->password;           
+            $user_id = Auth::User()->id;                       
+            $obj_user = User::find($user_id);
+            $obj_user->password = Hash::make($request_data['password']);
+            $obj_user->default_password_changed = 'yes';
+            $obj_user->save(); 
+            // Auth::logout();
+            return redirect("/change-photo")->with('success', "You have successfully set your password, now upload your passport photo.");
+
+
+            // return redirect()->to('/eportal');
+          
+        }        
+      }
+      else
+      {
+        return redirect()->to('/eportal');
+      }    
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -67,7 +117,7 @@ class RegisterController extends Controller
         $user = $this->createuser($data);
 
 
-        $data2 = array("user_id"=>$user->id,"first_name"=>$request['first_name'],"pref_name"=>$request['pref_name'],"lastname"=>$lastname,"home_number"=>$request['home_number'],"gender"=>$request['gender'],"residential_address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "siblings_attended"=>$request['siblings_attended'], "child_position"=>$request['child_position'], "siblings_attended_years"=>$request['siblings_attended_years'], "sibling1_name"=>$request['child1_name'], "sibling1_age"=>$request['child1_age'], "sibling1_school"=>$request['child1_school'], "sibling2_name"=>$request['child2_name'], "sibling2_age"=>$request['child2_age'], "sibling2_school"=>$request['child2_school'], "sibling3_name"=>$request['child3_name'], "sibling3_age"=>$request['child3_age'], "sibling3_school"=>$request['child3_school'], "email"=>$request['email'], "current_school"=>$request['current_school'], "position_in_family"=>$request['child_position']);
+        $data2 = array("user_id"=>$user->id,"first_name"=>$request['first_name'],"pref_name"=>$request['pref_name'],"lastname"=>$lastname,"home_number"=>$request['home_number'],"gender"=>$request['gender'],"residential_address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "siblings_attended"=>$request['siblings_attended'], "child_position"=>$request['child_position'], "siblings_attended_years"=>$request['siblings_attended_years'], "sibling1_name"=>$request['child1_name'], "sibling1_age"=>$request['child1_age'], "sibling1_school"=>$request['child1_school'], "sibling2_name"=>$request['child2_name'], "sibling2_age"=>$request['child2_age'], "sibling2_school"=>$request['child2_school'], "sibling3_name"=>$request['child3_name'], "sibling3_age"=>$request['child3_age'], "sibling3_school"=>$request['child3_school'], "email"=>$request['email'], "current_school"=>$request['current_school'], "position_in_family"=>$request['child_position'], "level"=>$request['level']);
 
         $student = $this->createstudent($data2);
 
@@ -124,7 +174,7 @@ class RegisterController extends Controller
             'preferredname' => $data['pref_name'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
-            'home_number' => $data['home_number'],
+            'phonenumber' => $data['home_number'],
             'gender' => $data['gender'],
             'address' => $data['residential_address'],
             'user_id' => $data['user_id'],
@@ -144,6 +194,7 @@ class RegisterController extends Controller
             'sibling3_school' => $data['sibling3_school'],
             'current_school' => $data['current_school'],
             'position_in_family' => $data['position_in_family'],
+            'level' => $data['level'],
 
         ]);
        return $student;
@@ -237,6 +288,11 @@ class RegisterController extends Controller
 
  
         return redirect('/eportal')->with('status', $status);
+    }
+
+
+    public function change_password(){
+        return view('change_default_password');
     }
 
 

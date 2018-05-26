@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\User;
+use App\Classes;
 use App\Student;
 use App\VerifyUser;
 use App\Parents;
 use App\Emergency_contact;
+use App\Session;
 
 class PupilController extends Controller
 {
@@ -18,8 +20,25 @@ class PupilController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {      
+        $active_session = Session::where('is_active', '=', 1)->first();
+        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name','id');
+
+        return view('forms.student.create', ['classes' => $classes]);
+    }
+
+
+    public function applications()
     {
-        return view('forms.student.create');
+        $active_session = Session::where('is_active', '=', 1)->first();
+
+        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name', 'id');
+
+        $pending_applications = Student::where('application_status', '=', 'pending')->get();
+        $accepted_applications = Student::where('application_status', '=', 'accepted')->where('admission_status', 'pending')->get();
+        $rejected_applications = Student::where('application_status', '=', 'rejected')->get();
+
+        return view('forms.student.applications', ['pending_applications' => $pending_applications, 'accepted_applications' => $accepted_applications, 'rejected_applications' => $rejected_applications, 'classes' => $classes]);
     }
 
     /**
@@ -51,6 +70,12 @@ class PupilController extends Controller
             
         ]);
     }
+    protected function validator2(array $data)
+    {
+        return Validator::make($data, [
+            'class_id' => 'required|string|max:255',            
+        ]);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -76,7 +101,7 @@ class PupilController extends Controller
         $user = $this->createuser($data);
 
 
-        $data2 = array("user_id"=>$user->id,"first_name"=>$request['first_name'],"pref_name"=>$request['pref_name'],"lastname"=>$lastname,"home_number"=>$request['home_number'],"gender"=>$request['gender'],"residential_address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "siblings_attended"=>$request['siblings_attended'], "child_position"=>$request['child_position'], "siblings_attended_years"=>$request['siblings_attended_years'], "sibling1_name"=>$request['child1_name'], "sibling1_age"=>$request['child1_age'], "sibling1_school"=>$request['child1_school'], "sibling2_name"=>$request['child2_name'], "sibling2_age"=>$request['child2_age'], "sibling2_school"=>$request['child2_school'], "sibling3_name"=>$request['child3_name'], "sibling3_age"=>$request['child3_age'], "sibling3_school"=>$request['child3_school'], "email"=>$request['email'], "current_school"=>$request['current_school'], "position_in_family"=>$request['child_position']);
+        $data2 = array("user_id"=>$user->id,"first_name"=>$request['first_name'],"pref_name"=>$request['pref_name'],"lastname"=>$lastname,"home_number"=>$request['home_number'],"gender"=>$request['gender'],"residential_address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "siblings_attended"=>$request['siblings_attended'], "child_position"=>$request['child_position'], "siblings_attended_years"=>$request['siblings_attended_years'], "sibling1_name"=>$request['child1_name'], "sibling1_age"=>$request['child1_age'], "sibling1_school"=>$request['child1_school'], "sibling2_name"=>$request['child2_name'], "sibling2_age"=>$request['child2_age'], "sibling2_school"=>$request['child2_school'], "sibling3_name"=>$request['child3_name'], "sibling3_age"=>$request['child3_age'], "sibling3_school"=>$request['child3_school'], "email"=>$request['email'], "current_school"=>$request['current_school'], "position_in_family"=>$request['child_position'], "class_id"=>$request['class_id']);
 
         $student = $this->createstudent($data2);
 
@@ -153,6 +178,7 @@ class PupilController extends Controller
             'sibling3_school' => $data['sibling3_school'],
             'current_school' => $data['current_school'],
             'position_in_family' => $data['position_in_family'],
+            'class_id' => $data['class_id'],
 
         ]);
        return $student;
@@ -276,9 +302,50 @@ class PupilController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function accept(Request $request, $id)
     {
-        //
+        $student = Student::find($id);
+      
+        $student->application_status = 'accepted';
+
+        $student->save();
+        return redirect("/dashboard/applications")->with('success', "Successfully Updated.");
+    }
+
+    public function reject_application(Request $request, $id)
+    {
+        $student = Student::find($id);
+      
+        $student->application_status = 'rejected';
+
+        $student->save();
+        return redirect("/dashboard/applications")->with('success', "Successfully Updated.");
+    }
+
+    public function admit(Request $request, $id)
+    {
+        $request = $request->all();
+        $this->validator2($request)->validate();
+
+
+
+        $student = Student::find($id);
+
+        $student->class_id = $request['class_id'];
+        $student->admission_status = 'admitted';
+
+        $student->save();
+        return redirect("/dashboard/applications")->with('success', "Student Admitted to Class.");
+    }
+
+    public function reject_admission(Request $request, $id)
+    {
+        $student = Student::find($id);
+      
+        $student->admission_status = 'rejected';
+
+        $student->save();
+        return redirect("/dashboard/applications")->with('success', "Successfully Updated.");
     }
 
     /**

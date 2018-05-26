@@ -61,68 +61,68 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN LOGIN -->
 <div class="content">
     <!-- BEGIN LOGIN FORM -->
-    <form class="login-form" action="{{ route('login') }}" method="POST">
-
-        
+    
 
 
-        {{ csrf_field() }}
-        <h3 class="form-title">Login to School Portal</h3>
-        
-                                    @if (session('success'))
-                                        <div class="alert alert-success">
-                                            {{ session('success') }}
-                                        </div>
-                                    @endif
-        <div class="alert alert-danger display-hide">
-            <button class="close" data-close="alert"></button>
-            <span>
-            Enter any username and password. </span>
+        @if ($message = Session::get('success'))
+
+        <div class="alert alert-success alert-block">
+
+            <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <strong>{{ $message }}</strong>
+
         </div>
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <label class="control-label visible-ie8 visible-ie9">Username</label>
-            <div class="input-icon">
-                <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" value="{{ old('username') }}" required autofocus/>
+
+        @endif
+
+
+
+        @if (count($errors) > 0)
+
+            <div class="alert alert-danger">
+
+                <strong>Whoops!</strong> There were some problems with your input.
+
+                <ul>
+
+                    @foreach ($errors->all() as $error)
+
+                        <li>{{ $error }}</li>
+
+                    @endforeach
+
+                </ul>
+
             </div>
-            @if ($errors->has('username'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('username') }}</strong>
-                </span>
-            @endif
-        </div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Password</label>
-            <div class="input-icon">
-                <i class="fa fa-lock"></i>
-                <input id="password" class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" required/>
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
+
+        @endif
+
+
+
+        {!! Form::open(array('route' => 'image.upload.post','files'=>true)) !!}
+
+            <div class="row">
+                <h4 class="form-title">Upload your passport photo to continue</h4>
+
+                <div class="col-md-8">
+
+                    {!! Form::file('image', array('class' => 'form-control')) !!}
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <button type="submit" class="btn btn-success">Upload</button>
+
+                </div>
+                <div class="col-md-12 alert alert-info" style="margin-top: 20px">
+
+                    <p>select a photo and click on the "Upload" button, please note that that max photo size allowed is <b>1mb</b></p>
+                </div>
             </div>
-        </div>
-        <div class="form-actions">
-            <label class="checkbox">
-               <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember me 
-            </label>
-            <button type="submit" class="btn green-haze pull-right">
-            Login <i class="m-icon-swapright m-icon-white"></i>
-            </button>
-        </div>
-       
-        <div class="forget-password">
-            <h4>Forgot your password ?</h4>
-            <p>
-                 no worries, click <a href="{{ route('password.request') }}" id="forget-password">
-                here </a>
-                to reset your password.
-            </p>
-        </div>
-        
-    </form>
+
+        {!! Form::close() !!}
     <!-- END LOGIN FORM -->
    
     

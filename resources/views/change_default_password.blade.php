@@ -61,34 +61,19 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN LOGIN -->
 <div class="content">
     <!-- BEGIN LOGIN FORM -->
-    <form class="login-form" action="{{ route('login') }}" method="POST">
-
-        
-
-
+    {{ Form::open(array('action' => 'RegisterController@changePassword' )) }}
         {{ csrf_field() }}
-        <h3 class="form-title">Login to School Portal</h3>
-        
-                                    @if (session('success'))
-                                        <div class="alert alert-success">
-                                            {{ session('success') }}
-                                        </div>
-                                    @endif
-        <div class="alert alert-danger display-hide">
-            <button class="close" data-close="alert"></button>
-            <span>
-            Enter any username and password. </span>
-        </div>
+        <h3 class="form-title">Create your password</h3>
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
             <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-            <label class="control-label visible-ie8 visible-ie9">Username</label>
+            <label class="control-label visible-ie8 visible-ie9">Password</label>
             <div class="input-icon">
-                <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" value="{{ old('username') }}" required autofocus/>
+                <i class="fa fa-lock"></i>
+                <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" value="{{ old('password') }}" required autofocus/>
             </div>
-            @if ($errors->has('username'))
+            @if ($errors->has('password'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('username') }}</strong>
+                    <strong>{{ $errors->first('password') }}</strong>
                 </span>
             @endif
         </div>
@@ -96,31 +81,20 @@ License: You must have a valid license purchased only from themeforest(the above
             <label class="control-label visible-ie8 visible-ie9">Password</label>
             <div class="input-icon">
                 <i class="fa fa-lock"></i>
-                <input id="password" class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" required/>
-                @if ($errors->has('password'))
+                <input id="password" class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password (again)" name="password2" required/>
+                @if ($errors->has('password2'))
                     <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
+                        <strong>{{ $errors->first('password2') }}</strong>
                     </span>
                 @endif
             </div>
         </div>
         <div class="form-actions">
-            <label class="checkbox">
-               <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember me 
-            </label>
             <button type="submit" class="btn green-haze pull-right">
-            Login <i class="m-icon-swapright m-icon-white"></i>
+            Change <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
        
-        <div class="forget-password">
-            <h4>Forgot your password ?</h4>
-            <p>
-                 no worries, click <a href="{{ route('password.request') }}" id="forget-password">
-                here </a>
-                to reset your password.
-            </p>
-        </div>
         
     </form>
     <!-- END LOGIN FORM -->

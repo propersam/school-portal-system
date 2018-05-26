@@ -5,81 +5,16 @@
 <!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
-			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-							<h4 class="modal-title">Modal title</h4>
-						</div>
-						<div class="modal-body">
-							 Widget settings form goes here
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn blue">Save changes</button>
-							<button type="button" class="btn default" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-					
-				</div>
-				
-			</div> -->
-			<!-- /.modal -->
-			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- BEGIN PAGE HEADER-->
-			<!-- BEGIN PAGE HEAD -->
-			<div class="page-head">
-				<!-- BEGIN PAGE TITLE -->
-				<!-- <div class="page-title">
-					<h1>Form Layouts <small>form layouts</small></h1>
-				</div> -->
-				<!-- END PAGE TITLE -->
-				
-			</div>
-			<!-- END PAGE HEAD -->
-			<!-- BEGIN PAGE BREADCRUMB -->
-			<!-- <ul class="page-breadcrumb breadcrumb">
-				<li>
-					<a href="index.html">Home</a>
-					<i class="fa fa-circle"></i>
-				</li>
-				<li>
-					<a href="#">Form Stuff</a>
-					<i class="fa fa-circle"></i>
-				</li>
-				<li>
-					<a href="#">Form Layouts</a>
-				</li>
-			</ul> -->
-			<!-- END PAGE BREADCRUMB -->
-			<!-- END PAGE HEADER-->
-			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
-				<div class="col-md-12">
-					
-						
-						
-							
-							
-								<div class="portlet box blue">
-									<div class="portlet-title">
-										<div class="caption">
-											<i class="fa fa-gift"></i>Create New Student
-										</div>
-										<div class="tools">
-											<a href="javascript:;" class="collapse">
-											</a>
-											<a href="#portlet-config" data-toggle="modal" class="config">
-											</a>
-											<a href="javascript:;" class="reload">
-											</a>
-											<a href="javascript:;" class="remove">
-											</a>
-										</div>
-									</div>
-									<div class="portlet-body form">
-										<!-- BEGIN FORM-->  
+				<div class="col-md-12">			
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-mortar-board"></i>Register New Student 
+
+							</div>
+						</div>
+						<div class="portlet-body form">
 							{{ Form::open(array('action' => 'PupilController@store' )) }}
 								<div class="row registration_form">
 
@@ -99,7 +34,34 @@
 								        </div>
 								  	@endif
                                     <div class="child_section">
-                                        <h4><i class="fa fa-user"></i> Child</h4>
+
+                                        <div class="col-sm-12 col-xs-12" style="padding: 24px; background-color: #efefef; border-radius: 10px; margin: 15px; margin-bottom: 40px">
+                                            <div class="col-sm-2">
+                                                <label>Level</label>
+                                            </div>
+                                            <div class="col-xs-3">
+												{{ Form::select('level', [
+												   'Kg1' => 'Kg1',
+												   'Kg2' => 'Kg2',
+												   'Kg3' => 'Kg3',
+												   'pr1' => 'Primary 1',
+												   'pr2' => 'Primary 2',
+												   'pr3' => 'Primary 3',
+												   'pr4' => 'Primary 4',
+												   'pr5' => 'Primary 5',
+												   'pr6' => 'Primary 6',
+												   ], app('request')->input('<li></li>'), ['class' => 'form-control'] 
+												) }}
+                                            </div>
+                                         <div class="col-sm-2">
+                                                <label>Add to class</label>
+                                            </div>
+                                            <div class="col-xs-3">
+												{{ Form::select('class_id', $classes, app('request')->input('c'), ['class' => 'form-control'] 
+												) }}
+                                            </div>
+                                        </div>
+                                        <h4><i class="fa fa-user"></i> Child</h4><br><br>
 
                                         <div class="row">
 	                                        <div class="col-sm-4 col-xs-12">
@@ -391,11 +353,7 @@
                                 {{ Form::close() }}
 										<!-- END FORM-->
 									</div>
-								</div>
-								
-							
-						
-					
+							</div>
 				</div>
 			</div>
 			<!-- END PAGE CONTENT-->
