@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RenameContactsTable extends Migration
+class MakeRenameSectionColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class RenameContactsTable extends Migration
      */
     public function up()
     {
-        Schema::rename('emergency_contact', 'emergency_contacts');
+        Schema::table('classes', function($t) {
+                        $t->renameColumn('section_id', 'session_id');
+                });
     }
 
     /**

@@ -5,16 +5,7 @@
 <div class="page-container">
 	<!-- BEGIN SIDEBAR -->
 	<div class="page-sidebar-wrapper">
-		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 		<div class="page-sidebar navbar-collapse collapse">
-			<!-- BEGIN SIDEBAR MENU -->
-			<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
-			<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
-			<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
-			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
-			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
-			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
 				<li class="start active ">
 					<a href="/dashboard">
@@ -24,199 +15,99 @@
 				</li>
 				<li>
 					<a href="javascript:;">
-						<i class="icon-basket"></i>
+						<i class="icon-users"></i>
 						<span class="title">Manage Staff</span>
 						<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li>
 							<a href="/staff/create">
-							<i class="icon-home"></i>
+							<i class="icon-arrow-right"></i>
 							Create Staff</a>
 						</li>
 						<li>
 							<a href="/staff">
-							<i class="icon-basket"></i>
+							<i class="icon-arrow-right"></i>
 							Staff List</a>
 						</li>
-						<!-- <li>
-							<a href="ecommerce_orders_view.html">
-							<i class="icon-tag"></i>
-							Order View</a>
-						</li>
-						<li>
-							<a href="ecommerce_products.html">
-							<i class="icon-handbag"></i>
-							Products</a>
-						</li>
-						<li>
-							<a href="ecommerce_products_edit.html">
-							<i class="icon-pencil"></i>
-							Product Edit</a>
-						</li> -->
 					</ul>
 					
 				</li>
 				<li>
 					<a href="javascript:;">
-					<i class="icon-rocket"></i>
+					<i class="icon-graduation"></i>
 					<span class="title">Manage Pupils</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li>
 							<a href="/dashboard/register-student">
-							<i class="icon-home"></i>
+							<i class="icon-arrow-right"></i>
 							Register Pupil</a>
 						</li>
 						<li>
-							<a href="#">
-							<i class="icon-basket"></i>
-							Pupils</a>
+							<a href="/dashboard/applications">
+							<i class="icon-arrow-right"></i>
+							Applications</a>
 						</li>
-						<!-- <li>
-							<a href="ecommerce_orders_view.html">
-							<i class="icon-tag"></i>
-							Order View</a>
-						</li>
-						<li>
-							<a href="ecommerce_products.html">
-							<i class="icon-handbag"></i>
-							Products</a>
-						</li>
-						<li>
-							<a href="ecommerce_products_edit.html">
-							<i class="icon-pencil"></i>
-							Product Edit</a>
-						</li> -->
 					</ul>
 					
 				</li>
 				<li>
 					<a href="javascript:;">
-					<i class="icon-diamond"></i>
+					<i class="icon-layers"></i>
 					<span class="title">Manage Classes</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 						<li>
-							<a href="#">
-							<i class="icon-home"></i>
-							Create Level</a>
+							<a href="/dashboard/create-session">
+							<i class="icon-arrow-right"></i>
+							Create Session</a>
 						</li>
 						<li>
-							<a href="#">
-							<i class="icon-basket"></i>
+							<a href="/dashboard/create-class">
+							<i class="icon-arrow-right"></i>
 							Create Class</a>
 						</li>
 						<li>
-							<a href="#">
-							<i class="icon-tag"></i>
-							Levels</a>
+							<a href="/dashboard/sessions">
+							<i class="icon-arrow-right"></i>
+							Sessions</a>
 						</li>
 						<li>
-							<a href="ecommerce_products.html">
-							<i class="icon-handbag"></i>
+							<a href="/dashboard/classes">
+							<i class="icon-arrow-right"></i>
 							Classes</a>
 						</li>
-						<!-- <li>
-							<a href="ecommerce_products_edit.html">
-							<i class="icon-pencil"></i>
-							Product Edit</a>
-						</li> --> 
 					</ul>
 					
 				</li>
-				<!-- <li>
-					<a href="javascript:;">
-					<i class="icon-puzzle"></i>
-					<span class="title">UI Components</span>
-					
-					</a>
-					
-				</li> -->
-				<!-- BEGIN ANGULARJS LINK -->
-				<!-- <li class="tooltips" data-container="body" data-placement="right" data-html="true" data-original-title="AngularJS version demo">
-					<a href="angularjs" target="_blank">
-					<i class="icon-paper-plane"></i>
-					<span class="title">
-					AngularJS Version </span>
-					</a>
-				</li> -->
-				<!-- END ANGULARJS LINK -->
-				<!-- <li>
-					<a href="javascript:;">
-					<i class="icon-settings"></i>
-					<span class="title">Form Stuff</span>
-					
-					</a>
-					
-				</li>
 				<li>
 					<a href="javascript:;">
-					<i class="icon-briefcase"></i>
-					<span class="title">Data Tables</span>
-					
+					<i class="icon-book-open"></i>
+					<span class="title">Manage Subjects</span>
+					<span class="arrow "></span>
 					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="/dashboard/create-subject">
+							<i class="icon-arrow-right"></i>
+							Add Subject</a>
+						</li>
+						<li>
+							<a href="/dashboard/subject-registration">
+							<i class="icon-arrow-right"></i>
+							Subject Registration</a>
+						</li>
+						<li>
+							<a href="/dashboard/subjects">
+							<i class="icon-arrow-right"></i>
+							Subjects</a>
+						</li>
+					</ul>
 					
 				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="icon-wallet"></i>
-					<span class="title">Portlets</span>
-					
-					</a>
-					
-				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="icon-bar-chart"></i>
-					<span class="title">Charts</span>
-					
-					</a>
-					
-				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="icon-docs"></i>
-					<span class="title">Pages</span>
-					
-					</a>
-					
-				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="icon-present"></i>
-					<span class="title">Extra</span>
-					
-					</a>
-					
-				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="icon-folder"></i>
-					<span class="title">Multi Level Menu</span>
-					
-					</a>
-					
-				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="icon-user"></i>
-					<span class="title">Login Options</span>
-					
-					</a>
-					
-				</li>
-
-				<li class="last ">
-					<a href="javascript:;">
-					<i class="icon-pointer"></i>
-					<span class="title">Maps</span>
-					
-					</a>
-					
-				</li> -->
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>

@@ -158,6 +158,24 @@
                                             <label>Email *</label>
                                             <input type="text" placeholder="Email" id="email" name="email">
                                         </div>
+                                        <div class="col-sm-12 col-xs-12">
+                                            <div class="col-sm-12 col-xs-12">
+                                                <label>Class applied to</label>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                <select name="level" class="form-control">
+                                                        <option value="Kg1">Kg1</option>
+                                                        <option value="Kg2">Kg2</option>
+                                                        <option value="Kg3">Kg3</option>
+                                                        <option value="pr1">Primary 1</option>
+                                                        <option value="pr2">Primary 2</option>
+                                                        <option value="pr3">Primary 3</option>
+                                                        <option value="pr4">Primary 4</option>
+                                                        <option value="pr5">Primary 5</option>
+                                                        <option value="pr6">Primary 6</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="father_section">
                                         <h4><i class="fa fa-male"></i> Father</h4>

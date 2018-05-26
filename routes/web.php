@@ -44,9 +44,9 @@ Route::get('/contactecopillars', function () {
     return view('contact-ecopillarsschool');
 });
 
-Route::get('/ourstaff', function () {
-    return view('staff-ecopillarsschool');
-});
+// Route::get('/ourstaff', function () {
+//     return view('staff-ecopillarsschool');
+// });
 
 // Route::get('/eportal', function () {
 //     return view('eportal-login');
@@ -64,14 +64,42 @@ Route::get('/home', function () {
 // Route::get('/register', function () {
 //     return view('register');
 // });
+Route::get('/ourstaff', 'FrontController@teachersdisplay');
 Route::get('/register', 'RegisterController@index');
+Route::get('/logout', 'HomeController@logout');
 Route::post('/register', 'RegisterController@store');
 Route::get('/dashboard/register-student', 'PupilController@index');
 Route::post('/dashboard/register-student', 'PupilController@store');
+Route::get('/dashboard/sessions', 'SessionsController@index');
+Route::get('/dashboard/create-session', 'SessionsController@create');
+Route::post('/dashboard/create-session', 'SessionsController@store');
+Route::post('/dashboard/update-session/{id}', 'SessionsController@update');
+Route::get('/dashboard/classes', 'ClassController@index');
+Route::get('/dashboard/create-class', 'ClassController@create');
+Route::post('/dashboard/create-class', 'ClassController@store');
+Route::get('/dashboard/applications', 'PupilController@applications');
+Route::post('/dashboard/accept-student/{id}', 'PupilController@accept');
+Route::post('/dashboard/reject-student-application/{id}', 'PupilController@reject_application');
+Route::post('/dashboard/admit-student/{id}', 'PupilController@admit');
+Route::post('/dashboard/reject-student-admission/{id}', 'PupilController@reject_admission');
+Route::get('/dashboard/view-class/{id}', 'ClassController@view_class');
+Route::get('/dashboard/subjects', 'SubjectController@index');
+Route::get('/dashboard/create-subject', 'SubjectController@create');
+Route::post('/dashboard/create-subject', 'SubjectController@store');
+Route::post('/dashboard/update-subject/{id}', 'SubjectController@update');
+Route::get('/dashboard/subject-registration', 'SubjectRegistrationController@index');
+Route::post('/dashboard/add-subject-to-class/{id}', 'SubjectRegistrationController@store');
+Route::get('/dashboard/view-class-subjects/{id}', 'SubjectRegistrationController@view_class');
+Route::post('/dashboard/remove-class-subject/{id}', 'SubjectRegistrationController@remove_class');
+Route::post('/dashboard/update-class/{id}', 'ClassController@update');
+Route::get('/change-default-password', 'RegisterController@change_password');
+Route::post('/change-password', 'RegisterController@changePassword');
+Route::get('change-photo',['as'=>'image.upload','uses'=>'HomeController@imageUpload']);
+Route::post('change-photo',['as'=>'image.upload.post','uses'=>'HomeController@imageUploadPost']);
 
  		// Authentication Routes...
 		$this->get('eportal', 'Auth\LoginController@showLoginForm')->name('login');
-		$this->post('eportal', 'Auth\LoginController@login');
+		$this->post('eportal', 'Auth\LoginController@authenticate');
 		$this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
 		// Registration Routes...

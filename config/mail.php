@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'email-smtp.us-west-2.amazonaws.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('tapeam.ent@gmail.com'),
+    'username' => env('AKIAIXRXJVT47GAZ4VCQ'),
 
-    'password' => env('tmaster123'),
+    'password' => env('AjWHXqb57MX6E8ZqLB2gbv9+c754nKG1P41wMmGzUKxc'),
 
     /*
     |--------------------------------------------------------------------------

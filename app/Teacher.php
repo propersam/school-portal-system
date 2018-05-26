@@ -31,10 +31,15 @@ class Teacher extends User
         return $this->user()->defaultpassword;
     }
 
+    
+    public function classes()
+    {
+        return $this->hasOne('App\Classes');
+    }
 
      public function user()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id')->first();
+        return $this->belongsTo('App\User', 'user_id');
     }
 
      public function getUsername()

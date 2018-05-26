@@ -30,6 +30,13 @@ class Parents extends Model
         return $this->belongsTo('App\User', 'user_id', 'id')->first();
     }
 
+
+
+     public function student()
+    {
+        return $this->hasMany('App\User', 'student_id');
+    }
+
      public function getUsername()
     {
         return $this->user()->username;
