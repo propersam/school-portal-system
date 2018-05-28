@@ -1,0 +1,63 @@
+/* here you can put your own css to customize and override the theme */
+
+/***
+Rounded Portlets
+***/
+/*
+.portlet {
+	border-radius: 4px !important;
+}
+
+.portlet .portlet-title {
+	border-radius: 4px 4px 0px 0px !important;
+}
+
+.portlet .portlet-body,
+.portlet .portlet-body .form-actions  {
+	border-radius: 0px 0px 4px 4px !important;
+}
+*/
+.registration_form{
+	padding: 3em;
+}
+.registration_form , .row{
+	margin-bottom: 30px;
+}
+.registration_form , .form-control{
+	margin-bottom: 10px;
+}
+
+.child_section{
+	border-bottom: solid 3px #efefef;
+	margin-bottom: 60px;
+}
+.father_section{
+	border-bottom: solid 3px #efefef;
+	margin-bottom: 60px;
+}
+
+.student_modal .modal-body{
+	padding: 25px;
+}
+
+.student_modal .modal-body h4{
+	background-color: #efefef;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+
+.student_modal label{
+	font-weight: bold;
+}
+
+.student_modal p{
+	overflow-wrap: break-word;
+}
+.student_modal .col-sm-4{
+	border-right: solid 1px #efefef;
+}
+.student_modal .col-sm-3{
+	border-right: solid 1px #efefef;
+}
+

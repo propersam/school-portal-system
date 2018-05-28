@@ -3263,10 +3263,11 @@ ul.children li {
     margin-bottom: 30px;
     background: transparent;
     font-style: italic;
+    border-radius: 5px;
 }
 .form-style input[type="text"]:focus,.form-style input[type="email"]:focus,.form-style select:focus,.form-style input[type="password"]:focus{
     outline: none;
-    border-color: #002147;
+    border-color: #b8c4cb;
 }
 .form-style select {
     -webkit-appearance: none;
@@ -3279,10 +3280,11 @@ ul.children li {
 }
 .form-style button{
     padding: 10px 30px;
-    background: #002147;
+    background: #71a0cd;
     color: #fff;
     border: none;
     margin-top: 20px;
+    border-radius: 5px;
 }
 .form-style button:hover{
     background: #f1992d;
@@ -3360,16 +3362,20 @@ ul.children li {
 
 /*-----------------login-area start-----------------*/
 .login-wrap{
-    border: 1px solid #002147;
+    margin-top: -80px;
+    border: 1px solid #71a0cd;
+    border-radius: 5px;
 }
 .login-wrap h3{
-    background: #002147;
+    background: #71a0cd;
     color: #fff;
     font-size: 18px;
     text-transform: uppercase;
     padding: 17px 0px;
     text-align: center;
     margin-bottom: 0px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .login-wrap form{
     padding:30px 45px 45px;
@@ -3618,3 +3624,37 @@ ul.children li {
     margin-right: 10px;
 }
 /*---------------shop-area end---------------------*/
+/*---------------registraton form styles---------------------*/
+.child_section{
+    border: solid 0.7px #efefef;
+    padding: 8px;
+    border-radius: 10px;
+    overflow:auto; 
+    margin-bottom: 30px;
+}
+.father_section{
+    border: solid 0.7px #efefef;
+    padding: 8px;
+    border-radius: 10px;
+    overflow:auto; 
+    margin-bottom: 30px;
+}
+.mother_section{
+    border: solid 0.7px #efefef;
+    padding: 8px;
+    border-radius: 10px;
+    overflow:auto; 
+    margin-bottom: 30px;
+}
+.contacts_section{
+    border: solid 0.7px #efefef;
+    padding: 8px;
+    border-radius: 10px;
+    overflow:auto; 
+    margin-bottom: 30px;
+}
+
+.registration_form h4{
+    color: #71a0cd;
+    padding: 8px;
+}

@@ -57,9 +57,10 @@
                                     <li class="active"><a href="/">Home</a>
                                     <li><a href="/aboutecopillars">About</a></li>
                                     <li><a href="/ourstaff">Teacher</a>
+                                    <li><a href="/register">Registration Form</a>
                                     </li>
                                     <li><a href="/contactecopillars">Contact</a></li>
-                                    <li><a href="#">E-Portal</a></li>
+                                    <li><a href="/eportal">E-Portal</a></li>
                                 </ul>
                             </div>
                         </div>
