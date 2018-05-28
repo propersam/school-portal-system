@@ -62,8 +62,18 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="content">
     <!-- BEGIN LOGIN FORM -->
     <form class="login-form" action="{{ route('login') }}" method="POST">
+
+        
+
+
         {{ csrf_field() }}
         <h3 class="form-title">Login to School Portal</h3>
+        
+                                    @if (session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
         <div class="alert alert-danger display-hide">
             <button class="close" data-close="alert"></button>
             <span>

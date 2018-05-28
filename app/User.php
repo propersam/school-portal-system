@@ -36,6 +36,11 @@ class User extends Authenticatable
         return $this->hasOne('App\VerifyUser');
     }
 
+    public function teacher()
+    {
+        return $this->hasOne('App\User');
+    }
+
     
 
 }

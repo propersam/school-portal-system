@@ -13,9 +13,11 @@ class UpdateClassTable extends Migration
      */
     public function up()
     {
+
         Schema::table('classes', function($table) {
             $table->dropColumn('level_id');
             $table->integer('term_id');
+
         });
     }
 
@@ -26,9 +28,11 @@ class UpdateClassTable extends Migration
      */
     public function down()
     {
+
         Schema::table('classes', function($table) {
             $table->dropColumn('term_id');
             $table->integer('level_id');
+
         });
 
         

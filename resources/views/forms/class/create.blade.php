@@ -5,124 +5,97 @@
 <!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
-			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-							<h4 class="modal-title">Modal title</h4>
-						</div>
-						<div class="modal-body">
-							 Widget settings form goes here
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn blue">Save changes</button>
-							<button type="button" class="btn default" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-					
-				</div>
-				
-			</div> -->
-			<!-- /.modal -->
-			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- BEGIN PAGE HEADER-->
-			<!-- BEGIN PAGE HEAD -->
-			<div class="page-head">
-				<!-- BEGIN PAGE TITLE -->
-				<!-- <div class="page-title">
-					<h1>Form Layouts <small>form layouts</small></h1>
-				</div> -->
-				<!-- END PAGE TITLE -->
-				
-			</div>
-			<!-- END PAGE HEAD -->
-			<!-- BEGIN PAGE BREADCRUMB -->
-			<!-- <ul class="page-breadcrumb breadcrumb">
-				<li>
-					<a href="index.html">Home</a>
-					<i class="fa fa-circle"></i>
-				</li>
-				<li>
-					<a href="#">Form Stuff</a>
-					<i class="fa fa-circle"></i>
-				</li>
-				<li>
-					<a href="#">Form Layouts</a>
-				</li>
-			</ul> -->
-			<!-- END PAGE BREADCRUMB -->
-			<!-- END PAGE HEADER-->
-			<!-- BEGIN PAGE CONTENT-->
+
 			<div class="row">
 				<div class="col-md-12">
-					
-						
-						
-							
-							
 								<div class="portlet box blue">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-gift"></i>Create New Academic Class
-										</div>
-										<div class="tools">
-											<a href="javascript:;" class="collapse">
-											</a>
-											<a href="#portlet-config" data-toggle="modal" class="config">
-											</a>
-											<a href="javascript:;" class="reload">
-											</a>
-											<a href="javascript:;" class="remove">
-											</a>
+											<i class="fa fa-users"></i>Create New Class
+
 										</div>
 									</div>
 									<div class="portlet-body form">
 										<!-- BEGIN FORM-->
-										<form action="/staff" method="POST" class="horizontal-form">
+
+										<form action="/dashboard/create-class" method="POST" class="horizontal-form">
 											<div class="form-body">
 												<h3 class="form-section">Enter Class Details</h3>
+
+		                            @if ($errors->any())
+		                                <div class="alert alert-danger">
+		                                    <ul>
+		                                        @foreach ($errors->all() as $error)
+		                                            <li>{{ $error }}</li>
+		                                        @endforeach
+		                                    </ul>
+		                                </div>
+		                            @endif
+
+									@if (session('success'))
+								        <div class="alert alert-success">
+								            {{ session('success') }}
+								        </div>
+								  	@endif
+
 												<div class="row">
 													<div class="col-md-6">
 														{{ csrf_field() }}
 														<div class="form-group">
-															<label class="control-label">Academic Class</label>
-															<input type="text" id="Name" class="form-control" placeholder="Academic Section" name="name">
-															<!-- <span class="help-block">
-															This is inline help </span> -->
+
+															<label class="control-label">Name</label>
+															<input type="text" name="name" class="form-control">
+
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group">
+
+															<label class="control-label">Session</label>
+
+															<select name="session_id" class="form-control">
+						                                        @foreach ($sessions as $session)
+																	<option value="{{ $session->id }}">{{ $session->name }}</option>
+						                                        @endforeach
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label">Teacher</label>
+
+															<select name="teacher_id" class="form-control">
+						                                        @foreach ($teachers as $teacher)
+																	<option value="{{ $teacher->id }}">{{ $teacher->firstname }} {{ $teacher->lastname }}</option>
+						                                        @endforeach
+															</select>
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label">Level</label>
-															<select class="select2_category form-control" data-placeholder="Assign a Role" name="role">
-																<option value="Bursar">Select Academic Level</option>
-																
-															</select>
-														</div>
 
-													</div>
-													
-
-												</div>
-												<!--/row-->
-												<div class="row">
-													
-													<!--/span-->
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="control-label">Section</label>
-															<select class="select2_category form-control" data-placeholder="Assign a Role" name="role">
-																<option value="Bursar">Select Academic Section</option>
-																
+															<select name="level" class="form-control">
+																	<option value="Kg1">Kg1</option>
+																	<option value="Kg2">Kg2</option>
+																	<option value="Kg3">Kg3</option>
+																	<option value="pr1">Primary 1</option>
+																	<option value="pr2">Primary 2</option>
+																	<option value="pr3">Primary 3</option>
+																	<option value="pr4">Primary 4</option>
+																	<option value="pr5">Primary 5</option>
+																	<option value="pr6">Primary 6</option>
 															</select>
 														</div>
 													</div>
-													<!--/span-->
+
+
 												</div>
-												
-											
+
+
+
 											</div>
 											<div class="form-actions right">
 												<a class="btn btn-default btn-close" href="/dashboard">Cancel</a>

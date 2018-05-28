@@ -8,13 +8,17 @@
         "php": ">=7.0.0",
         "aws/aws-php-sns-message-validator": "^1.4",
         "aws/aws-sdk-php": "^3.52",
+
         "doctrine/cache": "^1.6",
         "doctrine/dbal": "^2.5",
+
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "snowfire/beautymail": "dev-master"
+        "snowfire/beautymail": "dev-master",
+        "laravelcollective/html": "~5.0",
+        "doctrine/dbal": "~2.3"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

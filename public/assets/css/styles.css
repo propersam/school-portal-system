@@ -3624,3 +3624,37 @@ ul.children li {
     margin-right: 10px;
 }
 /*---------------shop-area end---------------------*/
+/*---------------registraton form styles---------------------*/
+.child_section{
+    border: solid 0.7px #efefef;
+    padding: 8px;
+    border-radius: 10px;
+    overflow:auto; 
+    margin-bottom: 30px;
+}
+.father_section{
+    border: solid 0.7px #efefef;
+    padding: 8px;
+    border-radius: 10px;
+    overflow:auto; 
+    margin-bottom: 30px;
+}
+.mother_section{
+    border: solid 0.7px #efefef;
+    padding: 8px;
+    border-radius: 10px;
+    overflow:auto; 
+    margin-bottom: 30px;
+}
+.contacts_section{
+    border: solid 0.7px #efefef;
+    padding: 8px;
+    border-radius: 10px;
+    overflow:auto; 
+    margin-bottom: 30px;
+}
+
+.registration_form h4{
+    color: #71a0cd;
+    padding: 8px;
+}
