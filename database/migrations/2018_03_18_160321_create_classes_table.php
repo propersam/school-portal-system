@@ -15,11 +15,16 @@ class CreateClassesTable extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('section_id');
+            $table->integer('teacher_id');
+            $table->string('level');
             $table->string('classname');
             $table->string('description');
             $table->integer('level_id');
             $table->timestamps();
         });
+
+        
     }
 
     /**
