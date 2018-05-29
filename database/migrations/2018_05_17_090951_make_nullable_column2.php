@@ -14,7 +14,7 @@ class MakeNullableColumn2 extends Migration
     public function up()
     {
         
-        Schema::table('emergency_contacts', function (Blueprint $table) {
+        Schema::table('emergency_contact', function (Blueprint $table) {
             $table->string('name')->nullable()->change();
             $table->string('home_number')->nullable()->change();
             $table->string('work_number')->nullable()->change();
