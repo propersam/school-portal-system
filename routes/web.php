@@ -52,18 +52,20 @@ Route::get('/contactecopillars', function () {
 //     return view('eportal-login');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 
-Route::get('/home', function () {
-    return view('dashboard');
-});
+// Route::get('/home', function () {
+//     return view('dashboard');
+// });
 
 
 // Route::get('/register', function () {
 //     return view('register');
 // });
+Route::get('/dashboard', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::get('/ourstaff', 'FrontController@teachersdisplay');
 Route::get('/register', 'RegisterController@index');
 Route::get('/logout', 'HomeController@logout');

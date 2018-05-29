@@ -19,6 +19,11 @@ class PupilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {      
         $active_session = Session::where('is_active', '=', 1)->first();

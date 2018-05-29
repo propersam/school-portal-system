@@ -10,6 +10,11 @@ use App\Session;
 class SessionsController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {	
     	$sessions = Session::get();
