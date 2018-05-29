@@ -38,6 +38,7 @@ class CreateStudentsTable extends Migration
             $table->integer('user_id');
             $table->integer('student_id');
             $table->string('phonenumber');
+            $table->string('level');
             $table->string('position_in_family');
             $table->timestamps();
         });
