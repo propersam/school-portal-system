@@ -51,6 +51,9 @@
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
+	<div class="active_session_div">
+		<p>SESSION: @if ($active_session) {{ $active_session->name }} @else <span style="color: red">NO ACTIVE SESSION</span> @endif</p>
+	</div>
 	<!-- BEGIN HEADER INNER -->
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->

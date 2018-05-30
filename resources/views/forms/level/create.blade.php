@@ -7,17 +7,28 @@
 		<div class="page-content">
 			<div class="row">
 				<div class="col-md-12">
+					
 								<div class="portlet box blue">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-users"></i>Create New Class
+											<i class="fa fa-gift"></i>Create New Level
+										</div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse">
+											</a>
+											<a href="#portlet-config" data-toggle="modal" class="config">
+											</a>
+											<a href="javascript:;" class="reload">
+											</a>
+											<a href="javascript:;" class="remove">
+											</a>
 										</div>
 									</div>
 									<div class="portlet-body form">
 										<!-- BEGIN FORM-->
-										<form action="/dashboard/create-class" method="POST" class="horizontal-form">
+										<form action="/dashboard/create-level" method="POST" class="horizontal-form">
 											<div class="form-body">
-												<h3 class="form-section">Enter Class Details</h3>
+												<h3 class="form-section">Enter Level Details</h3>
 
 		                            @if ($errors->any())
 		                                <div class="alert alert-danger">
@@ -38,46 +49,16 @@
 													<div class="col-md-6">
 														{{ csrf_field() }}
 														<div class="form-group">
-															<label class="control-label">Name</label>
-															<input type="text" name="name" class="form-control">
+															<label class="control-label">Level Name</label>
+															<input type="text" id="name" class="form-control" placeholder="eg: Kg1, Primary 1" name="levelname">
 														</div>
 													</div>
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label">Session</label>
-
-															<select name="session_id" class="form-control">
-						                                        @foreach ($sessions as $session)
-																	<option value="{{ $session->id }}">{{ $session->name }}</option>
-						                                        @endforeach
-															</select>
+															<label class="control-label">Level Description</label>
+															<textarea rows="8" class="form-control" name="description" placeholder="Short description of Level"></textarea>
 														</div>
 													</div>
-												</div>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="control-label">Teacher</label>
-
-															<select name="teacher_id" class="form-control">
-						                                        @foreach ($teachers as $teacher)
-																	<option value="{{ $teacher->id }}">{{ $teacher->firstname }} {{ $teacher->lastname }}</option>
-						                                        @endforeach
-															</select>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="control-label">Level</label>
-
-															<select name="level" class="form-control">
-						                                        @foreach ($levels as $level)
-																	<option value="{{ $level->id }}">{{ $level->levelname }}</option>
-						                                        @endforeach
-															</select>
-														</div>
-													</div>
-
 
 												</div>
 
@@ -94,8 +75,6 @@
 									</div>
 								</div>
 								
-							
-						
 					
 				</div>
 			</div>

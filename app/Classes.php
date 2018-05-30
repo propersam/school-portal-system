@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Teacher;
 use App\Session;
+use App\Level;
 
 class Classes extends Model
 {
@@ -25,6 +26,11 @@ class Classes extends Model
      public function teacher()
     {
         return $this->belongsTo('App\Teacher', 'teacher_id');
+    }
+
+     public function classlevel()
+    {
+        return $this->belongsTo('App\Level', 'level');
     }
 
 }
