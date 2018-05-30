@@ -23,7 +23,7 @@ class Teacher extends User
     public function getEmail()
     {
         
-        return $this->user()->email;
+        // return $this->user()->email;
     }
 
      public function getDefaultPassword()
