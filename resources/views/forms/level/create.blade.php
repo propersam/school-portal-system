@@ -5,67 +5,15 @@
 <!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
-			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-							<h4 class="modal-title">Modal title</h4>
-						</div>
-						<div class="modal-body">
-							 Widget settings form goes here
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn blue">Save changes</button>
-							<button type="button" class="btn default" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-					
-				</div>
-				
-			</div> -->
-			<!-- /.modal -->
-			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<!-- BEGIN PAGE HEADER-->
-			<!-- BEGIN PAGE HEAD -->
-			<div class="page-head">
-				<!-- BEGIN PAGE TITLE -->
-				<!-- <div class="page-title">
-					<h1>Form Layouts <small>form layouts</small></h1>
-				</div> -->
-				<!-- END PAGE TITLE -->
-				
-			</div>
-			<!-- END PAGE HEAD -->
-			<!-- BEGIN PAGE BREADCRUMB -->
-			<!-- <ul class="page-breadcrumb breadcrumb">
-				<li>
-					<a href="index.html">Home</a>
-					<i class="fa fa-circle"></i>
-				</li>
-				<li>
-					<a href="#">Form Stuff</a>
-					<i class="fa fa-circle"></i>
-				</li>
-				<li>
-					<a href="#">Form Layouts</a>
-				</li>
-			</ul> -->
-			<!-- END PAGE BREADCRUMB -->
-			<!-- END PAGE HEADER-->
-			<!-- BEGIN PAGE CONTENT-->
+
 			<div class="row">
 				<div class="col-md-12">
 					
-						
-						
-							
-							
 								<div class="portlet box blue">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-gift"></i>Create New Academic Level
+											<i class="fa fa-gift"></i>Create New Level
+
 										</div>
 										<div class="tools">
 											<a href="javascript:;" class="collapse">
@@ -80,40 +28,48 @@
 									</div>
 									<div class="portlet-body form">
 										<!-- BEGIN FORM-->
-										<form action="/staff" method="POST" class="horizontal-form">
+
+										<form action="/dashboard/create-level" method="POST" class="horizontal-form">
 											<div class="form-body">
 												<h3 class="form-section">Enter Level Details</h3>
+
+		                            @if ($errors->any())
+		                                <div class="alert alert-danger">
+		                                    <ul>
+		                                        @foreach ($errors->all() as $error)
+		                                            <li>{{ $error }}</li>
+		                                        @endforeach
+		                                    </ul>
+		                                </div>
+		                            @endif
+
+									@if (session('success'))
+								        <div class="alert alert-success">
+								            {{ session('success') }}
+								        </div>
+								  	@endif
+
 												<div class="row">
 													<div class="col-md-6">
 														{{ csrf_field() }}
 														<div class="form-group">
-															<label class="control-label">Academic Level</label>
-															<input type="text" id="Name" class="form-control" placeholder="Academic Section" name="name">
-															<!-- <span class="help-block">
-															This is inline help </span> -->
+
+															<label class="control-label">Level Name</label>
+															<input type="text" id="name" class="form-control" placeholder="eg: Kg1, Primary 1" name="levelname">
 														</div>
 													</div>
-													<!--/span-->
-													
-													<!--/span-->
-
-												</div>
-												<!--/row-->
-												<div class="row">
-													
-													<!--/span-->
 													<div class="col-md-6">
 														<div class="form-group">
-															<label class="control-label">Comment</label>
-															<textarea rows="4" cols="50" class="form-control" name="comment">
-															
-															</textarea>
+															<label class="control-label">Level Description</label>
+															<textarea rows="8" class="form-control" name="description" placeholder="Short description of Level"></textarea>
 														</div>
 													</div>
-													<!--/span-->
+
 												</div>
-												
-											
+
+
+									
+
 											</div>
 											<div class="form-actions right">
 												<a class="btn btn-default btn-close" href="/dashboard">Cancel</a>
@@ -125,8 +81,8 @@
 									</div>
 								</div>
 								
-							
-						
+
+
 					
 				</div>
 			</div>

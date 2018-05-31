@@ -40,18 +40,11 @@
                                                 <label>Level</label>
                                             </div>
                                             <div class="col-xs-3">
-												{{ Form::select('level', [
-												   'Kg1' => 'Kg1',
-												   'Kg2' => 'Kg2',
-												   'Kg3' => 'Kg3',
-												   'pr1' => 'Primary 1',
-												   'pr2' => 'Primary 2',
-												   'pr3' => 'Primary 3',
-												   'pr4' => 'Primary 4',
-												   'pr5' => 'Primary 5',
-												   'pr6' => 'Primary 6',
-												   ], app('request')->input('<li></li>'), ['class' => 'form-control'] 
-												) }}
+												<select name="level" class="form-control">
+			                                        @foreach ($levels as $level)
+														<option value="{{ $level->id }}">{{ $level->levelname }}</option>
+			                                        @endforeach
+												</select>
                                             </div>
                                          <div class="col-sm-2">
                                                 <label>Add to class</label>

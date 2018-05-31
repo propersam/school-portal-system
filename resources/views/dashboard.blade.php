@@ -7,13 +7,13 @@
 	<div class="page-sidebar-wrapper">
 		<div class="page-sidebar navbar-collapse collapse">
 			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-				<li class="start active ">
+				<li class="start ">
 					<a href="/dashboard">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					</a>
 				</li>
-				<li>
+				<li class="{{ Request::is('staff*') ? 'active' : '' }}">
 					<a href="javascript:;">
 						<i class="icon-users"></i>
 						<span class="title">Manage Staff</span>
@@ -33,7 +33,7 @@
 					</ul>
 					
 				</li>
-				<li>
+				<li class="{{ Request::is('dashboard/register-student', 'dashboard/applications') ? 'active' : '' }}">
 					<a href="javascript:;">
 					<i class="icon-graduation"></i>
 					<span class="title">Manage Pupils</span>
@@ -53,7 +53,7 @@
 					</ul>
 					
 				</li>
-				<li>
+				<li class="{{ Request::is('dashboard/create-session', 'dashboard/create-level', 'dashboard/create-class', 'dashboard/sessions', 'dashboard/levels', 'dashboard/classes') ? 'active' : '' }}">
 					<a href="javascript:;">
 
 					<i class="icon-layers"></i>
@@ -69,6 +69,11 @@
 							Create Session</a>
 						</li>
 						<li>
+							<a href="/dashboard/create-level">
+							<i class="icon-arrow-right"></i>
+							Create Level</a>
+						</li>
+						<li>
 							<a href="/dashboard/create-class">
 							<i class="icon-arrow-right"></i>
 							Create Class</a>
@@ -79,6 +84,11 @@
 							Sessions</a>
 						</li>
 						<li>
+							<a href="/dashboard/levels">
+							<i class="icon-arrow-right"></i>
+							Levels</a>
+						</li>
+						<li>
 							<a href="/dashboard/classes">
 							<i class="icon-arrow-right"></i>
 							Classes</a>
@@ -87,7 +97,7 @@
 					</ul>
 					
 				</li>
-				<li>
+				<li class="{{ Request::is('dashboard/create-subject', 'dashboard/subject-registration', 'dashboard/subjects') ? 'active' : '' }}">
 					<a href="javascript:;">
 					<i class="icon-book-open"></i>
 					<span class="title">Manage Subjects</span>

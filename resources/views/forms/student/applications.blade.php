@@ -71,20 +71,20 @@
 													          <p>{{ $i->firstname }} {{ $i->lastname }}</p>
 															</td>
 															<td>
-													          <p>{{ $i->level }}</p>
+													          <p>{{ $i->classlevel['levelname'] }}</p>
 															</td>
 															<td>								          
 													          <p>{{ $i->created_at }}</p>
 															</td>
 															<td>
 														<a class="btn default" data-toggle="modal" href="#edit{{ $i->id }}">
-														Edit </a></td>
+														View </a></td>
 													<div class="modal fade" id="edit{{ $i->id }}" tabindex="-1" role="basic" aria-hidden="true">
 														<div class="modal-dialog">
 															<div class="modal-content">
 																<div class="modal-header">
 																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-																	<h4 class="modal-title">Edit Session: {{ $i->firstname }}</h4>
+																	<h4 class="modal-title">{{ $i->firstname }}</h4>
 																</div>
 																<div class="modal-body">
 																	<div class="child_section">
@@ -299,7 +299,7 @@
 													          <p>{{ $i->firstname }} {{ $i->lastname }}</p>
 															</td>
 															<td>
-													          <p>{{ $i->level }}</p>
+													          <p>{{ $i->classlevel['levelname'] }}</p>
 															</td>
 															<td>								          
 													          <p>{{ $i->created_at }}</p>
