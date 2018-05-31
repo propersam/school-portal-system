@@ -78,15 +78,9 @@
 															<label class="control-label">Level</label>
 
 															<select name="level" class="form-control">
-																	<option value="Kg1">Kg1</option>
-																	<option value="Kg2">Kg2</option>
-																	<option value="Kg3">Kg3</option>
-																	<option value="pr1">Primary 1</option>
-																	<option value="pr2">Primary 2</option>
-																	<option value="pr3">Primary 3</option>
-																	<option value="pr4">Primary 4</option>
-																	<option value="pr5">Primary 5</option>
-																	<option value="pr6">Primary 6</option>
+						                                        @foreach ($levels as $level)
+																	<option value="{{ $level->id }}">{{ $level->levelname }}</option>
+						                                        @endforeach
 															</select>
 														</div>
 													</div>

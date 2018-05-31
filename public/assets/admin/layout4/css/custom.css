@@ -61,3 +61,16 @@ Rounded Portlets
 	border-right: solid 1px #efefef;
 }
 
+.active_session_div{
+	background-color: #3598dc;
+	height: 20px;
+	text-align: center;
+}
+
+.page-header{
+	height: 90px !important;
+}
+.active_session_div p{
+	color: #fff;
+	font-weight: bold;
+}

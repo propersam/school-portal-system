@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Middleware\CheckIfActiveSession;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -11,6 +12,7 @@ use App\VerifyUser;
 use App\Parents;
 use App\Emergency_contact;
 use App\Session;
+use App\Level;
 
 class PupilController extends Controller
 {
@@ -19,12 +21,19 @@ class PupilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        // $this->middleware('CheckIfActiveSession');
+    }
+    
     public function index()
     {      
         $active_session = Session::where('is_active', '=', 1)->first();
         $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name','id');
+        $levels = Level::get();
 
-        return view('forms.student.create', ['classes' => $classes]);
+        return view('forms.student.create', ['classes' => $classes, 'levels' => $levels]);
     }
 
 

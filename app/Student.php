@@ -54,4 +54,9 @@ class Student extends Model
         return $this->user()->name;
     }
 
+
+     public function classlevel()
+    {
+        return $this->belongsTo('App\Level', 'level');
+    }
 }

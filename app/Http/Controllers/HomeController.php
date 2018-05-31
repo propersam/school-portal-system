@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-
+use App\Level;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,7 +26,60 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('dashboard');
+    } 
+
+    public function allLevels()
+    {
+        $levels = Level::get();
+
+        return view('forms.level.view_all', ['levels' => $levels]);
+    }
+    public function create_level()
+    {
+        return view('forms.level.create');
+    }
+
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'levelname' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storelevel(Request $request)
+    {
+        $request = $request->all();
+        $this->validator($request)->validate();
+
+        $levelname = $request['levelname'];
+        $description = $request['description'];
+
+        $data = array("levelname"=>$levelname,"description"=>$description);
+        
+        $subject = $this->createlevel($data);
+
+
+        return redirect("/dashboard/levels")->with('success', "You have successfully created a level.");
+
+        
+    }
+
+    
+     protected function createlevel(array $data)
+    {
+       $level = Level::create($data);
+
+       return $level;
     }
 
     public function imageUpload()

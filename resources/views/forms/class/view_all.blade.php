@@ -58,7 +58,7 @@
 								          <p>{{ $i->name }}</p>
 										</td>
 										<td>
-								          <p>{{ $i->level }}</p>
+								          <p>{{ $i->classlevel['levelname'] }}</p>
 										</td>
 										<td>
 								          <p>{{ $i->session->name }}</p>
@@ -101,17 +101,7 @@
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label">Level</label>
-															{{ Form::select('level', [
-															   'Kg1' => 'Kg1',
-															   'Kg2' => 'Kg2',
-															   'Kg3' => 'Kg3',
-															   'pr1' => 'Primary 1',
-															   'pr2' => 'Primary 2',
-															   'pr3' => 'Primary 3',
-															   'pr4' => 'Primary 4',
-															   'pr5' => 'Primary 5',
-															   'pr6' => 'Primary 6',
-															   ], $i->level, ['class' => 'form-control'] 
+															{{ Form::select('level', $levels, $i->level, ['class' => 'form-control'] 
 															) }}
 														</div>
 													</div>

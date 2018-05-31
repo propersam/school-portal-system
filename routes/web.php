@@ -1,4 +1,5 @@
 <?php
+use App\Http\Middleware\CheckIfActiveSession;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,50 +53,55 @@ Route::get('/contactecopillars', function () {
 //     return view('eportal-login');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// });
 
-Route::get('/home', function () {
-    return view('dashboard');
-});
+// Route::get('/home', function () {
+//     return view('dashboard');
+// });
 
 
 // Route::get('/register', function () {
 //     return view('register');
 // });
+Route::get('/dashboard', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::get('/ourstaff', 'FrontController@teachersdisplay');
 Route::get('/register', 'RegisterController@index');
 Route::get('/logout', 'HomeController@logout');
 Route::post('/register', 'RegisterController@store');
-Route::get('/dashboard/register-student', 'PupilController@index');
+Route::get('/dashboard/register-student', 'PupilController@index')->middleware(CheckIfActiveSession::class);;
 Route::post('/dashboard/register-student', 'PupilController@store');
 Route::get('/dashboard/sessions', 'SessionsController@index');
 Route::get('/dashboard/create-session', 'SessionsController@create');
 Route::post('/dashboard/create-session', 'SessionsController@store');
 Route::post('/dashboard/update-session/{id}', 'SessionsController@update');
-Route::get('/dashboard/classes', 'ClassController@index');
-Route::get('/dashboard/create-class', 'ClassController@create');
+Route::get('/dashboard/classes', 'ClassController@index')->middleware(CheckIfActiveSession::class);
+Route::get('/dashboard/create-class', 'ClassController@create')->middleware(CheckIfActiveSession::class);
 Route::post('/dashboard/create-class', 'ClassController@store');
-Route::get('/dashboard/applications', 'PupilController@applications');
+Route::get('/dashboard/applications', 'PupilController@applications')->middleware(CheckIfActiveSession::class);
 Route::post('/dashboard/accept-student/{id}', 'PupilController@accept');
 Route::post('/dashboard/reject-student-application/{id}', 'PupilController@reject_application');
 Route::post('/dashboard/admit-student/{id}', 'PupilController@admit');
 Route::post('/dashboard/reject-student-admission/{id}', 'PupilController@reject_admission');
 Route::get('/dashboard/view-class/{id}', 'ClassController@view_class');
-Route::get('/dashboard/subjects', 'SubjectController@index');
-Route::get('/dashboard/create-subject', 'SubjectController@create');
+Route::get('/dashboard/subjects', 'SubjectController@index')->middleware(CheckIfActiveSession::class);
+Route::get('/dashboard/create-subject', 'SubjectController@create')->middleware(CheckIfActiveSession::class);
 Route::post('/dashboard/create-subject', 'SubjectController@store');
 Route::post('/dashboard/update-subject/{id}', 'SubjectController@update');
-Route::get('/dashboard/subject-registration', 'SubjectRegistrationController@index');
-Route::post('/dashboard/add-subject-to-class/{id}', 'SubjectRegistrationController@store');
-Route::get('/dashboard/view-class-subjects/{id}', 'SubjectRegistrationController@view_class');
+Route::get('/dashboard/subject-registration', 'SubjectRegistrationController@index')->middleware(CheckIfActiveSession::class);
+Route::post('/dashboard/add-subject-to-class/{id}', 'SubjectRegistrationController@store')->middleware(CheckIfActiveSession::class);
+Route::get('/dashboard/view-class-subjects/{id}', 'SubjectRegistrationController@view_class')->middleware(CheckIfActiveSession::class);
 Route::post('/dashboard/remove-class-subject/{id}', 'SubjectRegistrationController@remove_class');
 Route::post('/dashboard/update-class/{id}', 'ClassController@update');
 Route::get('/change-default-password', 'RegisterController@change_password');
 Route::post('/change-password', 'RegisterController@changePassword');
 Route::get('change-photo',['as'=>'image.upload','uses'=>'HomeController@imageUpload']);
 Route::post('change-photo',['as'=>'image.upload.post','uses'=>'HomeController@imageUploadPost']);
+Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware(CheckIfActiveSession::class);
+Route::post('/dashboard/create-level', 'HomeController@storelevel')->middleware(CheckIfActiveSession::class);
+Route::get('/dashboard/levels', 'HomeController@allLevels')->middleware(CheckIfActiveSession::class);
 
  		// Authentication Routes...
 		$this->get('eportal', 'Auth\LoginController@showLoginForm')->name('login');

@@ -10,15 +10,23 @@ use App\Teacher;
 use App\Session;
 use App\Student;
 use App\User;
+use App\Level;
 
 class ClassController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {   
       
         $sessions = Session::pluck('name', 'id');
         $teachers = Teacher::pluck('firstname', 'id');
+        $levels = Level::pluck('levelname', 'id');
+        // $levels = Level::get();
 
 
         // get active session
@@ -27,8 +35,7 @@ class ClassController extends Controller
 
         $classes = Classes::where('session_id', '=', $active_session->id)->get();
 
-
-        return view('forms.class.view_all', ['classes' => $classes,'sessions' => $sessions,'teachers' => $teachers]);
+        return view('forms.class.view_all', ['classes' => $classes,'sessions' => $sessions,'teachers' => $teachers,'levels' => $levels]);
     }
     
     public function view_class($id)
@@ -49,8 +56,9 @@ class ClassController extends Controller
     {	
     	$teachers = Teacher::get();
     	$sessions = Session::get();
+        $levels = Level::get();
 
-        return view('forms.class.create', ['teachers' => $teachers, 'sessions' => $sessions]);
+        return view('forms.class.create', ['teachers' => $teachers, 'sessions' => $sessions, 'levels' => $levels]);
     }
 
     protected function validator(array $data)
@@ -82,7 +90,7 @@ class ClassController extends Controller
         $class = $this->createclass($data);
 
 
-        return redirect("/dashboard/class")->with('success', "You have successfully created a class.");
+        return redirect("/dashboard/classes")->with('success', "You have successfully created a class.");
 
         
     }

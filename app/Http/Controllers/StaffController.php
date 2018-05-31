@@ -33,7 +33,8 @@ class StaffController extends Controller
 
     public function index()
     {
-        return view('staff.list');
+        $teachers = Teacher::get();
+        return view('staff.list', ['teachers' => $teachers]);
     }
 
     /**

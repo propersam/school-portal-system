@@ -11,18 +11,23 @@ use App\Parents;
 use App\Emergency_contact;
 use Illuminate\Support\Facades\Auth;
 use Hash;
+use App\Level;
 
 class RegisterController extends Controller
 {
     
     public function index()
     {
-        return view('register');
+        $levels = Level::get();
+
+        return view('register', ['levels' => $levels]);
     }
     
     public function create()
     {
-        return view('register');
+        $levels = Level::get();
+
+        return view('register', ['levels' => $levels]);
     }
 
     protected function validator(array $data)
