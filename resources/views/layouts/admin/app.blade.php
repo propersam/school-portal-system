@@ -123,7 +123,7 @@
 					</li>
 					<li class="dropdown">
 	                    <span class="sr-only">Toggle Quick Sidebar</span>
-	                    <a href="/logout"><i class="icon-logout"></i></a>
+	                    <a href="/logout"><i class="icon-logout"></i>Log Out</a>
 	                </li>
 				</ul>
 			</div>
