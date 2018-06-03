@@ -9,7 +9,7 @@
 <br/>
 Your registered email-id is {{ $bursar->getEmail() }} , Please click on the below link to activate your email account
 <br/>
-<a href="{{url('user/verify', $bursar->user()->verifyUser->token)}}">Verify Email</a>
+<a href="{{url('user/verify', $bursar->user->verifyUser->token)}}">Verify Email</a>
 
 Your registered username is : {{ $bursar->getUsername() }} <br/>
 Your registered password is : {{ $bursar->getDefaultPassword() }} <br/>

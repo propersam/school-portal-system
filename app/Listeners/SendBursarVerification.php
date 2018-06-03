@@ -29,6 +29,6 @@ class SendBursarVerification
      */
     public function handle(NewBursarRegistered $event)
     {
-        Mail::to($event->bursar->getEmail())->send(new Bursarcreated($event->bursar));
+        Mail::to($event->bursar->user->email)->send(new Bursarcreated($event->bursar));
     }
 }

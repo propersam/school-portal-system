@@ -9,7 +9,7 @@
 <br/>
 Your registered email-id is {{ $headteacher->getEmail() }} , Please click on the below link to activate your email account
 <br/>
-<a href="{{url('user/verify', $headteacher->user()->verifyUser->token)}}">Verify Email</a>
+<a href="{{url('user/verify', $headteacher->user->verifyUser->token)}}">Verify Email</a>
 
 Your registered username is : {{ $headteacher->getUsername() }} <br/>
 Your registered password is : {{ $headteacher->getDefaultPassword() }} <br/>
