@@ -4,9 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "2ecb42833e0f4ec20ac5149c7ea5a15f",
-
+    "content-hash": "a9aa136bd9284f12cee6612007c1ee95",
     "packages": [
         {
             "name": "aws/aws-php-sns-message-validator",
@@ -4958,7 +4956,7 @@
     "stability-flags": {
         "snowfire/beautymail": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.0.0"
