@@ -28,8 +28,24 @@
 						<li>
 							<a href="/staff">
 							<i class="icon-arrow-right"></i>
-							Staff List</a>
+							Assistants</a>
 						</li>
+						<li>
+							<a href="/bursar">
+							<i class="icon-arrow-right"></i>
+							Bursars</a>
+						</li>
+						<li>
+							<a href="/headteacher">
+							<i class="icon-arrow-right"></i>
+							Head Teacher</a>
+						</li>
+						<li>
+							<a href="/staff">
+							<i class="icon-arrow-right"></i>
+							Teachers</a>
+						</li>
+						
 					</ul>
 					
 				</li>

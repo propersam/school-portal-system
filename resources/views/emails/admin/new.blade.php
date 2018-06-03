@@ -9,7 +9,7 @@
 <br/>
 Your registered email-id is {{ $admin->getEmail() }} , Please click on the below link to activate your email account
 <br/>
-<a href="{{url('user/verify', $admin->user()->verifyUser->token)}}">Verify Email</a>
+<a href="{{url('user/verify', $admin->user->verifyUser->token)}}">Verify Email</a>
 
 
 

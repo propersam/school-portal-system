@@ -120,10 +120,10 @@
 								</table>
 							</div>
 											<div class="form-actions right">
-												<a class="btn btn-default blue" href="/dashboard/create-subject"> <i class="fa fa-plus"></i> Add</a>
+												<a class="btn btn-default blue" href="/dashboard/create-level"> <i class="fa fa-plus"></i> Add</a>
 											</div>
 						</div>
-								</div>
+								</div> 
 								
 							
 						

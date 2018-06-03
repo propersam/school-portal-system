@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\HeadTeacher;
 
 class HeadTeacherController extends Controller
 {
@@ -18,7 +19,8 @@ class HeadTeacherController extends Controller
     
     public function index()
     {
-        //
+        $headteachers = HeadTeacher::get();
+        return view('staff.headteacher.list', ['headteachers' => $headteachers]);
     }
 
     /**

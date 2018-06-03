@@ -15,7 +15,7 @@
 								<div class="portlet box blue">
 						<div class="portlet-title">
 							<div class="caption">
-								All Teachers 
+								Bursars
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -35,25 +35,25 @@
 									
 
 									<th>
-										 Class
+										 Designation
 									</th>
 								</tr>
 								</thead>
 								<tbody>
-			                @foreach ($teachers as $teacher)
+			                @foreach ($bursars as $bursar)
 								<tr>
 									<td>
-										<img style="height: 80px" width="80px" src="uploads/profile_photos/{{ $teacher->user->photo }}" alt="" />
+										<img style="height: 80px" width="80px" src="uploads/profile_photos/{{ $bursar->user->photo }}" alt="" />
 									</td>
 									<td>
-										 {{ $teacher->firstname }}
+										 {{ $bursar->firstname }}
 									</td>
 									<td>
-										  {{ $teacher->lastname }}
+										  {{ $bursar->lastname }}
 									</td>
 									
 									<td>
-										 {{ $teacher->classes['name'] }}
+										 
 									</td>
 								</tr>
 			                @endforeach

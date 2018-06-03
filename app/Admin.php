@@ -16,18 +16,20 @@ class Admin extends Model
 	public function getEmail()
 	{
 		
-		return $this->user()->email;
+		return $this->user->email;
 	}
 
     public function getName()
     {
         
-        return $this->user()->name;
+        return $this->user->name;
     }
+
+    
 
 
      public function user()
     {
-        return $this->belongsTo('App\User', 'user_id', 'id')->first();
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 }

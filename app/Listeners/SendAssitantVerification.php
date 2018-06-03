@@ -29,6 +29,6 @@ class SendAssitantVerification
      */
     public function handle(NewAssistantRegistered $event)
     {
-        Mail::to($event->assistant->getEmail())->send(new Assistantcreated($event->assistant));
+        Mail::to($event->assistant->user->email)->send(new Assistantcreated($event->assistant));
     }
 }

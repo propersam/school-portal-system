@@ -40,20 +40,20 @@
 								</tr>
 								</thead>
 								<tbody>
-			                @foreach ($teachers as $teacher)
+			                @foreach ($headteachers as $headteacher)
 								<tr>
 									<td>
-										<img style="height: 80px" width="80px" src="uploads/profile_photos/{{ $teacher->user->photo }}" alt="" />
+										<img style="height: 80px" width="80px" src="uploads/profile_photos/{{ $headteacher->user->photo }}" alt="" />
 									</td>
 									<td>
-										 {{ $teacher->firstname }}
+										 {{ $headteacher->firstname }}
 									</td>
 									<td>
-										  {{ $teacher->lastname }}
+										  {{ $headteacher->lastname }}
 									</td>
 									
 									<td>
-										 {{ $teacher->classes['name'] }}
+										 {{ $headteacher->classes['name'] }}
 									</td>
 								</tr>
 			                @endforeach

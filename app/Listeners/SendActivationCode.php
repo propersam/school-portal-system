@@ -30,6 +30,6 @@ class SendActivationCode
     public function handle(NewTeacherRegistered $event)
     {
         
-        Mail::to($event->teacher->getEmail())->send(new Teachercreated($event->teacher));
+        Mail::to($event->teacher->user->email)->send(new Teachercreated($event->teacher));
     }
 }

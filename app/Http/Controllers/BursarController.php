@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Bursar;
 
 class BursarController extends Controller
 {
@@ -18,7 +19,8 @@ class BursarController extends Controller
     
     public function index()
     {
-        //
+        $bursars = Bursar::get();
+        return view('staff.bursar.list', ['bursars' => $bursars]);
     }
 
     /**

@@ -5,11 +5,11 @@
 </head>
  
 <body>
-<h2>Welcome to Ecopillars' School Portal {{ $teacher->getName() }}</h2>
+<h2>Welcome to Ecopillars' School Portal {{ $teacher->user->name }}</h2>
 <br/>
-Your registered email-id is {{ $teacher->getEmail() }} , Please click on the below link to activate your email account
+Your registered email-id is {{ $teacher->user->email }} , Please click on the below link to activate your email account
 <br/>
-<a href="{{url('user/verify', $teacher->user()->verifyUser->token)}}">Verify Email</a>
+<a href="{{url('user/verify', $teacher->user->verifyUser->token)}}">Verify Email</a>
 
 Your registered username is : {{ $teacher->getUsername() }} <br/>
 Your registered password is : {{ $teacher->getDefaultPassword() }} <br/>

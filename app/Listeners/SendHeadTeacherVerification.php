@@ -29,6 +29,6 @@ class SendHeadTeacherVerification
      */
     public function handle(NewHeadTeacherRegistered $event)
     {
-       return Mail::to($event->headteacher->getEmail())->send(new HeadTeachercreated($event->headteacher));
+       return Mail::to($event->headteacher->user->email)->send(new HeadTeachercreated($event->headteacher));
     }
 }
