@@ -23,6 +23,16 @@ class Classes extends Model
         return $this->belongsTo('App\Session', 'session_id');
     }
 
+    public function result()
+    {
+        return $this->hasOne('App\Result');
+    }
+
+    public function student()
+    {
+        return $this->hasOne('App\Student');
+    }
+
      public function teacher()
     {
         return $this->belongsTo('App\Teacher', 'teacher_id');

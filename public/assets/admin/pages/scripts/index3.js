@@ -13,9 +13,9 @@ var Index = function() {
                 });
             });
 
-            Index.initCharts();
-            Index.initMiniCharts();
-            Index.initJQVMAP();
+            // Index.initCharts();
+            // Index.initMiniCharts();
+            // Index.initJQVMAP();
         },
 
         initJQVMAP: function() {

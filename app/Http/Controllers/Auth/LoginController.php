@@ -63,7 +63,7 @@ class LoginController extends Controller
 
             }
         }else{
-            return redirect("/eportal")->with('success', "Username or password wrong");
+            return redirect("/eportal")->with('danger', "Username or password wrong");
 
         }
     }

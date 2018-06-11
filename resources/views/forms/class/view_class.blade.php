@@ -17,8 +17,12 @@
 								<span class="caption-helper"> | {{ $class->name }} Students</span>
 							</div>
 							<div class="actions">
-								<a href="/dashboard/register-student?l={{ $class->level }}&c={{ $class->id }}" class="btn btn-circle red-sunglo ">
-								<i class="fa fa-plus"></i> Add </a>
+								<a href="/dashboard/all-results/{{ $class->id }}" class="btn btn-circle blue ">
+								<i class="fa fa-file-o"></i> Manage Results</a>
+								@if (Auth::user()->role == 'SuperAdmin')
+									<a href="/dashboard/register-student?l={{ $class->level }}&c={{ $class->id }}" class="btn btn-circle red-sunglo ">
+									<i class="fa fa-plus"></i> Add Student</a>
+								@endif
 								<a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen"></a>
 							</div>
 						</div>
