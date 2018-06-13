@@ -94,7 +94,7 @@ class PupilController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump($request); die();
+        //var_dump($request); die();
         $request = $request->all();
         $this->validator($request)->validate();
         //var_dump($request); die();
@@ -133,7 +133,7 @@ class PupilController extends Controller
         $contact = $this->createcontact($data5);
         $contact2 = $this->createcontact($data6);
 
-        return redirect("/dashboard/register-student")->with('success', "You have successfully registered an account.");
+        return redirect("/dashboard/register-student")->with('success', "You have successfully registered a student.");
 
         
     }
