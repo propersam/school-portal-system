@@ -94,6 +94,7 @@ class PupilController extends Controller
      */
     public function store(Request $request)
     {
+        var_dump($request); die();
         $request = $request->all();
         $this->validator($request)->validate();
         //var_dump($request); die();
