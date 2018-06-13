@@ -157,7 +157,7 @@
                                         </ul>
                                     </div>
                                     <div class="home-info">
-                                        <a href="#">Your child becomes a blend of the best traditions and the most positive of educational innovations.</a>
+                                        <a href="#">Your Child becomes a blend of the best traditions and the most positive of educational innovations.</a>
                                     </div>
                                 </li>
                                 <li class="home-item">

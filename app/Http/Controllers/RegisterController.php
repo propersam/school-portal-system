@@ -179,7 +179,7 @@ class RegisterController extends Controller
             'preferredname' => $data['pref_name'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
-            'phonenumber' => $data['home_number'],
+            'home_number' => $data['home_number'],
             'gender' => $data['gender'],
             'address' => $data['residential_address'],
             'user_id' => $data['user_id'],

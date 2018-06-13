@@ -5,8 +5,6 @@
 <!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
-
-
 			<div class="row">
 					<!-- BEGIN Portlet PORTLET-->
 					<div class="portlet light">
@@ -17,8 +15,10 @@
 								<span class="caption-helper"> | {{ $class->name }} Students</span>
 							</div>
 							<div class="actions">
+								<a href="/dashboard/register-student?l={{ $class->level }}&c={{ $class->id }}" class="btn btn-circle blue-sunglo ">
+								<i class="fa fa-plus"></i> Results </a>
 								<a href="/dashboard/register-student?l={{ $class->level }}&c={{ $class->id }}" class="btn btn-circle red-sunglo ">
-								<i class="fa fa-plus"></i> Add </a>
+								<i class="fa fa-plus"></i> Add Student</a>
 								<a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen"></a>
 							</div>
 						</div>
