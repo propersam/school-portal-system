@@ -72,8 +72,8 @@
 
                             <div class="col-md-6">
                                 <select id="gender" type="text" class="form-control" name="gender" value="{{ old('gender') }}" required>
-                                    <option value="Bursar">Male</option>
-                                    <option value="HeadTeacher">Female</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                     
                                 </select>
 
