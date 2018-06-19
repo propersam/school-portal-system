@@ -14,6 +14,7 @@ use App\SubjectRegistration;
 use App\Result;
 use App\AssessmentResult;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 
 class ParentController extends Controller
@@ -54,11 +55,17 @@ class ParentController extends Controller
 
     public function view_children()
     {
-
         $children = Student::where('user_id', '=', Auth::user()->id)->get();
 
         return view('forms.parent.view_children', ['students' => $children]);
+    }
 
+
+    public function load_record()
+    {
+        $children = Student::where('user_id', '=', Auth::user()->id)->get();
+
+        return view('forms.parent.view_record', ['students' => $children]);
     }
 
 
@@ -83,6 +90,57 @@ class ParentController extends Controller
 
         // var_dump($results);
         return view('forms.parent.view_child_results', ['results' => $results, 'student' => $student]);
+
+    }
+
+    public function view_child_record($id)
+    {
+        $student = Student::where('user_id', '=', Auth::user()->id)->first();
+
+        // $sessions = Result::where('student_id', '=', $id)->groupBy('session_id')->get();
+       
+        $sessions = DB::table('exam_scores')->select('id','student_id', 'term', 'session_id')->where('student_id', $id)->get();
+
+
+        $sessions = $sessions->toArray();
+        $sessions = array_unique(array_column($sessions, 'session_id'));
+
+        $i = 0;
+        $ta  = array();
+
+        foreach ($sessions as $key) {
+            $session = Session::where('id', '=', $key)->first();
+            $r = Result::where('student_id', '=', $id)->where('session_id', '=', $session->id)->get();
+            $a = AssessmentResult::where('student_id', '=', $id)->where('session_id', '=', $session->id)->get();
+            $ta[$i]['results'] = $r;
+            $ta[$i]['session'] = $session;
+
+            foreach ($ta[$i]['results'] as $key) {
+                
+                foreach ($a as $key2) {
+                    if($key->subject_id == $key2->subject_id){
+                        $key->assessment = $key2; 
+                    }
+                }
+            }
+            // var_dump($ta);
+            $i++;
+        }
+        // get active session
+        $results = Result::where('student_id', '=', $id)->get();
+        $assessments = AssessmentResult::where('student_id', '=', $id)->get();
+
+        foreach ($results as $key) {
+            
+            foreach ($assessments as $key2) {
+                if($key->subject_id == $key2->subject_id){
+                    $key->assessment = $key2; 
+                }
+            }
+        }
+
+        // var_dump($ta);
+        return view('forms.parent.view_child_record', ['all_results' => $ta, 'student' => $student]);
 
     }
 

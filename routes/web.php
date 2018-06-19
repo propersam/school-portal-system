@@ -113,6 +113,8 @@ Route::get('/dashboard/children/', 'ParentController@view_children');
 Route::get('/dashboard/child-results/{id}', 'ParentController@view_child_results');
 Route::get('/dashboard/parent-new-child', 'ParentController@register');
 Route::post('/dashboard/parent-new-child', 'ParentController@store');
+Route::get('/dashboard/parent-view-records/', 'ParentController@load_record');
+Route::get('/dashboard/child-record/{id}', 'ParentController@view_child_record');
 
 	// Authentication Routes...
 $this->get('eportal', 'Auth\LoginController@showLoginForm')->name('login');
