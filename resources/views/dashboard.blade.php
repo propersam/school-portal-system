@@ -200,6 +200,12 @@
 						<span class="title">Results</span>
 						</a>
 					</li>
+					<li  class=" start {{ Request::is('dashboard/parent-view-records') ? 'active' : '' }}">
+						<a href="/dashboard/parent-view-records">
+						<i class="icon-book-open"></i>
+						<span class="title">Records</span>
+						</a>
+					</li>
 					<li>
 						<a href="/logout">
 							<i class="icon-logout"></i> 
