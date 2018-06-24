@@ -41,31 +41,35 @@
 								        </div>
 								  	@endif
 							<div class="table-scrollable">
-							<table class="table table-condensed table-hover">
-								<thead>
-								<tr>
-									<th>
-										 Name
-									</th>
-									<th>
-										 Actions
-									</th>
-								</tr>
-								</thead>
-								<tbody>
-								@foreach ($subjects as $i) 
+							@if ($class)
+								<table class="table table-condensed table-hover">
+									<thead>
 									<tr>
-										<td>
-								          <p>{{ $i->subject->name }}</p>
-										</td>
-										<td>
-									<a class="btn yellow" href="/dashboard/view-subject-results?s={{ $i->id }}&c={{ $class->id }}">
-									View Results </a></td>
+										<th>
+											 Name
+										</th>
+										<th>
+											 Actions
+										</th>
 									</tr>
-								@endforeach
-								</tbody>
-								</table>
-							</div>
+									</thead>
+									<tbody>
+									@foreach ($subjects as $i) 
+										<tr>
+											<td>
+									          <p>{{ $i->subject->name }}</p>
+											</td>
+											<td>
+										<a class="btn yellow" href="/dashboard/view-subject-results?s={{ $i->id }}&c={{ $class->id }}">
+										View Results </a></td>
+										</tr>
+									@endforeach
+									</tbody>
+									</table>
+								</div>
+							@else
+								<h3>You are yet to be assigned to a class, please contact the admin.</h3>
+							@endif
 						</div>
 					</div>
 						

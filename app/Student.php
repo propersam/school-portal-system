@@ -31,8 +31,6 @@ class Student extends Model
         return $this->hasOne('App\Parents', 'student_id', 'id')->get();
     }
 
-
-
     
     public function result()
     {

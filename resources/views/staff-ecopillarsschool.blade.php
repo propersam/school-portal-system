@@ -36,14 +36,17 @@
                                 <div class="teacher-content">
                                     <div class="teacher-info">
                                         <h3>{{ $teacher->firstname }} {{ $teacher->lastname }}</h3>
+                                        @if ($teacher->classes)
                                         <p>Class: {{ $teacher->classes->name }}</p>
-                                        <ul>
+                                        @endif
+
+                                        <ul style="opacity: 0">
                                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                         </ul>
-                                        <span><a href="teacher-details.html">View Profile</a></span>
+                                        <span style="opacity: 0"><a href="teacher-details.html">View Profile</a></span>
                                     </div>
                                 </div>
                             </div>

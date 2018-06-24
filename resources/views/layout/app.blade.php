@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Ecopillars</title>
-        <meta name="description" content="">
+        <title>Ecopillars School</title>
+        <meta name="description" content="Ecopillars Nursery, Primary and Secondary School">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-4 col-sm-10 col-xs-10">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="/">
                                     <img src="assets/images/logo.png" alt="" />
                                     <span class="hidden">Logo</span>
                                 </a>
@@ -56,7 +56,7 @@
                                 <ul id="navigation">
                                     <li class="active"><a href="/">Home</a>
                                     <li><a href="/aboutecopillars">About</a></li>
-                                    <li><a href="/ourstaff">Teacher</a>
+                                    <li><a href="/ourstaff">Teachers</a>
                                     <li><a href="/register">Registration Form</a>
                                     </li>
                                     <li><a href="/contactecopillars">Contact</a></li>
