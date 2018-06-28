@@ -68,7 +68,8 @@
 										</td>
 										<td>
 											<a class="btn primary" data-toggle="modal" href="#edit{{ $i->id }}">Edit </a>
-											<a class="btn blue" data-toggle="modal" href="/dashboard/view-class/{{ $i->id }}">View Students </a>
+											<a class="btn blue" href="/dashboard/view-class/{{ $i->id }}">View Students </a>
+											<a class="btn green" href="/dashboard/all-results/{{ $i->id }}">View Results </a>
 										</td>
 							<div class="modal fade" id="edit{{ $i->id }}" tabindex="-1" role="basic" aria-hidden="true">
 								<div class="modal-dialog">

@@ -12,6 +12,7 @@ use App\Emergency_contact;
 use Illuminate\Support\Facades\Auth;
 use Hash;
 use App\Level;
+use App\Events\NewStudentRegistered;
 
 class RegisterController extends Controller
 {
@@ -107,7 +108,7 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         $request = $request->all();
-        $this->validator($request)->validate();
+        // $this->validator($request)->validate();
         //var_dump($request); die();
         $username = str_random(4);
         $password = str_random(8);
@@ -119,30 +120,43 @@ class RegisterController extends Controller
 
         $data = array("username"=>$username,"password"=>$password,"firstname"=>$firstname,"lastname"=>$lastname,"name"=>$name, "email"=>$email, "role" => 'parent' );
         
-        $user = $this->createuser($data);
+        // $user = $this->createuser($data);
 
 
-        $data2 = array("user_id"=>$user->id,"first_name"=>$request['first_name'],"pref_name"=>$request['pref_name'],"lastname"=>$lastname,"home_number"=>$request['home_number'],"gender"=>$request['gender'],"residential_address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "siblings_attended"=>$request['siblings_attended'], "child_position"=>$request['child_position'], "siblings_attended_years"=>$request['siblings_attended_years'], "sibling1_name"=>$request['child1_name'], "sibling1_age"=>$request['child1_age'], "sibling1_school"=>$request['child1_school'], "sibling2_name"=>$request['child2_name'], "sibling2_age"=>$request['child2_age'], "sibling2_school"=>$request['child2_school'], "sibling3_name"=>$request['child3_name'], "sibling3_age"=>$request['child3_age'], "sibling3_school"=>$request['child3_school'], "email"=>$request['email'], "current_school"=>$request['current_school'], "position_in_family"=>$request['child_position'], "level"=>$request['level']);
+        // $data2 = array("user_id"=>$user->id,"first_name"=>$request['first_name'],"pref_name"=>$request['pref_name'],"lastname"=>$lastname,"phonenumber"=>$request['home_number'],"gender"=>$request['gender'],"residential_address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "siblings_attended"=>$request['siblings_attended'], "child_position"=>$request['child_position'], "siblings_attended_years"=>$request['siblings_attended_years'], "sibling1_name"=>$request['child1_name'], "sibling1_age"=>$request['child1_age'], "sibling1_school"=>$request['child1_school'], "sibling2_name"=>$request['child2_name'], "sibling2_age"=>$request['child2_age'], "sibling2_school"=>$request['child2_school'], "sibling3_name"=>$request['child3_name'], "sibling3_age"=>$request['child3_age'], "sibling3_school"=>$request['child3_school'], "email"=>$request['email'], "current_school"=>$request['current_school'], "position_in_family"=>$request['child_position'], "level"=>$request['level']);
 
-        $student = $this->createstudent($data2);
-
-        $data3 = array("user_id"=>$user->id,"student_id"=>$student->id,"firstname"=>$request['father_first_name'],"lastname"=>$request['father_surname'],"maritalstatus"=>$request['father_marital_status'],"occupation"=>$request['father_occupation'],"companyname"=>$request['father_company_name'],"workaddress"=>$request['father_work_address'],"phone"=>$request['father_work_phone'],"email"=>$request['father_email'],"attended_school"=>$request['father_attend'],"phonenumber"=>$request['father_work_phone'],"parent_type"=>'father');
+        // $student = $this->createstudent($data2);
 
 
+        $student = Student::create([
+                        'firstname' => $request['first_name'],
+                        'lastname' => $request['lastname'],
+                        // 'user_id' => $user->id,
+                        'user_id' => 1,
+                        'phonenumber' => $request['home_number'],
+                        'gender' => $request['gender'],
+                       ]);
+              
+         event(new NewStudentRegistered($student));
 
-        $data4 = array("user_id"=>$user->id,"student_id"=>$student->id,"firstname"=>$request['mother_first_name'],"lastname"=>$request['mother_surname'],"maritalstatus"=>$request['mother_marital_status'],"occupation"=>$request['mother_occupation'],"companyname"=>$request['mother_company_name'],"workaddress"=>$request['mother_work_address'],"phone"=>$request['mother_work_phone'],"email"=>$request['mother_email'],"attended_school"=>$request['mother_attend'],"phonenumber"=>$request['mother_work_phone'],"parent_type"=>'mother');
+
+        // $data3 = array("user_id"=>$user->id,"student_id"=>$student->id,"firstname"=>$request['father_first_name'],"lastname"=>$request['father_surname'],"maritalstatus"=>$request['father_marital_status'],"occupation"=>$request['father_occupation'],"companyname"=>$request['father_company_name'],"workaddress"=>$request['father_work_address'],"phone"=>$request['father_work_phone'],"email"=>$request['father_email'],"attended_school"=>$request['father_attend'],"phonenumber"=>$request['father_work_phone'],"parent_type"=>'father');
 
 
-        $data5 = array("user_id"=>$user->id,"student_id"=>$student->id,"name"=>$request['emergency_contact_name_1'],"home_number"=>$request['emergency_contact1_number_home'],"work_number"=>$request['emergency_contact1_number_work'],"cell_number"=>$request['emergency_contact1_number_cell']);
+
+        // $data4 = array("user_id"=>$user->id,"student_id"=>$student->id,"firstname"=>$request['mother_first_name'],"lastname"=>$request['mother_surname'],"maritalstatus"=>$request['mother_marital_status'],"occupation"=>$request['mother_occupation'],"companyname"=>$request['mother_company_name'],"workaddress"=>$request['mother_work_address'],"phone"=>$request['mother_work_phone'],"email"=>$request['mother_email'],"attended_school"=>$request['mother_attend'],"phonenumber"=>$request['mother_work_phone'],"parent_type"=>'mother');
+
+
+        // $data5 = array("user_id"=>$user->id,"student_id"=>$student->id,"name"=>$request['emergency_contact_name_1'],"home_number"=>$request['emergency_contact1_number_home'],"work_number"=>$request['emergency_contact1_number_work'],"cell_number"=>$request['emergency_contact1_number_cell']);
        
 
-        $data6 = array("user_id"=>$user->id,"student_id"=>$student->id,"name"=>$request['emergency_contact_name_2'],"home_number"=>$request['emergency_contact2_number_home'],"work_number"=>$request['emergency_contact2_number_work'],"cell_number"=>$request['emergency_contact2_number_cell']);
+        // $data6 = array("user_id"=>$user->id,"student_id"=>$student->id,"name"=>$request['emergency_contact_name_2'],"home_number"=>$request['emergency_contact2_number_home'],"work_number"=>$request['emergency_contact2_number_work'],"cell_number"=>$request['emergency_contact2_number_cell']);
 
 
-        $father = $this->createfather($data3);
-        $mother = $this->createmother($data4);
-        $contact = $this->createcontact($data5);
-        $contact2 = $this->createcontact($data6);
+        // $father = $this->createfather($data3);
+        // $mother = $this->createmother($data4);
+        // $contact = $this->createcontact($data5);
+        // $contact2 = $this->createcontact($data6);
 
         return redirect("/eportal")->with('success', "You have successfully registered an account.");
 
@@ -179,7 +193,7 @@ class RegisterController extends Controller
             'preferredname' => $data['pref_name'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
-            'home_number' => $data['home_number'],
+            'phonenumber' => $data['phonenumber'],
             'gender' => $data['gender'],
             'address' => $data['residential_address'],
             'user_id' => $data['user_id'],

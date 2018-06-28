@@ -43,9 +43,16 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('username', 'password');
+        $username = $request->username;
+        $password = $request->password;
 
-        if (Auth::attempt($credentials)) {
+        if(filter_var($username, FILTER_VALIDATE_EMAIL)){
+            Auth::attempt(['email' => $username, 'password' => $password]);
+        }else{
+            Auth::attempt(['username' => $username, 'password' => $password]);
+        }
+
+        if (Auth::check()) {
             // Authentication passed...
             $user = Auth::user();
             $id = Auth::id();
@@ -63,7 +70,7 @@ class LoginController extends Controller
 
             }
         }else{
-            return redirect("/eportal")->with('success', "Username or password wrong");
+            return redirect("/eportal")->with('danger', "Username or password wrong");
 
         }
     }

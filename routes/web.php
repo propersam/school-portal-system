@@ -102,59 +102,78 @@ Route::post('change-photo',['as'=>'image.upload.post','uses'=>'HomeController@im
 Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware(CheckIfActiveSession::class);
 Route::post('/dashboard/create-level', 'HomeController@storelevel')->middleware(CheckIfActiveSession::class);
 Route::get('/dashboard/levels', 'HomeController@allLevels')->middleware(CheckIfActiveSession::class);
+Route::get('/dashboard/all-results/{id}', 'ResultsController@index')->middleware(CheckIfActiveSession::class);
+Route::get('/dashboard/view-subject-results/', 'ResultsController@view_subject_results')->middleware(CheckIfActiveSession::class);
+Route::post('/dashboard/add-student-exam-result/', 'ResultsController@store');
+Route::post('/dashboard/add-student-assessment-result/', 'ResultsController@store_assessment');
+Route::get('/dashboard/teacher-view-class/', 'TeacherController@view_class');
+Route::get('/dashboard/teacher-view-results/', 'TeacherController@view_results');
+Route::get('/dashboard/parent-view-results/', 'ParentController@view_results');
+Route::get('/dashboard/children/', 'ParentController@view_children');
+Route::get('/dashboard/child-results/{id}', 'ParentController@view_child_results');
+Route::get('/dashboard/parent-new-child', 'ParentController@register');
+Route::post('/dashboard/parent-new-child', 'ParentController@store');
+Route::get('/dashboard/parent-view-records/', 'ParentController@load_record');
+Route::get('/dashboard/child-record/{id}', 'ParentController@view_child_record');
 
- 		// Authentication Routes...
-		$this->get('eportal', 'Auth\LoginController@showLoginForm')->name('login');
-		$this->post('eportal', 'Auth\LoginController@authenticate');
-		$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+	// Authentication Routes...
+$this->get('eportal', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('eportal', 'Auth\LoginController@authenticate');
+$this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
-		// Registration Routes...
-		$this->get('admin/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-		$this->post('admin/register', 'Auth\RegisterController@register');
-		
-		// Password Reset Routes...
-		$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-		 $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-		$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-		$this->post('password/reset', 'Auth\ResetPasswordController@reset');
+// Registration Routes...
+$this->get('admin/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+$this->post('admin/register', 'Auth\RegisterController@register');
 
-		Route::resources([
-		    'teacher' => 'TeacherController',
-		   
-		]);
+// Password Reset Routes...
+$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+ $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+$this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
-		Route::resources([
-		    'headteacher' => 'HeadTeacherController',
-		   
-		]);
+Route::get('/api/get-subject-results', 'ApiController@view_subject_results');
+Route::get('/api/get-class-students', 'ApiController@get_class_students');
+Route::post('/api/submit-subject-results', 'ApiController@submit_results');
+Route::post('/api/submit-subject-assessment-results', 'ApiController@submit_assessment');
 
-		Route::resources([
-		    'pupil' => 'PupilController',
-		   
-		]);
-		Route::resources([
-		    'bursar' => 'BursarController',
-		   
-		]);
 
-		Route::resources([
-		    'staff' => 'StaffController',
-		   
-		]);
+Route::resources([
+    'teacher' => 'TeacherController',
+   
+]);
 
-		Route::resources([
-		    'section' => 'SectionController',
-		   
-		]);
+Route::resources([
+    'headteacher' => 'HeadTeacherController',
+   
+]);
 
-		Route::resources([
-		    'level' => 'LevelController',
-		   
-		]);
+Route::resources([
+    'pupil' => 'PupilController',
+   
+]);
+Route::resources([
+    'bursar' => 'BursarController',
+   
+]);
 
-		Route::resources([
-		    'class' => 'ClassController',
-		   
-		]);
+Route::resources([
+    'staff' => 'StaffController',
+   
+]);
 
-	Route::get('/user/verify/{token}', 'StaffController@verifyUser');
+Route::resources([
+    'section' => 'SectionController',
+   
+]);
+
+Route::resources([
+    'level' => 'LevelController',
+   
+]);
+
+Route::resources([
+    'class' => 'ClassController',
+   
+]);
+
+Route::get('/user/verify/{token}', 'StaffController@verifyUser');

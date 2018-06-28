@@ -7,6 +7,15 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use App\Classes;
+use App\Teacher;
+use App\Session;
+use App\Student;
+use App\Level;
+use App\SubjectRegistration;
+use App\Result;
+use App\AssessmentResult;
 
 
 class TeacherController extends Controller
@@ -39,9 +48,42 @@ class TeacherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function view_class()
     {
-        
+
+        $students = array();
+        // get class teacher 
+        $teacher = Teacher::where('user_id', '=', Auth::user()->id)->first();
+        // get class information
+        $class = Classes::where('teacher_id', '=', $teacher->id)->first();
+
+        if($class){
+        // get class teacher 
+            $students = Student::where('class_id', '=', $class->id)->where('admission_status', 'admitted')->get();            
+        }
+
+        return view('forms.class.view_class', ['class' => $class, 'teacher' => $teacher, 'students' => $students]);
+    }
+    
+    
+    public function view_results()
+    {   
+        $subjects = array();
+
+        // get class teacher 
+        $teacher = Teacher::where('user_id', '=', Auth::user()->id)->first();
+
+
+        // get class information
+        $class = Classes::where('teacher_id', '=', $teacher->id)->first();
+
+        if($class){
+            $subjects = SubjectRegistration::where('level', '=', $class->level)->get();
+        }
+
+
+
+        return view('forms.result.view_subjects', ['subjects' => $subjects, 'class' => $class]);
     }
 
     /**

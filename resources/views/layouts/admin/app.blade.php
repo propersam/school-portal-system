@@ -72,38 +72,46 @@
 		<!-- END RESPONSIVE MENU TOGGLER -->
 		<!-- BEGIN PAGE ACTIONS -->
 		<!-- DOC: Remove "hide" class to enable the page header actions -->
-		<div class="page-actions">
-			<div class="btn-group">
-				<button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-				<span class="hidden-sm hidden-xs">Actions&nbsp;</span><i class="fa fa-angle-down"></i>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-					<li>
-						<a href="/staff/create">
-						<i class="icon-user"></i> Create Staff </a>
-					</li>
-					<li>
-						<a href="/dashboard/register-student">
-						<i class="icon-user"></i> Register Pupil </a>
-					</li>
-					<li class="divider">
-					</li>
-					<li>
-						<a href="/dashboard/create-session">
-						<i class="icon-share"></i> Create Session </a>
-					</li>
-					<li>
-						<a href="/dashboard/create-class">
-						<i class="icon-layers"></i> Create Class </a>
-					</li>
-					<li>
-						<a href="/dashboard/create-subject">
-						<i class="icon-book-open"></i> Add Subject
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
+		
+			@if (Auth::user()->role == 'SuperAdmin')
+				<div class="page-actions">
+					<div class="btn-group">
+						<button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+						<span class="hidden-sm hidden-xs">Actions&nbsp;</span><i class="fa fa-angle-down"></i>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li>
+								<a href="/staff/create">
+								<i class="icon-user"></i> Create Staff </a>
+							</li>
+							<li>
+								<a href="/dashboard/register-student">
+								<i class="icon-user"></i> Register Pupil </a>
+							</li>
+							<li class="divider">
+							</li>
+							<li>
+								<a href="/dashboard/create-session">
+								<i class="icon-share"></i> Create Session </a>
+							</li>
+							<li>
+								<a href="/dashboard/create-class">
+								<i class="icon-layers"></i> Create Class </a>
+							</li>
+							<li>
+								<a href="/dashboard/create-subject">
+								<i class="icon-book-open"></i> Add Subject
+								</a>
+							</li>
+							<li>
+								<a href="/logout">
+								<i class="icon-logout"></i> Log Out
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			@endif
 		<!-- END PAGE ACTIONS -->
 		<!-- BEGIN PAGE TOP -->
 		<div class="page-top">
@@ -117,14 +125,14 @@
 						@if (Auth::user()->photo)
 							<img alt="" class="img-circle" src="uploads/profile_photos/{{ Auth::user()->photo }}"/>
 						@else
-							<img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
+							<img alt="" class="img-circle" src="/assets/admin/layout4/img/avatar9.jpg"/>
 						@endif
 						</a>
 					</li>
-					<li class="dropdown">
+<!-- 					<li class="dropdown">
 	                    <span class="sr-only">Toggle Quick Sidebar</span>
 	                    <a href="/logout"><i class="icon-logout"></i>Log Out</a>
-	                </li>
+	                </li> -->
 				</ul>
 			</div>
 			<!-- END TOP NAVIGATION MENU -->
@@ -193,6 +201,15 @@
 <script src="/assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
 <script src="/assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
 <script src="/assets/admin/pages/scripts/components-pickers.js"></script> 
+<script src="/js/angular.js"></script> 
+<script src="/js/angular-route.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js"></script>
+<script src="/js/FileSaver.min.js"></script> 
+<script src="/js/json-export-excel.js"></script> 
+
+<script src="/js/ui-bootstrap-tpls-2.5.0.min.js"></script> 
+<script src="/js/controllers.js"></script> 
+
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 jQuery(document).ready(function() { 

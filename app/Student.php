@@ -31,6 +31,12 @@ class Student extends Model
         return $this->hasOne('App\Parents', 'student_id', 'id')->get();
     }
 
+    
+    public function result()
+    {
+        return $this->hasOne('App\Student');
+    }
+
     public function returnFather() {
         return $this->parent()->where('parent_type','=', 'father')->first();
     }
@@ -42,6 +48,11 @@ class Student extends Model
      public function user()
     {
         return $this->belongsTo('App\User', 'user_id', 'id')->first();
+    }
+
+     public function class_details()
+    {
+        return $this->belongsTo('App\Classes', 'class_id');
     }
 
      public function getUsername()

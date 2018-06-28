@@ -58,6 +58,10 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="menu-toggler sidebar-toggler">
 </div>
 <!-- END SIDEBAR TOGGLER BUTTON -->
+<!-- BEGIN LOGIN -->
+<div class="content">
+    <!-- BEGIN LOGIN FORM -->
+    <form class="login-form" action="{{ route('login') }}" method="POST">
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
@@ -68,10 +72,25 @@ License: You must have a valid license purchased only from themeforest(the above
                 {{ session('warning') }}
             </div>
         @endif
-<!-- BEGIN LOGIN -->
-<div class="content">
-    <!-- BEGIN LOGIN FORM -->
-    <form class="login-form" action="{{ route('login') }}" method="POST">
+        @if (session('danger'))
+            <div class="alert alert-danger">
+                {{ session('danger') }}
+            </div>
+        @endif
+        @if ($message = Session::get('success'))
+
+        <div class="alert alert-success alert-block">
+
+            <button type="button" class="close" data-dismiss="alert">×</button>
+
+                <strong>{{ $message }}</strong>
+
+        </div>
+
+        @endif
+
+
+
         {{ csrf_field() }}
         <h3 class="form-title">Login to School Portal</h3>
         <div class="alert alert-danger display-hide">
