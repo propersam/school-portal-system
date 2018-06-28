@@ -50,6 +50,18 @@ class PupilController extends Controller
         return view('forms.student.applications', ['pending_applications' => $pending_applications, 'accepted_applications' => $accepted_applications, 'rejected_applications' => $rejected_applications, 'classes' => $classes]);
     }
 
+
+    public function all_pupils()
+    {
+        $active_session = Session::where('is_active', '=', 1)->first();
+
+        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name', 'id');
+
+        $students = Student::where('application_status', '=', 'accepted')->where('admission_status', 'admitted')->get();
+
+        return view('forms.student.view_all', ['students' => $students,  'classes' => $classes]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -63,6 +63,11 @@
 								Register Pupil</a>
 							</li>
 							<li>
+								<a href="/dashboard/all-pupils">
+								<i class="icon-arrow-right"></i>
+								View All</a>
+							</li>
+							<li>
 								<a href="/dashboard/applications">
 								<i class="icon-arrow-right"></i>
 								Applications</a>

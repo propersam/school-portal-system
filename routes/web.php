@@ -81,6 +81,8 @@ Route::get('/dashboard/classes', 'ClassController@index')->middleware(CheckIfAct
 Route::get('/dashboard/create-class', 'ClassController@create')->middleware(CheckIfActiveSession::class);
 Route::post('/dashboard/create-class', 'ClassController@store');
 Route::get('/dashboard/applications', 'PupilController@applications')->middleware(CheckIfActiveSession::class);
+Route::get('/dashboard/all-pupils', 'PupilController@all_pupils')->middleware(CheckIfActiveSession::class);
+
 Route::post('/dashboard/accept-student/{id}', 'PupilController@accept');
 Route::post('/dashboard/reject-student-application/{id}', 'PupilController@reject_application');
 Route::post('/dashboard/admit-student/{id}', 'PupilController@admit');
