@@ -63,7 +63,7 @@
                                             <label>Other Name of Child *</label>
                                             <input type="text" placeholder="Other Name of Child" id="pref_name" name="pref_name">
                                         </div>
-                                        <div class="col-sm-12 col-xs-12">
+                                        <div class="col-sm-12 col-xs-12" style="margin-bottom: 50px">
                                             <div class="col-xs-3   col-xs-offset-1">
                                                 <label>Gender *</label>
                                                 <select name="gender" class="form-control">
@@ -73,7 +73,13 @@
                                             </div>
                                             <div class="col-xs-4   col-xs-offset-1 ">
                                                 <label>Date of Birth *</label>
-                                                <input type="date" placeholder="date of birth" id="dob" name="dob">
+                                                <!-- <input type="date" placeholder="date of birth" id="dob" name="dob"> -->
+                                                <div  data-date-format="yyyy-mm-dd" class="input-group date" data-provide="datepicker" style="">
+                                                    <input type="text" name="dob" class="form-control">
+                                                    <div class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-th"></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">

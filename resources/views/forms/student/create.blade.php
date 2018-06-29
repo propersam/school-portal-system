@@ -34,6 +34,17 @@
 								        </div>
 								  	@endif
                                     <div class="child_section">
+                                        <h4><i class="fa fa-user"></i> Email</h4>
+                                        <div class="col-sm-12">
+	                                        <div class="col-sm-6 col-sm-offset-3">
+	                                    	<br>
+	                                    	<br>
+	                                            <label>Email address to be used for the account *</label>
+	                                            <input type="text"  class="form-control" placeholder="Email" id="email" name="email">
+	                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="child_section">
 
                                         <div class="col-sm-12 col-xs-12" style="padding: 24px; background-color: #efefef; border-radius: 10px; margin: 15px; margin-bottom: 40px">
                                             <div class="col-sm-2">
@@ -84,13 +95,34 @@
 	                                        </div>
 	    									<div class="col-xs-12 col-sm-4">
 	                                            <label>Date of Birth *</label>
-	    										<input  class="form-control" type="date" placeholder="date of birth" id="dob" name="dob">
+                                                <div  data-date-format="yyyy-mm-dd" class="input-group date" data-provide="datepicker" style="">
+                                                    <input type="text" name="dob" class="form-control">
+                                                    <div class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-th"></span>
+                                                    </div>
+                                                </div>
 	    									</div>
 	                                        <div class="col-sm-5 col-xs-12">
-	                                            <label>Country of Origin *</label>
-	                                            <input  class="form-control" type="text" placeholder="Country of Origin" id="origin" name="origin">
+	                                            <label>Home Telephone Number *</label>
+	                                            <input class="form-control" type="text" placeholder="Home Telephone Number" id="home_number" name="home_number">
 	                                        </div>
 										</div>
+                                        <div class="col-sm-12 col-xs-12">
+                                            <div class="col-sm-4">
+                                                <label>Nationality *</label>
+                                                <input  class="form-control" type="text" placeholder="Nationality" id="origin" name="origin">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label>State of Origin *</label>
+                                                <input  class="form-control" type="text" placeholder="State of Origin" id="state" name="state">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <label>Local Government Area *</label>
+                                                <input  class="form-control" type="text" placeholder="Local Government Area" id="lga" name="lga">
+                                            </div>
+                                        </div>
+
+										<!-- 
                                         <div class="row">
 	                                        <div class="col-sm-4 col-xs-12">
 		                                        <div class="col-xs-12">
@@ -160,25 +192,13 @@
 	                                                </div>
 	                                            </div>
 	                                        </div>
+	                                    </div> -->
+                                        <div class="row">
 	                                    </div>
                                         <div class="row">
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Current Playgroup/School</label>
-	                                            <input class="form-control" type="text" placeholder="Current Playgroup/School" id="current_school" name="current_school">
-	                                        </div>
-	                                        <div class="col-sm-6 col-xs-12">
+	                                        <div class="col-sm-8 col-xs-12">
 	                                            <label>Residential Address *</label>
 	                                            <textarea class="form-control" class="contact-textarea" placeholder="Residential Address" id="residential_address" name="residential_address"></textarea>
-	                                        </div>
-	                                    </div>
-                                        <div class="row">
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Home Telephone Number *</label>
-	                                            <input class="form-control" type="text" placeholder="Home Telephone Number" id="home_number" name="home_number">
-	                                        </div>
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Email *</label>
-	                                            <input class="form-control" type="text" placeholder="Email" id="email" name="email">
 	                                        </div>
 	                                    </div>
                                     </div>
@@ -209,24 +229,24 @@
 	                                                </select>
 	                                            </div>
 	                                        </div>
-	                                        <div class="col-sm-6 col-xs-12">
+<!-- 	                                        <div class="col-sm-6 col-xs-12">
 	                                            <label>Occupation of Father</label>
 	                                            <input class="form-control" type="text" placeholder="Occupation of Father" id="father_occupation" name="father_occupation">
-	                                        </div>
+	                                        </div> -->
 	                                    </div>
                                         <div class="row">
 	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Company Name</label>
+	                                            <label>Coy Name</label>
 	                                            <input class="form-control" type="text" placeholder="Company Name" id="father_company_name" name="father_company_name">
 	                                        </div>
 	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Work Address</label>
+	                                            <label>Coy Address</label>
 	                                            <input class="form-control" type="text" placeholder="Work Address" id="father_work_address" name="father_work_address">
 	                                        </div>
 	                                    </div>
                                         <div class="row">
 	                                        <div class="col-sm-4 col-xs-12">
-	                                            <label>Work Telephone Number</label>
+	                                            <label>Coy Telephone Number</label>
 	                                            <input class="form-control" type="text" placeholder="Work Telephone Number" id="father_work_phone" name="father_work_phone">
 	                                        </div>
 	                                        <div class="col-sm-4 col-xs-12">
@@ -234,7 +254,7 @@
 	                                            <input class="form-control" type="text" placeholder="Email" id="father_email" name="father_email">
 	                                        </div>
 
-	                                        <div class="col-sm-4 col-xs-12">
+<!-- 	                                        <div class="col-sm-4 col-xs-12">
 	                                            <div class="col-xs-12">
 	                                                <label>Did you Attended Eco Pillars ?</label>
 	                                                <select name="father_attend" class="form-control">
@@ -242,7 +262,7 @@
 	                                                    <option value="no">No</option>
 	                                                </select>
 	                                            </div>
-	                                        </div>
+	                                        </div> -->
 	                                    </div>
                                     </div>
                                     <div class="mother_section">
@@ -257,7 +277,7 @@
 	                                            <input class="form-control"  type="text" placeholder="Surname of Mother" id="mother_surname" name="mother_surname">
 	                                        </div>
 	                                    </div>
-                                        <div class="row">
+<!--                                         <div class="row">
 	                                        <div class="col-sm-6 col-xs-12">
 	                                            <div class="col-sm-12 col-xs-12">
 	                                                <label>Marital Status of Mother</label>
@@ -276,20 +296,20 @@
 	                                            <label>Occupation of Mother</label>
 	                                            <input class="form-control"  type="text" placeholder="Occupation of Mother" id="mother_occupation" name="mother_occupation">
 	                                        </div>
-	                                    </div>
+	                                    </div> -->
                                         <div class="row">
 	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Company Name</label>
+	                                            <label>Coy Name</label>
 	                                            <input  class="form-control" type="text" placeholder="Company Name" id="mother_company_name" name="mother_company_name">
 	                                        </div>
 	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Work Address</label>
+	                                            <label>Coy Address</label>
 	                                            <input class="form-control" type="text" placeholder="Work Address" id="mother_work_address" name="mother_work_address">
 	                                        </div>
 	                                    </div>
                                         <div class="row">
 	                                        <div class="col-sm-3 col-xs-12">
-	                                            <label>Work Telephone Number</label>
+	                                            <label>Coy Telephone Number</label>
 	                                            <input class="form-control" type="text" placeholder="Work Telephone Number" id="mother_work_phone" name="mother_work_phone">
 	                                        </div>
 	                                        <div class="col-sm-3 col-xs-12">
@@ -297,7 +317,7 @@
 	                                            <input class="form-control" type="text" placeholder="Email" id="mother_email" name="mother_email">
 	                                        </div>
 
-	                                        <div class="col-sm-3 col-xs-12">
+<!-- 	                                        <div class="col-sm-3 col-xs-12">
 	                                            <div class="col-sm-12 col-xs-12">
 	                                                <label>Did you Attended Eco Pillars ?</label>
 	                                            </div>
@@ -307,10 +327,10 @@
 	                                                    <option value="no">No</option>
 	                                                </select>
 	                                            </div>
-	                                        </div>
+	                                        </div> -->
 	                                    </div>
                                     </div>
-                                    <div class="contacts_section">
+<!--                                     <div class="contacts_section">
                                         <h4><i class="fa fa-phone"></i> Additional Contact Persons</h4>
                                         <div class="row">
 	                                        <div class="col-sm-6 col-xs-12">
@@ -336,7 +356,7 @@
 	                                            <input class="form-control" type="text" placeholder="Cell" id="emergency_contact2_number_cell" name="emergency_contact2_number_cell">
 	                                        </div>
 	                                    </div>
-                                    </div>
+                                    </div> -->
 									<div class="form-actions right">
 										<a class="btn btn-default btn-close" href="/dashboard">Cancel</a>
 										

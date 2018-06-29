@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="assets/css/responsive.css">
         <!-- modernizr css -->
         <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
     </head>
     <body>
        
@@ -209,6 +210,7 @@
         <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
         <!-- bootstrap js -->
         <script src="assets/js/bootstrap.min.js"></script>
+        <script src="js/bootstrap-datepicker.min.js"></script>
         <!-- owl.carousel.2.0.0-beta.2.4 css -->
         <script src="assets/js/owl.carousel.min.js"></script>
         <!-- counterup.main.js -->
