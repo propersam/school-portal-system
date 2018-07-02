@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use App\Bursar;
-use App\Teacher;
-use App\HeadTeacher;
 use App\Assistant;
+use App\Bursar;
+use App\Events\NewAssistantRegistered;
+use App\Events\NewBursarRegistered;
+use App\Events\NewHeadTeacherRegistered;
+use App\Events\NewTeacherRegistered;
+use App\HeadTeacher;
+use App\Teacher;
 use App\User;
 use App\VerifyUser;
-use App\Events\NewBursarRegistered;
-use App\Events\NewTeacherRegistered;
-use App\Events\NewAssistantRegistered;
-use App\Events\NewHeadTeacherRegistered;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class StaffController extends Controller
 {

@@ -1,18 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Middleware\CheckIfActiveSession;
-
+use App\Classes;
+use App\Emergency_contact;
+use App\Level;
+use App\Parents;
+use App\Session;
+use App\Student;
+use App\User;
+use App\VerifyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\User;
-use App\Classes;
-use App\Student;
-use App\VerifyUser;
-use App\Parents;
-use App\Emergency_contact;
-use App\Session;
-use App\Level;
 
 class PupilController extends Controller
 {

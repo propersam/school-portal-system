@@ -15,7 +15,7 @@
 						</a>
 					</li>
 					<li class="{{ Request::is('staff*') ? 'active' : '' }}">
-						<a href="javascript:;">
+                        <a href="javascript:">
 							<i class="icon-users"></i>
 							<span class="title">Manage Staff</span>
 							<span class="arrow "></span>
@@ -51,7 +51,7 @@
 						
 					</li>
 					<li class="{{ Request::is('dashboard/register-student', 'dashboard/applications') ? 'active' : '' }}">
-						<a href="javascript:;">
+                        <a href="javascript:">
 						<i class="icon-graduation"></i>
 						<span class="title">Manage Pupils</span>
 						<span class="arrow "></span>
@@ -71,7 +71,7 @@
 						
 					</li>
 					<li class="{{ Request::is('dashboard/create-session', 'dashboard/create-level', 'dashboard/create-class', 'dashboard/sessions', 'dashboard/levels', 'dashboard/classes') ? 'active' : '' }}">
-						<a href="javascript:;">
+                        <a href="javascript:">
 
 						<i class="icon-layers"></i>
 						<span class="title">Manage Classes</span>
@@ -115,7 +115,7 @@
 						
 					</li>
 					<li class="{{ Request::is('dashboard/create-subject', 'dashboard/subject-registration', 'dashboard/subjects') ? 'active' : '' }}">
-						<a href="javascript:;">
+                        <a href="javascript:">
 						<i class="icon-book-open"></i>
 						<span class="title">Manage Subjects</span>
 						<span class="arrow "></span>

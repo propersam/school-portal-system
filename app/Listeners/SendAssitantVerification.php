@@ -3,11 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\NewAssistantRegistered;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Mail;
-use App\Assistant;
 use App\Mail\Assistantcreated;
+use Illuminate\Support\Facades\Mail;
 
 class SendAssitantVerification
 {

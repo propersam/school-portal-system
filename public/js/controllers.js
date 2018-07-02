@@ -58,7 +58,7 @@
         $scope.format = $scope.formats[0];
 
                   $scope.load_page = function(){
-                  }
+                  };
                   $scope.load_page();
       });
 
@@ -127,7 +127,7 @@
             }
             // Return the parsed data.
             return (arrData);
-        }
+        };
 
         $scope.CSV2JSON = function(csv) {
             var array = $scope.CSVToArray(csv);
@@ -144,7 +144,7 @@
             var str = json.replace(/},/g, "},\r\n");
 
             return str;
-        }
+        };
         
         $scope.toggleUpload = function(){
           if($scope.uploading_csv){
@@ -152,7 +152,7 @@
           }else{
             $scope.uploading_csv = true;
           }
-        }
+        };
         
         $scope.toggleUpload2 = function(){
           if($scope.uploading_csv2){
@@ -160,7 +160,7 @@
           }else{
             $scope.uploading_csv2 = true;
           }
-        }
+        };
 
         $scope.convert = function(f){
           var r = $scope.CSVToArray(f);
@@ -168,7 +168,7 @@
           // console.log(r);
            $scope.uploaded_results = JSON.parse(s);
           // $scope.addResults(JSON.parse(s));
-        }
+        };
 
 
         $scope.convert2 = function(f){
@@ -177,11 +177,11 @@
           // console.log(r);
            $scope.uploaded_results2 = JSON.parse(s);
           // $scope.addResults(JSON.parse(s));
-        }
+        };
 
         $scope.addResults = function(){
 
-          var data = []
+            var data = [];
          $scope.submitting_results = true;
 
           angular.forEach($scope.uploaded_results, function(student){
@@ -207,12 +207,12 @@
                  $scope.submitting_results = false;
 
               });
-        }
+        };
 
 
         $scope.addResults2 = function(){
 
-          var data = []
+            var data = [];
          $scope.submitting_results2 = true;
 
           angular.forEach($scope.uploaded_results2, function(student){
@@ -238,7 +238,7 @@
                  $scope.submitting_results2 = false;
 
               });
-        }
+        };
 
         $scope.loadResults = function(){
 
@@ -246,8 +246,8 @@
                     $scope.results = response.results;
                     $scope.assessments_results = response.assessments_results;
               });
-          
-        }
+
+        };
 
         $scope.loadStudents = function(){
 
@@ -303,12 +303,12 @@
 
 
                         // });
-        }
+        };
 
           $scope.load_page = function(){
             $scope.loadStudents();
             $scope.loadResults();
-          }
+          };
 
         $scope.load_page();
      });

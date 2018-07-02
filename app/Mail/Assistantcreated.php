@@ -2,11 +2,10 @@
 
 namespace App\Mail;
 
+use App\Assistant;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Assistant;
 
 class Assistantcreated extends Mailable
 {
