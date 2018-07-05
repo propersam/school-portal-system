@@ -63,6 +63,11 @@
 								Register Pupil</a>
 							</li>
 							<li>
+								<a href="/dashboard/all-pupils">
+								<i class="icon-arrow-right"></i>
+								View All</a>
+							</li>
+							<li>
 								<a href="/dashboard/applications">
 								<i class="icon-arrow-right"></i>
 								Applications</a>
@@ -164,6 +169,12 @@
 						<a href="/dashboard/teacher-view-results">
 						<i class="icon-book-open"></i>
 						<span class="title">Results</span>
+						</a>
+					</li>
+					<li class="start ">
+						<a href="/dashboard/profile">
+						<i class="icon-book-open"></i>
+						<span class="title">Profile</span>
 						</a>
 					</li>
 					<li>

@@ -56,6 +56,7 @@ class LoginController extends Controller
             // Authentication passed...
             $user = Auth::user();
             $id = Auth::id();
+
             // dd($user->default_password_changed);
             // check if user has changed default password
             if($user->default_password_changed == 'yes'){

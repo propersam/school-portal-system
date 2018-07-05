@@ -9,7 +9,7 @@ class Student extends Model
     
 
     protected $fillable = [
-        'firstname', 'preferredname', 'user_id', 'home_number', 'gender', 'lastname', 'dob', 'address', 'origin', 'siblings_attended' , 'child_position', 'siblings_attended_years', 'sibling1_name', 'sibling1_age', 'sibling1_school', 'sibling2_name', 'sibling2_age ', 'sibling2_school', 'sibling3_name', 'sibling3_age', 'sibling3_school', 'email', 'current_school', 'position_in_family', 'level',
+        'firstname', 'preferredname', 'user_id', 'phonenumber', 'gender', 'lastname', 'dob', 'address', 'origin', 'email', 'current_school', 'class_id', 'level', 'state', 'lga'
     ];
 
 

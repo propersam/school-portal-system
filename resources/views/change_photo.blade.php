@@ -66,13 +66,13 @@ License: You must have a valid license purchased only from themeforest(the above
 
         @if ($message = Session::get('success'))
 
-        <div class="alert alert-success alert-block">
+            <div class="alert alert-success alert-block">
 
-            <button type="button" class="close" data-dismiss="alert">×</button>
+                <button type="button" class="close" data-dismiss="alert">×</button>
 
-                <strong>{{ $message }}</strong>
+                    <strong>{{ $message }}</strong>
 
-        </div>
+            </div>
 
         @endif
 

@@ -23,6 +23,7 @@
 <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
 <link href="/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" type="text/css" href="/assets/plugins/clockface/css/clockface.css"/>
+<link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
 <link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"/>
 <link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css"/>
 <link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap-colorpicker/css/colorpicker.css"/>
@@ -208,6 +209,7 @@
 <script src="/js/json-export-excel.js"></script> 
 
 <script src="/js/ui-bootstrap-tpls-2.5.0.min.js"></script> 
+<script src="js/bootstrap-datepicker.min.js"></script>
 <script src="/js/controllers.js"></script> 
 
 <!-- END PAGE LEVEL SCRIPTS -->
