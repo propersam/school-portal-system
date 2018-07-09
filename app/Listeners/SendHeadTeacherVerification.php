@@ -3,11 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\NewHeadTeacherRegistered;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Mail;
-use App\HeadTeacher;
 use App\Mail\HeadTeachercreated;
+use Illuminate\Support\Facades\Mail;
 
 class SendHeadTeacherVerification
 {

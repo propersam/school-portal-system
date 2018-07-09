@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStudentStatuses extends Migration
+class AddPhoneColumnToVerifyUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class AddStudentStatuses extends Migration
      */
     public function up()
     {
-        
-        Schema::table('students', function (Blueprint $table) {
-            $table->string('admission_status')->default('pending');
-            $table->string('application_status')->default('pending');
+        Schema::table('verify_users', function (Blueprint $table) {
+            $table->string('phone_token')->after('token')->nullable();
         });
     }
 
@@ -27,6 +25,8 @@ class AddStudentStatuses extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('verify_users', function (Blueprint $table) {
+            $table->dropColumn('phone_token');
+        });
     }
 }

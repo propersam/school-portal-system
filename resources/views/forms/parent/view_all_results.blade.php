@@ -16,7 +16,7 @@
 								<span class="caption-subject"> Your Children Results</span>
 							</div>
 							<div class="actions">
-								<a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen"></a>
+                                <a href="javascript:" class="btn btn-circle btn-default btn-icon-only fullscreen"></a>
 							</div>
 						</div>
 						<div class="portlet-body">

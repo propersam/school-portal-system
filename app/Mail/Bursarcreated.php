@@ -2,11 +2,10 @@
 
 namespace App\Mail;
 
+use App\Bursar;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Bursar;
 
 class Bursarcreated extends Mailable
 {

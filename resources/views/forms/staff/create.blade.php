@@ -68,13 +68,13 @@
 											<i class="fa fa-gift"></i>Create New Staff
 										</div>
 										<div class="tools">
-											<a href="javascript:;" class="collapse">
+                                            <a href="javascript:" class="collapse">
 											</a>
 											<a href="#portlet-config" data-toggle="modal" class="config">
 											</a>
-											<a href="javascript:;" class="reload">
+                                            <a href="javascript:" class="reload">
 											</a>
-											<a href="javascript:;" class="remove">
+                                            <a href="javascript:" class="remove">
 											</a>
 										</div>
 									</div>

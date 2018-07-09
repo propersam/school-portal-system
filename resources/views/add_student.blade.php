@@ -23,7 +23,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="javascript:;">
+                    <a href="javascript:">
 						<i class="icon-basket"></i>
 						<span class="title">Manage Staff</span>
 						<span class="arrow "></span>
@@ -58,7 +58,7 @@
 					
 				</li>
 				<li>
-					<a href="javascript:;">
+                    <a href="javascript:">
 					<i class="icon-rocket"></i>
 					<span class="title">Manage Pupils</span>
 					<span class="arrow "></span>
@@ -93,7 +93,7 @@
 					
 				</li>
 				<li>
-					<a href="javascript:;">
+                    <a href="javascript:">
 					<i class="icon-diamond"></i>
 					<span class="title">Manage Classes</span>
 					<span class="arrow "></span>

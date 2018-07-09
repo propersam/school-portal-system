@@ -3,9 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Teacher;
-use App\Session;
-use App\Level;
 
 class Classes extends Model
 {
