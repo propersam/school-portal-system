@@ -81,13 +81,13 @@ class PupilController extends Controller
             'gender' => 'required|string|max:255',
             'dob' => 'required|string|max:255',
             'origin' => 'required|string|max:255',
-            'siblings_attended' => 'required|string|max:255',
-            'child_position' => 'required|string|max:255',
+            //'siblings_attended' => 'required|string|max:255',
+            //'child_position' => 'required|string|max:255',
             'residential_address' => 'required|string|max:255',
             'home_number' => 'required|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
              
-            'email' => 'required|string|email|max:255|unique:users',
+            //'email' => 'required|string|email|max:255|unique:users',
             
         ]);
     }
@@ -110,20 +110,49 @@ class PupilController extends Controller
         $request = $request->all();
         $this->validator($request)->validate();
         //var_dump($request); die();
-        $username = str_random(4);
+        $username = str_random(6);
         $password = str_random(8);
         $name = $request['first_name'] . ' ' . $request['lastname'];
         $firstname = $request['first_name'];
         $pref_name = $request['pref_name'];
         $lastname = $request['lastname'];
         $email = $request['email'];
+        $phone = $request['phone'];
 
-        $data = array("username"=>$username,"password"=>$password,"firstname"=>$firstname,"lastname"=>$lastname,"name"=>$name, "email"=>$email, "role" => 'parent' );
+        $data = array("username"=>$username,"password"=>$password,"firstname"=>$firstname,"lastname"=>$lastname,"name"=>$name, "email"=>$email, 'phone'=>$phone, "role" => 'parent' );
         
         $user = $this->createuser($data);
 
 
-        $data2 = array("user_id"=>$user->id,"first_name"=>$request['first_name'],"pref_name"=>$request['pref_name'],"lastname"=>$lastname,"home_number"=>$request['home_number'],"gender"=>$request['gender'],"residential_address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "siblings_attended"=>$request['siblings_attended'], "child_position"=>$request['child_position'], "siblings_attended_years"=>$request['siblings_attended_years'], "sibling1_name"=>$request['child1_name'], "sibling1_age"=>$request['child1_age'], "sibling1_school"=>$request['child1_school'], "sibling2_name"=>$request['child2_name'], "sibling2_age"=>$request['child2_age'], "sibling2_school"=>$request['child2_school'], "sibling3_name"=>$request['child3_name'], "sibling3_age"=>$request['child3_age'], "sibling3_school"=>$request['child3_school'], "email"=>$request['email'], "current_school"=>$request['current_school'], "position_in_family"=>$request['child_position'], "class_id"=>$request['class_id']);
+        $data2 = array(
+            "user_id"=>$user->id,
+            "first_name"=>$request['first_name'],
+            "pref_name"=>$request['pref_name'],"lastname"=>$lastname,
+            "home_number"=>$request['home_number'],"gender"=>$request['gender'],
+            "residential_address"=>$request['residential_address'],
+            "gender"=>$request['gender'],
+            "dob"=>$request['dob'], 
+            "origin"=>$request['origin'], 
+            /*
+            "siblings_attended"=>$request['siblings_attended'],
+            "child_position"=>$request['child_position'], 
+            "siblings_attended_years"=>$request['siblings_attended_years'], 
+            "sibling1_name"=>$request['child1_name'], 
+            "sibling1_age"=>$request['child1_age'], 
+            "sibling1_school"=>$request['child1_school'], 
+            "sibling2_name"=>$request['child2_name'], 
+            "sibling2_age"=>$request['child2_age'], 
+            "sibling2_school"=>$request['child2_school'], 
+            "sibling3_name"=>$request['child3_name'], 
+            "sibling3_age"=>$request['child3_age'], 
+            "sibling3_school"=>$request['child3_school'], 
+            */
+            "email"=>$request['email'], 
+            "phone"=>$request['phone'], 
+            "current_school"=>$request['current_school'], 
+            "position_in_family"=>$request['child_position'], 
+            "class_id"=>$request['class_id']
+        );
 
         $student = $this->createstudent($data2);
 
