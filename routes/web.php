@@ -108,11 +108,11 @@ Route::post('dashboard/profile',['as'=>'image.dp_upload.post','uses'=>'TeacherCo
 Route::post('/dashboard/update-profile/', 'TeacherController@updateProfile');
 
 // Route::post('dashboard/profile',['as'=>'profile.update_profile.post','uses'=>'TeacherController@updateProfile']);
-Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware(CheckIfActiveSession::class);
-Route::post('/dashboard/create-level', 'HomeController@storelevel')->middleware(CheckIfActiveSession::class);
-Route::get('/dashboard/levels', 'HomeController@allLevels')->middleware(CheckIfActiveSession::class);
-Route::get('/dashboard/all-results/{id}', 'ResultsController@index')->middleware(CheckIfActiveSession::class);
-Route::get('/dashboard/view-subject-results/', 'ResultsController@view_subject_results')->middleware(CheckIfActiveSession::class);
+Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware('active_session');
+Route::post('/dashboard/create-level', 'HomeController@storelevel')->middleware('active_session');
+Route::get('/dashboard/levels', 'HomeController@allLevels')->middleware('active_session');
+Route::get('/dashboard/all-results/{id}', 'ResultsController@index')->middleware('active_session');
+Route::get('/dashboard/view-subject-results/', 'ResultsController@view_subject_results')->middleware('active_session');
 Route::post('/dashboard/add-student-exam-result/', 'ResultsController@store');
 Route::post('/dashboard/add-student-assessment-result/', 'ResultsController@store_assessment');
 Route::get('/dashboard/teacher-view-class/', 'TeacherController@view_class');
