@@ -84,3 +84,12 @@ Rounded Portlets
 	color: #3598dc;
 	font-weight: bold;
 }
+
+.profile-userpic img{
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}

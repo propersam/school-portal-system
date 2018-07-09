@@ -171,6 +171,12 @@
 						<span class="title">Results</span>
 						</a>
 					</li>
+					<li class="start ">
+						<a href="/dashboard/profile">
+						<i class="icon-book-open"></i>
+						<span class="title">Profile</span>
+						</a>
+					</li>
 					<li>
 						<a href="/logout">
 							<i class="icon-logout"></i> 

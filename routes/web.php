@@ -101,6 +101,10 @@ Route::get('/change-default-password', 'RegisterController@change_password');
 Route::post('/change-password', 'RegisterController@changePassword');
 Route::get('change-photo',['as'=>'image.upload','uses'=>'HomeController@imageUpload']);
 Route::post('change-photo',['as'=>'image.upload.post','uses'=>'HomeController@imageUploadPost']);
+Route::post('dashboard/profile',['as'=>'image.dp_upload.post','uses'=>'TeacherController@imageUploadPost']);
+Route::post('/dashboard/update-profile/', 'TeacherController@updateProfile');
+
+// Route::post('dashboard/profile',['as'=>'profile.update_profile.post','uses'=>'TeacherController@updateProfile']);
 Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware(CheckIfActiveSession::class);
 Route::post('/dashboard/create-level', 'HomeController@storelevel')->middleware(CheckIfActiveSession::class);
 Route::get('/dashboard/levels', 'HomeController@allLevels')->middleware(CheckIfActiveSession::class);
@@ -110,6 +114,7 @@ Route::post('/dashboard/add-student-exam-result/', 'ResultsController@store');
 Route::post('/dashboard/add-student-assessment-result/', 'ResultsController@store_assessment');
 Route::get('/dashboard/teacher-view-class/', 'TeacherController@view_class');
 Route::get('/dashboard/teacher-view-results/', 'TeacherController@view_results');
+Route::get('/dashboard/profile/', 'TeacherController@edit');
 Route::get('/dashboard/parent-view-results/', 'ParentController@view_results');
 Route::get('/dashboard/children/', 'ParentController@view_children');
 Route::get('/dashboard/child-results/{id}', 'ParentController@view_child_results');
