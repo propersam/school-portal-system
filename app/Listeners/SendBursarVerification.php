@@ -3,11 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\NewBursarRegistered;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Mail;
-use App\Bursar;
 use App\Mail\Bursarcreated;
+use Illuminate\Support\Facades\Mail;
 
 class SendBursarVerification
 {

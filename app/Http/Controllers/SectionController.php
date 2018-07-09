@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Section;
 
 class SectionController extends Controller
 {
     //
 
 
-     public function index()
-    {        
-    	$sections = Section::all();
+    public function index()
+    {
+        $sections = Section::all();
         return view('section.list')->with('sections', $sections);
     }
 
@@ -22,21 +22,20 @@ class SectionController extends Controller
         return view('forms.section.create');
     }
 
-     protected function validator(array $data)
+    protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'startdate' => 'required|date',
             'enddate' => 'nullable|date',
-             
-           
-            
+
+
         ]);
     }
 
-     public function store(Request $request)
+    public function store(Request $request)
     {
-    	//var_dump($request); die();
+        //var_dump($request); die();
         $request = $request->all();
         $this->validator($request)->validate();
 
@@ -44,11 +43,11 @@ class SectionController extends Controller
             'name' => $request['name'],
             'startdate' => $request['start-year'],
             'enddate' => $request['end-year'],
-            
+
 
         ]);
 
-        return $section; 
+        return $section;
 
     }
 }

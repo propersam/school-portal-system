@@ -2,20 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Auth;
 use App\Classes;
-use App\Teacher;
-use App\Session;
 use App\Student;
-use App\Level;
 use App\SubjectRegistration;
-use App\Result;
-use App\AssessmentResult;
+use App\Teacher;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class TeacherController extends Controller

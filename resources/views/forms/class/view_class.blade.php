@@ -30,7 +30,8 @@
 										<i class="fa fa-plus"></i> Results </a>
 										<a href="/dashboard/register-student?l={{ $class->level }}&c={{ $class->id }}" class="btn btn-circle red-sunglo ">
 										<i class="fa fa-plus"></i> Add Student</a>
-										<a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen"></a>
+                                        <a href="javascript:"
+                                           class="btn btn-circle btn-default btn-icon-only fullscreen"></a>
 									</div>
 								@endif
 						</div>

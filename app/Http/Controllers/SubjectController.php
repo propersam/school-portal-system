@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\User;
-use App\Session;
-use App\Subject;
 
 class SubjectController extends Controller
 {
@@ -15,10 +13,10 @@ class SubjectController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
-    {	
-    	$subjects = Subject::get();
+    {
+        $subjects = Subject::get();
 
         return view('forms.subject.view_all', ['subjects' => $subjects]);
     }
@@ -33,7 +31,7 @@ class SubjectController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            
+
         ]);
     }
 
@@ -52,33 +50,33 @@ class SubjectController extends Controller
         $description = $request['description'];
 
         $data = array("name"=>$name,"description"=>$description);
-        
+
         $subject = $this->createsubject($data);
 
 
         return redirect("/dashboard/subjects")->with('success', "You have successfully created a subject.");
 
-        
+
     }
 
-    
-     protected function createsubject(array $data)
-    {
-       $subject = Subject::create($data);
 
-       return $subject;
+    protected function createsubject(array $data)
+    {
+        $subject = Subject::create($data);
+
+        return $subject;
     }
 
     public function update(Request $request,$id)
     {
-    	$subject = Subject::find($id);
-      
+        $subject = Subject::find($id);
+
         $subject->name = $request['name'];
         $subject->description = $request['description'];
 
 
-		$subject->save();
-        
+        $subject->save();
+
 
         return redirect("/dashboard/subjects")->with('success', "Successfully Updated.");
     }
