@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Mail;
 use App\Student;
 use App\Mail\Studentcreated;
+use App\Utils\SmsSender;
 
 class SendStudentWelcome
 {
@@ -29,6 +30,16 @@ class SendStudentWelcome
      */
     public function handle(NewStudentRegistered $event)
     {
-        Mail::to($event->student->user->email)->send(new Studentcreated($event->bursar));
+        $user = $event->student->user;
+        if(is_numeric($user->phone)){
+            //send sms
+            $code = str_random(5);
+            SmsSender::sendPhoneVerificationSMS($user->phone, $code);
+        }
+        
+        if(!is_null($user->email)){
+            //send mail
+            Mail::to($user->email)->send(new Studentcreated($event->bursar));
+        }
     }
 }

@@ -48,7 +48,11 @@ class LoginController extends Controller
 
         if(filter_var($username, FILTER_VALIDATE_EMAIL)){
             Auth::attempt(['email' => $username, 'password' => $password]);
-        }else{
+        }
+        elseif(is_numeric($username)){
+            Auth::attempt(['phone' => $username, 'password' => $password]);
+        }
+        else{
             Auth::attempt(['username' => $username, 'password' => $password]);
         }
 

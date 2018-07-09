@@ -83,12 +83,14 @@ class PupilController extends Controller
             'gender' => 'required|string|max:255',
             'dob' => 'required|string|max:255',
             'origin' => 'required|string|max:255',
+
+
             'residential_address' => 'required|string|max:255',
             'home_number' => 'required|string|max:255',
             'level' => 'required|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
              
-            'email' => 'required|string|email|max:255|unique:users',
+            //'email' => 'required|string|email|max:255|unique:users',
             
         ]);
     }
@@ -110,22 +112,27 @@ class PupilController extends Controller
     {
         //var_dump($request); die();
         $request = $request->all();
+
         // $this->validator($request)->validate();
         // var_dump($request); die();
         $username = str_random(4);
+
         $password = str_random(8);
         $name = $request['first_name'] . ' ' . $request['lastname'];
         $firstname = $request['first_name'];
         $pref_name = $request['pref_name'];
         $lastname = $request['lastname'];
         $email = $request['email'];
+        $phone = $request['phone'];
 
-        $data = array("username"=>$username,"password"=>$password,"firstname"=>$firstname,"lastname"=>$lastname,"name"=>$name, "email"=>$email, "role" => 'parent' );
+        $data = array("username"=>$username,"password"=>$password,"firstname"=>$firstname,"lastname"=>$lastname,"name"=>$name, "email"=>$email, 'phone'=>$phone, "role" => 'parent' );
         
         $user = $this->createuser($data);
 
 
+
         $data2 = array("user_id"=>$user->id,"firstname"=>$request['first_name'],"preferredname"=>$request['pref_name'],"lastname"=>$lastname,"phonenumber"=>$request['home_number'],"gender"=>$request['gender'],"address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "lga"=>$request['lga'],"state"=>$request['state'],"email"=>$request['email'], "level"=>$request['level'], "class_id"=>$request['class_id']);
+
 
         // var_dump($data2);   
         $student = $this->createstudent($data2);

@@ -100,10 +100,10 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
            
-            <label class="control-label visible-ie8 visible-ie9">Username</label>
+            <label class="control-label visible-ie8 visible-ie9">Email, Phone or Username</label>
             <div class="input-icon">
                 <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" value="{{ old('username') }}" required autofocus>
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email, Phone or Username" name="username" value="{{ old('username') }}" required autofocus>
             </div>
             @if ($errors->has('username'))
                 <span class="help-block">

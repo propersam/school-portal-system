@@ -34,15 +34,21 @@
 								        </div>
 								  	@endif
                                     <div class="child_section">
-                                        <h4><i class="fa fa-user"></i> Email</h4>
-                                        <div class="col-sm-12">
-	                                        <div class="col-sm-6 col-sm-offset-3">
+                                        <h4><i class="fa fa-user"></i> Primary Contact</h4>
+	                                        <div class="col-sm-6">
 	                                    	<br>
-	                                    	<br>
-	                                            <label>Email address to be used for the account *</label>
+	                                        <label for="email">
+	                                            Email address *
+	                                        </label>
 	                                            <input type="text"  class="form-control" placeholder="Email" id="email" name="email">
 	                                        </div>
-                                        </div>
+	                                        <div class="col-sm-6">
+	                                    	<br>
+	                                        <label for="phone">
+	                                            Phone number *
+	                                        </label>
+	                                            <input type="text"  class="form-control" placeholder="Phone" id="phone" name="phone">
+	                                        </div>
                                     </div>
                                     <div class="child_section">
 
