@@ -8,7 +8,7 @@ abstract class SmsSender
     {
         $message = "Use ".$code.' as your phone verification code.';
 
-        return $this->sendSMS([$phone], $message);
+        return self::sendSMS([$phone], $message);
     }
 
     private static function sendSMS(array $recipients, $message)
