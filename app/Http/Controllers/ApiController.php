@@ -116,9 +116,7 @@ class ApiController extends Controller
 
     public function submit_results(Request $request)
     {
-
         $request = $request->all();
-
         $postdata = file_get_contents("php://input");
 
         $_POST = json_decode($postdata, true);
@@ -128,7 +126,7 @@ class ApiController extends Controller
 
         $active_session = Session::where('is_active', '=', 1)->first();
 
-
+        $result = null;
         foreach ($submitted_results as $key) {
             if ($key['student_id']) {
                 // check if this particular exam record has been submitted before
@@ -153,7 +151,6 @@ class ApiController extends Controller
                     $result = $this->createresult($data);
                 } else {
                     $result = $this->updateResult($data, $res->id);
-
                 }
 
             }

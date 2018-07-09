@@ -2,6 +2,16 @@
 
 namespace App\Providers;
 
+use App\Events\NewAssistantRegistered;
+use App\Events\NewBursarRegistered;
+use App\Events\NewHeadTeacherRegistered;
+use App\Events\NewStudentRegistered;
+use App\Events\NewTeacherRegistered;
+use App\Listeners\SendActivationCode;
+use App\Listeners\SendAssitantVerification;
+use App\Listeners\SendBursarVerification;
+use App\Listeners\SendHeadTeacherVerification;
+use App\Listeners\SendStudentWelcome;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -12,18 +22,21 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\NewTeacherRegistered' => [
-            'App\Listeners\SendActivationCode',
+        NewTeacherRegistered::class => [
+            SendActivationCode::class,
         ],
-        'App\Events\NewBursarRegistered' => [
-            'App\Listeners\SendBursarVerification',
+        NewBursarRegistered::class => [
+            SendBursarVerification::class,
         ],
-        'App\Events\NewHeadTeacherRegistered' => [
-            'App\Listeners\SendHeadTeacherVerification',
+        NewHeadTeacherRegistered::class => [
+            SendHeadTeacherVerification::class,
         ],
-        'App\Events\NewAssistantRegistered' => [
-            'App\Listeners\SendAssitantVerification',
+        NewAssistantRegistered::class => [
+            SendAssitantVerification::class,
         ],
+        NewStudentRegistered::class => [
+            SendStudentWelcome::class,
+        ]
     ];
 
     /**

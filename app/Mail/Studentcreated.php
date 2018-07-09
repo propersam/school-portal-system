@@ -17,6 +17,7 @@ class Studentcreated extends Mailable
     /**
      * Create a new message instance.
      *
+     * @param Student $student
      * @return void
      */
     public function __construct(Student $student)
