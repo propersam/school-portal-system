@@ -14,6 +14,7 @@ use App\Emergency_contact;
 use App\Session;
 use App\Level;
 use App\Events\NewStudentRegistered;
+use App\Utils\SmsSender;
 
 class PupilController extends Controller
 {
@@ -172,6 +173,7 @@ class PupilController extends Controller
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
+            'phone'=>$data['phone'],
             'password' => bcrypt($data['password']),
             'role' => $data['role'],
             'defaultpassword' => $data['password'],

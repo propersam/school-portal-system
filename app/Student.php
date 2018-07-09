@@ -38,11 +38,11 @@ class Student extends Model
     }
 
     public function returnFather() {
-        return $this->parent()->where('parent_type','=', 'father')->first();
+        return is_object($p=$this->parent()->where('parent_type','=', 'father')->first()) ? $p : (new Parents);
     }
 
     public function returnMother() {
-        return $this->parent()->where('parent_type','=', 'mother')->first();
+        return is_object($p=$this->parent()->where('parent_type','=', 'mother')->first()) ? $p : (new Parents);
     }
 
      public function user()
