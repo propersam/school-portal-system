@@ -20,17 +20,17 @@ abstract class SmsSender
         $USERNAME = env('SMS_API_USER');
         $PASSWORD = env('SMS_API_PSWD');
         $SENDER_NAME = env('SMS_API_SENDER');
-        $live_url = $PROT."://".$HOST;
+        $live_url = $PROT . "://" . $HOST;
 
-        $live_url .= !is_null($PORT) ? ":".$PORT : "";
-        $live_url .= !is_null($PATH) ? "/".trim($PATH, "/") : "";
+        $live_url .= !is_null($PORT) ? ":" . $PORT : "";
+        $live_url .= !is_null($PATH) ? "/" . trim($PATH, "/") : "";
 
         $params = [
-            'username'  => $USERNAME,
-            'password'  => $PASSWORD,
-            'sender'    => $SENDER_NAME,
+            'username' => $USERNAME,
+            'password' => $PASSWORD,
+            'sender' => $SENDER_NAME,
             'recipient' => implode(',', $recipients),
-            'message'   => $message,
+            'message' => $message,
         ];
 
         $params = http_build_query($params);
@@ -43,10 +43,8 @@ abstract class SmsSender
         curl_close($ch);
 
         $status = starts_with($result, 'OK');
-        if (app()->isLocal() or config('app.debug')) {
-            if (!$status) {
-                report(new \Exception($result));
-            }
+        if (!$status) {
+            report(new \Exception($result));
         }
 
         return $status;
