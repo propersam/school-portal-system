@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>{{ config('app.name', 'Ecopillar ePortal') }}</title>
+	<title>{{ config('app.name', 'SureEdu School Portal') }}</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="" name="description"/>
@@ -155,7 +155,8 @@
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
 	<div class="page-footer-inner">
-		2018 &copy; Eco-Pillars Nursery, Primary and Secondary Schools <a href="#" title="Fexio ICT Center develops Technology Solutions for Businesses" target="_blank">Powered By Fexio ICT Center </a>
+		2018 &copy; SureEdu School Portal <a href="https://suretradebsl.com" target="_blank">Powered By Suretrade
+			Business Solutions Limited</a>
 	</div>
 	<div class="scroll-to-top">
 		<i class="icon-arrow-up"></i>

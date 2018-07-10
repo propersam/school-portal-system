@@ -55,17 +55,16 @@
                             <ul>
                                 <li>
                                     <span class="flaticon-smartphone"></span>
-                                    +2349098981764
-                                    +2348094826000
+                                    ## phone-1,
+                                    ## phone-2
                                 </li>
                                 <li>
                                     <span class="flaticon-opened-email-envelope"></span>
-                                    admin@ecopillarsschool.org
-                                    ecopillarsschools@yahoo.com
+                                    email-address
                                 </li>
                                 <li>
                                     <span class="flaticon-placeholder"></span>
-                                    18 Anifa street Ilufe- Ojo, Lagos
+                                    School address
                                 </li>
                                 
                             </ul>
