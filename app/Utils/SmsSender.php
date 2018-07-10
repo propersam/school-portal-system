@@ -4,14 +4,12 @@ namespace App\Utils;
 
 abstract class SmsSender
 {
-    public static function sendPhoneVerificationSMS($phone, $code)
+    public static function sendSMS($phone, $message)
     {
-        $message = $code . ' is your phone verification code on Eco-Pillars School Portal.';
-
-        return self::sendSMS([$phone], $message);
+        return self::sendBulkSMS([$phone], $message);
     }
 
-    private static function sendSMS(array $recipients, $message)
+    public static function sendBulkSMS(array $recipients, $message)
     {
         $PROT = env('SMS_API_PROT');
         $HOST = env('SMS_API_HOST');

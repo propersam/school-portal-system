@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\NewStudentRegistered;
 use App\Mail\Studentcreated;
+use App\Student;
 use App\User;
 use App\Utils\SmsSender;
 use Illuminate\Bus\Queueable;
@@ -27,7 +28,7 @@ class SendStudentWelcome implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  NewBursarRegistered $event
+     * @param  NewStudentRegistered $event
      * @return void
      */
     public function handle(NewStudentRegistered $event)
@@ -36,10 +37,18 @@ class SendStudentWelcome implements ShouldQueue
          * @var User $user
          */
         $user = $event->student->user();
+        /**
+         * @var Student $student
+         */
+        $student = $event->student;
         if (is_numeric($user->phone)) {
             //send sms
             $code = $user->verifyUser->phone_token;
-            SmsSender::sendPhoneVerificationSMS($user->phone, $code);
+            $message = 'Your child '.str_limit($student->firstname, 30).
+                ' has been registered on Eco-Pillars School Portal. '.
+                $code.' is your account verification code.';
+
+            SmsSender::sendSMS($user->phone, $message);
         }
 
         if (!is_null($user->email)) {
