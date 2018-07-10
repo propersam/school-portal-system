@@ -6,7 +6,7 @@ abstract class SmsSender
 {
     public static function sendPhoneVerificationSMS($phone, $code)
     {
-        $message = "Use ".$code.' as your phone verification code.';
+        $message = $code . ' is your phone verification code on Eco-Pillars School Portal.';
 
         return self::sendSMS([$phone], $message);
     }
@@ -44,7 +44,9 @@ abstract class SmsSender
 
         $status = starts_with($result, 'OK');
         if (app()->isLocal() or config('app.debug')) {
-            if (!$status) dd(['result' => $result]);
+            if (!$status) {
+                report(new \Exception($result));
+            }
         }
 
         return $status;

@@ -181,7 +181,7 @@ class PupilController extends Controller
         $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
             'token' => str_random(40),
-            'phone_token' => str_random(6),
+            'phone_token' => random_int(1000000, 9999999),
         ]);
 
         return $user;
