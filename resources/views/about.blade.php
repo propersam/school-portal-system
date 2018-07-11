@@ -42,7 +42,7 @@
                             Our platforms are created to meet your school requirements with good technical support.
                             We are currently running a promo now that you wouldn't want to miss:
                         </p>
-                        <ul>
+                        <ul style="list-style: disc; margin: auto !important; padding: 2em !important;">
                             <li>Free set-up fee</li>
                             <li>Very cheap school administration running cost.</li>
                             <li>Increase in school administration efficiency.</li>
@@ -75,9 +75,6 @@
 
     <!-- .service-our-company start -->
     <div class="service-our-company">
-        <div class="company-service-img">
-            <!-- <img src="assets/images/teacher/teacher2/3.jpg" alt=""> -->
-        </div>
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
