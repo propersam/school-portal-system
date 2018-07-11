@@ -12,9 +12,12 @@ use App\Student;
 use App\Level;
 use App\SubjectRegistration;
 use App\Result;
+use App\Fee;
+use App\Fee_payment;
 use App\AssessmentResult;
 use Illuminate\Support\Facades\Validator;
 use DB;
+use PDF;
 
 
 class ParentController extends Controller
@@ -60,6 +63,67 @@ class ParentController extends Controller
         return view('forms.parent.view_children', ['students' => $children]);
     }
 
+    public function pdfview(Request $request)
+    {
+        // var_dump($_GET);
+        $students = DB::table("students")->get();
+        view()->share('students',$students);
+        if($request->has('fee_data')){
+            view()->share('fee_data',$request['fee_data']);
+        }
+
+        if($request->has('download')){
+            $pdf = PDF::loadView('pdfview');
+            return $pdf->download('pdfview.pdf');
+        }
+
+
+        return view('pdfview');
+    }
+
+
+    public function resultpdfview(Request $request)
+    {
+        $student = Student::where('id', '=', $request['s'])->first();
+
+
+        // get active session
+        $active_session = Session::where('is_active', '=', 1)->first();
+        $results = Result::where('student_id', '=', $request['s'])->where('session_id', '=', $active_session->id)->where('term', '=', $request['term'])->get();
+        $assessments = AssessmentResult::where('student_id', '=', $request['s'])->where('session_id', '=', $active_session->id)->where('term', '=',  $request['term'])->get();
+
+        foreach ($results as $key) {
+            
+            foreach ($assessments as $key2) {
+                if($key->subject_id == $key2->subject_id){
+                    $key->assessment = $key2; 
+                }
+            }
+        }
+        // var_dump($results);
+        $data = array();
+        $data['student'] = $student;
+        $data['results'] = $results;
+        $data['session'] = $active_session;
+
+        // var_dump($data);
+        // $students = DB::table("students")->get();
+        // // view()->share('students',$students);
+        if($request->has('term')){
+            view()->share('data',$data);
+        }
+
+        $ff = 'result' . uniqid() . '.pdf';
+
+        if($request->has('download')){
+            $pdf = PDF::loadView('result_pdfview');
+            return $pdf->download($ff);
+        }
+
+
+        return view('result_pdfview');
+    }
+
 
     public function load_record()
     {
@@ -71,13 +135,13 @@ class ParentController extends Controller
 
     public function view_child_results($id)
     {
-        $student = Student::where('user_id', '=', Auth::user()->id)->first();
+        $student = Student::where('id', '=', $id)->first();
 
 
         // get active session
         $active_session = Session::where('is_active', '=', 1)->first();
-        $results = Result::where('student_id', '=', $id)->where('session_id', '=', $active_session->id)->where('term', '=', $active_session->current_term)->get();
-        $assessments = AssessmentResult::where('student_id', '=', $id)->where('session_id', '=', $active_session->id)->where('term', '=', $active_session->current_term)->get();
+        $results = Result::where('student_id', '=', $id)->where('session_id', '=', $active_session->id)->get();
+        $assessments = AssessmentResult::where('student_id', '=', $id)->where('session_id', '=', $active_session->id)->get();
 
         foreach ($results as $key) {
             
@@ -90,6 +154,30 @@ class ParentController extends Controller
 
         // var_dump($results);
         return view('forms.parent.view_child_results', ['results' => $results, 'student' => $student]);
+
+    }
+
+    public function student_fees($id)
+    {
+        $student = Student::where('id', '=', $id)->first();
+       
+        $level = Level::where('id', '=', $student->level)->first();
+      
+        $fees = Fee::where('level_id', '=', $student->level)->get();
+
+        $total = 0;
+
+        foreach ($fees as $key) {
+            $total += $key->amount;
+        }
+
+        // get active session
+        $active_session = Session::where('is_active', '=', 1)->first();
+
+        $payment = Fee_payment::where('student_id', '=', $id)->where('session_id', '=', $active_session->id)->where('term_id', '=', $active_session->current_term)->get();
+
+
+        return view('forms.parent.child_fees', ['payment' => $payment, 'student' => $student, 'fees' => $fees, 'total' => $total, 'level' => $level]);
 
     }
 

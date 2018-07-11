@@ -83,7 +83,11 @@ class RegisterController extends Controller
             $obj_user->default_password_changed = 'yes';
             $obj_user->save(); 
             // Auth::logout();
-            return redirect("/change-photo")->with('success', "You have successfully set your password, now upload your passport photo.");
+            if($obj_user->role == 'Teacher'){
+                return redirect("/change-photo")->with('success', "You have successfully set your password, now upload your passport photo.");
+            }else{
+                return redirect("/dashboard");
+            }
 
 
             // return redirect()->to('/eportal');

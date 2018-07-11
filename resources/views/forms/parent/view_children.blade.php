@@ -70,6 +70,9 @@
 						                                        @else
 							                                       <p>Not admitted yet</p> 
 							                                    @endif
+																<a class="btn green" href="/school-fees/{{ $i->id }}">
+																	School Fees</a>
+
 															</td>
 																<div class="modal fade class_modal" id="view{{ $i->id }}" tabindex="-1" role="basic" aria-hidden="true">
 																	<div class="modal-dialog">

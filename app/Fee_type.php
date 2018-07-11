@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Level extends Model
+class Fee_type extends Model
 {
     //   
     protected $fillable = [
-        'levelname','description',
+        'name','description',
     ];
 
-    
+    protected $table = 'fee_type';
+
     public function classes()
     {
         return $this->hasOne('App\Classes');
@@ -26,4 +27,5 @@ class Level extends Model
     {
         return $this->hasOne('App\Fee');
     }
+
 }

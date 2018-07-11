@@ -103,6 +103,17 @@ Route::get('change-photo',['as'=>'image.upload','uses'=>'HomeController@imageUpl
 Route::post('change-photo',['as'=>'image.upload.post','uses'=>'HomeController@imageUploadPost']);
 Route::post('dashboard/profile',['as'=>'image.dp_upload.post','uses'=>'TeacherController@imageUploadPost']);
 Route::post('/dashboard/update-profile/', 'TeacherController@updateProfile');
+Route::get('/dashboard/create-fee/', 'BursarController@create');
+Route::get('/dashboard/fee-types/', 'BursarController@fee_types');
+Route::post('/dashboard/add-fee-type', 'BursarController@store_type');
+Route::post('/dashboard/update-fee-type/{id}', 'BursarController@update_fee_type');
+Route::get('/dashboard/delete-fee-type/{id}', 'BursarController@delete_fee_type');
+
+Route::get('/dashboard/all-fees/', 'BursarController@show_all_fees');
+Route::post('/dashboard/add-fee/', 'BursarController@add_fee');
+Route::post('/dashboard/update-fee/{id}', 'BursarController@update_fee');
+Route::get('/dashboard/delete-fee/{id}', 'BursarController@delete_fee');
+
 
 // Route::post('dashboard/profile',['as'=>'profile.update_profile.post','uses'=>'TeacherController@updateProfile']);
 Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware(CheckIfActiveSession::class);
@@ -122,6 +133,7 @@ Route::get('/dashboard/parent-new-child', 'ParentController@register');
 Route::post('/dashboard/parent-new-child', 'ParentController@store');
 Route::get('/dashboard/parent-view-records/', 'ParentController@load_record');
 Route::get('/dashboard/child-record/{id}', 'ParentController@view_child_record');
+Route::get('/school-fees/{id}', 'ParentController@student_fees');
 
 	// Authentication Routes...
 $this->get('eportal', 'Auth\LoginController@showLoginForm')->name('login');
@@ -142,6 +154,9 @@ Route::get('/api/get-subject-results', 'ApiController@view_subject_results');
 Route::get('/api/get-class-students', 'ApiController@get_class_students');
 Route::post('/api/submit-subject-results', 'ApiController@submit_results');
 Route::post('/api/submit-subject-assessment-results', 'ApiController@submit_assessment');
+Route::post('/api/payment-response', 'ApiController@payment_response');
+Route::get('pdfview',array('as'=>'pdfview','uses'=>'ParentController@pdfview'));
+Route::get('resultpdfview',array('as'=>'resultpdfview','uses'=>'ParentController@resultpdfview'));
 
 
 Route::resources([

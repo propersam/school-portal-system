@@ -8,17 +8,15 @@
         "php": ">=7.0.0",
         "aws/aws-php-sns-message-validator": "^1.4",
         "aws/aws-sdk-php": "^3.52",
-
+        "barryvdh/laravel-dompdf": "^0.8.2",
         "doctrine/cache": "^1.6",
-        "doctrine/dbal": "^2.5",
-
+        "doctrine/dbal": "~2.3",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "snowfire/beautymail": "dev-master",
         "laravelcollective/html": "~5.0",
-        "doctrine/dbal": "~2.3"
+        "snowfire/beautymail": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

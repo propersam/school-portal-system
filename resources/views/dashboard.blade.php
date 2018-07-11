@@ -185,6 +185,67 @@
 					</li>
 				</ul>
 			@endif
+			@if (Auth::user()->role == 'Bursar')
+				<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+					<li class="start ">
+						<a href="/dashboard">
+						<i class="icon-home"></i>
+						<span class="title">Dashboard</span>
+						</a>
+					</li>
+					<li class="{{ Request::is('dashboard/register-student', 'dashboard/applications') ? 'active' : '' }}">
+						<a href="javascript:;">
+						<i class="icon-graduation"></i>
+						<span class="title">Fees</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+							<li>
+								<a href="/dashboard/create-fee">
+								<i class="icon-arrow-right"></i>
+								Create Fee</a>
+							</li>
+							<li>
+								<a href="/dashboard/all-fees">
+								<i class="icon-arrow-right"></i>
+								Fees List</a>
+							</li>
+							<li>
+								<a href="/dashboard/fee-types">
+								<i class="icon-arrow-right"></i>
+								Fee Types</a>
+							</li>
+						</ul>
+						
+					</li>
+					<li class="{{ Request::is('dashboard/register-student', 'dashboard/applications') ? 'active' : '' }}">
+						<a href="javascript:;">
+						<i class="icon-graduation"></i>
+						<span class="title">School Fees Payment</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+							<li>
+								<a href="/dashboard/register-student">
+								<i class="icon-arrow-right"></i>
+								Owing</a>
+							</li>
+							<li>
+								<a href="/dashboard/all-pupils">
+								<i class="icon-arrow-right"></i>
+								Paid</a>
+							</li>
+						</ul>
+						
+					</li>
+					<li>
+						<a href="/logout">
+							<i class="icon-logout"></i> 
+							<span class="title">Log Out</span>
+						</a>
+					</li>
+				</ul>
+			@endif
 			@if (Auth::user()->role == 'parent')
 				<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
 					<li  class="start {{ Request::is('dashboard') ? 'active' : '' }}">

@@ -69,21 +69,54 @@ class TeacherController extends Controller
     public function view_results()
     {   
         $subjects = array();
+        $results = array();
 
         // get class teacher 
         $teacher = Teacher::where('user_id', '=', Auth::user()->id)->first();
 
+        $active_session = Session::where('is_active', '=', 1)->first();
 
         // get class information
         $class = Classes::where('teacher_id', '=', $teacher->id)->first();
 
+
         if($class){
+            $students = Student::where('class_id', '=', $class->id)->get()->toArray();
             $subjects = SubjectRegistration::where('level', '=', $class->level)->get();
+            $i = 0;
+            foreach ($students as $key) {
+                $results[$i]['student_details'] = $key;
+                // $results[$i]['results'] = Result::where('class_id', '=', $class->id)->where('session_id', '=', $active_session->id)->where('session_id', '=', $active_session->id)->get()->toArray();
+                
+                $results[$i]['exam_results'] = Result::where('class_id', '=', $class->id)->where('session_id', '=', $active_session->id)->where('term', '=', $active_session->current_term)->where('student_id', '=', $key["id"])->get()->toArray();
+
+
+                $results[$i]['assessment_results'] = AssessmentResult::where('class_id', '=', $class->id)->where('session_id', '=', $active_session->id)->where('term', '=', $active_session->current_term)->where('student_id', '=', $key["id"])->get()->toArray();
+
+                $t = 0;
+                $results[$i]['total'] = 0;
+
+                foreach ($results[$i]['exam_results'] as $r) {
+                    $a_r = AssessmentResult::where('class_id', '=', $class->id)->where('session_id', '=', $active_session->id)->where('term', '=', $active_session->current_term)->where('student_id', '=', $key["id"])->where('subject_id', '=', $r["subject_id"])->first()->toArray();
+
+                    $results[$i]['exam_results'][$t]['subj_total'] = $r['score'] + $a_r['score'];
+                    $results[$i]['total'] += $results[$i]['exam_results'][$t]['subj_total'];
+                    $t++;
+                }
+
+                $i++;
+            }
         }
+// sort results by total score
+
+        $keys = array_column($results, 'total');
+
+        $result = array_multisort($keys, SORT_DESC, $results);
 
 
+        // var_dump($results);
 
-        return view('forms.result.view_subjects', ['subjects' => $subjects, 'class' => $class]);
+        return view('forms.result.view_subjects', ['subjects' => $subjects, 'class' => $class, 'results' => $results]);
     }
 
     /**

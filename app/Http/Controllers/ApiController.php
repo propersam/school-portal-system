@@ -14,6 +14,7 @@ use App\SubjectRegistration;
 use App\Level;
 use App\Result;
 use App\AssessmentResult;
+use App\Fee_payment;
 
 class ApiController extends Controller
 {
@@ -161,6 +162,16 @@ class ApiController extends Controller
 
         
     }
+    public function payment_response(Request $request)
+    {
+        $request = $request->all();
+
+        $data = array("amount"=>$request['amount'],"session_id"=>$request['session_id'],"term_id"=>$request['term_id'],"student_id"=>$request['student_id'],"user_id"=>$request['user_id']);
+
+        $p = Fee_payment::create($data);
+        var_dump($p);
+    }
+
     public function submit_assessment(Request $request)
     {
 
