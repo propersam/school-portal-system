@@ -10,7 +10,7 @@
 		$('.preloder-wrap').fadeOut(); // will first fade out the loading animation
 		$('.loader').delay(150).fadeOut('slow'); // will fade out the white DIV that covers the website.
 		$('body').delay(150).css({'overflow':'visible'})
-	})
+    });
 
 	// brand-active
 	 $('.slider-active').owlCarousel({

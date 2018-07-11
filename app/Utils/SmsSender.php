@@ -4,14 +4,12 @@ namespace App\Utils;
 
 abstract class SmsSender
 {
-    public static function sendPhoneVerificationSMS($phone, $code)
+    public static function sendSMS($phone, $message)
     {
-        $message = "Use ".$code.' as your phone verification code.';
-
-        return self::sendSMS([$phone], $message);
+        return self::sendBulkSMS([$phone], $message);
     }
 
-    private static function sendSMS(array $recipients, $message)
+    public static function sendBulkSMS(array $recipients, $message)
     {
         $PROT = env('SMS_API_PROT');
         $HOST = env('SMS_API_HOST');
@@ -20,17 +18,17 @@ abstract class SmsSender
         $USERNAME = env('SMS_API_USER');
         $PASSWORD = env('SMS_API_PSWD');
         $SENDER_NAME = env('SMS_API_SENDER');
-        $live_url = $PROT."://".$HOST;
+        $live_url = $PROT . "://" . $HOST;
 
-        $live_url .= !is_null($PORT) ? ":".$PORT : "";
-        $live_url .= !is_null($PATH) ? "/".trim($PATH, "/") : "";
+        $live_url .= !is_null($PORT) ? ":" . $PORT : "";
+        $live_url .= !is_null($PATH) ? "/" . trim($PATH, "/") : "";
 
         $params = [
-            'username'  => $USERNAME,
-            'password'  => $PASSWORD,
-            'sender'    => $SENDER_NAME,
+            'username' => $USERNAME,
+            'password' => $PASSWORD,
+            'sender' => $SENDER_NAME,
             'recipient' => implode(',', $recipients),
-            'message'   => $message,
+            'message' => $message,
         ];
 
         $params = http_build_query($params);
@@ -43,8 +41,8 @@ abstract class SmsSender
         curl_close($ch);
 
         $status = starts_with($result, 'OK');
-        if (app()->isLocal() or config('app.debug')) {
-            if (!$status) dd(['result' => $result]);
+        if (!$status) {
+            report(new \Exception($result));
         }
 
         return $status;

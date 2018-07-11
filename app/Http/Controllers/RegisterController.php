@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use App\User;
-use App\Student;
-use App\VerifyUser;
-use App\Parents;
 use App\Emergency_contact;
-use Illuminate\Support\Facades\Auth;
-use Hash;
-use App\Level;
 use App\Events\NewStudentRegistered;
+use App\Level;
+use App\Parents;
+use App\Student;
+use App\User;
+use App\VerifyUser;
+use Hash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {

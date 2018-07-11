@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Auth;
+use App\AssessmentResult;
 use App\Classes;
-use App\Teacher;
-use App\Session;
-use App\Student;
 use App\Level;
-use App\SubjectRegistration;
 use App\Result;
 use App\Fee;
 use App\Fee_payment;
@@ -18,6 +12,10 @@ use App\AssessmentResult;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use PDF;
+use App\Session;
+use App\Student;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class ParentController extends Controller

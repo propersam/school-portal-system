@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Bursar;
 use App\Fee_type;
 use Illuminate\Support\Facades\Validator;
 use App\Level;
 use App\Fee;
+use Illuminate\Http\Request;
 
 class BursarController extends Controller
 {

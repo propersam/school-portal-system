@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\HeadTeacher;
+use Illuminate\Http\Request;
 
 class HeadTeacherController extends Controller
 {

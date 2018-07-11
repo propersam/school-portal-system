@@ -1929,8 +1929,7 @@ the specific language governing permissions and limitations under the Apache Lic
                 } else {
                     return this.opts.width;
                }
-            };
-
+            }
             var width = resolveContainerWidth.call(this);
             if (width !== null) {
                 this.container.css("width", width);
@@ -2185,7 +2184,7 @@ the specific language governing permissions and limitations under the Apache Lic
                         this.clear();
                     }
                     killEvent(e);
-                    return;
+
                 }
             }));
 

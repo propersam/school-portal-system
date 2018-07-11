@@ -1,20 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Middleware\CheckIfActiveSession;
 
+use App\Classes;
+use App\Emergency_contact;
+use App\Events\NewStudentRegistered;
+use App\Level;
+use App\Parents;
+use App\Session;
+use App\Student;
+use App\User;
+use App\VerifyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\User;
-use App\Classes;
-use App\Student;
-use App\VerifyUser;
-use App\Parents;
-use App\Emergency_contact;
-use App\Session;
-use App\Level;
-use App\Events\NewStudentRegistered;
-use App\Utils\SmsSender;
 
 class PupilController extends Controller
 {
@@ -28,11 +26,12 @@ class PupilController extends Controller
         $this->middleware('auth');
         // $this->middleware('CheckIfActiveSession');
     }
-    
+
     public function index()
-    {      
+    {
+        //event(new NewStudentRegistered(Student::find(18)));
         $active_session = Session::where('is_active', '=', 1)->first();
-        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name','id');
+        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name', 'id');
         $levels = Level::get();
 
         return view('forms.student.create', ['classes' => $classes, 'levels' => $levels]);
@@ -61,7 +60,7 @@ class PupilController extends Controller
 
         $students = Student::where('application_status', '=', 'accepted')->where('admission_status', 'admitted')->get();
 
-        return view('forms.student.view_all', ['students' => $students,  'classes' => $classes]);
+        return view('forms.student.view_all', ['students' => $students, 'classes' => $classes]);
     }
 
     /**
@@ -90,23 +89,23 @@ class PupilController extends Controller
             'home_number' => 'required|string|max:255',
             'level' => 'required|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
-             
+
             //'email' => 'required|string|email|max:255|unique:users',
-            
+
         ]);
     }
 
     protected function validator2(array $data)
     {
         return Validator::make($data, [
-            'class_id' => 'required|string|max:255',            
+            'class_id' => 'required|string|max:255',
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -126,23 +125,21 @@ class PupilController extends Controller
         $email = $request['email'];
         $phone = $request['phone'];
 
-        $data = array("username"=>$username,"password"=>$password,"firstname"=>$firstname,"lastname"=>$lastname,"name"=>$name, "email"=>$email, 'phone'=>$phone, "role" => 'parent' );
-        
+        $data = array("username" => $username, "password" => $password, "firstname" => $firstname, "lastname" => $lastname, "name" => $name, "email" => $email, 'phone' => $phone, "role" => 'parent');
+
         $user = $this->createuser($data);
 
 
+        $data2 = array("user_id" => $user->id, "firstname" => $request['first_name'], "preferredname" => $request['pref_name'], "lastname" => $lastname, "phonenumber" => $request['home_number'], "gender" => $request['gender'], "address" => $request['residential_address'], "gender" => $request['gender'], "dob" => $request['dob'], "origin" => $request['origin'], "lga" => $request['lga'], "state" => $request['state'], "email" => $request['email'], "level" => $request['level'], "class_id" => $request['class_id']);
 
-        $data2 = array("user_id"=>$user->id,"firstname"=>$request['first_name'],"preferredname"=>$request['pref_name'],"lastname"=>$lastname,"phonenumber"=>$request['home_number'],"gender"=>$request['gender'],"address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "lga"=>$request['lga'],"state"=>$request['state'],"email"=>$request['email'], "level"=>$request['level'], "class_id"=>$request['class_id']);
 
-
-        // var_dump($data2);   
+        // var_dump($data2);
         $student = $this->createstudent($data2);
 
-        $data3 = array("user_id"=>$user->id,"student_id"=>$student->id,"firstname"=>$request['father_first_name'],"lastname"=>$request['father_surname'],"companyname"=>$request['father_company_name'],"workaddress"=>$request['father_work_address'],"phone"=>$request['father_work_phone'],"email"=>$request['father_email'],"phonenumber"=>$request['father_work_phone'],"parent_type"=>'father');
+        $data3 = array("user_id" => $user->id, "student_id" => $student->id, "firstname" => $request['father_first_name'], "lastname" => $request['father_surname'], "companyname" => $request['father_company_name'], "workaddress" => $request['father_work_address'], "phone" => $request['father_work_phone'], "email" => $request['father_email'], "phonenumber" => $request['father_work_phone'], "parent_type" => 'father');
 
 
-
-        $data4 = array("user_id"=>$user->id,"student_id"=>$student->id,"firstname"=>$request['mother_first_name'],"lastname"=>$request['mother_surname'],"companyname"=>$request['mother_company_name'],"workaddress"=>$request['mother_work_address'],"phone"=>$request['mother_work_phone'],"email"=>$request['mother_email'],"phonenumber"=>$request['mother_work_phone'],"parent_type"=>'mother');
+        $data4 = array("user_id" => $user->id, "student_id" => $student->id, "firstname" => $request['mother_first_name'], "lastname" => $request['mother_surname'], "companyname" => $request['mother_company_name'], "workaddress" => $request['mother_work_address'], "phone" => $request['mother_work_phone'], "email" => $request['mother_email'], "phonenumber" => $request['mother_work_phone'], "parent_type" => 'mother');
 
 
         // $student = Student::create([
@@ -153,8 +150,8 @@ class PupilController extends Controller
         //                 'phonenumber' => $request['home_number'],
         //                 'gender' => $request['gender'],
         //                ]);
-              
-         event(new NewStudentRegistered($student));
+
+        event(new NewStudentRegistered($student));
 
         $father = $this->createfather($data3);
         $mother = $this->createmother($data4);
@@ -163,45 +160,45 @@ class PupilController extends Controller
 
         return redirect("/dashboard/register-student")->with('success', "You have successfully registered a student.");
 
-        
+
     }
 
-    
-     protected function createuser(array $data)
+
+    protected function createuser(array $data)
     {
-       $user = User::create([
+        $user = User::create([
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
-            'phone'=>$data['phone'],
+            'phone' => $data['phone'],
             'password' => bcrypt($data['password']),
             'role' => $data['role'],
             'defaultpassword' => $data['password'],
 
         ]);
 
-      
 
-       $verifyUser = VerifyUser::create([
+        $verifyUser = VerifyUser::create([
             'user_id' => $user->id,
-            'token' => str_random(40)
+            'token' => str_random(40),
+            'phone_token' => random_int(1000000, 9999999),
         ]);
 
-       return $user;
+        return $user;
     }
-    
-    
-     protected function createstudent(array $data)
+
+
+    protected function createstudent(array $data)
     {
         // var_dump($data);
-       $student = Student::create($data);
-       return $student;
+        $student = Student::create($data);
+        return $student;
     }
 
-     protected function createfather(array $data)
+    protected function createfather(array $data)
     {
 
-       $parent = Parents::create([
+        $parent = Parents::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
@@ -210,20 +207,19 @@ class PupilController extends Controller
             'user_id' => $data['user_id'],
             'workaddress' => $data['workaddress'],
             'phone' => $data['phone'],
-            'email' => $data['email'],
             'phonenumber' => $data['phonenumber'],
             'parent_type' => $data['parent_type'],
 
         ]);
 
-    
-       return $parent;
+
+        return $parent;
     }
 
-     protected function createmother(array $data)
+    protected function createmother(array $data)
     {
 
-       $parent = Parents::create([
+        $parent = Parents::create([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
@@ -232,20 +228,19 @@ class PupilController extends Controller
             'user_id' => $data['user_id'],
             'workaddress' => $data['workaddress'],
             'phone' => $data['phone'],
-            'email' => $data['email'],
             'phonenumber' => $data['phonenumber'],
             'parent_type' => $data['parent_type'],
 
         ]);
 
-    
-       return $parent;
+
+        return $parent;
     }
 
-     protected function createcontact(array $data)
+    protected function createcontact(array $data)
     {
 
-       $contact = Emergency_contact::create([
+        $contact = Emergency_contact::create([
             'name' => $data['name'],
             'home_number' => $data['home_number'],
             'work_number' => $data['work_number'],
@@ -254,8 +249,8 @@ class PupilController extends Controller
             'cell_number' => $data['cell_number']
         ]);
 
-    
-       return $contact;
+
+        return $contact;
     }
 
     public function verifyUser($token)
@@ -263,28 +258,28 @@ class PupilController extends Controller
         //var_dump($token); die();
         $status = "";
         $verifyUser = VerifyUser::where('token', $token)->first();
-        if(isset($verifyUser) ){
+        if (isset($verifyUser)) {
             $user = $verifyUser->user;
-            if(!$user->verified) {
+            if (!$user->verified) {
                 $verifyUser->user->verified = 1;
                 $verifyUser->user->save();
                 $status = "Your e-mail is verified. You can now login.";
-            }else{
+            } else {
                 $status = "Your e-mail is already verified. You can now login.";
             }
-        }else{
+        } else {
 
             return redirect('/eportal')->with('warning', "Sorry your email cannot be identified.");
         }
 
 
- 
         return redirect('/eportal')->with('status', $status);
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -295,7 +290,7 @@ class PupilController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -306,14 +301,14 @@ class PupilController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function accept(Request $request, $id)
     {
         $student = Student::find($id);
-      
+
         $student->application_status = 'accepted';
 
         $student->save();
@@ -323,7 +318,7 @@ class PupilController extends Controller
     public function reject_application(Request $request, $id)
     {
         $student = Student::find($id);
-      
+
         $student->application_status = 'rejected';
 
         $student->save();
@@ -334,7 +329,6 @@ class PupilController extends Controller
     {
         $request = $request->all();
         $this->validator2($request)->validate();
-
 
 
         $student = Student::find($id);
@@ -349,7 +343,7 @@ class PupilController extends Controller
     public function reject_admission(Request $request, $id)
     {
         $student = Student::find($id);
-      
+
         $student->admission_status = 'rejected';
 
         $student->save();
@@ -359,7 +353,7 @@ class PupilController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

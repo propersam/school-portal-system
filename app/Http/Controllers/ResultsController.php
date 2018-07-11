@@ -1,18 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
+
+use App\AssessmentResult;
 use App\Classes;
-use App\Teacher;
+use App\Result;
 use App\Session;
 use App\Student;
-use App\User;
-use App\Subject;
 use App\SubjectRegistration;
-use App\Level;
-use App\Result;
-use App\AssessmentResult;
+use App\Teacher;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ResultsController extends Controller
 {

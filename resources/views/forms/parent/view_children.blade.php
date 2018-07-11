@@ -18,7 +18,7 @@
 							<div class="actions">
 									<a href="/dashboard/parent-new-child" class="btn btn-circle green ">
 									<i class="fa fa-plus"></i> Register New Child</a>
-								<a href="javascript:;" class="btn btn-circle btn-default btn-icon-only fullscreen"></a>
+                                <a href="javascript:" class="btn btn-circle btn-default btn-icon-only fullscreen"></a>
 							</div>
 						</div>
 						<div class="portlet-body">
