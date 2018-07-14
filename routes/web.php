@@ -12,7 +12,7 @@
 
 // Route::get('/burs', function()
 // {
-	
+
 // 	$bursar = App\Bursar::find(1); 
 // 	var_dump($bursar->getEmail());
 
@@ -97,14 +97,14 @@ Route::post('/dashboard/remove-class-subject/{id}', 'SubjectRegistrationControll
 Route::post('/dashboard/update-class/{id}', 'ClassController@update');
 Route::get('/change-default-password', 'RegisterController@change_password');
 Route::post('/change-password', 'RegisterController@changePassword');
-Route::get('change-photo',['as'=>'image.upload','uses'=>'HomeController@imageUpload']);
-Route::post('change-photo',['as'=>'image.upload.post','uses'=>'HomeController@imageUploadPost']);
+Route::get('change-photo', ['as' => 'image.upload', 'uses' => 'HomeController@imageUpload']);
+Route::post('change-photo', ['as' => 'image.upload.post', 'uses' => 'HomeController@imageUploadPost']);
 Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware('active_session');
 Route::post('/dashboard/create-level', 'HomeController@storelevel')->middleware('active_session');
 Route::get('/dashboard/levels', 'HomeController@allLevels')->middleware('active_session');
 Route::get('/dashboard/all-results/{id}', 'ResultsController@index')->middleware('active_session');
 Route::get('/dashboard/view-subject-results/', 'ResultsController@view_subject_results')->middleware('active_session');
-Route::post('dashboard/profile',['as'=>'image.dp_upload.post','uses'=>'TeacherController@imageUploadPost']);
+Route::post('dashboard/profile', ['as' => 'image.dp_upload.post', 'uses' => 'TeacherController@imageUploadPost']);
 Route::post('/dashboard/update-profile/', 'TeacherController@updateProfile');
 
 // Route::post('dashboard/profile',['as'=>'profile.update_profile.post','uses'=>'TeacherController@updateProfile']);
@@ -126,7 +126,7 @@ Route::post('/dashboard/parent-new-child', 'ParentController@store');
 Route::get('/dashboard/parent-view-records/', 'ParentController@load_record');
 Route::get('/dashboard/child-record/{id}', 'ParentController@view_child_record');
 
-	// Authentication Routes...
+// Authentication Routes...
 $this->get('eportal', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('eportal', 'Auth\LoginController@authenticate');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -137,7 +137,7 @@ $this->post('admin/register', 'Auth\RegisterController@register');
 
 // Password Reset Routes...
 $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
- $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
@@ -149,41 +149,35 @@ Route::post('/api/submit-subject-assessment-results', 'ApiController@submit_asse
 
 Route::resources([
     'teacher' => 'TeacherController',
-   
 ]);
 
 Route::resources([
     'headteacher' => 'HeadTeacherController',
-   
 ]);
 
 Route::resources([
     'pupil' => 'PupilController',
-   
 ]);
+
 Route::resources([
     'bursar' => 'BursarController',
-   
 ]);
 
 Route::resources([
     'staff' => 'StaffController',
-   
 ]);
 
 Route::resources([
     'section' => 'SectionController',
-   
 ]);
 
 Route::resources([
     'level' => 'LevelController',
-   
 ]);
 
 Route::resources([
     'class' => 'ClassController',
-   
 ]);
 
 Route::get('/user/verify/{token}', 'StaffController@verifyUser');
+Route::match(['get', 'post'], '/user/verify-phone', ['as' => 'verify_by_phone', 'uses' => 'StaffController@verifyUserByPhone']);
