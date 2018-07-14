@@ -8,7 +8,6 @@ use App\Level;
 use App\Result;
 use App\Fee;
 use App\Fee_payment;
-use App\AssessmentResult;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use PDF;
@@ -172,7 +171,7 @@ class ParentController extends Controller
         // get active session
         $active_session = Session::where('is_active', '=', 1)->first();
 
-        $payment = Fee_payment::where('student_id', '=', $id)->where('session_id', '=', $active_session->id)->where('term_id', '=', $active_session->current_term)->get();
+        $payment = Fee_payment::where('student_id', '=', $id)->where('session_id', '=', $active_session->id)->where('term_id', '=', $active_session->current_term)->first();
 
 
         return view('forms.parent.child_fees', ['payment' => $payment, 'student' => $student, 'fees' => $fees, 'total' => $total, 'level' => $level]);

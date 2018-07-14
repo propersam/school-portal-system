@@ -187,15 +187,15 @@
 			@endif
 			@if (Auth::user()->role == 'Bursar')
 				<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-					<li class="start ">
+					<li  class="start {{ Request::is('dashboard') ? 'active' : '' }}">
 						<a href="/dashboard">
 						<i class="icon-home"></i>
 						<span class="title">Dashboard</span>
 						</a>
 					</li>
-					<li class="{{ Request::is('dashboard/register-student', 'dashboard/applications') ? 'active' : '' }}">
+					<li class="{{ Request::is('dashboard/create-fee', 'dashboard/all-fees', 'dashboard/fee-type') ? 'active' : '' }}">
 						<a href="javascript:;">
-						<i class="icon-graduation"></i>
+						<i class="icon-list"></i>
 						<span class="title">Fees</span>
 						<span class="arrow "></span>
 						</a>
@@ -218,25 +218,30 @@
 						</ul>
 						
 					</li>
-					<li class="{{ Request::is('dashboard/register-student', 'dashboard/applications') ? 'active' : '' }}">
+					<li class="{{ Request::is('dashboard/term-owing-fees', 'dashboard/term-paid-fees') ? 'active' : '' }}">
 						<a href="javascript:;">
-						<i class="icon-graduation"></i>
+						<i class="icon-folder-alt"></i>
 						<span class="title">School Fees Payment</span>
 						<span class="arrow "></span>
 						</a>
 						<ul class="sub-menu">
 							<li>
-								<a href="/dashboard/register-student">
+								<a href="/dashboard/term-owing-fees">
 								<i class="icon-arrow-right"></i>
 								Owing</a>
 							</li>
 							<li>
-								<a href="/dashboard/all-pupils">
+								<a href="/dashboard/term-paid-fees">
 								<i class="icon-arrow-right"></i>
 								Paid</a>
 							</li>
 						</ul>
 						
+					</li>
+					<li class="{{ Request::is('dashboard/payment-settings') ? 'active' : '' }}">
+						<a href="/dashboard/payment-settings">
+						<i class="icon-settings"></i>
+						Settings</a>
 					</li>
 					<li>
 						<a href="/logout">

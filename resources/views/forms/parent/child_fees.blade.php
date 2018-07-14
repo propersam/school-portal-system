@@ -4,13 +4,28 @@
 
 <style type="text/css">
 	#div2 { 
-	   /*display: none; */
+	   display: none; 
 	}
 </style>
 <!-- BEGIN CONTENT -->
+
 	<div class="page-content-wrapper">
 		<div class="page-content">
-
+                    @if ($payment)
+						<div class="note note-success note-shadow">
+							<h4 class="block">School Fee Paid</h4>
+							<p>
+								 School fee has been paid for this semester
+							</p>
+						</div>
+                    @else
+						<div class="note note-danger note-shadow">
+							<h4 class="block">School Fee Unpaid</h4>
+							<p>
+								 School fee has been not been paid for this semester
+							</p>
+						</div>
+                    @endif
 
 			<div class="row">
 					<!-- BEGIN Portlet PORTLET-->
@@ -25,6 +40,22 @@
 							</div>
 						</div>
 						<div class="portlet-body" id="div1">
+	                            @if ($payment)
+								<center>
+									<i style="font-size: 4em; color: green" class="fa fa-check-square-o"></i>
+									<h2>School Fee Paid</h2>
+									<?php
+										$fee_data = array();
+										$fee_data['email'] = Auth::user()->email;
+										$fee_data['total'] = '₦' . ($total + 0);
+										$fee_data['name'] = $student->firstname . ' ' .$student->lastname ;
+										$fee_data['session'] = $active_session->name;
+										$fee_data['term'] = $active_session->current_term;
+										$fee_data['level'] = $level->levelname;
+									 ?>
+									<a href="{{ route('pdfview',['download'=>'pdf', 'fee_data' => $fee_data]) }}">Download Reciept</a>
+								</center>
+	                            @else
 								<table class="table table-condensed table-hover">
 									<thead>
 										<tr>
@@ -91,14 +122,16 @@
 								<meta name="csrf-token" content="{{ csrf_token() }}">
 			                    <script src="https://js.paystack.co/v1/inline.js"></script>
 			                      <button class="btn btn-lg green hidden-print margin-bottom-5" type="button" onclick="payWithPaystack()"><i class="fa fa-lock"></i> Process Payment Securely  </button> 
-			                      <button class="btn btn-lg green hidden-print margin-bottom-5" type="button" onclick="boom()"> Securely  </button> 
+			                      <button class="btn btn-lg green hidden-print margin-bottom-5" type="button" onclick="boom()"> Simulate  </button> 
 			                    </form>
 							</div>
 						</div>
-							
+                    @endif
+
 					</div>
 					<div class="portlet-body" id="div2">
 						<center>
+							<i style="font-size: 4em; color: green" class="fa fa-check-square-o"></i>
 							<h2>Payment Success</h2>
 							<p>Transaction Successful. Your Transaction details are given below: </p>
 							<p><b>Transaction Name</b>: School Fees Payment </p>
@@ -112,8 +145,6 @@
 								$fee_data['session'] = $active_session->name;
 								$fee_data['term'] = $active_session->current_term;
 								$fee_data['level'] = $level->levelname;
-
-								var_dump($fee_data);
 							 ?>
 							<a href="{{ route('pdfview',['download'=>'pdf', 'fee_data' => $fee_data]) }}">Download Reciept</a>
 						</center>
@@ -124,10 +155,9 @@
 									
 									    // $("#div2").hide();
 
-									  function boom(){
+									  function successView(){
 									    $("#div1").hide();
 									    $("#div2").show();
-									    console.log('ddd');
 									  }
 									  function payWithPaystack(){
 
@@ -152,11 +182,12 @@
 											        user_id: <?php echo Auth::user()->id; ?>
 											    },
 											    function(data, status){
-											        alert("Data: " + data + "\nStatus: " + status);
+											    	successView();
+											        // alert("Data: " + data + "\nStatus: " + status);
 											    });
 									      },
 									      onClose: function(){
-									          alert('window closed');
+									          // alert('window closed');
 									      }
 									    });
 

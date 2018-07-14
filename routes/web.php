@@ -111,6 +111,11 @@ Route::get('/dashboard/fee-types/', 'BursarController@fee_types');
 Route::post('/dashboard/add-fee-type', 'BursarController@store_type');
 Route::post('/dashboard/update-fee-type/{id}', 'BursarController@update_fee_type');
 Route::get('/dashboard/delete-fee-type/{id}', 'BursarController@delete_fee_type');
+Route::get('/dashboard/term-owing-fees/', 'BursarController@term_owing_fees');
+Route::get('/dashboard/term-paid-fees/', 'BursarController@term_paid_fees');
+Route::get('/dashboard/payment-settings/', 'BursarController@payment_settings');
+Route::post('/dashboard/payment-settings/', 'BursarController@updateSetting');
+Route::post('/dashboard/confirm-fees-as-paid/', 'BursarController@confirm_fees_as_paid');
 
 Route::get('/dashboard/all-fees/', 'BursarController@show_all_fees');
 Route::post('/dashboard/add-fee/', 'BursarController@add_fee');

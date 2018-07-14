@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Bursar;
 use App\Fee_type;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\RedirectResponse;
 use App\Level;
 use App\Fee;
 use Illuminate\Http\Request;
+use App\Session;
+use App\Student;
+use App\Setting;
+use App\Fee_payment;
+use DB;
 
 class BursarController extends Controller
 {
@@ -35,6 +41,45 @@ class BursarController extends Controller
         return view('forms.bursar.all_fees', ['levels' => $levels, 'fee_types' => $fee_types, 'fees' => $fees]);
     }
 
+    public function term_owing_fees()
+    {
+        $active_session = Session::where('is_active', '=', 1)->first();
+        $students = Student::where('admission_status', 'admitted')->get();
+        // $students = $students->toArray();
+
+        $i = 0;
+        foreach ($students as $key) {
+            // var_dump($key);
+            $payment = Fee_payment::where('student_id', '=', $key->id)->where('session_id', '=', $active_session->id)->where('term_id', '=', $active_session->current_term)->first();
+            if($payment){
+                unset($students[$i]);
+            }
+            $i++;
+        }
+        return view('forms.bursar.term_owing_fees', ['students' => $students]);
+    }
+
+    public function term_paid_fees()
+    {
+        $active_session = Session::where('is_active', '=', 1)->first();
+        $students = Student::where('admission_status', 'admitted')->get();
+        // $students = $students->toArray();
+
+        $i = 0;
+        foreach ($students as $key) {
+            // var_dump($key);
+            $payment = Fee_payment::where('student_id', '=', $key->id)->where('session_id', '=', $active_session->id)->where('term_id', '=', $active_session->current_term)->first();
+            if(!$payment){
+                unset($students[$i]);
+            }else{
+                $key['date'] = $payment->created_at;
+                $key['type'] = $payment->type;
+            }
+            $i++;
+        }
+        return view('forms.bursar.term_paid_fees', ['students' => $students]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -44,6 +89,26 @@ class BursarController extends Controller
     {
         return view('forms.bursar.create');
     }
+
+    public function payment_settings()
+    {
+        $settings = array();
+
+        $paystack_key_setting = Setting::where('name', '=', 'paystack_key')->first();
+        $settings['paystack_key_setting'] = $paystack_key_setting->toArray();
+        // var_dump($setting->toArray());
+        return view('forms.bursar.settings', ['settings' => $settings]);
+    }
+
+    public function updateSetting(Request $request)
+    {
+        $settings = Setting::find($request['settings_id']);
+        $settings->value = $request['paystack_key'];
+
+        $settings->save();
+        return redirect("/dashboard/payment-settings")->with('success', "Successfully Updated.");
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -174,6 +239,30 @@ class BursarController extends Controller
 
         $fee_type->delete();
         return redirect("/dashboard/fee-types")->with('success', "Successfully Deleted.");
+    }
+
+    public function confirm_fees_as_paid(Request $request)
+    {
+        $student = Student::where('id', '=', $request['student_id'])->first();
+       
+        $level = Level::where('id', '=', $student->level)->first();
+      
+        $fees = Fee::where('level_id', '=', $student->level)->get();
+
+        $total = 0;
+
+        foreach ($fees as $key) {
+            $total += $key->amount;
+        }
+
+        // var_dump($student->toArray());
+
+        $request = $request->all();
+
+        $data = array("amount"=>$total,"session_id"=>$request['session_id'],"term_id"=>$request['term_id'],"student_id"=>$request['student_id'],"user_id"=>$request['user_id'], "type" => 'manual');
+
+        $p = Fee_payment::create($data);
+        return back()->with('success', "Successfully Marked.");
     }
 
     public function delete_fee($id)
