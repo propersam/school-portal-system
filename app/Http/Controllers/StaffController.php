@@ -25,7 +25,7 @@ class StaffController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['verifyUser', 'verifyUserByPhone']]);
+        $this->middleware('auth', ['except' => ['verifyUser']]);
     }
 
     public function index()
@@ -220,34 +220,5 @@ class StaffController extends Controller
 
 
         return redirect('/eportal')->with('status', $status);
-    }
-
-    public function verifyUserByPhone(Request $request)
-    {
-        if ($request->isMethod('post')) {
-            $status = "";
-            $this->validate($request, [
-                'phone' => 'required|exists:users,phone',
-                'token' => 'required|exists:verify_users,phone_token',
-            ]);
-            $user = User::where('phone', $request->input('phone'))->first();
-            $verifyUser = VerifyUser::where('phone_token', $request->input('token'))->first();
-
-            if (is_object($verifyUser) and $user->is($verifyUser->user)) {
-                if (!$user->verified) {
-                    $user->verified = 1;
-                    $user->save();
-                    $status = "Your e-mail is verified. You can now login.";
-                } else {
-                    $status = "Your e-mail is already verified. You can now login.";
-                }
-            } else {
-                return redirect()->back()->with('warning', "Sorry your phone cannot be identified.");
-            }
-
-            return redirect('/eportal')->with('status', $status);
-        }
-
-        return view('auth.verify_phone');
     }
 }

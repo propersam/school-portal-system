@@ -23,8 +23,7 @@ class PupilController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        // $this->middleware('CheckIfActiveSession');
+        $this->middleware('auth')->except(['verifyUserByPhone']);
     }
 
     public function index()
@@ -77,17 +76,15 @@ class PupilController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'first_name' => 'required|string|max:255',
-            'pref_name' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'gender' => 'required|string|max:255',
-            'dob' => 'required|string|max:255',
-            'origin' => 'required|string|max:255',
-
-
+            'first_name'          => 'required|string|max:255',
+            'pref_name'           => 'required|string|max:255',
+            'lastname'            => 'required|string|max:255',
+            'gender'              => 'required|string|max:255',
+            'dob'                 => 'required|string|max:255',
+            'origin'              => 'required|string|max:255',
             'residential_address' => 'required|string|max:255',
-            'home_number' => 'required|string|max:255',
-            'level' => 'required|string|max:255',
+            'home_number'         => 'required|string|max:255',
+            'level'               => 'required|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
 
             //'email' => 'required|string|email|max:255|unique:users',
@@ -118,69 +115,97 @@ class PupilController extends Controller
         $username = str_random(4);
 
         $password = str_random(8);
-        $name = $request['first_name'] . ' ' . $request['lastname'];
+        $name = $request['first_name'].' '.$request['lastname'];
         $firstname = $request['first_name'];
         $pref_name = $request['pref_name'];
         $lastname = $request['lastname'];
         $email = $request['email'];
         $phone = $request['phone'];
 
-        $data = array("username" => $username, "password" => $password, "firstname" => $firstname, "lastname" => $lastname, "name" => $name, "email" => $email, 'phone' => $phone, "role" => 'parent');
+        $data = [
+            "username"  => $username,
+            "password"  => $password,
+            "firstname" => $firstname,
+            "lastname"  => $lastname,
+            "name"      => $name,
+            "email"     => $email,
+            'phone'     => $phone,
+            "role"      => 'parent'
+        ];
 
         $user = $this->createuser($data);
 
-
-        $data2 = array("user_id" => $user->id, "firstname" => $request['first_name'], "preferredname" => $request['pref_name'], "lastname" => $lastname, "phonenumber" => $request['home_number'], "gender" => $request['gender'], "address" => $request['residential_address'], "gender" => $request['gender'], "dob" => $request['dob'], "origin" => $request['origin'], "lga" => $request['lga'], "state" => $request['state'], "email" => $request['email'], "level" => $request['level'], "class_id" => $request['class_id']);
-
-
-        // var_dump($data2);
+        $data2 = [
+            "user_id"       => $user->id,
+            "firstname"     => $request['first_name'],
+            "preferredname" => $request['pref_name'],
+            "lastname"      => $lastname,
+            "phonenumber"   => $request['home_number'],
+            "gender"        => $request['gender'],
+            "address"       => $request['residential_address'],
+            "dob"           => $request['dob'],
+            "origin"        => $request['origin'],
+            "lga"           => $request['lga'],
+            "state"         => $request['state'],
+            "email"         => $request['email'],
+            "level"         => $request['level'],
+            "class_id"      => $request['class_id']
+        ];
         $student = $this->createstudent($data2);
 
-        $data3 = array("user_id" => $user->id, "student_id" => $student->id, "firstname" => $request['father_first_name'], "lastname" => $request['father_surname'], "companyname" => $request['father_company_name'], "workaddress" => $request['father_work_address'], "phone" => $request['father_work_phone'], "email" => $request['father_email'], "phonenumber" => $request['father_work_phone'], "parent_type" => 'father');
+        $data3 = [
+            "user_id"     => $user->id,
+            "student_id"  => $student->id,
+            "firstname"   => $request['father_first_name'],
+            "lastname"    => $request['father_surname'],
+            "companyname" => $request['father_company_name'],
+            "workaddress" => $request['father_work_address'],
+            "phone"       => $request['father_work_phone'],
+            "email"       => $request['father_email'],
+            "phonenumber" => $request['father_work_phone'],
+            "parent_type" => 'father'
+        ];
 
-
-        $data4 = array("user_id" => $user->id, "student_id" => $student->id, "firstname" => $request['mother_first_name'], "lastname" => $request['mother_surname'], "companyname" => $request['mother_company_name'], "workaddress" => $request['mother_work_address'], "phone" => $request['mother_work_phone'], "email" => $request['mother_email'], "phonenumber" => $request['mother_work_phone'], "parent_type" => 'mother');
-
-
-        // $student = Student::create([
-        //                 'firstname' => $request['first_name'],
-        //                 'lastname' => $request['lastname'],
-        //                 // 'user_id' => $user->id,
-        //                 'user_id' => 1,
-        //                 'phonenumber' => $request['home_number'],
-        //                 'gender' => $request['gender'],
-        //                ]);
+        $data4 = [
+            "user_id"     => $user->id,
+            "student_id"  => $student->id,
+            "firstname"   => $request['mother_first_name'],
+            "lastname"    => $request['mother_surname'],
+            "companyname" => $request['mother_company_name'],
+            "workaddress" => $request['mother_work_address'],
+            "phone"       => $request['mother_work_phone'],
+            "email"       => $request['mother_email'],
+            "phonenumber" => $request['mother_work_phone'],
+            "parent_type" => 'mother'
+        ];
 
         event(new NewStudentRegistered($student));
 
         $father = $this->createfather($data3);
         $mother = $this->createmother($data4);
-        // $contact = $this->createcontact($data5);
-        // $contact2 = $this->createcontact($data6);
 
-        return redirect("/dashboard/register-student")->with('success', "You have successfully registered a student.");
-
-
+        return redirect("/dashboard/register-student")
+            ->with('success', "You have successfully registered a student.");
     }
 
 
     protected function createuser(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'password' => bcrypt($data['password']),
-            'role' => $data['role'],
+            'name'            => $data['name'],
+            'username'        => $data['username'],
+            'email'           => $data['email'],
+            'phone'           => $data['phone'],
+            'password'        => bcrypt($data['password']),
+            'role'            => $data['role'],
             'defaultpassword' => $data['password'],
 
         ]);
 
 
         $verifyUser = VerifyUser::create([
-            'user_id' => $user->id,
-            'token' => str_random(40),
+            'user_id'     => $user->id,
+            'token'       => str_random(40),
             'phone_token' => random_int(1000000, 9999999),
         ]);
 
@@ -199,14 +224,14 @@ class PupilController extends Controller
     {
 
         $parent = Parents::create([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'email' => $data['email'],
-            'student_id' => $data['student_id'],
+            'firstname'   => $data['firstname'],
+            'lastname'    => $data['lastname'],
+            'email'       => $data['email'],
+            'student_id'  => $data['student_id'],
             'companyname' => $data['companyname'],
-            'user_id' => $data['user_id'],
+            'user_id'     => $data['user_id'],
             'workaddress' => $data['workaddress'],
-            'phone' => $data['phone'],
+            'phone'       => $data['phone'],
             'phonenumber' => $data['phonenumber'],
             'parent_type' => $data['parent_type'],
 
@@ -220,14 +245,14 @@ class PupilController extends Controller
     {
 
         $parent = Parents::create([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'email' => $data['email'],
-            'student_id' => $data['student_id'],
+            'firstname'   => $data['firstname'],
+            'lastname'    => $data['lastname'],
+            'email'       => $data['email'],
+            'student_id'  => $data['student_id'],
             'companyname' => $data['companyname'],
-            'user_id' => $data['user_id'],
+            'user_id'     => $data['user_id'],
             'workaddress' => $data['workaddress'],
-            'phone' => $data['phone'],
+            'phone'       => $data['phone'],
             'phonenumber' => $data['phonenumber'],
             'parent_type' => $data['parent_type'],
 
@@ -241,11 +266,11 @@ class PupilController extends Controller
     {
 
         $contact = Emergency_contact::create([
-            'name' => $data['name'],
+            'name'        => $data['name'],
             'home_number' => $data['home_number'],
             'work_number' => $data['work_number'],
-            'student_id' => $data['student_id'],
-            'user_id' => $data['user_id'],
+            'student_id'  => $data['student_id'],
+            'user_id'     => $data['user_id'],
             'cell_number' => $data['cell_number']
         ]);
 
@@ -274,6 +299,36 @@ class PupilController extends Controller
 
 
         return redirect('/eportal')->with('status', $status);
+    }
+
+    public function verifyUserByPhone(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $status = "";
+            $this->validate($request, [
+                'phone' => 'required|exists:users,phone',
+                'token' => 'required|exists:verify_users,phone_token',
+            ]);
+            $user = User::where('phone', $request->input('phone'))->first();
+            $verifyUser = VerifyUser::where('phone_token', $request->input('token'))->first();
+
+            if (is_object($verifyUser) and $user->is($verifyUser->user)) {
+                if (!$user->verified) {
+                    $user->verified = 1;
+                    $user->save();
+                    $status = "Your phone number has been verified.";
+                } else {
+                    $status = "Your phone number is already verified.";
+                }
+                Auth::login($user);
+                return redirect('/change-default-password')->with(['status' => $status]);
+            } else {
+                return redirect()->back()->with('warning', "Sorry your phone cannot be identified.");
+            }
+
+        }
+
+        return view('auth.verify_phone');
     }
 
     /**

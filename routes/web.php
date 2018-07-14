@@ -180,4 +180,4 @@ Route::resources([
 ]);
 
 Route::get('/user/verify/{token}', 'StaffController@verifyUser');
-Route::match(['get', 'post'], '/user/verify-phone', ['as' => 'verify_by_phone', 'uses' => 'StaffController@verifyUserByPhone']);
+Route::match(['get', 'post'], '/user/verify-phone', ['as' => 'verify_by_phone', 'uses' => 'PupilController@verifyUserByPhone']);
