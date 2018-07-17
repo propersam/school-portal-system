@@ -54,7 +54,7 @@ class TeacherController extends Controller
         // get class information
         $class = Classes::where('teacher_id', '=', $teacher->id)->first();
 
-        if($class){
+        if ($class) {
             // get class teacher
             $students = Student::where('class_id', '=', $class->id)->where('admission_status', 'admitted')->get();
         }
@@ -77,7 +77,7 @@ class TeacherController extends Controller
         $class = Classes::where('teacher_id', '=', $teacher->id)->first();
 
 
-        if($class){
+        if ($class) {
             $students = Student::where('class_id', '=', $class->id)->get()->toArray();
             $subjects = SubjectRegistration::where('level', '=', $class->level)->get();
             $i = 0;
@@ -94,7 +94,13 @@ class TeacherController extends Controller
                 $results[$i]['total'] = 0;
 
                 foreach ($results[$i]['exam_results'] as $r) {
-                    $a_r = AssessmentResult::where('class_id', '=', $class->id)->where('session_id', '=', $active_session->id)->where('term', '=', $active_session->current_term)->where('student_id', '=', $key["id"])->where('subject_id', '=', $r["subject_id"])->first()->toArray();
+                    $obj = AssessmentResult::where('class_id', '=', $class->id)
+                                           ->where('session_id', '=', $active_session->id)
+                                           ->where('term', '=', $active_session->current_term)
+                                           ->where('student_id', '=', $key["id"])
+                                           ->where('subject_id', '=', $r["subject_id"])
+                                           ->first();
+                    $a_r = is_object($obj) ? $obj->toArray() : [];
 
                     $results[$i]['exam_results'][$t]['subj_total'] = $r['score'] + $a_r['score'];
                     $results[$i]['total'] += $results[$i]['exam_results'][$t]['subj_total'];
@@ -119,7 +125,7 @@ class TeacherController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -130,7 +136,7 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -141,7 +147,7 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit()
@@ -179,7 +185,7 @@ class TeacherController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)

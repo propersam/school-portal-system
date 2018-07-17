@@ -41,7 +41,7 @@ class SendStudentWelcome implements ShouldQueue
          * @var Student $student
          */
         $student = $event->student;
-        if (is_numeric($user->phone)) {
+        if (is_object($user) and is_numeric($user->phone)) {
             //send sms
             $code = $user->verifyUser->phone_token;
             $message = 'Your child '.str_limit($student->firstname, 30).
