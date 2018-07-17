@@ -102,7 +102,7 @@ class TeacherController extends Controller
                                            ->first();
                     $a_r = is_object($obj) ? $obj->toArray() : [];
 
-                    $results[$i]['exam_results'][$t]['subj_total'] = $r['score'] + $a_r['score'];
+                    $results[$i]['exam_results'][$t]['subj_total'] = $r['score'] + (isset($a_r['score']) ? $a_r['score'] : 0);
                     $results[$i]['total'] += $results[$i]['exam_results'][$t]['subj_total'];
                     $t++;
                 }
