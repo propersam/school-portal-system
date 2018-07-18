@@ -147,6 +147,7 @@ class PupilController extends Controller
         $lastname = $request['lastname'];
         $email = $request['email'];
         $phone = $request['phone'];
+        $active_session = Session::where('is_active', '=', 1)->first();
 
         $data = [
             "username"  => $username,
@@ -175,7 +176,9 @@ class PupilController extends Controller
             "state"         => $request['state'],
             "email"         => $request['email'],
             "level"         => $request['level'],
-            "class_id"      => $request['class_id']
+            "class_id"      => $request['class_id'],
+            "entry_session"=>$active_session->id, 
+            "entry_level"=>$request['level']
         ];
         $student = $this->createstudent($data2);
 

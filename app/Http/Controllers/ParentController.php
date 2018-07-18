@@ -238,8 +238,6 @@ class ParentController extends Controller
             'gender' => 'required|string|max:255',
             'dob' => 'required|string|max:255',
             'origin' => 'required|string|max:255',
-            'siblings_attended' => 'required|string|max:255',
-            'child_position' => 'required|string|max:255',
             'residential_address' => 'required|string|max:255',
             'home_number' => 'required|string|max:255',            
         ]);
@@ -266,11 +264,9 @@ class ParentController extends Controller
         $pref_name = $request['pref_name'];
         $lastname = $request['lastname'];
         $email = $request['email'];
-        //var_dump($request); die()
+        $active_session = Session::where('is_active', '=', 1)->first();
 
-
-
-        $data2 = array("user_id"=>Auth::user()->id,"first_name"=>$request['first_name'],"pref_name"=>$request['pref_name'],"lastname"=>$lastname,"phonenumber"=>$request['home_number'],"gender"=>$request['gender'],"residential_address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "siblings_attended"=>$request['siblings_attended'], "child_position"=>$request['child_position'], "siblings_attended_years"=>$request['siblings_attended_years'], "sibling1_name"=>$request['child1_name'], "sibling1_age"=>$request['child1_age'], "sibling1_school"=>$request['child1_school'], "sibling2_name"=>$request['child2_name'], "sibling2_age"=>$request['child2_age'], "sibling2_school"=>$request['child2_school'], "sibling3_name"=>$request['child3_name'], "sibling3_age"=>$request['child3_age'], "sibling3_school"=>$request['child3_school'], "email"=>$request['email'], "current_school"=>$request['current_school'], "position_in_family"=>$request['child_position']);
+        $data2 = array("user_id"=>Auth::user()->id,"firstname"=>$request['first_name'],"prefferedname"=>$request['pref_name'],"lastname"=>$lastname,"phonenumber"=>$request['home_number'],"gender"=>$request['gender'],"address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "lga"=>$request['lga'],"state"=>$request['state'],"email"=>$request['email'], "level"=>$request['level'], "entry_session"=>$active_session->id, "entry_level"=>$request['level'] );
 
         $student = $this->createstudent($data2);
 
@@ -282,34 +278,10 @@ class ParentController extends Controller
     
      protected function createstudent(array $data)
     {
-       $student = Student::create([
-            'firstname' => $data['first_name'],
-            'preferredname' => $data['pref_name'],
-            'lastname' => $data['lastname'],
-            'email' => $data['email'],
-            'phonenumber' => $data['phonenumber'],
-            'gender' => $data['gender'],
-            'address' => $data['residential_address'],
-            'user_id' => $data['user_id'],
-            'dob' => $data['dob'],
-            'origin' => $data['origin'],
-            'siblings_attended' => $data['siblings_attended'],
-            'position_in_family' => $data['child_position'],
-            'siblings_attended_years' => $data['siblings_attended_years'],
-            'sibling1_name' => $data['sibling1_name'],
-            'sibling1_age' => $data['sibling1_age'],
-            'sibling1_school' => $data['sibling1_school'],
-            'sibling2_name' => $data['sibling2_name'],
-            'sibling2_age' => $data['sibling2_age'],
-            'sibling2_school' => $data['sibling2_school'],
-            'sibling3_name' => $data['sibling3_name'],
-            'sibling3_age' => $data['sibling3_age'],
-            'sibling3_school' => $data['sibling3_school'],
-            'current_school' => $data['current_school'],
-            'position_in_family' => $data['position_in_family'],
-        ]);
+       $student = Student::create($data);
        return $student;
     }
+
     /**
      * Display the specified resource.
      *
