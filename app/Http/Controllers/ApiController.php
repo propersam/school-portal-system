@@ -4,14 +4,11 @@ namespace App\Http\Controllers;
 
 use App\AssessmentResult;
 use App\Classes;
+use App\Fee_payment;
 use App\Result;
 use App\Session;
 use App\Student;
 use App\SubjectRegistration;
-use App\Level;
-use App\Result;
-use App\AssessmentResult;
-use App\Fee_payment;
 use App\Teacher;
 use Illuminate\Http\Request;
 
@@ -46,7 +43,6 @@ class ApiController extends Controller
             $key->firstname = $key->student->firstname;
         }
 
-
         $students = Student::where('class_id', '=', $class->id)->where('admission_status', 'admitted')->get();
 
 
@@ -63,19 +59,15 @@ class ApiController extends Controller
 
         // get students without assessment results
         $students2 = Student::whereNotIn('id', $ids)->where('class_id', '=', $class->id)->where('admission_status', 'admitted')->get();
-
-
         $resp = ['class' => $class, 'subject' => $subject, 'teacher' => $teacher, 'students' => $students, 'results' => $results, 'students2' => $students2, 'assessments_results' => $assessments_results];
-        return response()->json($resp);
 
+        return response()->json($resp);
     }
 
 
     public function get_class_students(Request $request)
     {
-
         $request = $request->all();
-
         $active_session = Session::where('is_active', '=', 1)->first();
 
         // get class information
@@ -85,7 +77,7 @@ class ApiController extends Controller
         $subject = SubjectRegistration::where('id', '=', $request['s'])->first();
         $subject->name = $subject->subject->name;
 
-        // get class teacher 
+        // get class teacher
         $teacher = Teacher::where('id', '=', $class->teacher_id)->first();
 
         // get ids of students with results
@@ -112,22 +104,17 @@ class ApiController extends Controller
         // var_dump($students2);
         $resp = ['class' => $class, 'subject' => $subject, 'teacher' => $teacher, 'students' => $students, 'results' => $results, 'students2' => $students2, 'assessments_results' => $assessments_results];
 
-
         return response()->json($resp);
-
-
     }
 
     public function submit_results(Request $request)
     {
         $request = $request->all();
         $postdata = file_get_contents("php://input");
-
         $_POST = json_decode($postdata, true);
 
         // var_dump($request);
         $submitted_results = $_POST['results'];
-
         $active_session = Session::where('is_active', '=', 1)->first();
 
         $result = null;
@@ -135,19 +122,18 @@ class ApiController extends Controller
             if ($key['student_id']) {
                 // check if this particular exam record has been submitted before
                 $res = Result::where('student_id', '=', $key['student_id'])
-                    ->where('session_id', '=', $active_session['id'])
-                    ->where('class_id', '=', $request['c'])
-                    ->where('subject_id', '=', $request['s'])
-                    ->where('term', '=', $active_session['current_term'])->first();
-
+                             ->where('session_id', '=', $active_session['id'])
+                             ->where('class_id', '=', $request['c'])
+                             ->where('subject_id', '=', $request['s'])
+                             ->where('term', '=', $active_session['current_term'])->first();
 
                 $data = [
                     "student_id" => $key['student_id'],
                     "session_id" => $active_session['id'],
-                    "class_id" => $request['c'],
+                    "class_id"   => $request['c'],
                     "subject_id" => $request['s'],
-                    "score" => $key['score'],
-                    "term" => $active_session['current_term']
+                    "score"      => $key['score'],
+                    "term"       => $active_session['current_term']
                 ];
 
                 // create record if it does not already exist
@@ -168,22 +154,19 @@ class ApiController extends Controller
 
 
     }
+
     public function payment_response(Request $request)
     {
         $request = $request->all();
-
-        $data = array("amount"=>$request['amount'],"session_id"=>$request['session_id'],"term_id"=>$request['term_id'],"student_id"=>$request['student_id'],"user_id"=>$request['user_id']);
+        $data = array("amount" => $request['amount'], "session_id" => $request['session_id'], "term_id" => $request['term_id'], "student_id" => $request['student_id'], "user_id" => $request['user_id']);
 
         $p = Fee_payment::create($data);
     }
 
     public function submit_assessment(Request $request)
     {
-
         $request = $request->all();
-
         $postdata = file_get_contents("php://input");
-
         $_POST = json_decode($postdata, true);
 
         // var_dump($request);
@@ -196,8 +179,6 @@ class ApiController extends Controller
             if ($key['student_id']) {
                 // check if this particular exam record has been submitted before
                 $res = AssessmentResult::where('student_id', '=', $key['student_id'])->where('session_id', '=', $active_session['id'])->where('class_id', '=', $request['c'])->where('subject_id', '=', $request['s'])->where('term', '=', $active_session['current_term'])->first();
-
-
                 $data = array("student_id" => $key['student_id'], "session_id" => $active_session['id'], "class_id" => $request['c'], "subject_id" => $request['s'], "score" => $key['score'], "term" => $active_session['current_term']);
 
                 // create record if it does not already exist
@@ -207,7 +188,6 @@ class ApiController extends Controller
                     $result = $this->updateAssessment($data, $res->id);
 
                 }
-
             }
         }
 
@@ -235,12 +215,8 @@ class ApiController extends Controller
     public function updateResult($data, $id)
     {
         $result = Result::find($id);
-
         $result->score = $data['score'];
-
-
         $result->save();
-
 
         return $result;
     }
@@ -248,14 +224,9 @@ class ApiController extends Controller
     public function updateAssessment($data, $id)
     {
         $result = AssessmentResult::find($id);
-
         $result->score = $data['score'];
-
-
         $result->save();
-
 
         return $result;
     }
-
 }
