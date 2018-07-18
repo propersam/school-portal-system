@@ -160,41 +160,41 @@
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Last Name</label>
-									                                        	<p>{{ $i->returnMother()['lastname'] }}</p>
+                                                                                <p>{{ $i->returnMother()['lastname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Marital Status</label>
-									                                        	<p>{{ $i->returnMother()['maritalstatus'] }}</p>
+                                                                                <p>{{ $i->returnMother()['maritalstatus'] }}</p>
 									                                        </div>
 								                                        </div>
 								                                        <div class="row">
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Occupation</label>
-									                                        	<p>{{ $i->returnMother()['occupation'] }}</p>
+                                                                                <p>{{ $i->returnMother()['occupation'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Company Name</label>
-									                                        	<p>{{ $i->returnMother()['companyname'] }}</p>
+                                                                                <p>{{ $i->returnMother()['companyname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Company Number</label>
-									                                        	<p>{{ $i->returnMother()['phone'] }}</p>
+                                                                                <p>{{ $i->returnMother()['phone'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Work Address</label>
-									                                        	<p>{{ $i->returnMother()['workaddress'] }}</p>
+                                                                                <p>{{ $i->returnMother()['workaddress'] }}</p>
 									                                        </div>
 								                                        </div>
 								                                        <div class="row">
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Email</label>
-									                                        	<p>{{ $i->returnMother()['email'] }}</p>
+                                                                                <p>{{ $i->returnMother()['email'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>School Attended</label>
-									                                        	<p>{{ $i->returnMother()['attended_school'] }}</p>
+                                                                                <p>{{ $i->returnMother()['attended_school'] }}</p>
 									                                        </div>
 								                                        </div>
 
@@ -206,45 +206,45 @@
 								                                        <div class="row">
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>First Name</label>
-									                                        	<p>{{ $i->returnFather()['firstname'] }}</p>
+                                                                                <p>{{ $i->returnFather()['firstname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Last Name</label>
-									                                        	<p>{{ $i->returnFather()['lastname'] }}</p>
+                                                                                <p>{{ $i->returnFather()['lastname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Marital Status</label>
-									                                        	<p>{{ $i->returnFather()['maritalstatus'] }}</p>
+                                                                                <p>{{ $i->returnFather()['maritalstatus'] }}</p>
 									                                        </div>
 								                                        </div>
 								                                        <div class="row">
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Occupation</label>
-									                                        	<p>{{ $i->returnFather()['occupation'] }}</p>
+                                                                                <p>{{ $i->returnFather()['occupation'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Company Name</label>
-									                                        	<p>{{ $i->returnFather()['companyname'] }}</p>
+                                                                                <p>{{ $i->returnFather()['companyname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Company Number</label>
-									                                        	<p>{{ $i->returnFather()['phone'] }}</p>
+                                                                                <p>{{ $i->returnFather()['phone'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Work Address</label>
-									                                        	<p>{{ $i->returnFather()['workaddress'] }}</p>
+                                                                                <p>{{ $i->returnFather()['workaddress'] }}</p>
 									                                        </div>
 								                                        </div>
 								                                        <div class="row">
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Email</label>
-									                                        	<p>{{ $i->returnFather()['email'] }}</p>
+                                                                                <p>{{ $i->returnFather()['email'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>School Attended</label>
-									                                        	<p>{{ $i->returnFather()['attended_school'] }}</p>
+                                                                                <p>{{ $i->returnFather()['attended_school'] }}</p>
 									                                        </div>
 								                                        </div>
 
@@ -387,45 +387,45 @@
 											                                        <div class="row">
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        	<label>First Name</label>
-												                                        	<p>{{ $i->returnMother()['firstname'] }}</p>
+                                                                                            <p>{{ $i->returnMother()['firstname'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        	<label>Last Name</label>
-												                                        	<p>{{ $i->returnMother()['lastname'] }}</p>
+                                                                                            <p>{{ $i->returnMother()['lastname'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        	<label>Marital Status</label>
-												                                        	<p>{{ $i->returnMother()['maritalstatus'] }}</p>
+                                                                                            <p>{{ $i->returnMother()['maritalstatus'] }}</p>
 												                                        </div>
 											                                        </div>
 											                                        <div class="row">
 												                                        <div class="col-sm-3 col-xs-12">
 												                                        	<label>Occupation</label>
-												                                        	<p>{{ $i->returnMother()['occupation'] }}</p>
+                                                                                            <p>{{ $i->returnMother()['occupation'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-3 col-xs-12">
 												                                        	<label>Company Name</label>
-												                                        	<p>{{ $i->returnMother()['companyname'] }}</p>
+                                                                                            <p>{{ $i->returnMother()['companyname'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-3 col-xs-12">
 												                                        	<label>Company Number</label>
-												                                        	<p>{{ $i->returnMother()['phone'] }}</p>
+                                                                                            <p>{{ $i->returnMother()['phone'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-3 col-xs-12">
 												                                        	<label>Work Address</label>
-												                                        	<p>{{ $i->returnMother()['workaddress'] }}</p>
+                                                                                            <p>{{ $i->returnMother()['workaddress'] }}</p>
 												                                        </div>
 											                                        </div>
 											                                        <div class="row">
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        	<label>Email</label>
-												                                        	<p>{{ $i->returnMother()['email'] }}</p>
+                                                                                            <p>{{ $i->returnMother()['email'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        </div>
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        	<label>School Attended</label>
-												                                        	<p>{{ $i->returnMother()['attended_school'] }}</p>
+                                                                                            <p>{{ $i->returnMother()['attended_school'] }}</p>
 												                                        </div>
 											                                        </div>
 
@@ -437,45 +437,45 @@
 											                                        <div class="row">
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        	<label>First Name</label>
-												                                        	<p>{{ $i->returnFather()['firstname'] }}</p>
+                                                                                            <p>{{ $i->returnFather()['firstname'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        	<label>Last Name</label>
-												                                        	<p>{{ $i->returnFather()['lastname'] }}</p>
+                                                                                            <p>{{ $i->returnFather()['lastname'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        	<label>Marital Status</label>
-												                                        	<p>{{ $i->returnFather()['maritalstatus'] }}</p>
+                                                                                            <p>{{ $i->returnFather()['maritalstatus'] }}</p>
 												                                        </div>
 											                                        </div>
 											                                        <div class="row">
 												                                        <div class="col-sm-3 col-xs-12">
 												                                        	<label>Occupation</label>
-												                                        	<p>{{ $i->returnFather()['occupation'] }}</p>
+                                                                                            <p>{{ $i->returnFather()['occupation'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-3 col-xs-12">
 												                                        	<label>Company Name</label>
-												                                        	<p>{{ $i->returnFather()['companyname'] }}</p>
+                                                                                            <p>{{ $i->returnFather()['companyname'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-3 col-xs-12">
 												                                        	<label>Company Number</label>
-												                                        	<p>{{ $i->returnFather()['phone'] }}</p>
+                                                                                            <p>{{ $i->returnFather()['phone'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-3 col-xs-12">
 												                                        	<label>Work Address</label>
-												                                        	<p>{{ $i->returnFather()['workaddress'] }}</p>
+                                                                                            <p>{{ $i->returnFather()['workaddress'] }}</p>
 												                                        </div>
 											                                        </div>
 											                                        <div class="row">
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        	<label>Email</label>
-												                                        	<p>{{ $i->returnFather()['email'] }}</p>
+                                                                                            <p>{{ $i->returnFather()['email'] }}</p>
 												                                        </div>
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        </div>
 												                                        <div class="col-sm-4 col-xs-12">
 												                                        	<label>School Attended</label>
-												                                        	<p>{{ $i->returnFather()['attended_school'] }}</p>
+                                                                                            <p>{{ $i->returnFather()['attended_school'] }}</p>
 												                                        </div>
 											                                        </div>
 
@@ -621,45 +621,45 @@
 								                                        <div class="row">
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>First Name</label>
-									                                        	<p>{{ $i->returnMother()['firstname'] }}</p>
+                                                                                <p>{{ $i->returnMother()['firstname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Last Name</label>
-									                                        	<p>{{ $i->returnMother()['lastname'] }}</p>
+                                                                                <p>{{ $i->returnMother()['lastname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Marital Status</label>
-									                                        	<p>{{ $i->returnMother()['maritalstatus'] }}</p>
+                                                                                <p>{{ $i->returnMother()['maritalstatus'] }}</p>
 									                                        </div>
 								                                        </div>
 								                                        <div class="row">
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Occupation</label>
-									                                        	<p>{{ $i->returnMother()['occupation'] }}</p>
+                                                                                <p>{{ $i->returnMother()['occupation'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Company Name</label>
-									                                        	<p>{{ $i->returnMother()['companyname'] }}</p>
+                                                                                <p>{{ $i->returnMother()['companyname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Company Number</label>
-									                                        	<p>{{ $i->returnMother()['phone'] }}</p>
+                                                                                <p>{{ $i->returnMother()['phone'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Work Address</label>
-									                                        	<p>{{ $i->returnMother()['workaddress'] }}</p>
+                                                                                <p>{{ $i->returnMother()['workaddress'] }}</p>
 									                                        </div>
 								                                        </div>
 								                                        <div class="row">
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Email</label>
-									                                        	<p>{{ $i->returnMother()['email'] }}</p>
+                                                                                <p>{{ $i->returnMother()['email'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>School Attended</label>
-									                                        	<p>{{ $i->returnMother()['attended_school'] }}</p>
+                                                                                <p>{{ $i->returnMother()['attended_school'] }}</p>
 									                                        </div>
 								                                        </div>
 
@@ -671,45 +671,45 @@
 								                                        <div class="row">
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>First Name</label>
-									                                        	<p>{{ $i->returnFather()['firstname'] }}</p>
+                                                                                <p>{{ $i->returnFather()['firstname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Last Name</label>
-									                                        	<p>{{ $i->returnFather()['lastname'] }}</p>
+                                                                                <p>{{ $i->returnFather()['lastname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Marital Status</label>
-									                                        	<p>{{ $i->returnFather()['maritalstatus'] }}</p>
+                                                                                <p>{{ $i->returnFather()['maritalstatus'] }}</p>
 									                                        </div>
 								                                        </div>
 								                                        <div class="row">
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Occupation</label>
-									                                        	<p>{{ $i->returnFather()['occupation'] }}</p>
+                                                                                <p>{{ $i->returnFather()['occupation'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Company Name</label>
-									                                        	<p>{{ $i->returnFather()['companyname'] }}</p>
+                                                                                <p>{{ $i->returnFather()['companyname'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Company Number</label>
-									                                        	<p>{{ $i->returnFather()['phone'] }}</p>
+                                                                                <p>{{ $i->returnFather()['phone'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-3 col-xs-12">
 									                                        	<label>Work Address</label>
-									                                        	<p>{{ $i->returnFather()['workaddress'] }}</p>
+                                                                                <p>{{ $i->returnFather()['workaddress'] }}</p>
 									                                        </div>
 								                                        </div>
 								                                        <div class="row">
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>Email</label>
-									                                        	<p>{{ $i->returnFather()['email'] }}</p>
+                                                                                <p>{{ $i->returnFather()['email'] }}</p>
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        </div>
 									                                        <div class="col-sm-4 col-xs-12">
 									                                        	<label>School Attended</label>
-									                                        	<p>{{ $i->returnFather()['attended_school'] }}</p>
+                                                                                <p>{{ $i->returnFather()['attended_school'] }}</p>
 									                                        </div>
 								                                        </div>
 

@@ -87,12 +87,11 @@
 														<div class="form-group">
 															<label class="control-label">Session Name</label>
 															<input type="text" value=" {{ $i->name }}" id="sessionName" class="form-control" placeholder="eg: 2017/2018" name="name">
-														</div>
-													</div>
+                                                        </div>
+                                                    </div>
 
 
-
-													<div class="col-md-4">
+                                                    <div class="col-md-4">
 														<div class="form-group">
 															<label class="control-label">Make Current Session</label>
 											          @if($i->is_active == 0)         
@@ -119,8 +118,8 @@
 															) }}
 														</div>
 													</div>
-												</div>									
-											</div>
+                                                </div>
+                                            </div>
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn default" data-dismiss="modal">Close</button>
@@ -137,11 +136,12 @@
 								</tbody>
 								</table>
 							</div>
-							<div class="form-actions right">
-								<a class="btn btn-default blue" href="/dashboard/create-session"> <i class="fa fa-plus"></i> Add</a>
-							</div>
+                                        <div class="form-actions right">
+                                            <a class="btn btn-default blue" href="/dashboard/create-session"> <i
+                                                        class="fa fa-plus"></i> Add</a>
+                                        </div>
 						</div>
-					</div>
+                                </div>
 								
 							
 						

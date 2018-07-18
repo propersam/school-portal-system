@@ -6,8 +6,8 @@ use App\Emergency_contact;
 use App\Events\NewStudentRegistered;
 use App\Level;
 use App\Parents;
-use App\Student;
 use App\Session;
+use App\Student;
 use App\User;
 use App\VerifyUser;
 use Hash;
@@ -84,9 +84,9 @@ class RegisterController extends Controller
             $obj_user->default_password_changed = 'yes';
             $obj_user->save(); 
             // Auth::logout();
-            if($obj_user->role == 'Teacher'){
+            if ($obj_user->role == 'Teacher') {
                 return redirect("/change-photo")->with('success', "You have successfully set your password, now upload your passport photo.");
-            }else{
+            } else {
                 return redirect("/dashboard");
             }
 
@@ -128,7 +128,7 @@ class RegisterController extends Controller
 
 
         // $data2 = array("user_id"=>$user->id,"first_name"=>$request['first_name'],"pref_name"=>$request['pref_name'],"lastname"=>$lastname,"phonenumber"=>$request['home_number'],"gender"=>$request['gender'],"residential_address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "siblings_attended"=>$request['siblings_attended'], "child_position"=>$request['child_position'], "siblings_attended_years"=>$request['siblings_attended_years'], "sibling1_name"=>$request['child1_name'], "sibling1_age"=>$request['child1_age'], "sibling1_school"=>$request['child1_school'], "sibling2_name"=>$request['child2_name'], "sibling2_age"=>$request['child2_age'], "sibling2_school"=>$request['child2_school'], "sibling3_name"=>$request['child3_name'], "sibling3_age"=>$request['child3_age'], "sibling3_school"=>$request['child3_school'], "email"=>$request['email'], "current_school"=>$request['current_school'], "position_in_family"=>$request['child_position'], "level"=>$request['level']);
-        $data2 = array("user_id"=>$user->id,"firstname"=>$request['first_name'],"preffered_name"=>$request['pref_name'],"lastname"=>$lastname,"phonenumber"=>$request['home_number'],"gender"=>$request['gender'],"address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "lga"=>$request['lga'],"state"=>$request['state'],"email"=>$request['email'], "level"=>$request['level'], "entry_session"=>$active_session->id, "entry_level"=>$request['level']);
+        $data2 = array("user_id" => $user->id, "firstname" => $request['first_name'], "preffered_name" => $request['pref_name'], "lastname" => $lastname, "phonenumber" => $request['home_number'], "gender" => $request['gender'], "address" => $request['residential_address'], "gender" => $request['gender'], "dob" => $request['dob'], "origin" => $request['origin'], "lga" => $request['lga'], "state" => $request['state'], "email" => $request['email'], "level" => $request['level'], "entry_session" => $active_session->id, "entry_level" => $request['level']);
 
         $student = $this->createstudent($data2);
 

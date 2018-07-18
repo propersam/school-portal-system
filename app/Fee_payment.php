@@ -8,7 +8,7 @@ class Fee_payment extends Model
 {
     //   
     protected $fillable = [
-        'type','user_id','session_id', 'term_id', 'amount', 'student_id'
+        'type', 'user_id', 'session_id', 'term_id', 'amount', 'student_id'
     ];
 
     // protected $table = 'fee_type';
@@ -17,7 +17,7 @@ class Fee_payment extends Model
     {
         return $this->hasOne('App\Classes');
     }
-    
+
     public function student()
     {
         return $this->hasOne('App\Student');

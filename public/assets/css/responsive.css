@@ -100,7 +100,7 @@
         width: 45%;
     }
     .slider-items {
-        height: 450px;
+        height: auto;
     }
     .featured-wrap {
         width: 50%;
@@ -239,7 +239,7 @@
     	width: 290px;
     }
     .slider-items {
-    	height: 350px;
+        height: auto;
     }
     .slider-content h2 {
     	font-size: 24px;

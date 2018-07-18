@@ -20,12 +20,13 @@
 
 							<div class="tabbable-custom tabs-below nav-justified">
 								<div class="tab-content">
-									<div class="tab-pane active" id="tab_17_1">	
+                                    <div class="tab-pane active" id="tab_17_1">
 
-									<a href="{{ route('resultpdfview',['download'=>'pdf', 'term' => 1, 's' => $student->id ]) }}"><i class="fa fa-file-pdf-o"></i> Download Result</a>
+                                        <a href="{{ route('resultpdfview',['download'=>'pdf', 'term' => 1, 's' => $student->id ]) }}"><i
+                                                    class="fa fa-file-pdf-o"></i> Download Result</a>
 
 
-										<div class="table-scrollable">
+                                        <div class="table-scrollable">
 											<table class="table table-hover">
 												<thead>
 												<tr>
@@ -68,7 +69,8 @@
 
 									</div>
 									<div class="tab-pane" id="tab_17_2">
-									<a href="{{ route('resultpdfview',['download'=>'pdf', 'term' => 2, 's' => $student->id ]) }}"><i class="fa fa-file-pdf-o"></i> Download Result</a>
+                                        <a href="{{ route('resultpdfview',['download'=>'pdf', 'term' => 2, 's' => $student->id ]) }}"><i
+                                                    class="fa fa-file-pdf-o"></i> Download Result</a>
 
 										<div class="table-scrollable">
 											<table class="table table-hover">
@@ -113,7 +115,8 @@
 
 									</div>
 									<div class="tab-pane" id="tab_17_3">
-										<a href="{{ route('resultpdfview',['download'=>'pdf', 'term' => 3, 's' => $student->id ]) }}"><i class="fa fa-file-pdf-o"></i> Download Result</a>
+                                        <a href="{{ route('resultpdfview',['download'=>'pdf', 'term' => 3, 's' => $student->id ]) }}"><i
+                                                    class="fa fa-file-pdf-o"></i> Download Result</a>
 
 										<div class="table-scrollable">
 											<table class="table table-hover">

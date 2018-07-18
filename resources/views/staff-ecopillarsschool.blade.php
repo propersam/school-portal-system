@@ -49,7 +49,7 @@
                                         <hr style="border-top: solid #fff 2px">
                                         <span style="color: #fff">{{ $teacher->description }}</span><br>
                                         @if ($teacher->qualifications)
-                                        <span style="color: #fff">( {{ $teacher->qualifications }} )</span>
+                                            <span style="color: #fff">( {{ $teacher->qualifications }} )</span>
                                         @endif
                                     </div>
                                 </div>

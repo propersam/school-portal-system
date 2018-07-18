@@ -208,21 +208,21 @@
 <script src="/js/angular.js"></script> 
 <script src="/js/angular-route.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js"></script>
-<script src="/js/FileSaver.min.js"></script> 
-<script src="/js/json-export-excel.js"></script> 
-<script src="/js/dataTables/jquery.dataTables.js"></script> 
-<script src="/js/dataTables/dataTables.bootstrap.js"></script> 
+<script src="/js/FileSaver.min.js"></script>
+<script src="/js/json-export-excel.js"></script>
+<script src="/js/dataTables/jquery.dataTables.js"></script>
+<script src="/js/dataTables/dataTables.bootstrap.js"></script>
 
 <script src="/js/ui-bootstrap-tpls-2.5.0.min.js"></script> 
 <script src="js/bootstrap-datepicker.min.js"></script>
-<script src="/js/controllers.js"></script> 
-    <script>
-            $(document).ready(function () {
-                $('#dataTables').dataTable({
-        "deferRender": true
-    } );
-            });
-    </script>
+<script src="/js/controllers.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTables').dataTable({
+            "deferRender": true
+        });
+    });
+</script>
 
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>

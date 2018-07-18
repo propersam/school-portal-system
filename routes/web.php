@@ -94,7 +94,7 @@ Route::post('/dashboard/add-fee/', 'BursarController@add_fee');
 Route::post('/dashboard/update-fee/{id}', 'BursarController@update_fee');
 Route::get('/dashboard/delete-fee/{id}', 'BursarController@delete_fee');
 
-Route::post('dashboard/update-student-photo',['as'=>'image.student_passport_upload.post','uses'=>'PupilController@imageUploadPost']);
+Route::post('dashboard/update-student-photo', ['as' => 'image.student_passport_upload.post', 'uses' => 'PupilController@imageUploadPost']);
 
 // Route::post('dashboard/profile',['as'=>'profile.update_profile.post','uses'=>'TeacherController@updateProfile']);
 Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware('active_session');
@@ -136,8 +136,8 @@ Route::get('/api/get-class-students', 'ApiController@get_class_students');
 Route::post('/api/submit-subject-results', 'ApiController@submit_results');
 Route::post('/api/submit-subject-assessment-results', 'ApiController@submit_assessment');
 Route::post('/api/payment-response', 'ApiController@payment_response');
-Route::get('pdfview',array('as'=>'pdfview','uses'=>'ParentController@pdfview'));
-Route::get('resultpdfview',array('as'=>'resultpdfview','uses'=>'ParentController@resultpdfview'));
+Route::get('pdfview', array('as' => 'pdfview', 'uses' => 'ParentController@pdfview'));
+Route::get('resultpdfview', array('as' => 'resultpdfview', 'uses' => 'ParentController@resultpdfview'));
 
 
 Route::resources([

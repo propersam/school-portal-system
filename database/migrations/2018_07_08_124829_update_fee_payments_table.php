@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 class UpdateFeePaymentsTable extends Migration
 {
@@ -13,7 +12,7 @@ class UpdateFeePaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('fee_payments', function($table) {
+        Schema::table('fee_payments', function ($table) {
             $table->string('student_id')->nullable();
             $table->string('amount')->nullable();
         });
@@ -26,7 +25,7 @@ class UpdateFeePaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('fee_payments', function($table) {
+        Schema::table('fee_payments', function ($table) {
             $table->dropColumn('student_id');
             $table->dropColumn('amount');
         });

@@ -6,21 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-   
+
     protected $fillable = [
-        'name','value',
+        'name', 'value',
     ];
 
 
-
-     public function getAll()
+    public function getAll()
     {
-    	$sessions = App\Session::all();
+        $sessions = App\Session::all();
 
         return $sessions;
     }
 
-    
+
     public function classes()
     {
         return $this->hasOne('App\Classes');

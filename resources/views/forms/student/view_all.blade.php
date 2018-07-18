@@ -11,7 +11,7 @@
 								<div class="portlet box blue">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-mortar-board"></i>All Students
+                                            <i class="fa fa-mortar-board"></i>All Students
 										</div>
 									</div>
 									<div class="portlet-body">
@@ -33,11 +33,11 @@
 										<div class="">
 											<div class="">
 												<p>
-												<table class="table table-condensed table-hover" id="dataTables">
+                                                    <table class="table table-condensed table-hover" id="dataTables">
 													<thead>
 													<tr>
-														<th>
-														</th>
+                                                        <th>
+                                                        </th>
 														<th>
 															 Name
 														</th>
@@ -57,18 +57,23 @@
 														<tr>
 															<td>
 
-																<a data-toggle="modal" href="#edit{{ $i->id }}">
-							                                        @if($i->passport_photo)
-							                                        <img class="img-circle" style="height: 40px; width: 40px" src="/uploads/passport_photos/{{ $i->passport_photo }}" alt="" />
-							                                        @else
-							                                        	<img class="img-circle" style="height: 40px; width: 40px" src="/assets/images/student_icon.png"> <br>
+                                                                <a data-toggle="modal" href="#edit{{ $i->id }}">
+                                                                    @if($i->passport_photo)
+                                                                        <img class="img-circle"
+                                                                             style="height: 40px; width: 40px"
+                                                                             src="/uploads/passport_photos/{{ $i->passport_photo }}"
+                                                                             alt=""/>
+                                                                    @else
+                                                                        <img class="img-circle"
+                                                                             style="height: 40px; width: 40px"
+                                                                             src="/assets/images/student_icon.png"> <br>
 
-							                                        	<i>not uploaded</i>
-							                                        @endif
-							                                    </a>
-															</td>
-															<td>
-													          <p>{{ $i->firstname }} {{ $i->lastname }}</p>
+                                                                        <i>not uploaded</i>
+                                                                    @endif
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                <p>{{ $i->firstname }} {{ $i->lastname }}</p>
 															</td>
 															<td>
 													          <p>{{ $i->classlevel['levelname'] }}</p>
@@ -77,12 +82,15 @@
 													          <p>{{ $i->created_at }}</p>
 															</td>
 															<td>
-																<a class="btn default" data-toggle="modal" href="#view{{ $i->id }}">
-																View </a>
-																<a class="btn btn-sm default" data-toggle="modal" href="#edit{{ $i->id }}">
-																	Upload Photo</a>
-																</td>
-														<div class="modal fade" id="view{{ $i->id }}" tabindex="-1" role="basic" aria-hidden="true">
+                                                                <a class="btn default" data-toggle="modal"
+                                                                   href="#view{{ $i->id }}">
+                                                                    View </a>
+                                                                <a class="btn btn-sm default" data-toggle="modal"
+                                                                   href="#edit{{ $i->id }}">
+                                                                    Upload Photo</a>
+                                                            </td>
+                                                <div class="modal fade" id="view{{ $i->id }}" tabindex="-1" role="basic"
+                                                     aria-hidden="true">
 															<div class="modal-dialog">
 																<div class="modal-content">
 																	<div class="modal-header">
@@ -267,51 +275,63 @@
 															</div>
 														</div>
 
-																<div class="modal fade class_modal" id="edit{{ $i->id }}" tabindex="-1" role="basic" aria-hidden="true">
-																	<div class="modal-dialog">
-																        {!! Form::open(array('route' => 'image.student_passport_upload.post','files'=>true)) !!}
-																				<div class="modal-content">
-																					<div class="modal-header">
-																						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-																						<h4 class="modal-title">Passport Photo</h4>
-																					</div>
-																					<div class="modal-body">
-																							<div class="form-body">
-																								<div class="row">
-															                                        <center>
+                                                <div class="modal fade class_modal" id="edit{{ $i->id }}" tabindex="-1"
+                                                     role="basic" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        {!! Form::open(array('route' => 'image.student_passport_upload.post','files'=>true)) !!}
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true"></button>
+                                                                <h4 class="modal-title">Passport Photo</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="form-body">
+                                                                    <div class="row">
+                                                                        <center>
 
-																                                        @if($i->passport_photo)
-																                                        <img class="img-circle" style="height: 200px; width: 200px" src="/uploads/passport_photos/{{ $i->passport_photo }}" alt="" />
-																                                        @else
-																                                        	<img class="img-circle" style="height: 200px; width: 200px" src="/assets/images/student_icon.png">
-																                                        	<br>
-																                                        	<i>non uploaded yet</i>
-																                                        @endif
+                                                                            @if($i->passport_photo)
+                                                                                <img class="img-circle"
+                                                                                     style="height: 200px; width: 200px"
+                                                                                     src="/uploads/passport_photos/{{ $i->passport_photo }}"
+                                                                                     alt=""/>
+                                                                            @else
+                                                                                <img class="img-circle"
+                                                                                     style="height: 200px; width: 200px"
+                                                                                     src="/assets/images/student_icon.png">
+                                                                                <br>
+                                                                                <i>non uploaded yet</i>
+                                                                            @endif
 
-																							                <div class="row">
-																							                	<br>
-																							                	<br>
-																								                <div class="col-md-6 col-md-offset-3">
-																								                    {!! Form::file('image', array('class' => 'btn btn-circle blue-hoki btn-sm')) !!}
-																								                    <i>max size: 1mb</i>
-																								                </div>
+                                                                            <div class="row">
+                                                                                <br>
+                                                                                <br>
+                                                                                <div class="col-md-6 col-md-offset-3">
+                                                                                    {!! Form::file('image', array('class' => 'btn btn-circle blue-hoki btn-sm')) !!}
+                                                                                    <i>max size: 1mb</i>
+                                                                                </div>
 
-																								            </div>
+                                                                            </div>
 
 
-																                                    </center>
-																								</div>
-																							<input type="hidden" name="student_id" value="{{ $i->id }}">
-																							</div>
-																					</div>
-																					<div class="modal-footer">
-																						<button type="button" class="btn default" data-dismiss="modal">Close</button>
-																						<button type="submit" class="btn blue"><i class="fa fa-cloud-upload"></i> Upload</button>
-																					</div>
-																				</div>
-																        {!! Form::close() !!}
-																	</div>
-																</div>
+                                                                        </center>
+                                                                    </div>
+                                                                    <input type="hidden" name="student_id"
+                                                                           value="{{ $i->id }}">
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn default"
+                                                                        data-dismiss="modal">Close
+                                                                </button>
+                                                                <button type="submit" class="btn blue"><i
+                                                                            class="fa fa-cloud-upload"></i> Upload
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        {!! Form::close() !!}
+                                                    </div>
+                                                </div>
 
 															</td>
 														</tr>

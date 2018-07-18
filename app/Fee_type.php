@@ -8,7 +8,7 @@ class Fee_type extends Model
 {
     //   
     protected $fillable = [
-        'name','description',
+        'name', 'description',
     ];
 
     protected $table = 'fee_type';
@@ -17,7 +17,7 @@ class Fee_type extends Model
     {
         return $this->hasOne('App\Classes');
     }
-    
+
     public function student()
     {
         return $this->hasOne('App\Student');

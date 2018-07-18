@@ -51,7 +51,6 @@ class PupilController extends Controller
     }
 
 
-
     public function imageUploadPost()
 
     {
@@ -59,20 +58,20 @@ class PupilController extends Controller
         request()->validate([
 
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1000',
-    // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:width=500,height=500',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:width=500,height=500',
 
         ]);
 
-            $imageName = time().'.'.request()->image->getClientOriginalExtension();
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
 
-            request()->image->move(public_path('uploads/passport_photos'), $imageName);
+        request()->image->move(public_path('uploads/passport_photos'), $imageName);
 
-            // $user_id = Auth::User()->id;                       
-            $obj_user = Student::find($_POST['student_id']);
-            $obj_user->passport_photo = $imageName;
-            $obj_user->save(); 
+        // $user_id = Auth::User()->id;
+        $obj_user = Student::find($_POST['student_id']);
+        $obj_user->passport_photo = $imageName;
+        $obj_user->save();
 
-            return back()->with('success', "Successfully Updated.");
+        return back()->with('success', "Successfully Updated.");
 
     }
 
@@ -177,8 +176,8 @@ class PupilController extends Controller
             "email"         => $request['email'],
             "level"         => $request['level'],
             "class_id"      => $request['class_id'],
-            "entry_session"=>$active_session->id, 
-            "entry_level"=>$request['level']
+            "entry_session" => $active_session->id,
+            "entry_level"   => $request['level']
         ];
         $student = $this->createstudent($data2);
 

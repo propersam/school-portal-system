@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Assistant;
 use App\Bursar;
+use App\Classes;
 use App\Events\NewAssistantRegistered;
 use App\Events\NewBursarRegistered;
 use App\Events\NewHeadTeacherRegistered;
 use App\Events\NewTeacherRegistered;
 use App\HeadTeacher;
+use App\Session;
 use App\Teacher;
 use App\User;
 use App\VerifyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Classes;
-use App\Level;
-use App\Session;
 
 class StaffController extends Controller
 {
@@ -37,9 +36,9 @@ class StaffController extends Controller
         $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name', 'id');
 
         $teachers = Teacher::get();
-        return view('staff.list', ['classes' => $classes,'teachers' => $teachers]);
+        return view('staff.list', ['classes' => $classes, 'teachers' => $teachers]);
     }
-    
+
     public function all_assistants()
     {
         $assistants = Assistant::get();
@@ -87,13 +86,13 @@ class StaffController extends Controller
 
         $user = User::find($id);
 
-       
+
         switch ($user->role) {
             case "Bursar":
                 $bursar = Bursar::where('user_id', '=', $id)->first();
                 $bursar->delete();
 
-                   break;
+                break;
             case "HeadTeacher":
                 $headteacher = HeadTeacher::where('user_id', '=', $id)->first();
                 $headteacher->delete();
@@ -142,7 +141,6 @@ class StaffController extends Controller
     }
 
 
-
     public function delete_bursar($id)
     {
         $bursar = Bursar::where('user_id', '=', $id)->first();
@@ -154,8 +152,6 @@ class StaffController extends Controller
 
         return redirect("/dashboard/bursars")->with('success', "Successfully Deleted.");
     }
-
-
 
 
     public function delete_assistant($id)
@@ -325,7 +321,7 @@ class StaffController extends Controller
     {
         $request = $request->all();
 
-       
+
         switch ($request['staff_role']) {
             case "Bursar":
                 $bursar = Bursar::where('id', '=', $id)->first();
@@ -343,7 +339,7 @@ class StaffController extends Controller
                 $user->role = $request['role'];
                 $user->save();
 
-                   break;
+                break;
             case "HeadTeacher":
                 $headteacher = HeadTeacher::where('id', '=', $id)->first();
                 $user_id = $headteacher->user_id;
@@ -396,7 +392,7 @@ class StaffController extends Controller
         }
         // var_dump($request);
         return redirect("/dashboard/all-staffs")->with('success', "Successfully Updated.");
-    }    
+    }
 
     public function update_teacher(Request $request, $id)
     {
@@ -418,12 +414,11 @@ class StaffController extends Controller
         // $user->role = $request['role'];
         $user->save();
 
-        if($request['class_id']){
+        if ($request['class_id']) {
             $class_details = Classes::where('id', '=', $request['class_id'])->first();
             $class_details->teacher_id = $id;
             $class_details->save();
         }
-
 
 
         return redirect("/dashboard/teachers")->with('success', "Successfully Updated.");

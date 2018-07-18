@@ -77,42 +77,48 @@
 	                                        </div>
 	    									<div class="col-xs-12 col-sm-4">
 	                                            <label>Date of Birth *</label>
-                                                <div  data-date-format="yyyy-mm-dd" class="input-group date" data-provide="datepicker" style="">
+                                                <div data-date-format="yyyy-mm-dd" class="input-group date"
+                                                     data-provide="datepicker" style="">
                                                     <input type="text" name="dob" class="form-control">
                                                     <div class="input-group-addon">
                                                         <span class="glyphicon glyphicon-th"></span>
                                                     </div>
                                                 </div>
-	    									</div>
-	                                        <div class="col-sm-5 col-xs-12">
-	                                            <label>Home Telephone Number *</label>
-	                                            <input class="form-control" type="text" placeholder="Home Telephone Number" id="home_number" name="home_number">
+                                            </div>
+                                            <div class="col-sm-5 col-xs-12">
+                                                <label>Home Telephone Number *</label>
+                                                <input class="form-control" type="text"
+                                                       placeholder="Home Telephone Number" id="home_number"
+                                                       name="home_number">
 	                                        </div>
-										</div>
+                                        </div>
                                         <div class="col-sm-12 col-xs-12">
                                             <div class="col-sm-4">
                                                 <label>Nationality *</label>
-                                                <input  class="form-control" type="text" placeholder="Nationality" id="origin" name="origin">
+                                                <input class="form-control" type="text" placeholder="Nationality"
+                                                       id="origin" name="origin">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label>State of Origin *</label>
-                                                <input  class="form-control" type="text" placeholder="State of Origin" id="state" name="state">
+                                                <input class="form-control" type="text" placeholder="State of Origin"
+                                                       id="state" name="state">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label>Local Government Area *</label>
-                                                <input  class="form-control" type="text" placeholder="Local Government Area" id="lga" name="lga">
+                                                <input class="form-control" type="text"
+                                                       placeholder="Local Government Area" id="lga" name="lga">
                                             </div>
                                         </div>
                                         <div class="row">
 	                                    </div>
                                         <div class="row">
-	                                        <div class="col-sm-8 col-xs-12">
+                                            <div class="col-sm-8 col-xs-12">
 	                                            <label>Residential Address *</label>
 	                                            <textarea class="form-control" class="contact-textarea" placeholder="Residential Address" id="residential_address" name="residential_address"></textarea>
 	                                        </div>
 	                                    </div>
 
-                                        
+
                                         <div class="row">
 	                                        <div class="col-sm-6 col-xs-12">
 	                                            <label>Home Telephone Number *</label>
