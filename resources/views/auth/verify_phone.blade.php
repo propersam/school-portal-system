@@ -9,7 +9,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>Eco-Pillars School Portal | Login Form 3</title>
+    <title>Eco-Pillars School Portal</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -24,7 +24,7 @@
     <link href="/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL STYLES -->
-    <link href="/assets/plugins/select2/select2.css" rel="stylesheet" type="text/css"/>
+
     <link href="/assets/admin/pages/css/login3.css" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL SCRIPTS -->
     <!-- BEGIN THEME STYLES -->
@@ -53,95 +53,50 @@
 <!-- BEGIN LOGIN -->
 <div class="content">
     <!-- BEGIN LOGIN FORM -->
-    <form class="login-form" action="{{ route('login') }}" method="POST">
+    <form class="login-form" method="POST" action="{{route('verify_by_phone')}}">
+
+        {{ csrf_field() }}
+
+        <h3 class="form-title">Activate Your Account</h3>
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
             </div>
         @endif
-        @if (session('warning'))
-            <div class="alert alert-warning">
-                {{ session('warning') }}
-            </div>
-        @endif
-        @if (session('danger'))
-            <div class="alert alert-danger">
-                {{ session('danger') }}
-            </div>
-        @endif
-        @if ($message = Session::get('success'))
-
-            <div class="alert alert-success alert-block">
-
-                <button type="button" class="close" data-dismiss="alert">×</button>
-
-                <strong>{{ $message }}</strong>
-
-            </div>
-
-        @endif
-
-        {{ csrf_field() }}
-
-        <h3 class="form-title">Login to School Portal</h3>
-        <div class="alert alert-danger display-hide">
-            <button class="close" data-close="alert"></button>
-            <span>
-            Enter Your Username and password. </span>
-        </div>
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-
-            <label class="control-label visible-ie8 visible-ie9">Email, Phone or Username</label>
+        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+            <label class="control-label visible-ie8 visible-ie9" for="phone">Phone Number</label>
             <div class="input-icon">
                 <i class="fa fa-user"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off"
-                       placeholder="Email, Phone or Username" name="username" value="{{ old('username') }}" required
-                       autofocus>
+                <input id="phone" class="form-control placeholder-no-fix" autocomplete="off" type="text"
+                       placeholder="Phone Number" name="phone" value="{{ old('phone') }}" required>
             </div>
-            @if ($errors->has('username'))
+            @if ($errors->has('phone'))
                 <span class="help-block">
-                    <strong>{{ $errors->first('username') }}</strong>
+                    <strong>{{ $errors->first('phone') }}</strong>
                 </span>
             @endif
         </div>
-        <div class="form-group">
-            <label class="control-label visible-ie8 visible-ie9">Password</label>
+
+        <div class="form-group{{ $errors->has('token') ? ' has-error' : '' }}">
+            <label class="control-label visible-ie8 visible-ie9" for="token">Verification Token</label>
             <div class="input-icon">
-                <i class="fa fa-lock"></i>
-                <input id="password" class="form-control placeholder-no-fix" type="password" autocomplete="off"
-                       placeholder="Password" name="password" required>
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
+                <i class="fa fa-key"></i>
+                <input id="token" class="form-control placeholder-no-fix" type="text" autocomplete="off"
+                       placeholder="Verification Token" name="token" value="{{ old('token') }}" required>
             </div>
+            @if ($errors->has('token'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('token') }}</strong>
+                </span>
+            @endif
         </div>
+
         <div class="form-actions">
-            <label class="checkbox">
-                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember me
-            </label>
             <button type="submit" class="btn green-haze pull-right">
-                Login <i class="m-icon-swapright m-icon-white"></i>
+                Activate Account <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
 
-        <div class="forget-password">
-            <h4>Is this your first time?</h4>
-            <p>
-                Click <a href="{{ route('verify_by_phone') }}">here </a>
-                verify your phone number and activate your account.
-            </p>
-        </div>
-
-        <div class="forget-password">
-            <h4>Forgot your password ?</h4>
-            <p>
-                no worries, click <a href="{{ route('password.request') }}">
-                    here </a>
-                to reset your password.
-            </p>
-        </div>
 
     </form>
 </div>
@@ -166,7 +121,7 @@
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script src="/assets/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="/assets/plugins/select2/select2.min.js"></script>
+
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="/assets/scripts/metronic.js" type="text/javascript"></script>
