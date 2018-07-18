@@ -28,7 +28,7 @@ class ResultsController extends Controller
         $subjects = SubjectRegistration::where('level', '=', $class->level)->get();
 
 
-        return view('forms.result.view_subjects', ['subjects' => $subjects, 'class' => $class]);
+        return view('forms.result.view_results', ['subjects' => $subjects, 'class' => $class]);
     }
 
 

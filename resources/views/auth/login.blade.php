@@ -81,8 +81,6 @@
 
         @endif
 
-
-
         {{ csrf_field() }}
         <h3 class="form-title">Login to SureEdu</h3>
         <div class="alert alert-danger display-hide">
@@ -91,7 +89,7 @@
             Enter Your Username and password. </span>
         </div>
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-
+           
             <label class="control-label visible-ie8 visible-ie9">Email, Phone or Username</label>
             <div class="input-icon">
                 <i class="fa fa-user"></i>
@@ -127,12 +125,19 @@
             </button>
         </div>
 
+
+        <div class="forget-password">
+            <h4>Are you a parent visiting for the first time?</h4>
+            <p>
+                Click <a href="{{ route('verify_by_phone') }}">here </a>
+                verify your phone number and activate your account.
+            </p>
+        </div>
+
         <div class="forget-password">
             <h4>Forgot your password ?</h4>
             <p>
-                no worries, click <a href="{{ route('password.request') }}">
-                    here </a>
-                to reset your password.
+                no worries, click <a href="{{ route('password.request') }}">here </a>to reset your password.
             </p>
         </div>
 

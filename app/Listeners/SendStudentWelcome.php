@@ -41,17 +41,17 @@ class SendStudentWelcome implements ShouldQueue
          * @var Student $student
          */
         $student = $event->student;
-        if (is_numeric($user->phone)) {
+        if (is_object($user) and is_numeric($user->phone)) {
             //send sms
             $code = $user->verifyUser->phone_token;
             $message = 'Your child '.str_limit($student->firstname, 30).
-                ' has been registered on SureEdu School Portal. '.
+                ' has just applied on Eco-Pillars School Portal. '.
                 $code.' is your account verification code.';
 
             SmsSender::sendSMS($user->phone, $message);
         }
 
-        if (!is_null($user->email)) {
+        if ($user->email) {
             //send mail
             Mail::to($user->email)->send(new Studentcreated($event->student));
         }

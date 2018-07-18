@@ -39,12 +39,6 @@
 							</div>
 
 					        {!! Form::open(array('route' => 'image.dp_upload.post','files'=>true)) !!}
-
-<!-- 									<div class="profile-userbuttons">
-										<button type="button" class="btn btn-circle green-haze btn-sm">Follow</button>
-										<button type="button" class="btn btn-circle btn-danger btn-sm">Message</button>
-									</div> -->
-
 					                <div class="row">
 					                	<br>
 					                	<br>

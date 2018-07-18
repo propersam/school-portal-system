@@ -10,26 +10,6 @@
 |
 */
 
-// Route::get('/burs', function()
-// {
-
-// 	$bursar = App\Bursar::find(1); 
-// 	var_dump($bursar->getEmail());
-
-// });
-
-// Route::get('/test', function()
-// {
-// 	$beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
-//     $beautymail->send('emails.teachers.new', [], function($message)
-//     {
-//         $message
-// 			->from('support@ecopillarsschool.org')
-// 			->to('e.felix@fexioictcenter.com', 'John Smith')
-// 			->subject('Welcome!');
-//     });
-
-// });
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,6 +31,17 @@ Route::get('/logout', 'HomeController@logout');
 Route::post('/register', 'RegisterController@store');
 Route::get('/dashboard/register-student', 'PupilController@index')->middleware('active_session');
 Route::post('/dashboard/register-student', 'PupilController@store');
+Route::get('/dashboard/all-staffs', 'StaffController@all_staffs');
+Route::get('/dashboard/delete-staff/{id}', 'StaffController@delete_staff');
+Route::get('/dashboard/delete-teacher/{id}', 'StaffController@delete_teacher');
+Route::get('/dashboard/delete-headteacher/{id}', 'StaffController@delete_headteacher');
+Route::get('/dashboard/delete-bursar/{id}', 'StaffController@delete_bursar');
+Route::get('/dashboard/delete-assistant/{id}', 'StaffController@delete_assistant');
+Route::post('/dashboard/update-staff/{id}', 'StaffController@update_staff');
+Route::post('/dashboard/update-teacher/{id}', 'StaffController@update_teacher');
+Route::post('/dashboard/update-headteacher/{id}', 'StaffController@update_headteacher');
+Route::post('/dashboard/update-bursar/{id}', 'StaffController@update_bursar');
+Route::post('/dashboard/update-assistant/{id}', 'StaffController@update_assistant');
 Route::get('/dashboard/sessions', 'SessionsController@index');
 Route::get('/dashboard/create-session', 'SessionsController@create');
 Route::post('/dashboard/create-session', 'SessionsController@store');
@@ -60,6 +51,7 @@ Route::get('/dashboard/create-class', 'ClassController@create')->middleware('act
 Route::post('/dashboard/create-class', 'ClassController@store');
 Route::get('/dashboard/applications', 'PupilController@applications')->middleware('active_session');
 Route::get('/dashboard/all-pupils', 'PupilController@all_pupils')->middleware('active_session');
+Route::get('/dashboard/assistants', 'StaffController@all_assistants');
 
 Route::post('/dashboard/accept-student/{id}', 'PupilController@accept');
 Route::post('/dashboard/reject-student-application/{id}', 'PupilController@reject_application');
@@ -86,6 +78,23 @@ Route::get('/dashboard/all-results/{id}', 'ResultsController@index')->middleware
 Route::get('/dashboard/view-subject-results/', 'ResultsController@view_subject_results')->middleware('active_session');
 Route::post('dashboard/profile', ['as' => 'image.dp_upload.post', 'uses' => 'TeacherController@imageUploadPost']);
 Route::post('/dashboard/update-profile/', 'TeacherController@updateProfile');
+Route::get('/dashboard/create-fee/', 'BursarController@create');
+Route::get('/dashboard/fee-types/', 'BursarController@fee_types');
+Route::post('/dashboard/add-fee-type', 'BursarController@store_type');
+Route::post('/dashboard/update-fee-type/{id}', 'BursarController@update_fee_type');
+Route::get('/dashboard/delete-fee-type/{id}', 'BursarController@delete_fee_type');
+Route::get('/dashboard/term-owing-fees/', 'BursarController@term_owing_fees');
+Route::get('/dashboard/term-paid-fees/', 'BursarController@term_paid_fees');
+Route::get('/dashboard/payment-settings/', 'BursarController@payment_settings');
+Route::post('/dashboard/payment-settings/', 'BursarController@updateSetting');
+Route::post('/dashboard/confirm-fees-as-paid/', 'BursarController@confirm_fees_as_paid');
+
+Route::get('/dashboard/all-fees/', 'BursarController@show_all_fees');
+Route::post('/dashboard/add-fee/', 'BursarController@add_fee');
+Route::post('/dashboard/update-fee/{id}', 'BursarController@update_fee');
+Route::get('/dashboard/delete-fee/{id}', 'BursarController@delete_fee');
+
+Route::post('dashboard/update-student-photo',['as'=>'image.student_passport_upload.post','uses'=>'PupilController@imageUploadPost']);
 
 // Route::post('dashboard/profile',['as'=>'profile.update_profile.post','uses'=>'TeacherController@updateProfile']);
 Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware('active_session');
@@ -105,6 +114,7 @@ Route::get('/dashboard/parent-new-child', 'ParentController@register');
 Route::post('/dashboard/parent-new-child', 'ParentController@store');
 Route::get('/dashboard/parent-view-records/', 'ParentController@load_record');
 Route::get('/dashboard/child-record/{id}', 'ParentController@view_child_record');
+Route::get('/school-fees/{id}', 'ParentController@student_fees');
 
 // Authentication Routes...
 $this->get('eportal', 'Auth\LoginController@showLoginForm')->name('login');
@@ -125,45 +135,45 @@ Route::get('/api/get-subject-results', 'ApiController@view_subject_results');
 Route::get('/api/get-class-students', 'ApiController@get_class_students');
 Route::post('/api/submit-subject-results', 'ApiController@submit_results');
 Route::post('/api/submit-subject-assessment-results', 'ApiController@submit_assessment');
+Route::post('/api/payment-response', 'ApiController@payment_response');
+Route::get('pdfview',array('as'=>'pdfview','uses'=>'ParentController@pdfview'));
+Route::get('resultpdfview',array('as'=>'resultpdfview','uses'=>'ParentController@resultpdfview'));
 
 
 Route::resources([
     'teacher' => 'TeacherController',
-
 ]);
 
 Route::resources([
-    'headteacher' => 'HeadTeacherController',
-
+    '/dashboard/headteachers' => 'HeadTeacherController',
+   
 ]);
 
 Route::resources([
     'pupil' => 'PupilController',
-
-]);
-Route::resources([
-    'bursar' => 'BursarController',
-
 ]);
 
 Route::resources([
-    'staff' => 'StaffController',
-
+    '/dashboard/bursars' => 'BursarController',
+   
 ]);
+
+Route::resources([
+    'dashboard/teachers' => 'StaffController',
+]);
+
 
 Route::resources([
     'section' => 'SectionController',
-
 ]);
 
 Route::resources([
     'level' => 'LevelController',
-
 ]);
 
 Route::resources([
     'class' => 'ClassController',
-
 ]);
 
 Route::get('/user/verify/{token}', 'StaffController@verifyUser');
+Route::match(['get', 'post'], '/user/verify-phone', ['as' => 'verify_by_phone', 'uses' => 'PupilController@verifyUserByPhone']);

@@ -22,4 +22,8 @@ class Level extends Model
         return $this->hasOne('App\Student');
     }
 
+    public function fee()
+    {
+        return $this->hasOne('App\Fee');
+    }
 }

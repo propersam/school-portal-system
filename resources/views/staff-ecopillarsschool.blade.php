@@ -40,13 +40,17 @@
                                         <p>Class: {{ $teacher->classes->name }}</p>
                                         @endif
 
-                                        <ul style="opacity: 0">
+                                        <ul style="opacity: 0; height: 1px">
                                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                                         </ul>
-                                        <span style="opacity: 0"><a href="teacher-details.html">View Profile</a></span>
+                                        <hr style="border-top: solid #fff 2px">
+                                        <span style="color: #fff">{{ $teacher->description }}</span><br>
+                                        @if ($teacher->qualifications)
+                                        <span style="color: #fff">( {{ $teacher->qualifications }} )</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

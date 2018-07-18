@@ -1,17 +1,8 @@
 <!DOCTYPE html>
-<!-- 
-Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
-Version: 4.1.0
-Author: KeenThemes
-Website: http://www.keenthemes.com/
-Contact: support@keenthemes.com
-Follow: www.twitter.com/keenthemes
-Like: www.facebook.com/keenthemes
-Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
 <!--<![endif]-->
@@ -33,16 +24,16 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END GLOBAL MANDATORY STYLES -->
 <!-- BEGIN PAGE LEVEL STYLES -->
 
-<link href="/assets/admin/pages/css/login3.css" rel="stylesheet" type="text/css"/>
-<!-- END PAGE LEVEL SCRIPTS -->
-<!-- BEGIN THEME STYLES -->
-<link href="/assets/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
-<link href="/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
-<link href="/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-<link href="/assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-<link href="/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
-<!-- END THEME STYLES -->
-<link rel="shortcut icon" href="favicon.ico"/>
+    <link href="/assets/admin/pages/css/login3.css" rel="stylesheet" type="text/css"/>
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="/assets/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/plugins.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -50,7 +41,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="/">
-    <img src="/assets/admin/layout4/img/logo-big.png" alt=""/>
+        <img src="/assets/admin/layout4/img/logo-big.png" alt=""/>
     </a>
 </div>
 <!-- END LOGO -->
@@ -67,57 +58,34 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="alert alert-danger display-hide">
             <button class="close" data-close="alert"></button>
         </div>
-         @if (session('status'))
+        @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
             </div>
         @endif
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                  
+
             <label class="control-label visible-ie8 visible-ie9">E-Mail Address</label>
             <div class="input-icon">
                 <i class="fa fa-user"></i>
-                <input  id="email" class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="E-Mail Address" name="email" value="{{ old('email') }}" required>
+                <input id="email" class="form-control placeholder-no-fix" type="email" autocomplete="off"
+                       placeholder="E-Mail Address" name="email" value="{{ old('email') }}" required>
             </div>
-             @if ($errors->has('email'))
+            @if ($errors->has('email'))
                 <span class="help-block">
                     <strong>{{ $errors->first('email') }}</strong>
                 </span>
             @endif
         </div>
-        
+
         <div class="form-actions">
             <button type="submit" class="btn green-haze pull-right">
-            Send Password Reset Link <i class="m-icon-swapright m-icon-white"></i>
+                Send Password Reset Link <i class="m-icon-swapright m-icon-white"></i>
             </button>
         </div>
-        
-        
-        
+
+
     </form>
-    <!-- END LOGIN FORM -->
-    <!-- BEGIN FORGOT PASSWORD FORM -->
-    <!-- <form class="forget-form" action="index.html" method="post">
-        <h3>Forget Password ?</h3>
-        <p>
-             Enter your e-mail address below to reset your password.
-        </p>
-        <div class="form-group">
-            <div class="input-icon">
-                <i class="fa fa-envelope"></i>
-                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email">
-            </div>
-        </div>
-        <div class="form-actions">
-            <button type="button" id="back-btn" class="btn">
-            <i class="m-icon-swapleft"></i> Back </button>
-            <button type="submit" class="btn green-haze pull-right">
-            Submit <i class="m-icon-swapright m-icon-white"></i>
-            </button>
-        </div>
-    </form> -->
-    <!-- END FORGOT PASSWORD FORM -->
-    
 </div>
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
@@ -129,7 +97,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
 <script src="../../assets/global/plugins/respond.min.js"></script>
-<script src="../../assets/global/plugins/excanvas.min.js"></script> 
+<script src="../../assets/global/plugins/excanvas.min.js"></script>
 <![endif]-->
 <script src="/assets/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
@@ -149,12 +117,12 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/assets/admin/pages/scripts/login.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
-jQuery(document).ready(function() {     
-  Metronic.init(); // init metronic core components
-  Layout.init(); // init current layout
-  Login.init();
-  Demo.init();
-});
+    jQuery(document).ready(function () {
+        Metronic.init(); // init metronic core components
+        Layout.init(); // init current layout
+        Login.init();
+        Demo.init();
+    });
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

@@ -7,6 +7,7 @@ use App\Events\NewStudentRegistered;
 use App\Level;
 use App\Parents;
 use App\Student;
+use App\Session;
 use App\User;
 use App\VerifyUser;
 use Hash;
@@ -83,7 +84,11 @@ class RegisterController extends Controller
             $obj_user->default_password_changed = 'yes';
             $obj_user->save(); 
             // Auth::logout();
-            return redirect("/change-photo")->with('success', "You have successfully set your password, now upload your passport photo.");
+            if($obj_user->role == 'Teacher'){
+                return redirect("/change-photo")->with('success', "You have successfully set your password, now upload your passport photo.");
+            }else{
+                return redirect("/dashboard");
+            }
 
 
             // return redirect()->to('/eportal');
@@ -115,6 +120,7 @@ class RegisterController extends Controller
         $pref_name = $request['pref_name'];
         $lastname = $request['lastname'];
         $email = $request['email'];
+        $active_session = Session::where('is_active', '=', 1)->first();
 
         $data = array("username"=>$username,"password"=>$password,"firstname"=>$firstname,"lastname"=>$lastname,"name"=>$name, "email"=>$email, "role" => 'parent' );
         
@@ -122,19 +128,10 @@ class RegisterController extends Controller
 
 
         // $data2 = array("user_id"=>$user->id,"first_name"=>$request['first_name'],"pref_name"=>$request['pref_name'],"lastname"=>$lastname,"phonenumber"=>$request['home_number'],"gender"=>$request['gender'],"residential_address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "siblings_attended"=>$request['siblings_attended'], "child_position"=>$request['child_position'], "siblings_attended_years"=>$request['siblings_attended_years'], "sibling1_name"=>$request['child1_name'], "sibling1_age"=>$request['child1_age'], "sibling1_school"=>$request['child1_school'], "sibling2_name"=>$request['child2_name'], "sibling2_age"=>$request['child2_age'], "sibling2_school"=>$request['child2_school'], "sibling3_name"=>$request['child3_name'], "sibling3_age"=>$request['child3_age'], "sibling3_school"=>$request['child3_school'], "email"=>$request['email'], "current_school"=>$request['current_school'], "position_in_family"=>$request['child_position'], "level"=>$request['level']);
-        $data2 = array("user_id"=>$user->id,"first_name"=>$request['first_name'],"preffered_name"=>$request['pref_name'],"lastname"=>$lastname,"phonenumber"=>$request['home_number'],"gender"=>$request['gender'],"address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "lga"=>$request['lga'],"state"=>$request['state'],"email"=>$request['email'], "level"=>$request['level']);
+        $data2 = array("user_id"=>$user->id,"firstname"=>$request['first_name'],"preffered_name"=>$request['pref_name'],"lastname"=>$lastname,"phonenumber"=>$request['home_number'],"gender"=>$request['gender'],"address"=>$request['residential_address'],"gender"=>$request['gender'],"dob"=>$request['dob'], "origin"=>$request['origin'], "lga"=>$request['lga'],"state"=>$request['state'],"email"=>$request['email'], "level"=>$request['level'], "entry_session"=>$active_session->id, "entry_level"=>$request['level']);
 
         $student = $this->createstudent($data2);
 
-
-        $student = Student::create([
-                        'firstname' => $request['first_name'],
-                        'lastname' => $request['lastname'],
-                        // 'user_id' => $user->id,
-                        'user_id' => 1,
-                        'phonenumber' => $request['home_number'],
-                        'gender' => $request['gender'],
-                       ]);
               
          event(new NewStudentRegistered($student));
 
@@ -157,7 +154,7 @@ class RegisterController extends Controller
         // $contact = $this->createcontact($data5);
         // $contact2 = $this->createcontact($data6);
 
-        return redirect("/eportal")->with('success', "You have successfully registered an account.");
+        // return redirect("/eportal")->with('success', "You have successfully registered an account.");
 
         
     }

@@ -72,7 +72,6 @@ class LoginController extends Controller
                 }
             }else{
                 return redirect('/change-default-password');
-
             }
         }else{
             return redirect("/eportal")->with('danger', "Username or password wrong");

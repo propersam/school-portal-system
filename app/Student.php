@@ -23,6 +23,8 @@ class Student extends Model
         'class_id',
         'level',
         'state',
+        'entry_session',
+        'entry_level',
         'lga'
     ];
 
