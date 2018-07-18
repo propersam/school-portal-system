@@ -8,33 +8,20 @@
 		padding-left: 30px;
 	}
 </style>
-
 <!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
 			<div class="row">
 				<div class="col-md-12">
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-				@if (session('success'))
-			        <div class="alert alert-success">
-			            {{ session('success') }}
-			        </div>
-			  	@endif
 					
+						
+						
 							
-					<div class="portlet box blue">
+							
+				<div class="portlet box blue">
 						<div class="portlet-title">
 							<div class="caption">
-								All Teachers 
+								All Staffs
 							</div>
 						</div>
 						<div class="portlet-body">
@@ -51,10 +38,8 @@
 									<th>
 										 Last Name
 									</th>
-									
-
 									<th>
-										 Class
+										 Designation
 									</th>
 									<th>
 										 Actions
@@ -62,10 +47,10 @@
 								</tr>
 								</thead>
 								<tbody>
-			                @foreach ($teachers as $i)
+			                @foreach ($staffs as $i)
 								<tr>
 									<td>
-										<img style="height: 80px" width="80px" src="/uploads/profile_photos/{{ $i->user->photo }}" alt="" />
+										<img style="height: 80px" width="80px" src="uploads/profile_photos/{{ $i->user->photo }}" alt="" />
 									</td>
 									<td>
 										 {{ $i->firstname }}
@@ -75,25 +60,25 @@
 									</td>
 									
 									<td>
-										 {{ $i->classes['name'] }}
+										  {{ $i->role }}
 									</td>
 									
 									<td>
-										<a class="btn blue" data-toggle="modal" href="#view{{ $i->id }}">
-											View</a>
+										<a class="btn blue" data-toggle="modal" href="#view{{ $loop->iteration }}">
+											View Staff</a>
 
-										<a class="btn yellow" data-toggle="modal" href="#edit{{ $i->id }}">
-											Edit</a>
+										<a class="btn yellow" data-toggle="modal" href="#edit{{ $loop->iteration }}">
+											Edit Staff</a>
 
-										<a class="btn red" data-toggle="modal" href="#delete{{ $i->id }}">
+										<a class="btn red" data-toggle="modal" href="#delete{{ $loop->iteration }}">
 											Delete </a>
 									</td>
-											<div class="modal fade class_modal" id="view{{ $i->id }}" tabindex="-1" role="basic" aria-hidden="true">
+											<div class="modal fade class_modal" id="view{{ $loop->iteration }}" tabindex="-1" role="basic" aria-hidden="true">
 												<div class="modal-dialog">
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-															<h4 class="modal-title">View Teacher</h4>
+															<h4 class="modal-title">View Staff</h4>
 														</div>
 														<div class="modal-body">
 															<div class="childd_section">
@@ -149,13 +134,13 @@
 												<!-- /.modal-dialog -->
 											</div>
 
-											<div class="modal fade class_modal" id="edit{{ $i->id }}" tabindex="-1" role="basic" aria-hidden="true">
+											<div class="modal fade class_modal" id="edit{{ $loop->iteration }}" tabindex="-1" role="basic" aria-hidden="true">
 												<div class="modal-dialog">
-													<form action="/dashboard/update-teacher/{{ $i->id }}" method="POST" class="horizontal-form">
+													<form action="/dashboard/update-staff/{{ $i->id }}" method="POST" class="horizontal-form">
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-															<h4 class="modal-title">Edit Teacher</h4>
+															<h4 class="modal-title">Edit Staff</h4>
 														</div>
 														<div class="modal-body">
 																<div class="form-body">
@@ -226,24 +211,21 @@
 																	</div>
 
 																	<!--/row-->
-																	<div class="row">
+																	<!-- <div class="row">
 																		<div class="col-md-6">
 																			<div class="form-group">
-																				<label class="control-label">Class {{ $i->classes['id'] }}</label>
-
-																			{{ Form::select('class_id', $classes, $i->classes['id'], ['class' => 'form-control'] 
-																			) }}
+																				<label class="control-label">Role {{ $i->user->role }}</label>
 																				
-																				<!-- {{ Form::select('role', [
+																				{{ Form::select('role', [
 																				   'Bursar' => 'Bursar',
 																				   'HeadTeacher' => 'HeadTeacher',
 																				   'Teacher' => 'Teacher',
 																				   'Assistant' => 'Assistant',
 																				   ], $i->user->role, ['class' => 'select2_category form-control'] 
-																				) }} -->
+																				) }}
 																			</div>
 																		</div>
-																	</div>
+																	</div> -->
 																
 																</div>
 														</div>
@@ -258,7 +240,9 @@
 												<!-- /.modal-dialog -->
 											</div>
 
-											<div class="modal fade" id="delete{{ $i->id }}" tabindex="-1" role="basic" aria-hidden="true">
+
+
+											<div class="modal fade" id="delete{{ $loop->iteration }}" tabindex="-1" role="basic" aria-hidden="true">
 												<div class="modal-dialog">
 													<div class="modal-content">
 														<div class="modal-header">
@@ -272,7 +256,7 @@
 														</div>														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn default" data-dismiss="modal">Close</button>
-															<a href="/dashboard/delete-teacher/{{ $i->user_id }}" class="btn red">Delete</a>
+															<a href="/dashboard/delete-staff/{{ $i->user_id }}" class="btn red">Delete</a>
 														</div>
 													</div>
 												</div>

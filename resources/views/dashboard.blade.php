@@ -22,27 +22,32 @@
 						</a>
 						<ul class="sub-menu">
 							<li>
-								<a href="/staff/create">
+								<a href="/dashboard/teachers/create">
 								<i class="icon-arrow-right"></i>
 								Create Staff</a>
 							</li>
 							<li>
-								<a href="/staff">
+								<a href="/dashboard/all-staffs">
+								<i class="icon-arrow-right"></i>
+								All Staffs</a>
+							</li>
+							<li>
+								<a href="/dashboard/assistants">
 								<i class="icon-arrow-right"></i>
 								Assistants</a>
 							</li>
 							<li>
-								<a href="/bursar">
+								<a href="/dashboard/bursars">
 								<i class="icon-arrow-right"></i>
 								Bursars</a>
 							</li>
 							<li>
-								<a href="/headteacher">
+								<a href="/dashboard/headteachers">
 								<i class="icon-arrow-right"></i>
 								Head Teacher</a>
 							</li>
 							<li>
-								<a href="/staff">
+								<a href="/dashboard/teachers">
 								<i class="icon-arrow-right"></i>
 								Teachers</a>
 							</li>

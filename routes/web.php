@@ -71,6 +71,17 @@ Route::get('/logout', 'HomeController@logout');
 Route::post('/register', 'RegisterController@store');
 Route::get('/dashboard/register-student', 'PupilController@index')->middleware('active_session');
 Route::post('/dashboard/register-student', 'PupilController@store');
+Route::get('/dashboard/all-staffs', 'StaffController@all_staffs');
+Route::get('/dashboard/delete-staff/{id}', 'StaffController@delete_staff');
+Route::get('/dashboard/delete-teacher/{id}', 'StaffController@delete_teacher');
+Route::get('/dashboard/delete-headteacher/{id}', 'StaffController@delete_headteacher');
+Route::get('/dashboard/delete-bursar/{id}', 'StaffController@delete_bursar');
+Route::get('/dashboard/delete-assistant/{id}', 'StaffController@delete_assistant');
+Route::post('/dashboard/update-staff/{id}', 'StaffController@update_staff');
+Route::post('/dashboard/update-teacher/{id}', 'StaffController@update_teacher');
+Route::post('/dashboard/update-headteacher/{id}', 'StaffController@update_headteacher');
+Route::post('/dashboard/update-bursar/{id}', 'StaffController@update_bursar');
+Route::post('/dashboard/update-assistant/{id}', 'StaffController@update_assistant');
 Route::get('/dashboard/sessions', 'SessionsController@index');
 Route::get('/dashboard/create-session', 'SessionsController@create');
 Route::post('/dashboard/create-session', 'SessionsController@store');
@@ -80,6 +91,7 @@ Route::get('/dashboard/create-class', 'ClassController@create')->middleware('act
 Route::post('/dashboard/create-class', 'ClassController@store');
 Route::get('/dashboard/applications', 'PupilController@applications')->middleware('active_session');
 Route::get('/dashboard/all-pupils', 'PupilController@all_pupils')->middleware('active_session');
+Route::get('/dashboard/assistants', 'StaffController@all_assistants');
 
 Route::post('/dashboard/accept-student/{id}', 'PupilController@accept');
 Route::post('/dashboard/reject-student-application/{id}', 'PupilController@reject_application');
@@ -122,6 +134,7 @@ Route::post('/dashboard/add-fee/', 'BursarController@add_fee');
 Route::post('/dashboard/update-fee/{id}', 'BursarController@update_fee');
 Route::get('/dashboard/delete-fee/{id}', 'BursarController@delete_fee');
 
+Route::post('dashboard/update-student-photo',['as'=>'image.student_passport_upload.post','uses'=>'PupilController@imageUploadPost']);
 
 // Route::post('dashboard/profile',['as'=>'profile.update_profile.post','uses'=>'TeacherController@updateProfile']);
 Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware('active_session');
@@ -173,7 +186,7 @@ Route::resources([
 ]);
 
 Route::resources([
-    'headteacher' => 'HeadTeacherController',
+    '/dashboard/headteachers' => 'HeadTeacherController',
    
 ]);
 
@@ -182,12 +195,12 @@ Route::resources([
    
 ]);
 Route::resources([
-    'bursar' => 'BursarController',
+    '/dashboard/bursars' => 'BursarController',
    
 ]);
 
 Route::resources([
-    'staff' => 'StaffController',
+    'dashboard/teachers' => 'StaffController',
    
 ]);
 

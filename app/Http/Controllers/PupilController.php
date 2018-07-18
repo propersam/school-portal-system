@@ -52,6 +52,32 @@ class PupilController extends Controller
     }
 
 
+
+    public function imageUploadPost()
+
+    {
+
+        request()->validate([
+
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1000',
+    // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048|dimensions:width=500,height=500',
+
+        ]);
+
+            $imageName = time().'.'.request()->image->getClientOriginalExtension();
+
+            request()->image->move(public_path('uploads/passport_photos'), $imageName);
+
+            // $user_id = Auth::User()->id;                       
+            $obj_user = Student::find($_POST['student_id']);
+            $obj_user->passport_photo = $imageName;
+            $obj_user->save(); 
+
+            return back()->with('success', "Successfully Updated.");
+
+    }
+
+
     public function all_pupils()
     {
         $active_session = Session::where('is_active', '=', 1)->first();

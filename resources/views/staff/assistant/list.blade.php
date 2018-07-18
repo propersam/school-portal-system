@@ -13,7 +13,14 @@
 	<div class="page-content-wrapper">
 		<div class="page-content">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12">	
+					<div class="portlet box blue">
+						<div class="portlet-title">
+							<div class="caption">
+								Assistants
+							</div>
+						</div>
+						<div class="portlet-body">
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -29,15 +36,6 @@
 			            {{ session('success') }}
 			        </div>
 			  	@endif
-					
-							
-					<div class="portlet box blue">
-						<div class="portlet-title">
-							<div class="caption">
-								All Teachers 
-							</div>
-						</div>
-						<div class="portlet-body">
 							<div class="table-scrollable">
 								<table class="table table-hover">
 								<thead>
@@ -54,28 +52,21 @@
 									
 
 									<th>
-										 Class
-									</th>
-									<th>
 										 Actions
 									</th>
 								</tr>
 								</thead>
 								<tbody>
-			                @foreach ($teachers as $i)
+			                @foreach ($assistants as $i)
 								<tr>
 									<td>
-										<img style="height: 80px" width="80px" src="/uploads/profile_photos/{{ $i->user->photo }}" alt="" />
+										<img style="height: 80px" width="80px" src="uploads/profile_photos/{{ $i->user->photo }}" alt="" />
 									</td>
 									<td>
 										 {{ $i->firstname }}
 									</td>
 									<td>
 										  {{ $i->lastname }}
-									</td>
-									
-									<td>
-										 {{ $i->classes['name'] }}
 									</td>
 									
 									<td>
@@ -93,7 +84,7 @@
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-															<h4 class="modal-title">View Teacher</h4>
+															<h4 class="modal-title">View Assistant</h4>
 														</div>
 														<div class="modal-body">
 															<div class="childd_section">
@@ -151,11 +142,11 @@
 
 											<div class="modal fade class_modal" id="edit{{ $i->id }}" tabindex="-1" role="basic" aria-hidden="true">
 												<div class="modal-dialog">
-													<form action="/dashboard/update-teacher/{{ $i->id }}" method="POST" class="horizontal-form">
+													<form action="/dashboard/update-assistant/{{ $i->id }}" method="POST" class="horizontal-form">
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-															<h4 class="modal-title">Edit Teacher</h4>
+															<h4 class="modal-title">Edit</h4>
 														</div>
 														<div class="modal-body">
 																<div class="form-body">
@@ -225,25 +216,6 @@
 																		<!--/span-->
 																	</div>
 
-																	<!--/row-->
-																	<div class="row">
-																		<div class="col-md-6">
-																			<div class="form-group">
-																				<label class="control-label">Class {{ $i->classes['id'] }}</label>
-
-																			{{ Form::select('class_id', $classes, $i->classes['id'], ['class' => 'form-control'] 
-																			) }}
-																				
-																				<!-- {{ Form::select('role', [
-																				   'Bursar' => 'Bursar',
-																				   'HeadTeacher' => 'HeadTeacher',
-																				   'Teacher' => 'Teacher',
-																				   'Assistant' => 'Assistant',
-																				   ], $i->user->role, ['class' => 'select2_category form-control'] 
-																				) }} -->
-																			</div>
-																		</div>
-																	</div>
 																
 																</div>
 														</div>
@@ -272,7 +244,7 @@
 														</div>														</div>
 														<div class="modal-footer">
 															<button type="button" class="btn default" data-dismiss="modal">Close</button>
-															<a href="/dashboard/delete-teacher/{{ $i->user_id }}" class="btn red">Delete</a>
+															<a href="/dashboard/delete-assistant/{{ $i->user_id }}" class="btn red">Delete</a>
 														</div>
 													</div>
 												</div>

@@ -79,8 +79,24 @@
 										</div>
 									</div>
 									<div class="portlet-body form">
+
+			                            @if ($errors->any())
+			                                <div class="alert alert-danger">
+			                                    <ul>
+			                                        @foreach ($errors->all() as $error)
+			                                            <li>{{ $error }}</li>
+			                                        @endforeach
+			                                    </ul>
+			                                </div>
+			                            @endif
+
+										@if (session('success'))
+									        <div class="alert alert-success">
+									            {{ session('success') }}
+									        </div>
+									  	@endif
 										<!-- BEGIN FORM-->
-										<form action="/staff" method="POST" class="horizontal-form">
+										<form action="/dashboard/teachers" method="POST" class="horizontal-form">
 											<div class="form-body">
 												<h3 class="form-section">Enter Staff Details</h3>
 												<div class="row">

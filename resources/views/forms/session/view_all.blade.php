@@ -87,24 +87,10 @@
 														<div class="form-group">
 															<label class="control-label">Session Name</label>
 															<input type="text" value=" {{ $i->name }}" id="sessionName" class="form-control" placeholder="eg: 2017/2018" name="name">
-															<!-- <span class="help-block">
-															This is inline help </span> -->
 														</div>
 													</div>
 
 
-													<!-- <div class="col-md-4">
-														<div class="form-group">
-															<label class="control-label">Make Current Session</label>
-															<div class="radio-list">
-																<label class="radio-inline">
-																{{ Form::radio('is_active', 0, $i->is_active == 0) }}No </label>
-																<label class="radio-inline">
-																{{ Form::radio('is_active', 1, $i->is_active == 1) }}
-																 Yes </label>
-															</div>
-														</div>
-													</div> -->
 
 													<div class="col-md-4">
 														<div class="form-group">
@@ -133,10 +119,7 @@
 															) }}
 														</div>
 													</div>
-												</div>
-
-
-									
+												</div>									
 											</div>
 										</div>
 										<div class="modal-footer">
@@ -154,11 +137,11 @@
 								</tbody>
 								</table>
 							</div>
-											<div class="form-actions right">
-												<a class="btn btn-default blue" href="/dashboard/create-session"> <i class="fa fa-plus"></i> Add</a>
-											</div>
+							<div class="form-actions right">
+								<a class="btn btn-default blue" href="/dashboard/create-session"> <i class="fa fa-plus"></i> Add</a>
+							</div>
 						</div>
-								</div>
+					</div>
 								
 							
 						
