@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Bursar;
-use App\Fee_type;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\RedirectResponse;
-use App\Level;
 use App\Fee;
-use Illuminate\Http\Request;
-use App\Session;
-use App\Student;
-use App\Setting;
 use App\Fee_payment;
+use App\Fee_type;
+use App\Level;
+use App\Session;
+use App\Setting;
+use App\Student;
 use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BursarController extends Controller
 {
@@ -26,7 +25,7 @@ class BursarController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         $bursars = Bursar::get();
@@ -51,7 +50,7 @@ class BursarController extends Controller
         foreach ($students as $key) {
             // var_dump($key);
             $payment = Fee_payment::where('student_id', '=', $key->id)->where('session_id', '=', $active_session->id)->where('term_id', '=', $active_session->current_term)->first();
-            if($payment){
+            if ($payment) {
                 unset($students[$i]);
             }
             $i++;
@@ -69,9 +68,9 @@ class BursarController extends Controller
         foreach ($students as $key) {
             // var_dump($key);
             $payment = Fee_payment::where('student_id', '=', $key->id)->where('session_id', '=', $active_session->id)->where('term_id', '=', $active_session->current_term)->first();
-            if(!$payment){
+            if (!$payment) {
                 unset($students[$i]);
-            }else{
+            } else {
                 $key['date'] = $payment->created_at;
                 $key['type'] = $payment->type;
             }
@@ -95,7 +94,7 @@ class BursarController extends Controller
         $settings = array();
 
         $paystack_key_setting = Setting::where('name', '=', 'paystack_key')->first();
-        $settings['paystack_key_setting'] = $paystack_key_setting->toArray();
+        $settings['paystack_key_setting'] = is_object($paystack_key_setting) ? $paystack_key_setting->toArray() : [];
         // var_dump($setting->toArray());
         return view('forms.bursar.settings', ['settings' => $settings]);
     }
@@ -113,7 +112,7 @@ class BursarController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function fee_types()
@@ -125,31 +124,31 @@ class BursarController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'description' => 'required|string'            
+            'name'        => 'required|string|max:255',
+            'description' => 'required|string'
         ]);
     }
 
     protected function validator2(array $data)
     {
         return Validator::make($data, [
-            'amount' => 'required|string|max:255',
-            'level_id' => 'required|string',           
-            'type_id' => 'required|string'            
+            'amount'   => 'required|string|max:255',
+            'level_id' => 'required|string',
+            'type_id'  => 'required|string'
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function store_type(Request $request)
     {
         $request = $request->all();
         $this->validator($request)->validate();
-        $data = array("name"=>$request['name'], "description"=>$request['description']);
+        $data = array("name" => $request['name'], "description" => $request['description']);
         $type = $this->createFeeType($data);
         return redirect("/dashboard/fee-types")->with('success', "You have successfully added a fee type.");
     }
@@ -162,10 +161,10 @@ class BursarController extends Controller
 
         $f = Fee::where('type_id', '=', $request['type_id'])->where('level_id', '=', $request['level_id'])->first();
 
-        $data = array("type_id"=>$request['type_id'], "level_id"=>$request['level_id'], "amount"=>$request['amount']);
-        if(!$f){
+        $data = array("type_id" => $request['type_id'], "level_id" => $request['level_id'], "amount" => $request['amount']);
+        if (!$f) {
             $type = $this->createFee($data);
-        }else{
+        } else {
             $fee = Fee::find($f->id);
             $fee->amount = $request['amount'];
             $fee->save();
@@ -176,7 +175,7 @@ class BursarController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -184,29 +183,29 @@ class BursarController extends Controller
         //
     }
 
-    
-     protected function createFeeType(array $data)
+
+    protected function createFeeType(array $data)
     {
-       $type = Fee_type::create($data);
+        $type = Fee_type::create($data);
 
 
-       return $type;
+        return $type;
     }
 
-     protected function createFee(array $data)
+    protected function createFee(array $data)
     {
-       $fee = Fee::create($data);
+        $fee = Fee::create($data);
 
 
-       return $fee;
+        return $fee;
     }
 
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update_fee_type(Request $request, $id)
@@ -229,7 +228,7 @@ class BursarController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function delete_fee_type($id)
@@ -244,9 +243,9 @@ class BursarController extends Controller
     public function confirm_fees_as_paid(Request $request)
     {
         $student = Student::where('id', '=', $request['student_id'])->first();
-       
+
         $level = Level::where('id', '=', $student->level)->first();
-      
+
         $fees = Fee::where('level_id', '=', $student->level)->get();
 
         $total = 0;
@@ -259,7 +258,7 @@ class BursarController extends Controller
 
         $request = $request->all();
 
-        $data = array("amount"=>$total,"session_id"=>$request['session_id'],"term_id"=>$request['term_id'],"student_id"=>$request['student_id'],"user_id"=>$request['user_id'], "type" => 'manual');
+        $data = array("amount" => $total, "session_id" => $request['session_id'], "term_id" => $request['term_id'], "student_id" => $request['student_id'], "user_id" => $request['user_id'], "type" => 'manual');
 
         $p = Fee_payment::create($data);
         return back()->with('success', "Successfully Marked.");
