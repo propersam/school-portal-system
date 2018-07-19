@@ -9,13 +9,14 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>{{ config('app.name', 'Ecopillar ePortal') }}</title>
+    <title>{{ config('app.name', 'SureEdu School Portal') }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="" name="description"/>
     <meta content="" name="author"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
+    <link href="{{$protocol=(request()->isSecure()?'https':'http')}}://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all"
+          rel="stylesheet"
           type="text/css"/>
     <link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link href="/assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
@@ -156,20 +157,17 @@
 <!-- END HEADER -->
 
 
-
 @yield('content')
 
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
     <div class="page-footer-inner">
-        2018 &copy; Eco-Pillars Nursery, Primary and Secondary Schools <a href="#"
-                                                                          title="Fexio ICT Center develops Technology Solutions for Businesses"
-                                                                          target="_blank">Powered By Fexio ICT
-            Center </a>
+        2018 &copy; SureEdu School Portal
+        <a href="https://suretradebsl.com" title="Suretrade Business Solutions Limited" target="_blank">
+            Suretrade Business Solutions Limited
+        </a>
     </div>
-    <div class="scroll-to-top">
-        <i class="icon-arrow-up"></i>
-    </div>
+    <div class="scroll-to-top"><i class="icon-arrow-up"></i></div>
 </div>
 <!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
@@ -217,7 +215,7 @@
 <script src="/assets/admin/pages/scripts/components-pickers.js"></script>
 <script src="/js/angular.js"></script>
 <script src="/js/angular-route.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js"></script>
+<script src="{{$protocol}}://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-sanitize.min.js"></script>
 <script src="/js/FileSaver.min.js"></script>
 <script src="/js/json-export-excel.js"></script>
 <script src="/js/dataTables/jquery.dataTables.js"></script>
@@ -251,5 +249,3 @@
 </body>
 <!-- END BODY -->
 </html>
-<div class="clearfix">
-</div>
