@@ -12,7 +12,6 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('settings')->insert(['name' => 'paystack_key', 'value' => 'pk_1234567890'
-        ]);
+        DB::table('settings')->insert(['name' => 'paystack_key', 'value' => 'pk_1234567890']);
     }
 }
