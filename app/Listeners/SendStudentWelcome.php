@@ -51,7 +51,7 @@ class SendStudentWelcome implements ShouldQueue
             SmsSender::sendSMS($user->phone, $message);
         }
 
-        if (!is_null($user->email)) {
+        if ($user->email) {
             //send mail
             Mail::to($user->email)->send(new Studentcreated($event->student));
         }
