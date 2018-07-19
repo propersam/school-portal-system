@@ -25,7 +25,7 @@ class BursarController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         $bursars = Bursar::get();
@@ -94,7 +94,7 @@ class BursarController extends Controller
         $settings = array();
 
         $paystack_key_setting = Setting::where('name', '=', 'paystack_key')->first();
-        $settings['paystack_key_setting'] = $paystack_key_setting->toArray();
+        $settings['paystack_key_setting'] = is_object($paystack_key_setting) ? $paystack_key_setting->toArray() : [];
         // var_dump($setting->toArray());
         return view('forms.bursar.settings', ['settings' => $settings]);
     }
@@ -112,7 +112,7 @@ class BursarController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function fee_types()
@@ -141,7 +141,7 @@ class BursarController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function store_type(Request $request)
@@ -175,7 +175,7 @@ class BursarController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -204,8 +204,8 @@ class BursarController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update_fee_type(Request $request, $id)
@@ -228,7 +228,7 @@ class BursarController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function delete_fee_type($id)
