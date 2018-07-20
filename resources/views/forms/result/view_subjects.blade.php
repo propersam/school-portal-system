@@ -52,41 +52,45 @@
 										<th>
 											 Name
 										</th>
-									@foreach ($subjects as $i) 
-										<th>
-											 {{ $i->subject->name }}
-										</th>
-									@endforeach
+										@if($subjects)
+											@foreach ($subjects as $i) 
+												<th>
+													 {{ $i->subject->name }}
+												</th>
+											@endforeach
+										@endif
 									</tr>
 									</thead>
 									<tbody>
-									@foreach ($results as $res) 
-										<tr>
-										      <td>{{$loop->iteration}}</td>
-											<td>
-									          <p>{{ $res['student_details']['firstname'] }} {{ $res['student_details']['lastname'] }}</p>
-										     </td>
-										@foreach ($subjects as $i) 
-											<td>
-												@foreach ($res['exam_results'] as $d)
-						                            @if ($d['subject_id'] == $i->id)
-											          <p>C.A: {{ $d['score'] }}</p>
-						                            @endif
+										@if($results)
+											@foreach ($results as $res) 
+												<tr>
+												      <td>{{$loop->iteration}}</td>
+													<td>
+											          <p>{{ $res['student_details']['firstname'] }} {{ $res['student_details']['lastname'] }}</p>
+												     </td>
+												@foreach ($subjects as $i) 
+													<td>
+														@foreach ($res['exam_results'] as $d)
+								                            @if ($d['subject_id'] == $i->id)
+													          <p>C.A: {{ $d['score'] }}</p>
+								                            @endif
+														@endforeach
+														@foreach ($res['assessment_results'] as $d)
+								                            @if ($d['subject_id'] == $i->id)
+													          <p>Test: {{ $d['score'] }}</p>
+								                            @endif
+														@endforeach
+														@foreach ($res['exam_results'] as $d)
+								                            @if ($d['subject_id'] == $i->id)
+													          <b><p>Total: {{ $d['subj_total'] }}</p></b>
+								                            @endif
+														@endforeach
+													</td>
 												@endforeach
-												@foreach ($res['assessment_results'] as $d)
-						                            @if ($d['subject_id'] == $i->id)
-											          <p>Test: {{ $d['score'] }}</p>
-						                            @endif
-												@endforeach
-												@foreach ($res['exam_results'] as $d)
-						                            @if ($d['subject_id'] == $i->id)
-											          <b><p>Total: {{ $d['subj_total'] }}</p></b>
-						                            @endif
-												@endforeach
-											</td>
-										@endforeach
-										</tr>
-									@endforeach
+												</tr>
+											@endforeach
+										@endif
 									</tbody>
 									</table>
 								</div>
