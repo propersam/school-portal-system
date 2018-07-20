@@ -64,7 +64,8 @@
 								          <p>{{ $i->session->name }}</p>
 										</td>
 										<td>
-								          <p>{{ $i->teacher->firstname }} {{ $i->teacher->lastname }}</p>
+                                            <p>@if($i->teacher) {{ $i->teacher->firstname }} {{ $i->teacher->lastname }} @else
+                                                    No Teacher Assigned @endif</p>
 										</td>
 										<td>
 											<a class="btn primary" data-toggle="modal" href="#edit{{ $i->id }}">Edit </a>
