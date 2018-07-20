@@ -1,7 +1,10 @@
 @extends('dashboard')
 
 @section('form')
-<script>var G_C = '{{ $class->id }}';var G_S = '{{ $subject->id }}';</script>
+    <script>
+        var G_C = '{{ $class->id }}';
+        var G_S = '{{ $subject->id }}';
+    </script>
 
 <!-- BEGIN CONTENT -->
 	<div class="page-content-wrapper" ng-app="myApp" ng-controller="SubjectResultsPageCtrl" id="subrespage" >
