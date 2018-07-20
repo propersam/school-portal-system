@@ -51,7 +51,7 @@
     <link href="/assets/admin/layout4/css/themes/light.css" rel="stylesheet" type="text/css" id="style_color"/>
     <link href="/assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css"/>
     <!-- END THEME STYLES -->
-    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -68,7 +68,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="#">
-                <img src="/assets/admin/layout4/img/logo-big.png" alt="logo" height="80px" width="200px"
+                <img src="{{asset('assets/images/logo.png')}}" alt="logo" height="80px" width="200px"
                      style="padding: 10px" class="logo-sdefault"/>
             </a>
             <div class="menu-toggler sidebar-toggler">
