@@ -74,6 +74,29 @@ class HomeController extends Controller
         
     }
 
+    public function updatelevel(Request $request,$id)
+    {
+        $level = Level::find($id);
+      
+        $level->levelname = $request['levelname'];
+        $level->description = $request['description'];
+
+
+        $level->save();
+        
+
+        return redirect("/dashboard/levels")->with('success', "Successfully Updated.");
+    }
+
+
+    public function delete_level($id)
+    {
+        $level = Level::find($id);
+        $level->delete();
+
+        return redirect("/dashboard/levels")->with('success', "Successfully Deleted.");
+    }
+
     
      protected function createlevel(array $data)
     {

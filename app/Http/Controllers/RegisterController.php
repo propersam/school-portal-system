@@ -42,6 +42,8 @@ class RegisterController extends Controller
             'dob' => 'required|string|max:255',
             'origin' => 'required|string|max:255',
             'residential_address' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'lga' => 'required|string|max:255',
             'home_number' => 'required|string|max:255',
             'level' => 'required|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
@@ -154,7 +156,7 @@ class RegisterController extends Controller
         // $contact = $this->createcontact($data5);
         // $contact2 = $this->createcontact($data6);
 
-        // return redirect("/eportal")->with('success', "You have successfully registered an account.");
+        return redirect("/eportal")->with('success', "You have successfully registered an account.");
 
         
     }
