@@ -12,6 +12,7 @@
     "aws/aws-php-sns-message-validator": "^1.4",
     "aws/aws-sdk-php": "^3.52",
     "barryvdh/laravel-dompdf": "^0.8.2",
+    "dompdf/dompdf": "^0.8.2",
     "doctrine/cache": "^1.6",
     "doctrine/dbal": "~2.3",
     "fideloper/proxy": "^4.0",
@@ -20,7 +21,7 @@
     "laravel/tinker": "~1.0",
     "laravelcollective/html": "~5.0",
     "snowfire/beautymail": "dev-master",
-    "dompdf/dompdf": "^0.8.2"
+    "bugsnag/bugsnag-laravel": "^2.14"
   },
   "require-dev": {
     "filp/whoops": "~2.0",

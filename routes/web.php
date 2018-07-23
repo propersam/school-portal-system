@@ -73,6 +73,8 @@ Route::get('change-photo', ['as' => 'image.upload', 'uses' => 'HomeController@im
 Route::post('change-photo', ['as' => 'image.upload.post', 'uses' => 'HomeController@imageUploadPost']);
 Route::get('/dashboard/create-level', 'HomeController@create_level')->middleware('active_session');
 Route::post('/dashboard/create-level', 'HomeController@storelevel')->middleware('active_session');
+Route::post('/dashboard/update-level/{id}', 'HomeController@updatelevel')->middleware('active_session');
+Route::get('/dashboard/delete-level/{id}', 'HomeController@delete_level')->middleware('active_session');
 Route::get('/dashboard/levels', 'HomeController@allLevels')->middleware('active_session');
 Route::get('/dashboard/all-results/{id}', 'ResultsController@index')->middleware('active_session');
 Route::get('/dashboard/view-subject-results/', 'ResultsController@view_subject_results')->middleware('active_session');
