@@ -20,7 +20,8 @@
     "laravel/framework": "5.6.*",
     "laravel/tinker": "~1.0",
     "laravelcollective/html": "~5.0",
-    "snowfire/beautymail": "dev-master"
+    "snowfire/beautymail": "dev-master",
+    "bugsnag/bugsnag-laravel": "^2.14"
   },
   "require-dev": {
     "filp/whoops": "~2.0",
