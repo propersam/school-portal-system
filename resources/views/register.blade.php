@@ -145,12 +145,12 @@
                                            name="father_company_name">
                                 </div>
                                 <div class="col-sm-12 col-xs-12">
-                                    <label>Office Address</label>
+                                    <label>Company Address</label>
                                     <input type="text" placeholder="Office Address" id="father_work_address"
                                            name="father_work_address">
                                 </div>
                                 <div class="col-sm-12 col-xs-12">
-                                    <label>Office Telephone Number</label>
+                                    <label>Company Telephone Number</label>
                                     <input type="text" placeholder="Office Telephone Number" id="father_work_phone"
                                            name="father_work_phone">
                                 </div>
@@ -179,12 +179,12 @@
                                            name="mother_company_name">
                                 </div>
                                 <div class="col-sm-12 col-xs-12">
-                                    <label>Coy Address</label>
+                                    <label>Company Address</label>
                                     <input type="text" placeholder="Coy Address" id="mother_work_address"
                                            name="mother_work_address">
                                 </div>
                                 <div class="col-sm-12 col-xs-12">
-                                    <label>Coy Telephone Number</label>
+                                    <label>Company Telephone Number</label>
                                     <input type="text" placeholder="Coy Telephone Number" id="mother_work_phone"
                                            name="mother_work_phone">
                                 </div>
