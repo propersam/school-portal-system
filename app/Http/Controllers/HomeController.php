@@ -74,16 +74,14 @@ class HomeController extends Controller
         
     }
 
-    public function updatelevel(Request $request,$id)
+    public function updatelevel(Request $request, $id)
     {
         $level = Level::find($id);
-      
+
         $level->levelname = $request['levelname'];
         $level->description = $request['description'];
 
-
         $level->save();
-        
 
         return redirect("/dashboard/levels")->with('success', "Successfully Updated.");
     }

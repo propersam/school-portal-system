@@ -53,15 +53,18 @@
                                         <h4><i class="fa fa-user"></i> Child</h4>
                                         <div class="col-sm-12 col-xs-12">
                                             <label>Surname of Child *</label>
-                                            <input required type="text" placeholder="Surname of Child" id="lastname" name="lastname">
+                                            <input required type="text" placeholder="Surname of Child" id="lastname"
+                                                   name="lastname">
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
                                             <label>First Name of Child *</label>
-                                            <input required type="text" placeholder="First Name of Child" id="first_name" name="first_name">
+                                            <input required type="text" placeholder="First Name of Child"
+                                                   id="first_name" name="first_name">
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
                                             <label>Other Name of Child *</label>
-                                            <input required type="text" placeholder="Other Name of Child" id="pref_name" name="pref_name">
+                                            <input required type="text" placeholder="Other Name of Child" id="pref_name"
+                                                   name="pref_name">
                                         </div>
                                         <div class="col-sm-12 col-xs-12" style="margin-bottom: 50px">
                                             <div class="col-xs-3   col-xs-offset-1">
@@ -85,15 +88,18 @@
                                         <div class="col-sm-12 col-xs-12">
                                             <div class="col-sm-4">
                                                 <label>Nationality *</label>
-                                                <input required type="text" placeholder="Nationality" id="origin" name="origin">
+                                                <input required type="text" placeholder="Nationality" id="origin"
+                                                       name="origin">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label>State of Origin *</label>
-                                                <input required type="text" placeholder="State of Origin" id="state" name="state">
+                                                <input required type="text" placeholder="State of Origin" id="state"
+                                                       name="state">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label>Local Government Area *</label>
-                                                <input required type="text" placeholder="Local Government Area" id="lga" name="lga">
+                                                <input required type="text" placeholder="Local Government Area" id="lga"
+                                                       name="lga">
                                             </div>
                                         </div>
 
@@ -169,11 +175,14 @@
                                         </div> -->
                                         <div class="col-sm-12 col-xs-12">
                                             <label>Residential Address *</label>
-                                            <textarea required class="contact-textarea" placeholder="Residential Address" id="residential_address" name="residential_address"></textarea>
+                                            <textarea required class="contact-textarea"
+                                                      placeholder="Residential Address" id="residential_address"
+                                                      name="residential_address"></textarea>
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
                                             <label>Home Telephone Number *</label>
-                                            <input required type="text" placeholder="Home Telephone Number" id="home_number" name="home_number">
+                                            <input required type="text" placeholder="Home Telephone Number"
+                                                   id="home_number" name="home_number">
                                         </div>
                                         <div class="col-sm-12 col-xs-12">
                                             <div class="col-sm-12 col-xs-12">
