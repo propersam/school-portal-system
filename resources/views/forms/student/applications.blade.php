@@ -503,6 +503,7 @@
                                                     </form>
                                                     <form action="/dashboard/reject-student-admission/{{ $i->id }}"
                                                           method="POST" style="display: inline-block;float: right;">
+                                                        {{csrf_field()}}
                                                         <button type="submit" class="btn red">Reject</button>
                                                     </form>
                                                     <button type="button" class="btn default" data-dismiss="modal">
@@ -737,13 +738,15 @@
                                                     <form action="/dashboard/reject-student-application/{{ $i->id }}"
                                                           method="POST" style="display: inline-block;float: right;">
                                                         {{csrf_field()}}
-                                                        <button type="submit" class="btn red">Reject Application
+                                                        <button type="submit" class="btn red">
+                                                            Reject Application
                                                         </button>
                                                     </form>
                                                     <form action="/dashboard/accept-student/{{ $i->id }}" method="POST"
                                                           style="display: inline-block;float: right;">
                                                         {{ csrf_field() }}
-                                                        <button type="submit" class="btn green">Accept Application
+                                                        <button type="submit" class="btn green">
+                                                            Accept Application
                                                         </button>
                                                     </form>
                                                 </div>
