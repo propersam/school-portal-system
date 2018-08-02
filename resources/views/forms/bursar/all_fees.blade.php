@@ -95,7 +95,7 @@
 															</div>
 															<div class="modal-footer">
 																<button type="button" class="btn default" data-dismiss="modal">Close</button>
-																<button type="submit" class="btn blue">Save changes</button>
+																<button type="submit" class="btn blue">Save Changes</button>
 															</div>
 														</div>
 															</form>
@@ -126,7 +126,7 @@
 								</table>
 							</div>
 							<div class="form-actions right">
-								<a class="btn btn-default blue"  data-toggle="modal" href="#add"> <i class="fa fa-plus"></i> Add</a>
+								<a class="btn btn-default blue"  data-toggle="modal" href="#add"> <i class="fa fa-plus"></i> Add Fee</a>
 							</div>
 						</div>
 					</div> 	
