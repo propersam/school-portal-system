@@ -54,13 +54,17 @@
 
 														<div class="col-md-4">
 															<div class="form-group">
-																<label class="control-label">Level</label>
+																@if ($fee_types)
+																	<label class="control-label">Type</label>
 
-																<select name="type_id" class="form-control">
-							                                        @foreach ($fee_types as $type)
-																		<option value="{{ $type->id }}">{{ $type->name }}</option>
-							                                        @endforeach
-																</select>
+																	<select name="type_id" class="form-control">
+								                                        @foreach ($fee_types as $type)
+																			<option value="{{ $type->id }}">{{ $type->name }}</option>
+								                                        @endforeach
+																	</select>
+																@else
+																	<p>no fee type set</p>
+																@endif 
 															</div>
 														</div>
 														<div class="col-md-4">
