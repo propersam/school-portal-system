@@ -55,7 +55,7 @@
 														<div class="col-md-4">
 															<div class="form-group">
 																@if ($fee_types)
-																	<label class="control-label">Type</label>
+																	<label class="control-label">Fee Type</label>
 
 																	<select name="type_id" class="form-control">
 								                                        @foreach ($fee_types as $type)
