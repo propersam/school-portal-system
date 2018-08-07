@@ -154,7 +154,8 @@
 
 																	<div class="col-md-4">
 																		<div class="form-group">
-																			<label class="control-label">Fee Type</label>
+                                                                            <label class="control-label">Fee
+                                                                                Type</label>
 
 																			<select name="type_id" class="form-control">
 										                                        @foreach ($fee_types as $type)
