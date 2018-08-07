@@ -89,6 +89,7 @@ class BursarController extends Controller
         $levels = Level::get();
         $fee_types = Fee_type::get();
         $fees = Fee::get();
+
         return view('forms.bursar.create', ['levels' => $levels, 'fee_types' => $fee_types, 'fees' => $fees]);
     }
 

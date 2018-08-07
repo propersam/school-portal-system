@@ -58,7 +58,9 @@
 										          <p>{{ $i->type['name'] }}</p>
 												</td>
 												<td>
-										          <p><span style="font-weight: bold; text-transform: uppercase;">{{ $i->amount }}</span></p>
+                                                    <p>
+                                                        <span style="font-weight: bold; text-transform: uppercase;">{{ $i->amount }}</span>
+                                                    </p>
 												</td>
 												<td>
 												<a class="btn default" data-toggle="modal" href="#edit{{ $i->id }}">
