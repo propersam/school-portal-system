@@ -12,7 +12,7 @@
 								<div class="portlet box blue">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-gift"></i>Create New Level
+											<i class="fa fa-gift"></i>Create New Fee
 
 										</div>
 										<div class="tools">
@@ -29,9 +29,9 @@
 									<div class="portlet-body form">
 										<!-- BEGIN FORM-->
 
-										<form action="/dashboard/create-level" method="POST" class="horizontal-form">
+											<form action="/dashboard/add-fee/" method="POST" class="horizontal-form">
 											<div class="form-body">
-												<h3 class="form-section">Enter Level Details</h3>
+												<!-- <h3 class="form-section">Enter Level Details</h3> -->
 
 		                            @if ($errors->any())
 		                                <div class="alert alert-danger">
@@ -47,28 +47,44 @@
 								        <div class="alert alert-success">
 								            {{ session('success') }}
 								        </div>
-								  	@endif
-
-												<div class="row">
-													<div class="col-md-6">
+								  	@endif 
+												<div class="form-body">
+													<div class="row">
 														{{ csrf_field() }}
-														<div class="form-group">
 
-															<label class="control-label">Level Name</label>
-															<input type="text" id="name" class="form-control" placeholder="eg: Kg1, Primary 1" name="levelname">
+														<div class="col-md-4">
+															<div class="form-group">
+																<label class="control-label">Level</label>
+
+																<select name="type_id" class="form-control">
+							                                        @foreach ($fee_types as $type)
+																		<option value="{{ $type->id }}">{{ $type->name }}</option>
+							                                        @endforeach
+																</select>
+															</div>
+														</div>
+														<div class="col-md-4">
+															<div class="form-group">
+																<label class="control-label">Level</label>
+
+																<select name="level_id" class="form-control">
+							                                        @foreach ($levels as $level)
+																		<option value="{{ $level->id }}">{{ $level->levelname }}</option>
+							                                        @endforeach
+																</select>
+															</div>
+														</div>
+														<div class="col-md-4">
+															<div class="form-group">
+
+																<label class="control-label">Amount</label>
+																<input type="text" name="amount" class="form-control">
+
+															</div>
 														</div>
 													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label class="control-label">Level Description</label>
-															<textarea rows="8" class="form-control" name="description" placeholder="Short description of Level"></textarea>
-														</div>
-													</div>
-
-												</div>
-
-
-									
+										
+												</div>									
 
 											</div>
 											<div class="form-actions right">
