@@ -260,8 +260,7 @@ class StaffController extends Controller
                 event(new NewAssistantRegistered($assistant));
         }
 
-
-        return redirect("/staff")->with('success', "You have successfully registered a school assistant.");
+        return redirect("/dashboard/teachers")->with('success', "You have successfully registered a school assistant.");
 
 
     }
