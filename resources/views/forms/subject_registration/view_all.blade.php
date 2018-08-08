@@ -67,7 +67,7 @@
 								          <p>{{ $i->session->name }}</p>
 										</td>
 										<td>
-								          <p>{{ $i->teacher->firstname }} {{ $i->teacher->lastname }}</p>
+								          <p>{{ $i->teacher['firstname'] }} {{ $i->teacher['lastname'] }}</p>
 										</td>
 										<td>
 										<a class="btn primary" data-toggle="modal" href="#edit{{ $i->id }}">Add Subject to {{ $i->classlevel['levelname'] }} </a>
@@ -119,9 +119,9 @@
 								</tbody>
 								</table>
 							</div>
-											<div class="form-actions right">
-												<a class="btn btn-default blue" href="/dashboard/create-class"> <i class="fa fa-plus"></i> Add</a>
-											</div>
+							<div class="form-actions right">
+								<a class="btn btn-default blue" href="/dashboard/create-class"> <i class="fa fa-plus"></i> Add</a>
+							</div>
 						</div>
 								</div>
 								
