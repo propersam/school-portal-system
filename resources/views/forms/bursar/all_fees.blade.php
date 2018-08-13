@@ -58,7 +58,7 @@
 										          <p>{{ $i->type['name'] }}</p>
 												</td>
 												<td>
-										          <p>{{ $i->amount }}</p>
+										          <p><span style="font-weight: bold; text-transform: uppercase;">{{ $i->amount }}</span></p>
 												</td>
 												<td>
 												<a class="btn default" data-toggle="modal" href="#edit{{ $i->id }}">
@@ -152,7 +152,7 @@
 
 																	<div class="col-md-4">
 																		<div class="form-group">
-																			<label class="control-label">Level</label>
+																			<label class="control-label">Fee Type</label>
 
 																			<select name="type_id" class="form-control">
 										                                        @foreach ($fee_types as $type)
