@@ -55,6 +55,31 @@
 						</ul>
 						
 					</li>
+					<li class="{{ Request::is('dashboard/create-fee', 'dashboard/all-fees', 'dashboard/fee-type') ? 'active' : '' }}">
+						<a href="javascript:;">
+						<i class="icon-list"></i>
+						<span class="title">Fees</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+							<li>
+								<a href="/dashboard/create-fee">
+								<i class="icon-arrow-right"></i>
+								Create Fee</a>
+							</li>
+							<li>
+								<a href="/dashboard/all-fees">
+								<i class="icon-arrow-right"></i>
+								Fees List</a>
+							</li>
+							<li>
+								<a href="/dashboard/fee-types">
+								<i class="icon-arrow-right"></i>
+								Fee Types</a>
+							</li>
+						</ul>
+						
+					</li>
 					<li class="{{ Request::is('dashboard/register-student', 'dashboard/applications') ? 'active' : '' }}">
                         <a href="javascript:">
 						<i class="icon-graduation"></i>
