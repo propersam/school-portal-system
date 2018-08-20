@@ -29,9 +29,7 @@
 									<div class="portlet-body form">
 										<!-- BEGIN FORM-->
 											{{ Form::open(array('url' => '/dashboard/add-fee/', 'method' => 'POST')) }}
-											<!-- <form action="/dashboard/add-fee/" method="POST" class="horizontal-form"> -->
 											<div class="form-body">
-												<!-- <h3 class="form-section">Enter Level Details</h3> -->
 
 		                            @if ($errors->any())
 		                                <div class="alert alert-danger">
