@@ -141,7 +141,8 @@
 															<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
 															<h4 class="modal-title">Add Fee Type</h4>
 														</div>
-														<form action="/dashboard/add-fee-type/" method="POST" class="horizontal-form">
+											{{ Form::open(array('url' => '/dashboard/add-fee-type/', 'method' => 'POST')) }}
+														<!-- <form action="/dashboard/add-fee-type/" method="POST" class="horizontal-form"> -->
 														<div class="modal-body">
 															<div class="form-body">
 																<div class="row">
