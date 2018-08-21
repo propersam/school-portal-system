@@ -10,6 +10,7 @@
 |
 */
 
+use App\Student;
 
 Route::get('/', function () {
     return view('welcome');
@@ -83,6 +84,12 @@ Route::post('/dashboard/update-profile/', 'TeacherController@updateProfile');
 Route::get('/dashboard/create-fee/', 'BursarController@create');
 Route::get('/dashboard/fee-types/', 'BursarController@fee_types');
 Route::post('/dashboard/add-fee-type', 'BursarController@store_type');
+Route::post('/dashboard/send-fee-reminder', 'BursarController@send_fee_reminder');
+// Route::post('/dashboard/send-fee-reminder', function () {
+
+//     $student = Student::where('admission_status', 'admitted')->first();
+//     return new App\Mail\SendSchoolFeesReminder($student);
+// });
 Route::post('/dashboard/update-fee-type/{id}', 'BursarController@update_fee_type');
 Route::get('/dashboard/delete-fee-type/{id}', 'BursarController@delete_fee_type');
 Route::get('/dashboard/term-owing-fees/', 'BursarController@term_owing_fees');

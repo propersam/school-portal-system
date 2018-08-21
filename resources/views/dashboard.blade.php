@@ -28,8 +28,8 @@
 							</li>
 							<li>
 								<a href="/dashboard/all-staffs">
-									<i class="icon-arrow-right"></i>
-									All Staffs</a>
+								<i class="icon-arrow-right"></i>
+								All Staffs</a>
 							</li>
 							<li>
 								<a href="/dashboard/assistants">
@@ -56,10 +56,10 @@
 
 					</li>
 					<li class="{{ Request::is('dashboard/create-fee', 'dashboard/all-fees', 'dashboard/fee-type') ? 'active' : '' }}">
-						<a href="javascript:">
-							<i class="icon-list"></i>
-							<span class="title">Fees</span>
-							<span class="arrow "></span>
+						<a href="javascript:;">
+						<i class="icon-list"></i>
+						<span class="title">Manage Fees</span>
+						<span class="arrow "></span>
 						</a>
 						<ul class="sub-menu">
 							<li>
@@ -76,6 +76,26 @@
 								<a href="/dashboard/fee-types">
 									<i class="icon-arrow-right"></i>
 									Fee Types</a>
+							</li>
+						</ul>
+
+					</li>
+					<li class="{{ Request::is('dashboard/term-owing-fees', 'dashboard/term-paid-fees') ? 'active' : '' }}">
+						<a href="javascript:;">
+						<i class="icon-folder-alt"></i>
+						<span class="title">School Fees Payment</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+							<li>
+								<a href="/dashboard/term-owing-fees">
+								<i class="icon-arrow-right"></i>
+								Owing</a>
+							</li>
+							<li>
+								<a href="/dashboard/term-paid-fees">
+								<i class="icon-arrow-right"></i>
+								Paid</a>
 							</li>
 						</ul>
 
@@ -250,33 +270,33 @@
 
 					</li>
 					<li class="{{ Request::is('dashboard/term-owing-fees', 'dashboard/term-paid-fees') ? 'active' : '' }}">
-						<a href="javascript:">
-							<i class="icon-folder-alt"></i>
-							<span class="title">School Fees Payment</span>
-							<span class="arrow "></span>
+						<a href="javascript:;">
+						<i class="icon-folder-alt"></i>
+						<span class="title">School Fees Payment</span>
+						<span class="arrow "></span>
 						</a>
 						<ul class="sub-menu">
 							<li>
 								<a href="/dashboard/term-owing-fees">
-									<i class="icon-arrow-right"></i>
-									Owing</a>
+								<i class="icon-arrow-right"></i>
+								Owing</a>
 							</li>
 							<li>
 								<a href="/dashboard/term-paid-fees">
-									<i class="icon-arrow-right"></i>
-									Paid</a>
+								<i class="icon-arrow-right"></i>
+								Paid</a>
 							</li>
 						</ul>
-
+						
 					</li>
 					<li class="{{ Request::is('dashboard/payment-settings') ? 'active' : '' }}">
 						<a href="/dashboard/payment-settings">
-							<i class="icon-settings"></i>
-							Settings</a>
+						<i class="icon-settings"></i>
+						Settings</a>
 					</li>
 					<li>
 						<a href="/logout">
-							<i class="icon-logout"></i>
+							<i class="icon-logout"></i> 
 							<span class="title">Log Out</span>
 						</a>
 					</li>
