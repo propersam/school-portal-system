@@ -58,7 +58,7 @@
 					<li class="{{ Request::is('dashboard/create-fee', 'dashboard/all-fees', 'dashboard/fee-type') ? 'active' : '' }}">
 						<a href="javascript:;">
 						<i class="icon-list"></i>
-						<span class="title">Fees</span>
+						<span class="title">Manage Fees</span>
 						<span class="arrow "></span>
 						</a>
 						<ul class="sub-menu">
@@ -76,6 +76,26 @@
 								<a href="/dashboard/fee-types">
 								<i class="icon-arrow-right"></i>
 								Fee Types</a>
+							</li>
+						</ul>
+						
+					</li>
+					<li class="{{ Request::is('dashboard/term-owing-fees', 'dashboard/term-paid-fees') ? 'active' : '' }}">
+						<a href="javascript:;">
+						<i class="icon-folder-alt"></i>
+						<span class="title">School Fees Payment</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+							<li>
+								<a href="/dashboard/term-owing-fees">
+								<i class="icon-arrow-right"></i>
+								Owing</a>
+							</li>
+							<li>
+								<a href="/dashboard/term-paid-fees">
+								<i class="icon-arrow-right"></i>
+								Paid</a>
 							</li>
 						</ul>
 						
