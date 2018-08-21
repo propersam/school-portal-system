@@ -13,6 +13,8 @@ use App\Student;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendSchoolFeesReminder;
 
 class BursarController extends Controller
 {
@@ -155,7 +157,33 @@ class BursarController extends Controller
         $type = $this->createFeeType($data);
         return redirect("/dashboard/fee-types")->with('success', "You have successfully added a fee type.");
     }
+    public function send_fee_reminder(Request $request){
 
+        $active_session = Session::where('is_active', '=', 1)->first();
+        $students = Student::where('admission_status', 'admitted')->get();
+        // $students = $students->toArray();
+
+        $i = 0;
+        foreach ($students as $key) {
+            // var_dump($key);
+            $payment = Fee_payment::where('student_id', '=', $key->id)->where('session_id', '=', $active_session->id)->where('term_id', '=', $active_session->current_term)->first();
+            if ($payment) {
+                unset($students[$i]);
+            }
+            $i++;
+        }
+
+        if($_POST['notification_method'] == 'both' || $_POST['notification_method'] == 'email'){
+            foreach ($students as $key) {
+                $_POST['student'] = $key->toArray();
+
+                // return (new SendSchoolFeesReminder($key))->render();
+
+                Mail::to($key->user())->send(new SendSchoolFeesReminder($key));
+            }
+        }
+        return redirect("/dashboard/all-fees")->with('success', "You have sent a reminder.");
+    }
 
     public function add_fee(Request $request)
     {
