@@ -175,11 +175,14 @@ class BursarController extends Controller
 
         if($_POST['notification_method'] == 'both' || $_POST['notification_method'] == 'email'){
             foreach ($students as $key) {
-                $_POST['student'] = $key->toArray();
+                if($key->user()){
+                    $_POST['student'] = $key->toArray();
 
-                // return (new SendSchoolFeesReminder($key))->render();
+                    // return (new SendSchoolFeesReminder($key))->render();
 
-                Mail::to($key->user())->send(new SendSchoolFeesReminder($key));
+                    Mail::to($key->user())->send(new SendSchoolFeesReminder($key));
+                    
+                }
             }
         }
         return redirect("/dashboard/all-fees")->with('success', "You have sent a reminder.");
