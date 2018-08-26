@@ -50,8 +50,8 @@
 										$fee_data['total'] = '₦' . ($total + 0);
 										$fee_data['name'] = $student->firstname . ' ' .$student->lastname ;
 										$fee_data['session'] = $active_session->name;
-										$fee_data['term'] = $active_session->current_term;
-										$fee_data['level'] = $level->levelname;
+										$fee_data['term'] = $active_session['current_term'];
+										$fee_data['level'] = $level['levelname'];
 									 ?>
 									<a href="{{ route('pdfview',['download'=>'pdf', 'fee_data' => $fee_data]) }}">Download Reciept</a>
 								</center>
@@ -74,13 +74,13 @@
 										@foreach ($fees as $i) 
 											<tr>
 												<td>
-										          <p>{{ $i->type['name'] }}</p>
+										          <p>{{ $i['type']['name'] }}</p>
 												</td>
 												<td>
-										          <p>{{ $i->type['description'] }}</p>
+										          <p>{{ $i['type']['description'] }}</p>
 												</td>
 												<td>
-										          <p>{{ $i->amount }}</p>
+										          <p>{{ $i['amount'] }}</p>
 												</td>
 											</tr>
 										@endforeach
@@ -141,10 +141,10 @@
 								$fee_data = array();
 								$fee_data['email'] = Auth::user()->email;
 								$fee_data['total'] = '₦' . ($total + 0);
-								$fee_data['name'] = $student->firstname . ' ' .$student->lastname ;
+								$fee_data['name'] = $student['firstname'] . ' ' .$student['lastname'] ;
 								$fee_data['session'] = $active_session->name;
 								$fee_data['term'] = $active_session->current_term;
-								$fee_data['level'] = $level->levelname;
+								$fee_data['level'] = $level['levelname'];
 							 ?>
 							<a href="{{ route('pdfview',['download'=>'pdf', 'fee_data' => $fee_data]) }}">Download Reciept</a>
 						</center>
