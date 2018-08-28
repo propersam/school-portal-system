@@ -32,8 +32,8 @@
 					<div class="portlet light">
 						<div class="portlet-title">
 							<div class="caption font-blue-sharp">
-								<span class="caption-subject" style="text-transform: uppercase;"> {{ $student->firstname }} {{ $student->lastname }}</span>
-								<p style="color: #666"><small>level: {{ $level->levelname }}</small></p>
+								<span class="caption-subject" style="text-transform: uppercase;"> {{ $student['firstname'] }} {{ $student['lastname'] }}</span>
+								<p style="color: #666"><small>level: {{ $level['levelname'] }}</small></p>
 							</div>
 							<div class="actions">
 								<h3><span class="muted">Term: {{ $active_session->current_term }} </span>| {{ $active_session->name }} </h3>
@@ -48,7 +48,7 @@
 										$fee_data = array();
 										$fee_data['email'] = Auth::user()->email;
 										$fee_data['total'] = '₦' . ($total + 0);
-										$fee_data['name'] = $student->firstname . ' ' .$student->lastname ;
+										$fee_data['name'] = $student['firstname'] . ' ' .$student['lastname'] ;
 										$fee_data['session'] = $active_session->name;
 										$fee_data['term'] = $active_session['current_term'];
 										$fee_data['level'] = $level['levelname'];
@@ -122,7 +122,7 @@
 								<meta name="csrf-token" content="{{ csrf_token() }}">
 			                    <script src="https://js.paystack.co/v1/inline.js"></script>
 			                      <button class="btn btn-lg green hidden-print margin-bottom-5" type="button" onclick="payWithPaystack()"><i class="fa fa-lock"></i> Process Payment Securely  </button> 
-			                      <button class="btn btn-lg green hidden-print margin-bottom-5" type="button" onclick="boom()"> Simulate  </button> 
+			                      <!-- <button class="btn btn-lg green hidden-print margin-bottom-5" type="button" onclick="boom()"> Simulate  </button>  -->
 			                    </form>
 							</div>
 						</div>
