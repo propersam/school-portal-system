@@ -36,11 +36,13 @@
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css">
+    <!-- link my css Chima -->
+    <link rel="stylesheet" href="assets/css/mycss.css">
 </head>
 <body>
 
 <!-- header-area start -->
-<header class="header-area">
+<nav class="navbar header-area navbar-fixed-top">
     <div class="header-bottom">
         <div class="container">
             <div class="row">
@@ -71,7 +73,7 @@
             </div>
         </div>
     </div>
-</header>
+</nav>
 <!-- header-area end -->
 @yield('content')
 
