@@ -385,7 +385,7 @@
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>Applied Class</label>
-                                                                <p>{{ $i->level }}</p>
+                                                                <p>{{ $i->classlevel['levelname'] }}</p>
                                                             </div>
                                                         </div>
                                                     </div>
