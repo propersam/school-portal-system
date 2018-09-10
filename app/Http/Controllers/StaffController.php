@@ -335,7 +335,7 @@ class StaffController extends Controller
 
                 $user = User::find($user_id);
                 $user->email = $request['email'];
-                $user->role = $request['role'];
+                //$user->role = $request['role'];
                 $user->save();
 
                 break;
@@ -386,7 +386,7 @@ class StaffController extends Controller
 
                 $user = User::find($user_id);
                 $user->email = $request['email'];
-                $user->role = $request['role'];
+                //$user->role = $request['role'];
                 $user->save();
         }
         // var_dump($request);
