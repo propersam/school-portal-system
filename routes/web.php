@@ -12,21 +12,23 @@
 
 use App\Student;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Authentication Routes...
+$this->get('/', 'Auth\LoginController@showLoginForm')->name('login');
+$this->post('/', 'Auth\LoginController@authenticate');
+$this->post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/about', function () {
-    return view('about');
-});
+// Registration Routes...
+$this->get('admin/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+$this->post('admin/register', 'Auth\RegisterController@register');
 
-Route::get('/contact', ['as' => 'contact', 'uses' => function () {
-    return view('contact');
-}]);
+// Password Reset Routes...
+$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+$this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/dashboard', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
-Route::get('/ourstaff', 'FrontController@teachersdisplay');
 Route::get('/register', 'RegisterController@index');
 Route::get('/logout', 'HomeController@logout');
 Route::post('/register', 'RegisterController@store');
@@ -124,21 +126,6 @@ Route::post('/dashboard/parent-new-child', 'ParentController@store');
 Route::get('/dashboard/parent-view-records/', 'ParentController@load_record');
 Route::get('/dashboard/child-record/{id}', 'ParentController@view_child_record');
 Route::get('/school-fees/{id}', 'ParentController@student_fees');
-
-// Authentication Routes...
-$this->get('eportal', 'Auth\LoginController@showLoginForm')->name('login');
-$this->post('eportal', 'Auth\LoginController@authenticate');
-$this->post('logout', 'Auth\LoginController@logout')->name('logout');
-
-// Registration Routes...
-$this->get('admin/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-$this->post('admin/register', 'Auth\RegisterController@register');
-
-// Password Reset Routes...
-$this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-$this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
-$this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-$this->post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/api/get-subject-results', 'ApiController@view_subject_results');
 Route::get('/api/get-class-students', 'ApiController@get_class_students');
