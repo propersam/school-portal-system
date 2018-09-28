@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
-    } 
+    }
 
     public function allLevels()
     {
@@ -46,7 +46,7 @@ class HomeController extends Controller
         return Validator::make($data, [
             'levelname' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            
+
         ]);
     }
 
@@ -65,13 +65,13 @@ class HomeController extends Controller
         $description = $request['description'];
 
         $data = array("levelname"=>$levelname,"description"=>$description);
-        
+
         $subject = $this->createlevel($data);
 
 
         return redirect("/dashboard/levels")->with('success', "You have successfully created a level.");
 
-        
+
     }
 
     public function updatelevel(Request $request, $id)
@@ -95,7 +95,7 @@ class HomeController extends Controller
         return redirect("/dashboard/levels")->with('success', "Successfully Deleted.");
     }
 
-    
+
      protected function createlevel(array $data)
     {
        $level = Level::create($data);
@@ -125,10 +125,10 @@ class HomeController extends Controller
 
             request()->image->move(public_path('uploads/profile_photos'), $imageName);
 
-            $user_id = Auth::User()->id;                       
+            $user_id = Auth::User()->id;
             $obj_user = User::find($user_id);
             $obj_user->photo = $imageName;
-            $obj_user->save(); 
+            $obj_user->save();
 
         return redirect('eportal');
 
@@ -143,7 +143,7 @@ class HomeController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('eportal');
+        return redirect()->route('login');
 
     }
 
