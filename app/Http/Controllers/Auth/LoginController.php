@@ -74,15 +74,16 @@ class LoginController extends Controller
                 return redirect('/change-default-password');
             }
         }else{
-            return redirect("/eportal")->with('danger', "Username or password wrong");
+            return redirect()->route('login')->with('danger', "Username or password wrong");
+             
 
         }
     }
-    
+
     public function username()
     {
         return 'username';
     }
 
-    
+
 }
