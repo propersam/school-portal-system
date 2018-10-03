@@ -30,7 +30,7 @@ class PupilController extends Controller
     {
         //event(new NewStudentRegistered(Student::find(18)));
         $active_session = Session::where('is_active', '=', 1)->first();
-        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name', 'id');
+        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('classname', 'id');
         $levels = Level::get();
 
         return view('forms.student.create', ['classes' => $classes, 'levels' => $levels]);
