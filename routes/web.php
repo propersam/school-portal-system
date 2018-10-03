@@ -155,7 +155,7 @@ Route::resources([
 ]);
 
 Route::resources([
-    'dashboard/teachers' => 'StaffController',
+    '/dashboard/teachers' => 'StaffController',
 ]);
 
 

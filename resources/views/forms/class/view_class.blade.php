@@ -13,7 +13,7 @@
 								<i class="icon-user font-green-sharp"></i>
 								<span class="caption-subject"> {{ $teacher->firstname }} {{ $teacher->lastname }}</span>
 								@if ($class)
-									<span class="caption-helper"> | {{ $class->name }} Students</span>
+									<span class="caption-helper"> | {{ $class->classname }} Students</span>
 								@else
 									<span class="caption-helper"> | Yet to be assigned to a class</span>
 								@endif

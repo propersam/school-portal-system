@@ -222,7 +222,7 @@ class StaffController extends Controller
                 ]);
 
                 event(new NewBursarRegistered($bursar));
-                return redirect("/bursar")->with('success', "You have successfully registered the school bursar.");
+                return redirect()->back()->with('success', "You have successfully registered the school bursar.");
                 break;
             case "HeadTeacher":
                 $headteacher = HeadTeacher::create([
@@ -234,7 +234,7 @@ class StaffController extends Controller
                     'gender'         => $request['gender'],
                 ]);
                 event(new NewHeadTeacherRegistered($headteacher));
-                return redirect("/staff")->with('success', "You have successfully registered the school HeadTeacher.");
+                return redirect()->back()->with('success', "You have successfully registered the school HeadTeacher.");
                 break;
             case "Teacher":
                 $teacher = Teacher::create([
@@ -246,7 +246,7 @@ class StaffController extends Controller
                     'gender'         => $request['gender'],
                 ]);
                 event(new NewTeacherRegistered($teacher));
-                return redirect("/staff")->with('success', "You have successfully registered a school Teacher.");
+                return redirect()->back()->with('success', "You have successfully registered a school Teacher.");
                 break;
             default:
                 $assistant = Assistant::create([
@@ -260,7 +260,7 @@ class StaffController extends Controller
                 event(new NewAssistantRegistered($assistant));
         }
 
-        return redirect("/dashboard/teachers")->with('success', "You have successfully registered a school assistant.");
+        return redirect()->back()->with('success', "You have successfully registered a school assistant.");
 
 
     }

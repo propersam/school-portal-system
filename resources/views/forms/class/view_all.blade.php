@@ -55,7 +55,7 @@
 								@foreach ($classes as $i) 
 									<tr>
 										<td>
-								          <p>{{ $i->name }}</p>
+								          <p>{{ $i->classname }}</p>
 										</td>
 										<td>
 								          <p>{{ $i->classlevel['levelname'] }}</p>

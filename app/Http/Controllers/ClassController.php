@@ -83,7 +83,7 @@ class ClassController extends Controller
         $request = $request->all();
         $this->validator($request)->validate();
 
-        $data = array("name"=>$request['name'],"session_id"=>$request['session_id'],"teacher_id"=>$request['teacher_id'], "level"=>$request['level']);
+        $data = array("classname"=>$request['name'],"session_id"=>$request['session_id'],"teacher_id"=>$request['teacher_id'], "level"=>$request['level']);
         
         $class = $this->createclass($data);
 
@@ -97,7 +97,7 @@ class ClassController extends Controller
     {
         $class = Classes::find($id);
       
-        $class->name = $request['name'];
+        $class->classname = $request['name'];
         $class->level = $request['level'];
         $class->session_id = $request['session_id'];
         $class->teacher_id = $request['teacher_id'];
