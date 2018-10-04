@@ -33,7 +33,9 @@ class StaffController extends Controller
     public function index()
     {
         $active_session = Session::where('is_active', '=', 1)->first();
-        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name', 'id');
+        if(!is_null(Classes::all())){
+            $classes = Classes::where('session_id', '=', $active_session->id)->pluck('classname', 'id');
+        }
 
         $teachers = Teacher::get();
         return view('staff.list', ['classes' => $classes, 'teachers' => $teachers]);
