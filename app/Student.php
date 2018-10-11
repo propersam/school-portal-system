@@ -10,14 +10,17 @@ class Student extends Model
 
     protected $fillable = [
         'firstname',
-        'preferredname',
+       //'preferredname',
+        'middle_name',
         'user_id',
         'phonenumber',
         'gender',
         'lastname',
         'dob',
-        'address',
+        //'address',
         'origin',
+        'nationality',
+        'mother_tongue',
         'email',
         'current_school',
         'class_id',
@@ -25,7 +28,7 @@ class Student extends Model
         'state',
         'entry_session',
         'entry_level',
-        'lga'
+      //'lga',
     ];
 
 

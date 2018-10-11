@@ -10,7 +10,10 @@ class Emergency_contact extends Model
 
 
     protected $fillable = [
-        'student_id','user_id','name','home_number','work_number','cell_number'
+        'student_id',
+        'user_id',
+        'name','home_number',
+        'work_number','cell_number'
     ];
 
      public function user()
