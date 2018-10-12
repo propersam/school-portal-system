@@ -26,7 +26,7 @@ class UpdateTeachersTable extends Migration
      */
     public function down()
     {
-        Schema::table('parents', function($table) {
+        Schema::table('teachers', function($table) {
             $table->dropColumn('description');
             $table->dropColumn('qualifications');
         });

@@ -27,6 +27,10 @@ class AddStudentStatuses extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('students', function (Blueprint $table) {
+            $table->dropColumn('admission_status');
+            
+            $table->dropColumn('application_status');
+        });
     }
 }

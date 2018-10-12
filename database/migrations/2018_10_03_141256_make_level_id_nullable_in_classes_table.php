@@ -27,7 +27,8 @@ class MakeLevelIdNullableInClassesTable extends Migration
     public function down()
     {
         Schema::table('classes', function (Blueprint $table) {
-            //
+            $table->string('term_id')->change();
+            $table->string('name')->change();
         });
     }
 }

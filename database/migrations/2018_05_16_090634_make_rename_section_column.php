@@ -24,6 +24,8 @@ class MakeRenameSectionColumn extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('classes', function($t) {
+                        $t->renameColumn('session_id', 'section_id');
+                });
     }
 }

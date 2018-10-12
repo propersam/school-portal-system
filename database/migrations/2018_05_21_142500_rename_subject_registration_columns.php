@@ -24,6 +24,8 @@ class RenameSubjectRegistrationColumns extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('subject_registrations', function($t) {
+                        $t->renameColumn('session_id', 'section_id');
+                });
     }
 }

@@ -37,7 +37,10 @@ class UpdateEmergencyContactTableColumn extends Migration
      */
     public function down()
     {
+        Schema::table('emergency_contacts', function($table) {
          $table->dropColumn('user_id');
          $table->dropColumn('student_id');
+        
+        });
     }
 }

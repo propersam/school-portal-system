@@ -25,6 +25,9 @@ class AddClassColumnToStudents extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('students', function($table) {
+            $table->dropColumn('class_id');
+           
+        });
     }
 }

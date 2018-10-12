@@ -30,7 +30,7 @@ class MakePhotoFieldNullable extends Migration
         
         
         Schema::table('users', function (Blueprint $table) {
-            $table->string('photo');
+            $table->dropColumn('photo');
         });
     }
 }
