@@ -9,7 +9,18 @@ class Parents extends Model
     
    
     protected $fillable = [
-        'student_id','user_id','firstname','lastname','companyname','workaddress','phone','email','phonenumber','parent_type',
+        'student_id',
+        'user_id',
+        'firstname',
+        'lastname',
+       // 'companyname',
+        'workaddress',
+        'occupation',
+        'phone',
+        'email',
+        'phonenumber',
+        'parent_type',
+        'origin',
     ];
 
 

@@ -76,7 +76,7 @@
 									</td>
 
                                     <td>
-                                        {{ $i->classes['name'] }}
+                                        {{ $i->classes['classname'] }}
 									</td>
 									
 									<td>

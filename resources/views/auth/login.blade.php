@@ -39,13 +39,7 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="login">
-<!-- BEGIN LOGO -->
-<div class="logo">
-    <a href="/">
-        <img src="/assets/images/logo.png" alt="" style="max-width: 15em"/>
-    </a>
-</div>
-<!-- END LOGO -->
+
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
 </div>
@@ -53,7 +47,17 @@
 <!-- BEGIN LOGIN -->
 <div class="content">
     <!-- BEGIN LOGIN FORM -->
+
+     <!-- BEGIN LOGO -->
+        <div class="logo">
+            <a href="/">
+                <img src="/assets/images/logo.png" alt="" style="max-width: 15em"/>
+            </a>
+        </div>
+        <!-- END LOGO -->
+    
     <form class="login-form" action="{{ route('login') }}" method="POST">
+
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}

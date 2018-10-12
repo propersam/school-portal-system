@@ -8,7 +8,7 @@ class Classes extends Model
 {
    
     protected $fillable = [
-        'name','session_id','teacher_id', 'level'
+        'classname','session_id','teacher_id', 'level',
     ];
 
 

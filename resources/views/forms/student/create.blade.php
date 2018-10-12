@@ -16,7 +16,9 @@
 						</div>
 						<div class="portlet-body form">
 							{{ Form::open(array('action' => 'PupilController@store' )) }}
-								<div class="row registration_form">
+							    @csrf
+
+                            <div class="row registration_form">
 
 		                            @if ($errors->any())
 		                                <div class="alert alert-danger">
@@ -38,17 +40,17 @@
 	                                        <div class="col-sm-6">
 	                                    	<br>
 	                                        <label for="email">
-	                                            Email address *
+	                                            Parent Email address *
 	                                        </label>
-                                                <input type="text" required class="form-control" placeholder="Email"
+                                                <input type="text" required class="form-control" placeholder="Enter Email"
                                                        id="email" name="email">
 	                                        </div>
 	                                        <div class="col-sm-6">
 	                                    	<br>
 	                                        <label for="phone">
-	                                            Phone number *
+	                                            Parent number (Whatsapp number preferred) *
 	                                        </label>
-                                                <input type="text" required class="form-control" placeholder="Phone"
+                                                <input type="text" required class="form-control" placeholder="Enter Contact number"
                                                        id="phone" name="phone">
 	                                        </div>
                                     </div>
@@ -56,43 +58,46 @@
 
                                         <div class="col-sm-12 col-xs-12" style="padding: 24px; background-color: #efefef; border-radius: 10px; margin: 15px; margin-bottom: 40px">
                                             <div class="col-sm-2">
-                                                <label>Level</label>
+                                                <label>Add to Class</label>
                                             </div>
                                             <div class="col-xs-3">
-												<select name="level" class="form-control">
-			                                        @foreach ($levels as $level)
-														<option value="{{ $level->id }}">{{ $level->levelname }}</option>
-			                                        @endforeach
-												</select>
+                                                <select name="class_id" class="form-control">
+                                                    @foreach ($classes as $clas)
+                                                        <option value="{{ $clas->id }}">{{ $clas->classname }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                         <div class="col-sm-2">
-                                                <label>Add to class</label>
-                                            </div>
-                                            <div class="col-xs-3">
-												{{ Form::select('class_id', $classes, app('request')->input('c'), ['class' => 'form-control'] 
-												) }}
-                                            </div>
+
+                                         {{--<div class="col-sm-2">--}}
+                                                {{--<label>Add to class</label>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-xs-3">--}}
+												{{--{{ Form::select('class_id', $classes, app('request')->input('c'), ['class' => 'form-control'] --}}
+												{{--) }}--}}
+                                            {{--</div>--}}
                                         </div>
-                                        <h4><i class="fa fa-user"></i> Child</h4><br><br>
+                                        <h4> <b> A. Information of the Child </b> </h4><br><br>
 
                                         <div class="row">
+											<div class="col-sm-4 col-xs-12">
+												<label>Surname *</label>
+												<input required class="form-control" type="text"
+													   placeholder="Surname of Child" id="lastname" name="lastname">
+											</div>
+
 	                                        <div class="col-sm-4 col-xs-12">
-	                                            <label>First Name of Child *</label>
+	                                            <label>First Name*</label>
                                                 <input required class="form-control" type="text"
                                                        placeholder="First Name of Child" id="first_name"
                                                        name="first_name">
 	                                        </div>
 	                                        <div class="col-sm-4 col-xs-12">
-	                                            <label>Preferred Name of Child *</label>
+	                                            <label>Middle Name *</label>
                                                 <input required class="form-control" type="text"
-                                                       placeholder="Preferred Name of Child" id="pref_name"
-                                                       name="pref_name">
+                                                       placeholder="Middle Name of Child" id="middle_name"
+                                                       name="middle_name">
 	                                        </div>
-	                                        <div class="col-sm-4 col-xs-12">
-	                                            <label>Surname of Child *</label>
-                                                <input required class="form-control" type="text"
-                                                       placeholder="Surname of Child" id="lastname" name="lastname">
-	                                        </div>
+
 	                                    </div>
                                         <div class="row">
 	                                        <div class="col-sm-3 col-xs-12">
@@ -123,21 +128,29 @@
 	                                        </div>
 										</div>
                                         <div class="col-sm-12 col-xs-12">
+                                            <div class="col-sm-2">
+                                                <label>Blood Group</label>
+                                                <input class="form-control" type="text"
+                                                       placeholder="Blood group" id="blood_group" name="blood_group">
+                                            </div>
+
+                                            <div class="col-sm-2">
+                                                <label>Genotype</label>
+                                                <input class="form-control" type="text"
+                                                       placeholder="Blood Genotype" id="genotype" name="genotype">
+                                            </div>
+
                                             <div class="col-sm-4">
                                                 <label>Nationality *</label>
                                                 <input required class="form-control" type="text"
-                                                       placeholder="Nationality" id="origin" name="origin">
+                                                       placeholder="Nationality" id="nationality" name="nationality">
                                             </div>
                                             <div class="col-sm-4">
                                                 <label>State of Origin *</label>
                                                 <input required class="form-control" type="text"
                                                        placeholder="State of Origin" id="state" name="state">
                                             </div>
-                                            <div class="col-sm-4">
-                                                <label>Local Government Area *</label>
-                                                <input required class="form-control" type="text"
-                                                       placeholder="Local Government Area" id="lga" name="lga">
-                                            </div>
+
                                         </div>
 
 										<!-- 
@@ -213,141 +226,96 @@
 	                                    </div> -->
                                         <div class="row">
 	                                    </div>
+
                                         <div class="row">
-	                                        <div class="col-sm-8 col-xs-12">
-	                                            <label>Residential Address *</label>
+	                                        {{--<div class="col-sm-8 col-xs-12">--}}
+	                                            {{--<label>Residential Address *</label>--}}
+                                                {{--<textarea required class="form-control" class="contact-textarea"--}}
+                                                          {{--placeholder="Residential Address" id="residential_address"--}}
+                                                          {{--name="residential_address"></textarea>--}}
+	                                        {{--</div>--}}
+
+                                            <div class="col-sm-3">
+                                                <label>Religion *</label>
+                                                <input required class="form-control" type="text"
+                                                       placeholder="Religion" id="religion" name="religion">
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <label>Mother tongue *</label>
+                                                <input required class="form-control" type="text"
+                                                       placeholder="Child's Mother Tongue" id="mother_tongue" name="mother_tongue">
+                                            </div>
+
+                                            <div class="col-sm-6">
+                                                <label>Specify Other Languages (if any)</label>
+                                                <input class="form-control" type="text"
+                                                       placeholder="ex: igbo, yoruba, french" id="other_languages" name="other_languages">
+                                            </div>
+
+	                                    </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-8 col-xs-12">
+                                                <label>Any health challenge? Please specify: </label>
+                                                <textarea class="form-control" class="contact-textarea"
+                                                          placeholder="You can also describe health challenges here" id="health_challenges"
+                                                          name="health_challenges"></textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="parent_section">
+                                        <h4> <b> B. Information of Parent </b> </h4>
+                                        <div class="row">
+	                                        <div class="col-sm-6 col-xs-12">
+	                                            <label>First Name *</label>
+	                                            <input required class="form-control" type="text" placeholder="Enter First Name" id="parent_firstname" name="parent_firstname">
+	                                        </div>
+	                                        <div class="col-sm-6 col-xs-12">
+	                                            <label>Surname *</label>
+	                                            <input required class="form-control" type="text" placeholder="Enter Surname" id="parent_lastname" name="parent_lastname">
+	                                        </div>
+	                                    </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-8 col-xs-12">
+                                                <label>Residential Address *</label>
                                                 <textarea required class="form-control" class="contact-textarea"
                                                           placeholder="Residential Address" id="residential_address"
                                                           name="residential_address"></textarea>
-	                                        </div>
-	                                    </div>
-                                    </div>
-                                    <div class="father_section">
-                                        <h4><i class="fa fa-male"></i> Father</h4>
-                                        <div class="row">
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>First Name of Father</label>
-	                                            <input class="form-control" type="text" placeholder="First Name of Father" id="first_name" name="father_first_name">
-	                                        </div>
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Surname of Father</label>
-	                                            <input class="form-control" type="text" placeholder="Surname of Father" id="father_surname" name="father_surname">
-	                                        </div>
-	                                    </div>
-                                        <div class="row">
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <div class="col-sm-6 col-xs-12">
-	                                                <label>Marital Status of Father</label>
-	                                            </div>
-	                                            <div class="col-xs-12">
-	                                                <select name="father_marital_status" class="form-control">
-	                                                    <option value="married">Married</option>
-	                                                    <option value="divorced">Divorced</option>
-	                                                    <option value="widowed">Widowed</option>
-	                                                    <option value="separated">Separated</option>
-	                                                    <option value="unmarried">Unmarried</option>
-	                                                </select>
-	                                            </div>
-	                                        </div>
-<!-- 	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Occupation of Father</label>
-	                                            <input class="form-control" type="text" placeholder="Occupation of Father" id="father_occupation" name="father_occupation">
-	                                        </div> -->
-	                                    </div>
-                                        <div class="row">
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Coy Name</label>
-	                                            <input class="form-control" type="text" placeholder="Company Name" id="father_company_name" name="father_company_name">
-	                                        </div>
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Coy Address</label>
-	                                            <input class="form-control" type="text" placeholder="Work Address" id="father_work_address" name="father_work_address">
-	                                        </div>
-	                                    </div>
-                                        <div class="row">
-	                                        <div class="col-sm-4 col-xs-12">
-	                                            <label>Coy Telephone Number</label>
-	                                            <input class="form-control" type="text" placeholder="Work Telephone Number" id="father_work_phone" name="father_work_phone">
-	                                        </div>
-	                                        <div class="col-sm-4 col-xs-12">
-	                                            <label>Email</label>
-	                                            <input class="form-control" type="text" placeholder="Email" id="father_email" name="father_email">
-	                                        </div>
+                                            </div>
+                                        </div>
 
-<!-- 	                                        <div class="col-sm-4 col-xs-12">
-	                                            <div class="col-xs-12">
-	                                                <label>Did you Attended Eco Pillars ?</label>
-	                                                <select name="father_attend" class="form-control">
-	                                                    <option value="yes">Yes</option>
-	                                                    <option value="no">No</option>
-	                                                </select>
-	                                            </div>
-	                                        </div> -->
-	                                    </div>
-                                    </div>
-                                    <div class="mother_section">
-                                        <h4><i class="fa fa-female"></i> Mother</h4>
+
+
                                         <div class="row">
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>First Name of Mother</label>
-	                                            <input class="form-control"  type="text" placeholder="First Name of Mother" id="mother_first_name" name="mother_first_name">
-	                                        </div>
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Surname of Mother</label>
-	                                            <input class="form-control"  type="text" placeholder="Surname of Mother" id="mother_surname" name="mother_surname">
-	                                        </div>
-	                                    </div>
-<!--                                         <div class="row">
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <div class="col-sm-12 col-xs-12">
-	                                                <label>Marital Status of Mother</label>
-	                                            </div>
-	                                            <div class="col-xs-12">
-	                                                <select name="mother_marital_status" class="form-control">
-	                                                    <option value="married">Married</option>
-	                                                    <option value="divorced">Divorced</option>
-	                                                    <option value="widowed">Widowed</option>
-	                                                    <option value="separated">Separated</option>
-	                                                    <option value="unmarried">Unmarried</option>
-	                                                </select>
-	                                            </div>
-	                                            </div>
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Occupation of Mother</label>
-	                                            <input class="form-control"  type="text" placeholder="Occupation of Mother" id="mother_occupation" name="mother_occupation">
-	                                        </div>
-	                                    </div> -->
-                                        <div class="row">
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Coy Name</label>
-	                                            <input  class="form-control" type="text" placeholder="Company Name" id="mother_company_name" name="mother_company_name">
-	                                        </div>
-	                                        <div class="col-sm-6 col-xs-12">
-	                                            <label>Coy Address</label>
-	                                            <input class="form-control" type="text" placeholder="Work Address" id="mother_work_address" name="mother_work_address">
+                                            <div class="col-sm-5 col-xs-12">
+                                                <label>State of origin *</label>
+                                                <input required class="form-control" type="text" placeholder="Parent State of Origin" id="origin" name="origin">
+                                            </div>
+
+ 	                                        <div class="col-sm-7 col-xs-12">
+	                                            <label>Occupation *</label>
+	                                            <input required class="form-control" type="text" placeholder="Parent Main Occupation" id="occupation" name="occupation">
 	                                        </div>
 	                                    </div>
+
                                         <div class="row">
 	                                        <div class="col-sm-3 col-xs-12">
-	                                            <label>Coy Telephone Number</label>
-	                                            <input class="form-control" type="text" placeholder="Work Telephone Number" id="mother_work_phone" name="mother_work_phone">
+	                                            <label>Emergency Contact Number *</label>
+	                                            <input required class="form-control" type="text" placeholder="Enter Emergency Number" id="emergency_home_number" name="emergency_home_number">
 	                                        </div>
-	                                        <div class="col-sm-3 col-xs-12">
-	                                            <label>Email</label>
-	                                            <input class="form-control" type="text" placeholder="Email" id="mother_email" name="mother_email">
+	                                        <div class="col-sm-5 col-xs-12">
+	                                            <label>Name of Person to be contacted *</label>
+	                                            <input required class="form-control" type="text" placeholder="Enter the full name here" id="emergency_name" name="emergency_name">
 	                                        </div>
+                                            <div class="col-sm-4 col-xs-12">
+                                                <label>Relationship *</label>
+                                                <input required class="form-control" type="text" placeholder="Enter person's relationship to Child" id="relationship" name="relationship">
+                                            </div>
 
-<!-- 	                                        <div class="col-sm-3 col-xs-12">
-	                                            <div class="col-sm-12 col-xs-12">
-	                                                <label>Did you Attended Eco Pillars ?</label>
-	                                            </div>
-	                                            <div class="col-xs-12">
-	                                                <select name="mother_attend" class="form-control">
-	                                                    <option value="yes">Yes</option>
-	                                                    <option value="no">No</option>
-	                                                </select>
-	                                            </div>
-	                                        </div> -->
 	                                    </div>
                                     </div>
 <!--                                     <div class="contacts_section">
