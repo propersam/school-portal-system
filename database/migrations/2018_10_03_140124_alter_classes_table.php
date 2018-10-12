@@ -26,6 +26,7 @@ class AlterClassesTable extends Migration
     public function down()
     {
         Schema::table('classes', function (Blueprint $table) {
+            $table->string('description')->change();
         });
     }
 }

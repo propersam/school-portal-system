@@ -25,6 +25,9 @@ class UpdateStudentsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('students', function($table) {
+            $table->dropColumn('home_number');
+           
+        });
     }
 }

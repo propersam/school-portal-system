@@ -25,6 +25,9 @@ class RenameCourseNameColumn extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('classes', function($table) {
+            $table->dropColumn('name');
+           
+        });
     }
 }

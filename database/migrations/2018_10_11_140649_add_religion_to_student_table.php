@@ -35,5 +35,10 @@ class AddReligionToStudentTable extends Migration
         Schema::table('students', function (Blueprint $table) {
             $table->dropColumn('religion');
         });
+
+        Schema::table('parents', function (Blueprint $table) {
+            $table->dropColumn('full_name');
+
+        });
     }
 }
