@@ -58,22 +58,23 @@
 
                                         <div class="col-sm-12 col-xs-12" style="padding: 24px; background-color: #efefef; border-radius: 10px; margin: 15px; margin-bottom: 40px">
                                             <div class="col-sm-2">
-                                                <label>Level</label>
+                                                <label>Add to Class</label>
                                             </div>
                                             <div class="col-xs-3">
-												<select name="level" class="form-control">
-			                                        @foreach ($levels as $level)
-														<option value="{{ $level->id }}">{{ $level->levelname }}</option>
-			                                        @endforeach
-												</select>
+                                                <select name="class_id" class="form-control">
+                                                    @foreach ($classes as $clas)
+                                                        <option value="{{ $clas->id }}">{{ $clas->classname }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                         <div class="col-sm-2">
-                                                <label>Add to class</label>
-                                            </div>
-                                            <div class="col-xs-3">
-												{{ Form::select('class_id', $classes, app('request')->input('c'), ['class' => 'form-control'] 
-												) }}
-                                            </div>
+
+                                         {{--<div class="col-sm-2">--}}
+                                                {{--<label>Add to class</label>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-xs-3">--}}
+												{{--{{ Form::select('class_id', $classes, app('request')->input('c'), ['class' => 'form-control'] --}}
+												{{--) }}--}}
+                                            {{--</div>--}}
                                         </div>
                                         <h4> <b> A. Information of the Child </b> </h4><br><br>
 

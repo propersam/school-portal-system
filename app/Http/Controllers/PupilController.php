@@ -30,7 +30,7 @@ class PupilController extends Controller
     {
         //event(new NewStudentRegistered(Student::find(18)));
         $active_session = Session::where('is_active', '=', 1)->first();
-        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('classname', 'id');
+        $classes = Classes::where('session_id', '=', $active_session->id)->get();
         $levels = Level::get();
 
         return view('forms.student.create', ['classes' => $classes, 'levels' => $levels]);
@@ -112,7 +112,7 @@ class PupilController extends Controller
             'state'               => 'required|string|max:255',
           //  'lga'                 => 'required|string|max:255',
             'home_number'         => 'required|string|max:255',
-            'level'               => 'required|string|max:255',
+           // 'level'               => 'required|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
 
             'email' => 'required|string|email|max:255|unique:users',
@@ -165,7 +165,7 @@ class PupilController extends Controller
 
         $user = $this->createuser($data);
 
-
+        $class_id = $request['class_id'];
         $data2 = [
             "user_id"           => $user->id,
             "firstname"         => $request['first_name'],
@@ -185,10 +185,11 @@ class PupilController extends Controller
             "other_languages"   => $request['other_languages'],
             "health_challenges" => $request['health_challenges'],
             //"email"           => $request['email'],
-            "level"             => $request['level'],
-            "class_id"          => $request['class_id'],
+
+            "class_id"          => $class_id,
+            "level"             => Classes::where('id', $class_id)->first()->classlevel['levelname'],
             "entry_session"     => $active_session->id,
-            "entry_level"       => $request['level']
+            //"entry_level"       => $request['level']
         ];
         $student = $this->createstudent($data2);
 

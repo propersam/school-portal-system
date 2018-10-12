@@ -76,7 +76,7 @@
                                                 <p>{{ $i->firstname }} {{ $i->lastname }}</p>
 															</td>
 															<td>
-													          <p>{{ $i->classlevel['levelname'] }}</p>
+													          <p>{{ $i->level }}</p>
 															</td>
 															<td>								          
 													          <p>{{ $i->updated_at }}</p>
