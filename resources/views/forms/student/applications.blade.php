@@ -53,7 +53,7 @@
                                                     Name
                                                 </th>
                                                 <th>
-                                                    Class
+                                                    Level
                                                 </th>
                                                 <th>
                                                     Application Date
@@ -91,7 +91,7 @@
                                                 <div class="modal-body">
                                                     <div class="child_section">
                                                         <div class="row">
-                                                            <h4><i class="fa fa-user"></i> Child</h4>
+                                                            <h4> <b> A. Information of the Child </b> </h4>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
@@ -99,11 +99,11 @@
                                                                 <p>{{ $i->firstname }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Preferred Name</label>
-                                                                <p>{{ $i->firstname }}</p>
+                                                                <label>Middle Name</label>
+                                                                <p>{{ $i->middle_name }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Last Name</label>
+                                                                <label>Surname</label>
                                                                 <p>{{ $i->lastname }}</p>
                                                             </div>
                                                         </div>
@@ -118,138 +118,105 @@
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>Nationality</label>
+                                                                <p>{{ $i->nationality }}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            {{--<div class="col-sm-4 col-xs-12">--}}
+                                                                {{--<label>Email Address</label>--}}
+                                                                {{--<p>{{ $i->email }}</p>--}}
+                                                            {{--</div>--}}
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Blood Group</label>
+                                                                <p>{{ $i->blood_group }}</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Blood Genotype</label>
+                                                                <p>{{ $i->genotype }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>State Of Origin</label>
                                                                 <p>{{ $i->origin }}</p>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Email Address</label>
-                                                                <p>{{ $i->email }}</p>
+                                                                <label>Mother Tongue</label>
+                                                                <p>{{ $i->mother_tongue }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Current School</label>
-                                                                <p>{{ $i->current_school }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Residential Address</label>
-                                                                <p>{{ $i->address }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Position In family</label>
-                                                                <p>{{ $i->position_in_family }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Phone Number</label>
-                                                                <p>{{ $i->phonenumber }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Applied Class</label>
+                                                                <label>Applied Level</label>
                                                                 <p>{{ $i->classlevel['levelname'] }}</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="child_section">
+
                                                         <div class="row">
-                                                            <h4><i class="fa fa-user"></i> Mother</h4>
+                                                            <div class="col-sm-2"></div>
+
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Other Languages</label>
+                                                                <p>{{ $i->other_languages }}</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Health Challenges</label>
+                                                                <p>{{ $i->health_challenges }}</p>
+                                                            </div>
+
+                                                            <div class="col-sm-2"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="parent_section">
+                                                        <div class="row">
+                                                            <h4> <b> B. Information of Parent </b> </h4>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>First Name</label>
-                                                                <p>{{ $i->returnMother()['firstname'] }}</p>
+                                                                <p>{{ $i->returnParent()['firstname'] }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>Last Name</label>
-                                                                <p>{{ $i->returnMother()['lastname'] }}</p>
+                                                                <p>{{ $i->returnParent()['lastname'] }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Marital Status</label>
-                                                                <p>{{ $i->returnMother()['maritalstatus'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3 col-xs-12">
                                                                 <label>Occupation</label>
-                                                                <p>{{ $i->returnMother()['occupation'] }}</p>
+                                                                <p>{{ $i->returnParent()['occupation'] }}</p>
                                                             </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Name</label>
-                                                                <p>{{ $i->returnMother()['companyname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Number</label>
-                                                                <p>{{ $i->returnMother()['phone'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Work Address</label>
-                                                                <p>{{ $i->returnMother()['workaddress'] }}</p>
-                                                            </div>
+
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>Email</label>
-                                                                <p>{{ $i->returnMother()['email'] }}</p>
+                                                                <p>{{ $i->returnParent()['email'] }}</p>
                                                             </div>
-                                                            <div class="col-sm-4 col-xs-12">
+
+                                                            <div class="col-sm-3 col-xs-12">
+                                                                <label>State Of Origin</label>
+                                                                <p>{{ $i->returnParent()['origin'] }}</p>
                                                             </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>School Attended</label>
-                                                                <p>{{ $i->returnMother()['attended_school'] }}</p>
+                                                            <div class="col-sm-3 col-xs-12">
+                                                                <label>Phone Number</label>
+                                                                <p>{{ $i->returnParent()['phone'] }}</p>
                                                             </div>
+
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <div class="col-sm-2">
+                                                            </div>
+
+                                                            <div class="col-sm-8 col-xs-12">
+                                                                <label>Residential Address</label>
+                                                                <p>{{ $i->returnParent()['workaddress'] }}</p>
+                                                            </div>
+
+                                                            <div class="col-sm-2"></div>
                                                         </div>
 
                                                     </div>
-                                                    <div class="child_section">
-                                                        <div class="row">
-                                                            <h4><i class="fa fa-user"></i> Father</h4>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>First Name</label>
-                                                                <p>{{ $i->returnFather()['firstname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Last Name</label>
-                                                                <p>{{ $i->returnFather()['lastname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Marital Status</label>
-                                                                <p>{{ $i->returnFather()['maritalstatus'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Occupation</label>
-                                                                <p>{{ $i->returnFather()['occupation'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Name</label>
-                                                                <p>{{ $i->returnFather()['companyname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Number</label>
-                                                                <p>{{ $i->returnFather()['phone'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Work Address</label>
-                                                                <p>{{ $i->returnFather()['workaddress'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Email</label>
-                                                                <p>{{ $i->returnFather()['email'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>School Attended</label>
-                                                                <p>{{ $i->returnFather()['attended_school'] }}</p>
-                                                            </div>
-                                                        </div>
 
-                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn default" data-dismiss="modal">
@@ -257,13 +224,13 @@
                                                     </button>
                                                     <form action="/dashboard/reject-student-application/{{ $i->id }}"
                                                           method="POST" style="display: inline-block;float: right;">
-                                                        {{ csrf_field() }}
+                                                        @csrf
                                                         <button type="submit" class="btn red">Reject Application
                                                         </button>
                                                     </form>
                                                     <form action="/dashboard/accept-student/{{ $i->id }}" method="POST"
                                                           style="display: inline-block;float: right;">
-                                                        {{ csrf_field() }}
+                                                        @csrf
                                                         <button type="submit" class="btn green">Accept Application
                                                         </button>
                                                     </form>
@@ -291,11 +258,10 @@
                                                 <th>
                                                     Name
                                                 </th>
-                                                <th>
-                                                    Class
+                                                <th>Level
                                                 </th>
                                                 <th>
-                                                    Application Date
+                                                    Date Accepted
                                                 </th>
                                                 <th>
                                                     Actions
@@ -313,7 +279,7 @@
                                         <p>{{ $i->classlevel['levelname'] }}</p>
                                     </td>
                                     <td>
-                                        <p>{{ $i->created_at }}</p>
+                                        <p>{{ $i->updated_at }}</p>
                                     </td>
                                     <td>
                                         <a class="btn default" data-toggle="modal" href="#view{{ $i->id }}">
@@ -330,7 +296,7 @@
                                                 <div class="modal-body">
                                                     <div class="child_section">
                                                         <div class="row">
-                                                            <h4><i class="fa fa-user"></i> Child</h4>
+                                                            <h4> <b> A. Information of the Child </b> </h4>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
@@ -338,11 +304,11 @@
                                                                 <p>{{ $i->firstname }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Preferred Name</label>
-                                                                <p>{{ $i->firstname }}</p>
+                                                                <label>Middle Name</label>
+                                                                <p>{{ $i->middle_name }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Last Name</label>
+                                                                <label>Surname</label>
                                                                 <p>{{ $i->lastname }}</p>
                                                             </div>
                                                         </div>
@@ -357,138 +323,105 @@
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>Nationality</label>
+                                                                <p>{{ $i->nationality }}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            {{--<div class="col-sm-4 col-xs-12">--}}
+                                                            {{--<label>Email Address</label>--}}
+                                                            {{--<p>{{ $i->email }}</p>--}}
+                                                            {{--</div>--}}
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Blood Group</label>
+                                                                <p>{{ $i->blood_group }}</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Blood Genotype</label>
+                                                                <p>{{ $i->genotype }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>State Of Origin</label>
                                                                 <p>{{ $i->origin }}</p>
                                                             </div>
-                                                        </div>
-                                                        <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Email Address</label>
-                                                                <p>{{ $i->email }}</p>
+                                                                <label>Mother Tongue</label>
+                                                                <p>{{ $i->mother_tongue }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Current School</label>
-                                                                <p>{{ $i->current_school }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Residential Address</label>
-                                                                <p>{{ $i->address }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Position In family</label>
-                                                                <p>{{ $i->position_in_family }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Phone Number</label>
-                                                                <p>{{ $i->phonenumber }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Applied Class</label>
+                                                                <label>Applied Level</label>
                                                                 <p>{{ $i->classlevel['levelname'] }}</p>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="child_section">
+
                                                         <div class="row">
-                                                            <h4><i class="fa fa-user"></i> Mother</h4>
+                                                            <div class="col-sm-2"></div>
+
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Other Languages</label>
+                                                                <p>{{ $i->other_languages }}</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Health Challenges</label>
+                                                                <p>{{ $i->health_challenges }}</p>
+                                                            </div>
+
+                                                            <div class="col-sm-2"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="parent_section">
+                                                        <div class="row">
+                                                            <h4> <b> B. Information of Parent </b> </h4>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>First Name</label>
-                                                                <p>{{ $i->returnMother()['firstname'] }}</p>
+                                                                <p>{{ $i->returnParent()['firstname'] }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>Last Name</label>
-                                                                <p>{{ $i->returnMother()['lastname'] }}</p>
+                                                                <p>{{ $i->returnParent()['lastname'] }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Marital Status</label>
-                                                                <p>{{ $i->returnMother()['maritalstatus'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3 col-xs-12">
                                                                 <label>Occupation</label>
-                                                                <p>{{ $i->returnMother()['occupation'] }}</p>
+                                                                <p>{{ $i->returnParent()['occupation'] }}</p>
                                                             </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Name</label>
-                                                                <p>{{ $i->returnMother()['companyname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Number</label>
-                                                                <p>{{ $i->returnMother()['phone'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Work Address</label>
-                                                                <p>{{ $i->returnMother()['workaddress'] }}</p>
-                                                            </div>
+
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>Email</label>
-                                                                <p>{{ $i->returnMother()['email'] }}</p>
+                                                                <p>{{ $i->returnParent()['email'] }}</p>
                                                             </div>
-                                                            <div class="col-sm-4 col-xs-12">
+
+                                                            <div class="col-sm-3 col-xs-12">
+                                                                <label>State Of Origin</label>
+                                                                <p>{{ $i->returnParent()['origin'] }}</p>
                                                             </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>School Attended</label>
-                                                                <p>{{ $i->returnMother()['attended_school'] }}</p>
+                                                            <div class="col-sm-3 col-xs-12">
+                                                                <label>Phone Number</label>
+                                                                <p>{{ $i->returnParent()['phone'] }}</p>
                                                             </div>
+
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <div class="col-sm-2">
+                                                            </div>
+
+                                                            <div class="col-sm-8 col-xs-12">
+                                                                <label>Residential Address</label>
+                                                                <p>{{ $i->returnParent()['workaddress'] }}</p>
+                                                            </div>
+
+                                                            <div class="col-sm-2"></div>
                                                         </div>
 
                                                     </div>
-                                                    <div class="child_section">
-                                                        <div class="row">
-                                                            <h4><i class="fa fa-user"></i> Father</h4>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>First Name</label>
-                                                                <p>{{ $i->returnFather()['firstname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Last Name</label>
-                                                                <p>{{ $i->returnFather()['lastname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Marital Status</label>
-                                                                <p>{{ $i->returnFather()['maritalstatus'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Occupation</label>
-                                                                <p>{{ $i->returnFather()['occupation'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Name</label>
-                                                                <p>{{ $i->returnFather()['companyname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Number</label>
-                                                                <p>{{ $i->returnFather()['phone'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Work Address</label>
-                                                                <p>{{ $i->returnFather()['workaddress'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Email</label>
-                                                                <p>{{ $i->returnFather()['email'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>School Attended</label>
-                                                                <p>{{ $i->returnFather()['attended_school'] }}</p>
-                                                            </div>
-                                                        </div>
 
-                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form action="/dashboard/admit-student/{{ $i->id }}" method="POST"
@@ -496,8 +429,12 @@
                                                         {{ csrf_field() }}
                                                         <div class="form-group">
                                                             <label class="control-label">Admit to class</label>
-                                                            {{ Form::select('class_id', $classes, ['class' => 'form-control']
-                                                            ) }}
+                                                            <select name="class_id" class="form-control">
+                                                                @foreach ($classes as $c)
+
+                                                                    <option selected = "{{ $i->classlevel['classname'] }}" value="{{ $c->id }}">{{ $c->classname }}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                         <button type="submit" class="btn green">Admit</button>
                                                     </form>
@@ -532,11 +469,10 @@
                                                 <th>
                                                     Name
                                                 </th>
-                                                <th>
-                                                    Class
+                                                <th>Level
                                                 </th>
                                                 <th>
-                                                    Application Date
+                                                    Date Rejected
                                                 </th>
                                                 <th>
                                                     Actions
@@ -551,10 +487,10 @@
                                     <p>{{ $i->firstname }} {{ $i->lastname }}</p>
                                     </td>
                                     <td>
-                                        <p>{{ $i->level }}</p>
+                                        <p>{{ $i->classlevel['levelname'] }}</p>
                                     </td>
                                     <td>
-                                        <p>{{ $i->created_at }}</p>
+                                        <p>{{ $i->updated_at }}</p>
                                     </td>
                                     <td>
                                         <a class="btn default" data-toggle="modal" href="#edit{{ $i->id }}">
@@ -571,7 +507,7 @@
                                                 <div class="modal-body">
                                                     <div class="child_section">
                                                         <div class="row">
-                                                            <h4><i class="fa fa-user"></i> Child</h4>
+                                                            <h4> <b> A. Information of the Child </b> </h4>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
@@ -579,11 +515,11 @@
                                                                 <p>{{ $i->firstname }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Preferred Name</label>
-                                                                <p>{{ $i->firstname }}</p>
+                                                                <label>Middle Name</label>
+                                                                <p>{{ $i->middle_name }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Last Name</label>
+                                                                <label>Surname</label>
                                                                 <p>{{ $i->lastname }}</p>
                                                             </div>
                                                         </div>
@@ -598,135 +534,101 @@
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>Nationality</label>
-                                                                <p>{{ $i->origin }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Email Address</label>
-                                                                <p>{{ $i->email }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Current School</label>
-                                                                <p>{{ $i->current_school }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Residential Address</label>
-                                                                <p>{{ $i->address }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Position In family</label>
-                                                                <p>{{ $i->position_in_family }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Phone Number</label>
-                                                                <p>{{ $i->phonenumber }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Applied Class</label>
-                                                                <p>{{ $i->classlevel['levelname'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="child_section">
-                                                        <div class="row">
-                                                            <h4><i class="fa fa-user"></i> Mother</h4>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>First Name</label>
-                                                                <p>{{ $i->returnMother()['firstname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Last Name</label>
-                                                                <p>{{ $i->returnMother()['lastname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Marital Status</label>
-                                                                <p>{{ $i->returnMother()['maritalstatus'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Occupation</label>
-                                                                <p>{{ $i->returnMother()['occupation'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Name</label>
-                                                                <p>{{ $i->returnMother()['companyname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Number</label>
-                                                                <p>{{ $i->returnMother()['phone'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Work Address</label>
-                                                                <p>{{ $i->returnMother()['workaddress'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>Email</label>
-                                                                <p>{{ $i->returnMother()['email'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                            </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>School Attended</label>
-                                                                <p>{{ $i->returnMother()['attended_school'] }}</p>
+                                                                <p>{{ $i->nationality }}</p>
                                                             </div>
                                                         </div>
 
-                                                    </div>
-                                                    <div class="child_section">
                                                         <div class="row">
-                                                            <h4><i class="fa fa-user"></i> Father</h4>
+                                                            {{--<div class="col-sm-4 col-xs-12">--}}
+                                                            {{--<label>Email Address</label>--}}
+                                                            {{--<p>{{ $i->email }}</p>--}}
+                                                            {{--</div>--}}
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Blood Group</label>
+                                                                <p>{{ $i->blood_group }}</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Blood Genotype</label>
+                                                                <p>{{ $i->genotype }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>State Of Origin</label>
+                                                                <p>{{ $i->origin }}</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Mother Tongue</label>
+                                                                <p>{{ $i->mother_tongue }}</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Applied Level</label>
+                                                                <p>{{ $i->classlevel['levelname'] }}</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-sm-2"></div>
+
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Other Languages</label>
+                                                                <p>{{ $i->other_languages }}</p>
+                                                            </div>
+                                                            <div class="col-sm-4 col-xs-12">
+                                                                <label>Health Challenges</label>
+                                                                <p>{{ $i->health_challenges }}</p>
+                                                            </div>
+
+                                                            <div class="col-sm-2"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="parent_section">
+                                                        <div class="row">
+                                                            <h4> <b> B. Information of Parent </b> </h4>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>First Name</label>
-                                                                <p>{{ $i->returnFather()['firstname'] }}</p>
+                                                                <p>{{ $i->returnParent()['firstname'] }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>Last Name</label>
-                                                                <p>{{ $i->returnFather()['lastname'] }}</p>
+                                                                <p>{{ $i->returnParent()['lastname'] }}</p>
                                                             </div>
                                                             <div class="col-sm-4 col-xs-12">
-                                                                <label>Marital Status</label>
-                                                                <p>{{ $i->returnFather()['maritalstatus'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-3 col-xs-12">
                                                                 <label>Occupation</label>
-                                                                <p>{{ $i->returnFather()['occupation'] }}</p>
+                                                                <p>{{ $i->returnParent()['occupation'] }}</p>
                                                             </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Name</label>
-                                                                <p>{{ $i->returnFather()['companyname'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Company Number</label>
-                                                                <p>{{ $i->returnFather()['phone'] }}</p>
-                                                            </div>
-                                                            <div class="col-sm-3 col-xs-12">
-                                                                <label>Work Address</label>
-                                                                <p>{{ $i->returnFather()['workaddress'] }}</p>
-                                                            </div>
+
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4 col-xs-12">
                                                                 <label>Email</label>
-                                                                <p>{{ $i->returnFather()['email'] }}</p>
+                                                                <p>{{ $i->returnParent()['email'] }}</p>
                                                             </div>
-                                                            <div class="col-sm-4 col-xs-12">
+
+                                                            <div class="col-sm-3 col-xs-12">
+                                                                <label>State Of Origin</label>
+                                                                <p>{{ $i->returnParent()['origin'] }}</p>
                                                             </div>
-                                                            <div class="col-sm-4 col-xs-12">
-                                                                <label>School Attended</label>
-                                                                <p>{{ $i->returnFather()['attended_school'] }}</p>
+                                                            <div class="col-sm-3 col-xs-12">
+                                                                <label>Phone Number</label>
+                                                                <p>{{ $i->returnParent()['phone'] }}</p>
                                                             </div>
+
+                                                        </div>
+                                                        <div class="row">
+
+                                                            <div class="col-sm-2">
+                                                            </div>
+
+                                                            <div class="col-sm-8 col-xs-12">
+                                                                <label>Residential Address</label>
+                                                                <p>{{ $i->returnParent()['workaddress'] }}</p>
+                                                            </div>
+
+                                                            <div class="col-sm-2"></div>
                                                         </div>
 
                                                     </div>
@@ -735,18 +637,18 @@
                                                     <button type="button" class="btn default" data-dismiss="modal">
                                                         Close
                                                     </button>
-                                                    <form action="/dashboard/reject-student-application/{{ $i->id }}"
-                                                          method="POST" style="display: inline-block;float: right;">
-                                                        {{csrf_field()}}
-                                                        <button type="submit" class="btn red">
-                                                            Reject Application
-                                                        </button>
-                                                    </form>
+                                                    {{--<form action="/dashboard/reject-student-application/{{ $i->id }}"--}}
+                                                          {{--method="POST" style="display: inline-block;float: right;">--}}
+                                                        {{--{{csrf_field()}}--}}
+                                                        {{--<button type="submit" class="btn red">--}}
+                                                            {{--Reject Application--}}
+                                                        {{--</button>--}}
+                                                    {{--</form>--}}
                                                     <form action="/dashboard/accept-student/{{ $i->id }}" method="POST"
                                                           style="display: inline-block;float: right;">
                                                         {{ csrf_field() }}
                                                         <button type="submit" class="btn green">
-                                                            Accept Application
+                                                            Reconsider Application
                                                         </button>
                                                     </form>
                                                 </div>

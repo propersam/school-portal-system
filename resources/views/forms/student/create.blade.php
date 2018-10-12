@@ -16,7 +16,9 @@
 						</div>
 						<div class="portlet-body form">
 							{{ Form::open(array('action' => 'PupilController@store' )) }}
-								<div class="row registration_form">
+							    @csrf
+
+                            <div class="row registration_form">
 
 		                            @if ($errors->any())
 		                                <div class="alert alert-danger">
@@ -264,7 +266,7 @@
                                     </div>
 
                                     <div class="parent_section">
-                                        <h4> <b> B. Information of the Parent </b> </h4>
+                                        <h4> <b> B. Information of Parent </b> </h4>
                                         <div class="row">
 	                                        <div class="col-sm-6 col-xs-12">
 	                                            <label>First Name *</label>

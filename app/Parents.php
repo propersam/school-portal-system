@@ -15,6 +15,7 @@ class Parents extends Model
         'lastname',
        // 'companyname',
         'workaddress',
+        'occupation',
         'phone',
         'email',
         'phonenumber',

@@ -41,7 +41,7 @@ class PupilController extends Controller
     {
         $active_session = Session::where('is_active', '=', 1)->first();
 
-        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name', 'id');
+        $classes = Classes::where('session_id', '=', $active_session->id)->get();
 
         $pending_applications = Student::where('application_status', '=', 'pending')->get();
         $accepted_applications = Student::where('application_status', '=', 'accepted')->where('admission_status', 'pending')->get();
