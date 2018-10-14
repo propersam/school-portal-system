@@ -130,7 +130,7 @@ class HomeController extends Controller
             $obj_user->photo = $imageName;
             $obj_user->save();
 
-        return redirect('eportal');
+        return redirect('/');
 
         // return back()
 

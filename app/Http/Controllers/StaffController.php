@@ -517,10 +517,10 @@ class StaffController extends Controller
             }
         } else {
 
-            return redirect('/eportal')->with('warning', "Sorry your email cannot be identified.");
+            return redirect('/')->with('warning', "Sorry your email cannot be identified.");
         }
 
 
-        return redirect('/eportal')->with('status', $status);
+        return redirect('/')->with('status', $status);
     }
 }

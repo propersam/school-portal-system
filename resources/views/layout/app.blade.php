@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{config('app.name')}}</title>
-    <meta name="description" content="Ecopillars Nursery, Primary and Secondary School">
+    <meta name="description" content="{{$school_name}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
@@ -63,7 +63,7 @@
                             <li><a href="/register">Registration Form</a>
                             </li>
                             <li><a href="/contact">Contact</a></li>
-                            <li><a href="/eportal">E-Portal</a></li>
+                            <li><a href="/">E-Portal</a></li>
                         </ul>
                     </div>
                 </div>

@@ -3,13 +3,15 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendSchoolFeesReminder extends Mailable
+class SendSchoolFeesReminder extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
+
+    public $school_name;
 
     /**
      * Create a new message instance.
@@ -18,7 +20,7 @@ class SendSchoolFeesReminder extends Mailable
      */
     public function __construct()
     {
-        //
+        $this->school_name = env('APP_NAME');
     }
 
     /**
@@ -28,6 +30,8 @@ class SendSchoolFeesReminder extends Mailable
      */
     public function build()
     {
-        return $this->from('support@ecopillarsschool.org')->view('emails.students.owing');
+        return $this->from(env('MAIL_FROM_ADDRESS'))
+                    ->subject('School Fees Payment Reminder from '.$this->school_name)
+                    ->view('emails.students.owing');
     }
 }
