@@ -24,6 +24,8 @@ class AddClassNullable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('students', function($table) {
+            $table->string('class_id')->change();
+        });
     }
 }

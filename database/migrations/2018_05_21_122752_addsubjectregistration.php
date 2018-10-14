@@ -30,6 +30,7 @@ class Addsubjectregistration extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists(
+            'subject_registrations');
     }
 }

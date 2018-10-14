@@ -30,7 +30,7 @@ class PupilController extends Controller
     {
         //event(new NewStudentRegistered(Student::find(18)));
         $active_session = Session::where('is_active', '=', 1)->first();
-        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('classname', 'id');
+        $classes = Classes::where('session_id', '=', $active_session->id)->get();
         $levels = Level::get();
 
         return view('forms.student.create', ['classes' => $classes, 'levels' => $levels]);
@@ -41,7 +41,7 @@ class PupilController extends Controller
     {
         $active_session = Session::where('is_active', '=', 1)->first();
 
-        $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name', 'id');
+        $classes = Classes::where('session_id', '=', $active_session->id)->get();
 
         $pending_applications = Student::where('application_status', '=', 'pending')->get();
         $accepted_applications = Student::where('application_status', '=', 'accepted')->where('admission_status', 'pending')->get();
@@ -94,7 +94,8 @@ class PupilController extends Controller
      */
     public function create()
     {
-        //
+        return view('forms.student.create', ['classes' => $classes, 'levels' => $levels]);
+
     }
 
 
@@ -102,16 +103,16 @@ class PupilController extends Controller
     {
         return Validator::make($data, [
             'first_name'          => 'required|string|max:255',
-            'pref_name'           => 'required|string|max:255',
+           // 'pref_name'           => 'required|string|max:255',
             'lastname'            => 'required|string|max:255',
             'gender'              => 'required|string|max:255',
             'dob'                 => 'required|string|max:255',
             'origin'              => 'required|string|max:255',
             'residential_address' => 'required|string|max:255',
             'state'               => 'required|string|max:255',
-            'lga'                 => 'required|string|max:255',
+          //  'lga'                 => 'required|string|max:255',
             'home_number'         => 'required|string|max:255',
-            'level'               => 'required|string|max:255',
+           // 'level'               => 'required|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
 
             'email' => 'required|string|email|max:255|unique:users',
@@ -144,7 +145,7 @@ class PupilController extends Controller
         $password = str_random(8);
         $name = $request['first_name'].' '.$request['lastname'];
         $firstname = $request['first_name'];
-        $pref_name = $request['pref_name'];
+        $middle_name = $request['middle_name'];
         $lastname = $request['lastname'];
         $email = $request['email'];
         $phone = $request['phone'];
@@ -155,6 +156,7 @@ class PupilController extends Controller
             "password"  => $password,
             "firstname" => $firstname,
             "lastname"  => $lastname,
+            "middle_name" => $middle_name,
             "name"      => $name,
             "email"     => $email,
             'phone'     => $phone,
@@ -163,56 +165,79 @@ class PupilController extends Controller
 
         $user = $this->createuser($data);
 
+        $class_id = $request['class_id'];
         $data2 = [
-            "user_id"       => $user->id,
-            "firstname"     => $request['first_name'],
-            "preferredname" => $request['pref_name'],
-            "lastname"      => $lastname,
-            "phonenumber"   => $request['home_number'],
-            "gender"        => $request['gender'],
-            "address"       => $request['residential_address'],
-            "dob"           => $request['dob'],
-            "origin"        => $request['origin'],
-            "lga"           => $request['lga'],
-            "state"         => $request['state'],
-            "email"         => $request['email'],
-            "level"         => $request['level'],
-            "class_id"      => $request['class_id'],
-            "entry_session" => $active_session->id,
-            "entry_level"   => $request['level']
+            "user_id"           => $user->id,
+            "firstname"         => $request['first_name'],
+            "middle_name"       => $request['middle_name'],
+            "lastname"          => $lastname,
+            "phonenumber"       => $request['home_number'],
+            "gender"            => $request['gender'],
+            //"address"         => $request['residential_address'],
+            "dob"               => $request['dob'],
+            "origin"            => $request['origin'],
+            //"lga"             => $request['lga'],
+            "nationality"       => $request['nationality'],
+            "genotype"          => $request['genotype'],
+            "blood_group"       => $request['blood_group'],
+            "state"             => $request['state'],
+            "mother_tongue"     => $request['mother_tongue'],
+            "other_languages"   => $request['other_languages'],
+            "health_challenges" => $request['health_challenges'],
+            //"email"           => $request['email'],
+
+            "class_id"          => $class_id,
+            "level"             => Classes::where('id', $class_id)->first()->classlevel['levelname'],
+            "entry_session"     => $active_session->id,
+            //"entry_level"       => $request['level']
         ];
         $student = $this->createstudent($data2);
 
         $data3 = [
             "user_id"     => $user->id,
             "student_id"  => $student->id,
-            "firstname"   => $request['father_first_name'],
-            "lastname"    => $request['father_surname'],
-            "companyname" => $request['father_company_name'],
-            "workaddress" => $request['father_work_address'],
-            "phone"       => $request['father_work_phone'],
-            "email"       => $request['father_email'],
-            "phonenumber" => $request['father_work_phone'],
-            "parent_type" => 'father'
+            "firstname"   => $request['parent_firstname'],
+            "lastname"    => $request['parent_lastname'],
+            //"companyname" => $request['father_company_name'],
+            "workaddress" => $request['residential_address'],
+            "phone"       => $phone,
+            "email"       => $request['email'],
+            "phonenumber" => $request['phone'],
+
+            "origin"        => $request['origin'],
+            "occupation"    => $request['occupation'],
+            "parent_type" => 'parent'
         ];
 
-        $data4 = [
-            "user_id"     => $user->id,
-            "student_id"  => $student->id,
-            "firstname"   => $request['mother_first_name'],
-            "lastname"    => $request['mother_surname'],
-            "companyname" => $request['mother_company_name'],
-            "workaddress" => $request['mother_work_address'],
-            "phone"       => $request['mother_work_phone'],
-            "email"       => $request['mother_email'],
-            "phonenumber" => $request['mother_work_phone'],
-            "parent_type" => 'mother'
+//        $data4 = [
+//            "user_id"     => $user->id,
+//            "student_id"  => $student->id,
+//            "firstname"   => $request['mother_first_name'],
+//            "lastname"    => $request['mother_surname'],
+//            "companyname" => $request['mother_company_name'],
+//            "workaddress" => $request['mother_work_address'],
+//            "phone"       => $request['mother_work_phone'],
+//            "email"       => $request['mother_email'],
+//            "phonenumber" => $request['mother_work_phone'],
+//            "parent_type" => 'mother'
+//        ];
+
+        $parent = $this->createparent($data3);
+        $emergency = [
+            "user_id" => $parent->id,
+            "student_id" => $student->id,
+            "home_number" => $request['emergency_home_number'],
+            "name"          => $request['emergency_name'],
+            "relationship"  => $request['relationship'],
         ];
 
         event(new NewStudentRegistered($student));
 
-        $father = $this->createfather($data3);
-        $mother = $this->createmother($data4);
+
+        $emergency = $this->create_emergency_contact($emergency);
+
+        //$father = $this->createfather($data3);
+        //$mother = $this->createmother($data4);
 
         return redirect("/dashboard/register-student")
             ->with('success', "You have successfully registered a student.");
@@ -248,6 +273,20 @@ class PupilController extends Controller
         // var_dump($data);
         $student = Student::create($data);
         return $student;
+    }
+
+    protected function createparent(array $data)
+    {
+        // var_dump($data);
+        $parent = Parents::create($data);
+        return $parent;
+    }
+
+    protected function create_emergency_contact(array $data)
+    {
+        // var_dump($data);
+        $emergency_contact = Emergency_contact::create($data);
+        return $emergency_contact;
     }
 
     protected function createfather(array $data)

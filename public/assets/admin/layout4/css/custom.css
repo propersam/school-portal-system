@@ -36,6 +36,11 @@ Rounded Portlets
 	margin-bottom: 60px;
 }
 
+.parent_section{
+	border-bottom: solid 3px #efefef;
+	margin-bottom: 60px;
+}
+
 .student_modal .modal-body{
 	padding: 25px;
 }
