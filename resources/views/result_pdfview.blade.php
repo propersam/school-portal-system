@@ -306,7 +306,7 @@
 
         </div><!--End InvoiceBot-->
         <div id="legalcopy">
-            <p class="legal"><strong>School Address</strong>  18 Anifa street Ilufe- Ojo, Lagos.
+            <p class="legal"><strong>School Address</strong>  {{$school_address}}
             </p>
         </div>
     </div><!--End Invoice-->
