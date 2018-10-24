@@ -38,13 +38,6 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="login">
-<!-- BEGIN LOGO -->
-<div class="logo">
-    <a href="/">
-        <img src="/assets/admin/layout4/img/logo-big.png" alt=""/>
-    </a>
-</div>
-<!-- END LOGO -->
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
 </div>
@@ -53,6 +46,13 @@
 <div class="content">
     <!-- BEGIN LOGIN FORM -->
     <form class="login-form" method="POST" action="/password/email">
+        <!-- BEGIN LOGO -->
+        <div class="logo">
+            <a href="/">
+                <img src="{{asset('assets/images/logo.png')}}" alt=""/>
+            </a>
+        </div>
+        <!-- END LOGO -->
         {{ csrf_field() }}
         <h3 class="form-title">Reset Password</h3>
         <div class="alert alert-danger display-hide">
