@@ -236,13 +236,13 @@
 	                                        {{--</div>--}}
 
                                             <div class="col-sm-3">
-                                                <label>Religion *</label>
+                                                <label>Religion </label>
                                                 <input class="form-control" type="text"
                                                        placeholder="Religion" id="religion" name="religion">
                                             </div>
 
                                             <div class="col-sm-3">
-                                                <label>Mother tongue *</label>
+                                                <label>Mother tongue </label>
                                                 <input class="form-control" type="text"
                                                        placeholder="Child's Mother Tongue" id="mother_tongue" name="mother_tongue">
                                             </div>
