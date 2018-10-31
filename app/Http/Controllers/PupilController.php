@@ -109,11 +109,11 @@ class PupilController extends Controller
             'residential_address' => 'required|string|max:255',
             'state'               => 'required|string|max:255',
             //  'lga'                 => 'required|string|max:255',
-            'home_number'         => 'required|string|max:255',
+            //'home_number'         => 'required|string|max:255',
             // 'level'               => 'required|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
 
-            'email' => 'required|string|email|max:255|unique:users',
+            // 'email' => 'required|string|email|max:255|unique:users',
 
         ]);
     }
