@@ -57,3 +57,4 @@ class SendStudentWelcome implements ShouldQueue
         }
     }
 }
+
