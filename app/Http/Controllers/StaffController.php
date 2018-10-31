@@ -16,6 +16,8 @@ use App\User;
 use App\VerifyUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+
 
 class StaffController extends Controller
 {
@@ -201,68 +203,79 @@ class StaffController extends Controller
         $request = $request->all();
         $this->validator($request)->validate();
         //var_dump($request); die();
-        $username = str_random(4);
-        $password = str_random(8);
-        $name = $request['firstname'].' '.$request['lastname'];
-        $email = $request['email'];
-        $data = array("username" => $username, "password" => $password, "name" => $name, "email" => $email, "role" => $request['role']);
+        $account = "staff";
+        $status=false;
+        DB::transaction(function()use($request,&$status, &$account){
 
-        $user = $this->createuser($data);
+            $username = str_random(4);
+            $password = str_random(8);
+            $name = $request['firstname'].' '.$request['lastname'];
+            $email = $request['email'];
+            $data = array("username" => $username, "password" => $password, "name" => $name, "email" => $email, "role" => $request['role']);
 
+            $user = $this->createuser($data);
 
-        switch ($request['role']) {
-            case "Bursar":
-                $bursar = Bursar::create([
-                    'firstname'      => $request['firstname'],
-                    'lastname'       => $request['lastname'],
-                    'user_id'        => $user->id,
-                    'phonenumber'    => $request['phonenumber'],
-                    'employmentdate' => $request['employmentdate'],
-                    'gender'         => $request['gender'],
-                ]);
+            switch ($request['role']) {
+                case "Bursar":
+                    $bursar = Bursar::create([
+                        'firstname'      => $request['firstname'],
+                        'lastname'       => $request['lastname'],
+                        'user_id'        => $user->id,
+                        'phonenumber'    => $request['phonenumber'],
+                        'employmentdate' => $request['employmentdate'],
+                        'gender'         => $request['gender'],
+                    ]);
 
-                event(new NewBursarRegistered($bursar));
-                return redirect()->back()->with('success', "You have successfully registered the school bursar.");
-                break;
-            case "HeadTeacher":
-                $headteacher = HeadTeacher::create([
-                    'firstname'      => $request['firstname'],
-                    'lastname'       => $request['lastname'],
-                    'user_id'        => $user->id,
-                    'phonenumber'    => $request['phonenumber'],
-                    'employmentdate' => $request['employmentdate'],
-                    'gender'         => $request['gender'],
-                ]);
-                event(new NewHeadTeacherRegistered($headteacher));
-                return redirect()->back()->with('success', "You have successfully registered the school HeadTeacher.");
-                break;
-            case "Teacher":
-                $teacher = Teacher::create([
-                    'firstname'      => $request['firstname'],
-                    'lastname'       => $request['lastname'],
-                    'user_id'        => $user->id,
-                    'phonenumber'    => $request['phonenumber'],
-                    'employmentdate' => $request['employmentdate'],
-                    'gender'         => $request['gender'],
-                ]);
-                event(new NewTeacherRegistered($teacher));
-                return redirect()->back()->with('success', "You have successfully registered a school Teacher.");
-                break;
-            default:
-                $assistant = Assistant::create([
-                    'firstname'      => $request['firstname'],
-                    'lastname'       => $request['lastname'],
-                    'user_id'        => $user->id,
-                    'phonenumber'    => $request['phonenumber'],
-                    'employmentdate' => $request['employmentdate'],
-                    'gender'         => $request['gender'],
-                ]);
-                event(new NewAssistantRegistered($assistant));
-        }
+                    event(new NewBursarRegistered($bursar));
+                    $account = "Bursar";
+                    break;
+                case "HeadTeacher":
+                    $headteacher = HeadTeacher::create([
+                        'firstname'      => $request['firstname'],
+                        'lastname'       => $request['lastname'],
+                        'user_id'        => $user->id,
+                        'phonenumber'    => $request['phonenumber'],
+                        'employmentdate' => $request['employmentdate'],
+                        'gender'         => $request['gender'],
+                    ]);
+                    event(new NewHeadTeacherRegistered($headteacher));
+                    $account = "Head Teacher ";
+                    break;
+                case "Teacher":
+                    $teacher = Teacher::create([
+                        'firstname'      => $request['firstname'],
+                        'lastname'       => $request['lastname'],
+                        'user_id'        => $user->id,
+                        'phonenumber'    => $request['phonenumber'],
+                        'employmentdate' => $request['employmentdate'],
+                        'gender'         => $request['gender'],
+                    ]);
+                    event(new NewTeacherRegistered($teacher));
+                    $account = "Teacher";
+                    break;
+                default:
+                    $assistant = Assistant::create([
+                        'firstname'      => $request['firstname'],
+                        'lastname'       => $request['lastname'],
+                        'user_id'        => $user->id,
+                        'phonenumber'    => $request['phonenumber'],
+                        'employmentdate' => $request['employmentdate'],
+                        'gender'         => $request['gender'],
+                    ]);
+                    event(new NewAssistantRegistered($assistant));
+                    $account = "Teacher Assistant";
+                
+            }
 
-        return redirect()->back()->with('success', "You have successfully registered a school assistant.");
+                $status = true;
 
+        });
+            
+        if (!$status)
+            return redirect()->back()->with('failure', "We could not verify your entered email");
 
+        
+        return redirect()->back()->with('success', "You have successfully registered a School ".$account);          
     }
 
 
@@ -319,78 +332,87 @@ class StaffController extends Controller
     public function update_staff(Request $request, $id)
     {
         $request = $request->all();
+        $status = false;
+
+        DB::transaction(function()use($request,&$status){
+            switch ($request['staff_role']) {
+                case "Bursar":
+                    $bursar = Bursar::where('id', '=', $id)->first();
+                    $user_id = $bursar->user_id;
 
 
-        switch ($request['staff_role']) {
-            case "Bursar":
-                $bursar = Bursar::where('id', '=', $id)->first();
-                $user_id = $bursar->user_id;
+                    $bursar->firstname = $request['firstname'];
+                    $bursar->lastname = $request['lastname'];
+                    $bursar->phonenumber = $request['phonenumber'];
+                    $bursar->gender = $request['gender'];
+                    $bursar->save();
+
+                    $user = User::find($user_id);
+                    $user->email = $request['email'];
+                    //$user->role = $request['role'];
+                    $user->save();
+
+                    break;
+                case "HeadTeacher":
+                    $headteacher = HeadTeacher::where('id', '=', $id)->first();
+                    $user_id = $headteacher->user_id;
 
 
-                $bursar->firstname = $request['firstname'];
-                $bursar->lastname = $request['lastname'];
-                $bursar->phonenumber = $request['phonenumber'];
-                $bursar->gender = $request['gender'];
-                $bursar->save();
+                    $headteacher->firstname = $request['firstname'];
+                    $headteacher->lastname = $request['lastname'];
+                    $headteacher->phonenumber = $request['phonenumber'];
+                    $headteacher->gender = $request['gender'];
+                    $headteacher->save();
 
-                $user = User::find($user_id);
-                $user->email = $request['email'];
-                //$user->role = $request['role'];
-                $user->save();
+                    $user = User::find($user_id);
+                    $user->email = $request['email'];
+                    //$user->role = $request['role'];
+                    $user->save();
 
-                break;
-            case "HeadTeacher":
-                $headteacher = HeadTeacher::where('id', '=', $id)->first();
-                $user_id = $headteacher->user_id;
+                    break;
+                case "Teacher":
+                    $teacher = Teacher::where('id', '=', $id)->first();
+                    $user_id = $teacher->user_id;
 
+                    $teacher->firstname = $request['firstname'];
+                    $teacher->lastname = $request['lastname'];
+                    $teacher->phonenumber = $request['phonenumber'];
+                    $teacher->gender = $request['gender'];
+                    $teacher->save();
 
-                $headteacher->firstname = $request['firstname'];
-                $headteacher->lastname = $request['lastname'];
-                $headteacher->phonenumber = $request['phonenumber'];
-                $headteacher->gender = $request['gender'];
-                $headteacher->save();
+                    // echo $user_id;
 
-                $user = User::find($user_id);
-                $user->email = $request['email'];
-                //$user->role = $request['role'];
-                $user->save();
+                    $user = User::find($user_id);
+                    $user->email = $request['email'];
+                    // $user->role = $request['role'];
+                    $user->save();
 
-                break;
-            case "Teacher":
-                $teacher = Teacher::where('id', '=', $id)->first();
-                $user_id = $teacher->user_id;
+                    break;
+                default:
+                    $assistant = Assistant::where('id', '=', $id)->first();
+                    $user_id = $assistant->user_id;
 
-                $teacher->firstname = $request['firstname'];
-                $teacher->lastname = $request['lastname'];
-                $teacher->phonenumber = $request['phonenumber'];
-                $teacher->gender = $request['gender'];
-                $teacher->save();
+                    $assistant->firstname = $request['firstname'];
+                    $assistant->lastname = $request['lastname'];
+                    $assistant->phonenumber = $request['phonenumber'];
+                    $assistant->gender = $request['gender'];
+                    $assistant->save();
 
-                // echo $user_id;
-
-                $user = User::find($user_id);
-                $user->email = $request['email'];
-                // $user->role = $request['role'];
-                $user->save();
-
-                break;
-            default:
-                $assistant = Assistant::where('id', '=', $id)->first();
-                $user_id = $assistant->user_id;
-
-                $assistant->firstname = $request['firstname'];
-                $assistant->lastname = $request['lastname'];
-                $assistant->phonenumber = $request['phonenumber'];
-                $assistant->gender = $request['gender'];
-                $assistant->save();
-
-                $user = User::find($user_id);
-                $user->email = $request['email'];
-                //$user->role = $request['role'];
-                $user->save();
-        }
+                    $user = User::find($user_id);
+                    $user->email = $request['email'];
+                    //$user->role = $request['role'];
+                    $user->save();
+            }
+            $status = true;
+        });
+        //ToDo 
         // var_dump($request);
+        if (!$status)
+            return redirect("/dashboard/all-staffs")->with('failure', "There was an error and data not updated");
+
+
         return redirect("/dashboard/all-staffs")->with('success', "Successfully Updated.");
+
     }
 
     public function update_teacher(Request $request, $id)
