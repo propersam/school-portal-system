@@ -113,7 +113,7 @@ class PupilController extends Controller
             // 'level'               => 'required|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
 
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'string|email|max:255|unique:users',
 
         ]);
     }

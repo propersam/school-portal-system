@@ -40,9 +40,9 @@
 	                                        <div class="col-sm-6">
 	                                    	<br>
 	                                        <label for="email">
-	                                            Parent Email address *
+	                                            Parent Email address
 	                                        </label>
-                                                <input type="text" required class="form-control" placeholder="Enter Email"
+                                                <input type="text" class="form-control" placeholder="Enter Email"
                                                        id="email" name="email">
 	                                        </div>
 	                                        <div class="col-sm-6">
@@ -121,8 +121,8 @@
                                                 </div>
 	    									</div>
 	                                        <div class="col-sm-5 col-xs-12">
-	                                            <label>Home Telephone Number *</label>
-                                                <input required class="form-control" type="text"
+	                                            <label>Home Telephone Number </label>
+                                                <input class="form-control" type="text"
                                                        placeholder="Home Telephone Number" id="home_number"
                                                        name="home_number">
 	                                        </div>
@@ -141,8 +141,8 @@
                                             </div>
 
                                             <div class="col-sm-4">
-                                                <label>Nationality *</label>
-                                                <input required class="form-control" type="text"
+                                                <label>Nationality </label>
+                                                <input class="form-control" type="text"
                                                        placeholder="Nationality" id="nationality" name="nationality">
                                             </div>
                                             <div class="col-sm-4">
@@ -237,13 +237,13 @@
 
                                             <div class="col-sm-3">
                                                 <label>Religion *</label>
-                                                <input required class="form-control" type="text"
+                                                <input class="form-control" type="text"
                                                        placeholder="Religion" id="religion" name="religion">
                                             </div>
 
                                             <div class="col-sm-3">
                                                 <label>Mother tongue *</label>
-                                                <input required class="form-control" type="text"
+                                                <input class="form-control" type="text"
                                                        placeholder="Child's Mother Tongue" id="mother_tongue" name="mother_tongue">
                                             </div>
 
@@ -281,8 +281,8 @@
 
                                         <div class="row">
                                             <div class="col-sm-8 col-xs-12">
-                                                <label>Residential Address *</label>
-                                                <textarea required class="form-control" class="contact-textarea"
+                                                <label>Residential Address </label>
+                                                <textarea class="form-control" class="contact-textarea"
                                                           placeholder="Residential Address" id="residential_address"
                                                           name="residential_address"></textarea>
                                             </div>
@@ -297,8 +297,8 @@
                                             </div>
 
  	                                        <div class="col-sm-7 col-xs-12">
-	                                            <label>Occupation *</label>
-	                                            <input required class="form-control" type="text" placeholder="Parent Main Occupation" id="occupation" name="occupation">
+	                                            <label>Occupation </label>
+	                                            <input class="form-control" type="text" placeholder="Parent Main Occupation" id="occupation" name="occupation">
 	                                        </div>
 	                                    </div>
 
