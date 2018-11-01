@@ -219,7 +219,7 @@ class PupilController extends Controller
 //            "phonenumber" => $request['mother_work_phone'],
 //            "parent_type" => 'mother'
 //        ];
-
+        
         $parent = $this->createparent($data3);
         $emergency = [
             "user_id"      => $parent->id,
@@ -275,6 +275,12 @@ class PupilController extends Controller
     protected function createparent(array $data)
     {
         // var_dump($data);
+        $existing_parent1 = Parents::find(['whatsapp_num' => $data['phonenumber']]);
+        $existing_parent2 = Parents::find(['phonenumber' => $data['phonenumber']]);
+        $existing_parent3 = Parents::find(['phone' => $data['phone']]);
+        if ($existing_parent1 || $existing_parent2 || $existing_parent3)
+            return;
+
         $parent = Parents::create($data);
 
         return $parent;
