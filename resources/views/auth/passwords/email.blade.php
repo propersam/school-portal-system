@@ -49,7 +49,7 @@
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="/">
-                <img src="{{asset('assets/images/logo.png')}}" alt=""/>
+                <img src="{{asset('assets/images/logo-twinsbukkyschool.png')}}" alt=""/>
             </a>
         </div>
         <!-- END LOGO -->
