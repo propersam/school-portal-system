@@ -66,7 +66,6 @@ class ClassController extends Controller
             'session_id' => 'required',
             'teacher_id' => 'required',
             'level' => 'required',
-            
         ]);
     }
 

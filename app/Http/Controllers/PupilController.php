@@ -279,9 +279,17 @@ class PupilController extends Controller
         $existing_parent2 = Parents::find(['phonenumber' => $data['phonenumber']]);
         $existing_parent3 = Parents::find(['phone' => $data['phone']]);
         if ($existing_parent1 || $existing_parent2 || $existing_parent3){
+            if($existing_parent1)
+                $parent = $existing_parent1;
             
-            $parent = $existing_parent1 ? $existing_parent1 : $existing_parent2;
-            $parent = $existing_parent2 ? $existing_parent2 : $existing_parent3;
+            elseif ($existing_parent2) {
+                $parent = $existing_parent2;
+            }
+            else{
+                $parent = $existing_parent3;
+            }
+            
+
             return $parent;
         }
         $parent = Parents::create($data);
