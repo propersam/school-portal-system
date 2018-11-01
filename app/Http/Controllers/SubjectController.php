@@ -54,7 +54,7 @@ class SubjectController extends Controller
         $subject = $this->createsubject($data);
 
 
-        return redirect("/dashboard/subjects")->with('success', "You have successfully created a subject.");
+        return redirect()->back()->with('success', "You have successfully created a subject.");
 
 
     }

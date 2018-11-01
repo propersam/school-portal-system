@@ -32,7 +32,7 @@ class FrontController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('eportal');
+        return redirect('/');
 
     }
 

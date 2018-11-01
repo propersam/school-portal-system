@@ -92,13 +92,12 @@
 								<div class="well">
 									<address>
 									<strong>Address</strong><br>
-									18 Anifa street Ilufe- Ojo<br>
-									Lagos<br>
-									<abbr title="Phone">P:</abbr> (234) 8094826000 </address>
+									{{$school_address}}<br>
+									<abbr title="Phone">P:</abbr> {{$school_phone}} </address>
 									<address>
 									<strong>Email</strong><br>
-									<a href="mailto:admin@ecopillarsschool.org">
-									admin@ecopillarsschool.org </a>
+									<a href="mailto:{{$support_email}}">
+									{{$support_email}} </a>
 									</address>
 								</div>
 							</div>

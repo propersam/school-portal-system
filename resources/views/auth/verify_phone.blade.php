@@ -9,7 +9,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>Eco-Pillars School Portal</title>
+    <title>{{$school_name}}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -39,13 +39,6 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="login">
-<!-- BEGIN LOGO -->
-<div class="logo">
-    <a href="/">
-        <img src="/assets/admin/layout4/img/logo-big.png" alt=""/>
-    </a>
-</div>
-<!-- END LOGO -->
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
 </div>
@@ -55,6 +48,13 @@
     <!-- BEGIN LOGIN FORM -->
     <form class="login-form" method="POST" action="{{route('verify_by_phone')}}">
 
+        <!-- BEGIN LOGO -->
+        <div class="logo">
+            <a href="/">
+                <img src="{{asset('assets/images/logo.png')}}" alt=""/>
+            </a>
+        </div>
+        <!-- END LOGO -->
         {{ csrf_field() }}
 
         <h3 class="form-title">Activate Your Account</h3>
@@ -103,7 +103,7 @@
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
 <div class="copyright">
-    2018 &copy; Eco-Pillars Nursery, Primary and Secondary Schools.
+    2018 &copy; {{$school_name}}.
 </div>
 <!-- END COPYRIGHT -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

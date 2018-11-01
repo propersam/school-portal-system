@@ -171,9 +171,9 @@
         <div id="invoice-top">
             <div class="logo"></div>
             <div class="info">
-                <h2>Eco Pillars School</h2>
-                <p> admin@ecopillarsschool.org</br>
-                    (234) 8094826000
+                <h2>{{$school_name}}</h2>
+                <p>
+                    {{ $school_email }}</br>{{$school_phone}}
                 </p>
             </div><!--End Info-->
             <div class="title">
@@ -306,7 +306,7 @@
 
         </div><!--End InvoiceBot-->
         <div id="legalcopy">
-            <p class="legal"><strong>School Address</strong>  18 Anifa street Ilufe- Ojo, Lagos.
+            <p class="legal"><strong>School Address</strong>  {{$school_address}}
             </p>
         </div>
     </div><!--End Invoice-->

@@ -5,7 +5,7 @@
 </head>
  
 <body>
-<h2>Welcome to Ecopillars' School Portal {{ $assistant->getName() }}</h2>
+<h2>Welcome to {{$school_name}}, {{ $assistant->getName() }}</h2>
 <br/>
 Your registered email-id is {{ $assistant->getEmail() }} , Please click on the below link to activate your email account
 <br/>

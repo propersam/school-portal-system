@@ -12,6 +12,7 @@ use App\Student;
 use App\User;
 use App\VerifyUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PupilController extends Controller
@@ -54,7 +55,6 @@ class PupilController extends Controller
     public function imageUploadPost()
 
     {
-
         request()->validate([
 
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1000',
@@ -72,7 +72,6 @@ class PupilController extends Controller
         $obj_user->save();
 
         return back()->with('success', "Successfully Updated.");
-
     }
 
 
@@ -95,7 +94,6 @@ class PupilController extends Controller
     public function create()
     {
         return view('forms.student.create', ['classes' => $classes, 'levels' => $levels]);
-
     }
 
 
@@ -103,20 +101,20 @@ class PupilController extends Controller
     {
         return Validator::make($data, [
             'first_name'          => 'required|string|max:255',
-           // 'pref_name'           => 'required|string|max:255',
+            // 'pref_name'           => 'required|string|max:255',
             'lastname'            => 'required|string|max:255',
             'gender'              => 'required|string|max:255',
             'dob'                 => 'required|string|max:255',
             'origin'              => 'required|string|max:255',
             'residential_address' => 'required|string|max:255',
             'state'               => 'required|string|max:255',
-          //  'lga'                 => 'required|string|max:255',
-            'home_number'         => 'required|string|max:255',
-           // 'level'               => 'required|string|max:255',
+            'lga'                 => 'nullable|string|max:255',
+            'home_number'         => 'nullable|string|max:255',
+            'level'               => 'nullable|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
 
-            'email' => 'required|string|email|max:255|unique:users',
-            
+            'email' => 'nullable|email|max:255|unique:users',
+
         ]);
     }
 
@@ -152,15 +150,15 @@ class PupilController extends Controller
         $active_session = Session::where('is_active', '=', 1)->first();
 
         $data = [
-            "username"  => $username,
-            "password"  => $password,
-            "firstname" => $firstname,
-            "lastname"  => $lastname,
+            "username"    => $username,
+            "password"    => $password,
+            "firstname"   => $firstname,
+            "lastname"    => $lastname,
             "middle_name" => $middle_name,
-            "name"      => $name,
-            "email"     => $email,
-            'phone'     => $phone,
-            "role"      => 'parent'
+            "name"        => $name,
+            "email"       => $email,
+            'phone'       => $phone,
+            "role"        => 'parent'
         ];
 
         $user = $this->createuser($data);
@@ -186,9 +184,9 @@ class PupilController extends Controller
             "health_challenges" => $request['health_challenges'],
             //"email"           => $request['email'],
 
-            "class_id"          => $class_id,
-            "level"             => Classes::where('id', $class_id)->first()->classlevel['levelname'],
-            "entry_session"     => $active_session->id,
+            "class_id"      => $class_id,
+            "level"         => Classes::where('id', $class_id)->first()->classlevel['levelname'],
+            "entry_session" => $active_session->id,
             //"entry_level"       => $request['level']
         ];
         $student = $this->createstudent($data2);
@@ -204,8 +202,8 @@ class PupilController extends Controller
             "email"       => $request['email'],
             "phonenumber" => $request['phone'],
 
-            "origin"        => $request['origin'],
-            "occupation"    => $request['occupation'],
+            "origin"      => $request['origin'],
+            "occupation"  => $request['occupation'],
             "parent_type" => 'parent'
         ];
 
@@ -221,18 +219,17 @@ class PupilController extends Controller
 //            "phonenumber" => $request['mother_work_phone'],
 //            "parent_type" => 'mother'
 //        ];
-
+        
         $parent = $this->createparent($data3);
         $emergency = [
-            "user_id" => $parent->id,
-            "student_id" => $student->id,
-            "home_number" => $request['emergency_home_number'],
-            "name"          => $request['emergency_name'],
-            "relationship"  => $request['relationship'],
+            "user_id"      => $parent->id,
+            "student_id"   => $student->id,
+            "home_number"  => $request['emergency_home_number'],
+            "name"         => $request['emergency_name'],
+            "relationship" => $request['relationship'],
         ];
 
         event(new NewStudentRegistered($student));
-
 
         $emergency = $this->create_emergency_contact($emergency);
 
@@ -257,7 +254,6 @@ class PupilController extends Controller
 
         ]);
 
-
         $verifyUser = VerifyUser::create([
             'user_id'     => $user->id,
             'token'       => str_random(40),
@@ -272,13 +268,24 @@ class PupilController extends Controller
     {
         // var_dump($data);
         $student = Student::create($data);
+
         return $student;
     }
 
     protected function createparent(array $data)
     {
         // var_dump($data);
+        $existing_parent1 = Parents::find(['whatsapp_num' => $data['phonenumber']]);
+        $existing_parent2 = Parents::find(['phonenumber' => $data['phonenumber']]);
+        $existing_parent3 = Parents::find(['phone' => $data['phone']]);
+        if ($existing_parent1 || $existing_parent2 || $existing_parent3){
+            
+            $parent = $existing_parent1 ? $existing_parent1 : $existing_parent2;
+            $parent = $existing_parent2 ? $existing_parent2 : $existing_parent3;
+            return $parent;
+        }
         $parent = Parents::create($data);
+
         return $parent;
     }
 
@@ -286,12 +293,12 @@ class PupilController extends Controller
     {
         // var_dump($data);
         $emergency_contact = Emergency_contact::create($data);
+
         return $emergency_contact;
     }
 
     protected function createfather(array $data)
     {
-
         $parent = Parents::create([
             'firstname'   => $data['firstname'],
             'lastname'    => $data['lastname'],
@@ -305,14 +312,12 @@ class PupilController extends Controller
             'parent_type' => $data['parent_type'],
 
         ]);
-
 
         return $parent;
     }
 
     protected function createmother(array $data)
     {
-
         $parent = Parents::create([
             'firstname'   => $data['firstname'],
             'lastname'    => $data['lastname'],
@@ -327,13 +332,11 @@ class PupilController extends Controller
 
         ]);
 
-
         return $parent;
     }
 
     protected function createcontact(array $data)
     {
-
         $contact = Emergency_contact::create([
             'name'        => $data['name'],
             'home_number' => $data['home_number'],
@@ -342,7 +345,6 @@ class PupilController extends Controller
             'user_id'     => $data['user_id'],
             'cell_number' => $data['cell_number']
         ]);
-
 
         return $contact;
     }
@@ -362,12 +364,10 @@ class PupilController extends Controller
                 $status = "Your e-mail is already verified. You can now login.";
             }
         } else {
-
-            return redirect('/eportal')->with('warning', "Sorry your email cannot be identified.");
+            return redirect('/')->with('warning', "Sorry your email cannot be identified.");
         }
 
-
-        return redirect('/eportal')->with('status', $status);
+        return redirect('/')->with('status', $status);
     }
 
     public function verifyUserByPhone(Request $request)
@@ -390,11 +390,11 @@ class PupilController extends Controller
                     $status = "Your phone number is already verified.";
                 }
                 Auth::login($user);
+
                 return redirect('/change-default-password')->with(['status' => $status]);
             } else {
                 return redirect()->back()->with('warning', "Sorry your phone cannot be identified.");
             }
-
         }
 
         return view('auth.verify_phone');
@@ -436,6 +436,7 @@ class PupilController extends Controller
         $student->application_status = 'accepted';
 
         $student->save();
+
         return redirect("/dashboard/applications")->with('success', "Successfully Updated.");
     }
 
@@ -446,6 +447,7 @@ class PupilController extends Controller
         $student->application_status = 'rejected';
 
         $student->save();
+
         return redirect("/dashboard/applications")->with('success', "Successfully Updated.");
     }
 
@@ -454,13 +456,13 @@ class PupilController extends Controller
         $request = $request->all();
         $this->validator2($request)->validate();
 
-
         $student = Student::find($id);
 
         $student->class_id = $request['class_id'];
         $student->admission_status = 'admitted';
 
         $student->save();
+
         return redirect("/dashboard/applications")->with('success', "Student Admitted to Class.");
     }
 
@@ -471,6 +473,7 @@ class PupilController extends Controller
         $student->admission_status = 'rejected';
 
         $student->save();
+
         return redirect("/dashboard/applications")->with('success', "Successfully Updated.");
     }
 
@@ -485,3 +488,4 @@ class PupilController extends Controller
         //
     }
 }
+

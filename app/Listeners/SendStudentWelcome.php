@@ -45,8 +45,8 @@ class SendStudentWelcome implements ShouldQueue
             //send sms
             $code = $user->verifyUser->phone_token;
             $message = 'Your child '.str_limit($student->firstname, 30).
-                ' has just applied on Eco-Pillars School Portal. '.
-                $code.' is your account verification code.';
+                ' has just applied on '.config('app.name').'. Use '.
+                $code.' to verify your account.';
 
             SmsSender::sendSMS($user->phone, $message);
         }
@@ -57,3 +57,4 @@ class SendStudentWelcome implements ShouldQueue
         }
     }
 }
+

@@ -93,13 +93,13 @@ class RegisterController extends Controller
             }
 
 
-            // return redirect()->to('/eportal');
+            // return redirect()->to('/');
           
         }        
       }
       else
       {
-        return redirect()->to('/eportal');
+        return redirect()->to('/');
       }    
     }
 
@@ -156,7 +156,7 @@ class RegisterController extends Controller
         // $contact = $this->createcontact($data5);
         // $contact2 = $this->createcontact($data6);
 
-        return redirect("/eportal")->with('success', "You have successfully registered an account.");
+        return redirect("/")->with('success', "You have successfully registered an account.");
 
         
     }
@@ -266,12 +266,12 @@ class RegisterController extends Controller
             }
         }else{
 
-            return redirect('/eportal')->with('warning', "Sorry your email cannot be identified.");
+            return redirect('/')->with('warning', "Sorry your email cannot be identified.");
         }
 
 
  
-        return redirect('/eportal')->with('status', $status);
+        return redirect('/')->with('status', $status);
     }
 
 
