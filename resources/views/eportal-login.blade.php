@@ -35,7 +35,7 @@
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="/">
-        <img src="/assets/images/logo.png" alt=""/>
+        <img src="{{assets('assets/images/logo-riztatschool.png')}}" alt=""/>
     </a>
 </div>
 <!-- END LOGO -->
