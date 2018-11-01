@@ -59,7 +59,7 @@
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label">Subject Description</label>
-															<textarea rows="8" class="form-control" name="description" placeholder="Short description of Subject"></textarea>
+															<textarea rows="8" maxlength="200" class="form-control" name="description" placeholder="Short description of Subject"></textarea>
 														</div>
 													</div>
 													<!--/span-->

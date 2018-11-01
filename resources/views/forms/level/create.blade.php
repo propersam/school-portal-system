@@ -61,7 +61,7 @@
 													<div class="col-md-6">
 														<div class="form-group">
 															<label class="control-label">Level Description</label>
-															<textarea rows="8" class="form-control" name="description" placeholder="Short description of Level"></textarea>
+															<textarea rows="8" class="form-control" name="description" placeholder="Short description of Level" maxlength="200"></textarea>
 														</div>
 													</div>
 
