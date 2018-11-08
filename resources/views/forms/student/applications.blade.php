@@ -66,15 +66,18 @@
                                                 <tbody>
                                                 @if ($pending_applications)
                                                     @foreach ($pending_applications as $i)
-                                                        <tr>
+                                                      
+                                                    
+                                                    <tr>
                                                             <td>
-                                        <p>{{ $i->firstname }} {{ $i->lastname }}</p>
+                                        <p>{{ is_object($i) ? $i->firstname : "nil"}} 
+                                            {{ is_object($i) ? $i->lastname : "nil" }}</p>
                                         </td>
                                         <td>
-                                            <p>{{ $i ->level }}</p>
+                                            <p>{{ is_object($i) ? $i ->level : "nil" }}</p>
                                         </td>
                                         <td>
-                                            <p>{{ $i->created_at }}</p>
+                                            <p>{{ is_object($i) ? $i->created_at : "nil" }}</p>
                                         </td>
                                         <td>
                                             <a class="btn default" data-toggle="modal" href="#edit{{ $i->id }}">
@@ -96,58 +99,58 @@
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>First Name</label>
-                                                                    <p>{{ $i->firstname }}</p>
+                                                                    <p>{{ is_object($i) ? $i->firstname : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Middle Name</label>
-                                                                    <p>{{ $i->middle_name }}</p>
+                                                                    <p>{{ is_object($i) ? $i->middle_name : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Surname</label>
-                                                                    <p>{{ $i->lastname }}</p>
+                                                                    <p>{{ is_object($i) ? $i->lastname : "nil"}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Gender</label>
-                                                                    <p>{{ $i->gender }}</p>
+                                                                    <p>{{ is_object($i) ? $i->gender : "nil"}}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Date of Birth</label>
-                                                                    <p>{{ $i->dob }}</p>
+                                                                    <p>{{ is_object($i) ? $i->dob : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Nationality</label>
-                                                                    <p>{{ $i->nationality }}</p>
+                                                                    <p>{{ is_object($i) ? $i->nationality : "nil" }}</p>
                                                                 </div>
                                                             </div>
 
                                                             <div class="row">
                                                                 {{--<div class="col-sm-4 col-xs-12">--}}
                                                                     {{--<label>Email Address</label>--}}
-                                                                    {{--<p>{{ $i->email }}</p>--}}
+                                                                    {{--<p>{{ is_object($i) ? $i->email : "nil"}}</p>--}}
                                                                 {{--</div>--}}
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Blood Group</label>
-                                                                    <p>{{ $i->blood_group }}</p>
+                                                                    <p>{{ is_object($i) ? $i->blood_group : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Blood Genotype</label>
-                                                                    <p>{{ $i->genotype }}</p>
+                                                                    <p>{{ is_object($i) ? $i->genotype : "nil" }}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>State Of Origin</label>
-                                                                    <p>{{ $i->origin }}</p>
+                                                                    <p>{{ is_object($i) ? $i->origin : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Mother Tongue</label>
-                                                                    <p>{{ $i->mother_tongue }}</p>
+                                                                    <p>{{ is_object($i) ? $i->mother_tongue : "nil"}}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Applied Level</label>
-                                                                    <p>{{ $i->level }}</p>
+                                                                    <p>{{ is_object($i) ? $i->level : "nil" }}</p>
                                                                 </div>
                                                             </div>
 
@@ -156,11 +159,11 @@
 
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Other Languages</label>
-                                                                    <p>{{ $i->other_languages }}</p>
+                                                                    <p>{{ is_object($i) ? $i->other_languages : "nil"}}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Health Challenges</label>
-                                                                    <p>{{ $i->health_challenges }}</p>
+                                                                    <p>{{ is_object($i) ? $i->health_challenges : "nil"}}</p>
                                                                 </div>
 
                                                                 <div class="col-sm-2"></div>
@@ -174,31 +177,31 @@
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>First Name</label>
-                                                                    <p>{{ $i->returnParent()['firstname'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['firstname'] : "nil"}}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Last Name</label>
-                                                                    <p>{{ $i->returnParent()['lastname'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['lastname'] : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Occupation</label>
-                                                                    <p>{{ $i->returnParent()['occupation'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['occupation'] : "nil" }}</p>
                                                                 </div>
 
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Email</label>
-                                                                    <p>{{ $i->returnParent()['email'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['email'] : "nil" }}</p>
                                                                 </div>
 
                                                                 <div class="col-sm-3 col-xs-12">
                                                                     <label>State Of Origin</label>
-                                                                    <p>{{ $i->returnParent()['origin'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['origin'] : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-3 col-xs-12">
                                                                     <label>Phone Number</label>
-                                                                    <p>{{ $i->returnParent()['phone'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['phone'] : "nil"}}</p>
                                                                 </div>
 
                                                             </div>
@@ -209,7 +212,7 @@
 
                                                                 <div class="col-sm-8 col-xs-12">
                                                                     <label>Residential Address</label>
-                                                                    <p>{{ $i->returnParent()['workaddress'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['workaddress'] : "nil"}}</p>
                                                                 </div>
 
                                                                 <div class="col-sm-2"></div>
@@ -273,13 +276,14 @@
                                                     @foreach ($accepted_applications as $i)
                                                         <tr>
                                                             <td>
-                                        <p>{{ $i->firstname }} {{ $i->lastname }}</p>
+                                        <p>{{ is_object($i) ? $i->firstname : "nil" }}
+                                             {{ is_object($i) ? $i->lastname : "nil" }}</p>
                                         </td>
                                         <td>
-                                            <p>{{ $i->level }}</p>
+                                            <p>{{ is_object($i) ? $i->level : "nil" }}</p>
                                         </td>
                                         <td>
-                                            <p>{{ $i->updated_at }}</p>
+                                            <p>{{ is_object($i) ? $i->updated_at : "nil" }}</p>
                                         </td>
                                         <td>
                                             <a class="btn default" data-toggle="modal" href="#view{{ $i->id }}">
@@ -291,7 +295,7 @@
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-hidden="true"></button>
-                                                        <h4 class="modal-title">{{ $i->firstname }}</h4>
+                                                        <h4 class="modal-title">{{ is_object($i) ? $i->firstname : "nil"}}</h4>
                                                     </div>
                                                     <div class="modal-body">
                                                         <div class="child_section">
@@ -301,58 +305,58 @@
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>First Name</label>
-                                                                    <p>{{ $i->firstname }}</p>
+                                                                    <p>{{ is_object($i) ? $i->firstname : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Middle Name</label>
-                                                                    <p>{{ $i->middle_name }}</p>
+                                                                    <p>{{ is_object($i) ? $i->middle_name : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Surname</label>
-                                                                    <p>{{ $i->lastname }}</p>
+                                                                    <p>{{ is_object($i) ? $i->lastname : "nil"}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Gender</label>
-                                                                    <p>{{ $i->gender }}</p>
+                                                                    <p>{{ is_object($i) ? $i->gender : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Date of Birth</label>
-                                                                    <p>{{ $i->dob }}</p>
+                                                                    <p>{{ is_object($i) ? $i->dob : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Nationality</label>
-                                                                    <p>{{ $i->nationality }}</p>
+                                                                    <p>{{ is_object($i) ? $i->nationality : "nil" }}</p>
                                                                 </div>
                                                             </div>
 
                                                             <div class="row">
                                                                 {{--<div class="col-sm-4 col-xs-12">--}}
                                                                 {{--<label>Email Address</label>--}}
-                                                                {{--<p>{{ $i->email }}</p>--}}
+                                                                {{--<p>{{ is_object($i) ? $i->email : "nil" }}</p>--}}
                                                                 {{--</div>--}}
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Blood Group</label>
-                                                                    <p>{{ $i->blood_group }}</p>
+                                                                    <p>{{ is_object($i) ? $i->blood_group : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Blood Genotype</label>
-                                                                    <p>{{ $i->genotype }}</p>
+                                                                    <p>{{ is_object($i) ? $i->genotype : "nil" }}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>State Of Origin</label>
-                                                                    <p>{{ $i->origin }}</p>
+                                                                    <p>{{ is_object($i) ? $i->origin : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Mother Tongue</label>
-                                                                    <p>{{ $i->mother_tongue }}</p>
+                                                                    <p>{{ is_object($i) ? $i->mother_tongue : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Applied Level</label>
-                                                                    <p>{{ $i->level }}</p>
+                                                                    <p>{{ is_object($i) ? $i->level : "nil" }}</p>
                                                                 </div>
                                                             </div>
 
@@ -361,11 +365,11 @@
 
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Other Languages</label>
-                                                                    <p>{{ $i->other_languages }}</p>
+                                                                    <p>{{ is_object($i) ? $i->other_languages : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Health Challenges</label>
-                                                                    <p>{{ $i->health_challenges }}</p>
+                                                                    <p>{{ is_object($i) ? $i->health_challenges : "nil" }}</p>
                                                                 </div>
 
                                                                 <div class="col-sm-2"></div>
@@ -379,31 +383,31 @@
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>First Name</label>
-                                                                    <p>{{ $i->returnParent()['firstname'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['firstname'] : "nil"}}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Last Name</label>
-                                                                    <p>{{ $i->returnParent()['lastname'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['lastname'] : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Occupation</label>
-                                                                    <p>{{ $i->returnParent()['occupation'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['occupation'] : "nil"}}</p>
                                                                 </div>
 
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-sm-4 col-xs-12">
                                                                     <label>Email</label>
-                                                                    <p>{{ $i->returnParent()['email'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['email'] : "nil" }}</p>
                                                                 </div>
 
                                                                 <div class="col-sm-3 col-xs-12">
                                                                     <label>State Of Origin</label>
-                                                                    <p>{{ $i->returnParent()['origin'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['origin'] : "nil" }}</p>
                                                                 </div>
                                                                 <div class="col-sm-3 col-xs-12">
                                                                     <label>Phone Number</label>
-                                                                    <p>{{ $i->returnParent()['phone'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['phone'] : "nil" }}</p>
                                                                 </div>
 
                                                             </div>
@@ -414,7 +418,7 @@
 
                                                                 <div class="col-sm-8 col-xs-12">
                                                                     <label>Residential Address</label>
-                                                                    <p>{{ $i->returnParent()['workaddress'] }}</p>
+                                                                    <p>{{ is_object($i) ? $i->returnParent()['workaddress'] : "nil" }}</p>
                                                                 </div>
 
                                                                 <div class="col-sm-2"></div>
@@ -430,7 +434,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label">Admit to class</label>
                                                                 <input type="hidden" value="{{ $iid = $classes->where('id',$i->class_id)->first()}}"> </input>
-                                                                {{--{{ $val = $classes[['id'=> $i->class_id]]}}--}}
+                                                               {{--{{ $val = $classes[['id'=> $i->class_id]] }}--}}
 
 
                                                                 <select name="class_id" class="form-control">
@@ -444,7 +448,7 @@
                                                             </div>
                                                             <button type="submit" class="btn green">Admit</button>
                                                         </form>
-                                                        <form action="/dashboard/reject-student-admission/{{ $i->id }}"
+                                                        <form action="/dashboard/reject-student-admission/{{ is_object($i) ? $i->id : 'nil' }}"
                                                               method="POST" style="display: inline-block;float: right;">
                                                             {{csrf_field()}}
                                                             <button type="submit" class="btn red">Reject</button>
