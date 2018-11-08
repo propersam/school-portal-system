@@ -433,16 +433,16 @@
                                                             {{ csrf_field() }}
                                                             <div class="form-group">
                                                                 <label class="control-label">Admit to class</label>
-                                                                <input type="hidden" value="{{ $iid = $classes->where('id',$i->class_id)->first()}}"> </input>
-                                                               {{--{{ $val = $classes[['id'=> $i->class_id]] }}--}}
+                                                                <input type="hidden" value="$iid = {{ $classes->where('id',$i->class_id)->first()}}"> </input>
+                                                               {{ $val = $classes[['id'=> $i->class_id]] }}
 
 
                                                                 <select name="class_id" class="form-control">
-                                                                        <option selected value="{{ $iid->id }}">
-                                                                            {{ $iid->classname }} </option>
+                                                                        <option selected value="{{ $val->id }}">
+                                                                            {{ is_object($val) ? $val->classname : "nil" }} </option>
 
                                                                 @foreach ($classes as $c)
-                                                                         <option value="{{ $c->id }}">{{ $c->classname }}</option>
+                                                                         <option value="{{ is_object($c) ? $c->id : 'nil'}}">{{ $c->classname }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
