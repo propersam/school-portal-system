@@ -51,7 +51,7 @@
      <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="/">
-                <img src="/assets/images/logo.png" alt="" style="max-width: 15em"/>
+                <img src="{{asset('assets/images/logo-riztatschool.png')}}" alt="" style="max-width: 15em"/>
             </a>
         </div>
         <!-- END LOGO -->
