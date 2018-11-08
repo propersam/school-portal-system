@@ -433,7 +433,8 @@
                                                             {{ csrf_field() }}
                                                             <div class="form-group">
                                                                 <label class="control-label">Admit to class</label>
-                                                                <input type="hidden" value="$iid = {{ $classes->where('id',$i->class_id)->first()}}"> </input>
+                                                                {{is_object($i) ? $classId = $i -> class_id : 'nil'}}
+                                                                <input type="hidden" value="{{ $classes->where('id','=', $classId)->first()}}">
                                                                <!-- {{ $val = $classes[['id'=> $i->class_id]] }} -->
 
 
