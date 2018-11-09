@@ -435,16 +435,12 @@
                                                                 <label class="control-label">Admit to class</label>
                                                                 {{is_object($i) ? $classId = $i -> class_id : 'nil'}}
                                                                 <input type="hidden" value="{{ $classes->where('id','=', $classId)->first()}}">
-                                                               <!-- {{ $val = $classes[['id'=> $i->class_id]] }} -->
-
-
+                                                               
                                                                 <select name="class_id" class="form-control">
-                                                                        <!-- <option selected value="{{ $val->id }}">
-                                                                            {{ is_object($val) ? $val->classname : "nil" }} </option> -->
-
+                                                            
                                                                 @foreach ($classes as $c)
                                                                          <option value="{{ is_object($c) ? $c->id : 'nil'}}">{{ $c->classname }}</option>
-                                                                    @endforeach
+                                                                @endforeach
                                                                 </select>
                                                             </div>
                                                             <button type="submit" class="btn green">Admit</button>
