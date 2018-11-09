@@ -44,9 +44,9 @@ class PupilController extends Controller
 
         $classes = Classes::where('session_id', '=', $active_session->id)->get();
 
-        $pending_applications = Student::where('application_status', '=', 'pending')->get();
-        $accepted_applications = Student::where('application_status', '=', 'accepted')->where('admission_status', 'pending')->get();
-        $rejected_applications = Student::where('application_status', '=', 'rejected')->get();
+        $pending_applications = Student::where('application_status', '=', 'pending')->orderBy('updated_at','desc')->get();
+        $accepted_applications = Student::where('application_status', '=', 'accepted')->where('admission_status', 'pending')->orderBy('updated_at','desc')->get();
+        $rejected_applications = Student::where('application_status', '=', 'rejected')->orderBy('updated_at','desc')->get();
 
         return view('forms.student.applications', ['pending_applications' => $pending_applications, 'accepted_applications' => $accepted_applications, 'rejected_applications' => $rejected_applications, 'classes' => $classes]);
     }
@@ -274,7 +274,12 @@ class PupilController extends Controller
 
     protected function createparent(array $data)
     {
+<<<<<<< HEAD
         
+=======
+        // var_dump($data);
+       
+>>>>>>> ec588234ddbd12ac4a800f7ad376e2912f95e1a3
         $parent = Parents::create($data);
 
         return $parent;

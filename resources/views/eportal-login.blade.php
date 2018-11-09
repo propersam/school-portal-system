@@ -35,7 +35,7 @@
 <!-- BEGIN LOGO -->
 <div class="logo">
     <a href="/">
-        <img src="/assets/images/logo.png" alt=""/>
+        <img src="/assets/images/logo-twinsbukkyschool.png" alt=""/>
     </a>
 </div>
 <!-- END LOGO -->

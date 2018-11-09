@@ -49,7 +49,8 @@
                 <div class="col-md-4 col-sm-10 col-xs-10">
                     <div class="logo">
                         <a href="/">
-                            <img src="assets/images/logo.png" alt="" class="img-responsive" style="max-width: 8em"/>
+                            <img src="assets/images/logo-twinsbukkyschool.png" alt="" class="img-responsive"
+                                 style="max-width: 8em"/>
                             <span class="hidden">Logo</span>
                         </a>
                     </div>
@@ -86,7 +87,7 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
                             <div class="newsletter-wrap">
-                                <img src="assets/images/logo.png" alt="" style="max-width: 12em">
+                                <img src="assets/images/logo-twinsbukkyschool.png" alt="" style="max-width: 12em">
                                 <p>## your school motto goes here ##</p>
                                 <h2>SUBSCRIBE TO NEWSLETTER</h2>
                                 <form action="#">
