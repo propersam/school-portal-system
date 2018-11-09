@@ -21,7 +21,10 @@ class CheckIfActiveSession
         return redirect("/dashboard/sessions")->with('warning', "Please set a session as active.");
         }
         */
-
-        return $next($request);
+        if (isset($next){
+            return $next($request);
+        } else {
+            return $request
+        }
     }
 }
