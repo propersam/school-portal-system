@@ -51,7 +51,11 @@
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="/">
+<<<<<<< HEAD
                 <img src="{{asset('assets/images/logo-riztatschool.png')}}" alt=""/>
+=======
+                <img src="{{asset('assets/images/logo-twinsbukkyschool.png')}}" alt=""/>
+>>>>>>> af1c9f9ce6f3cda3219467bdad55ab3b0690bb7a
             </a>
         </div>
         <!-- END LOGO -->
