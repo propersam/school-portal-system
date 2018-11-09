@@ -52,7 +52,7 @@ Route::post('/dashboard/update-session/{id}', 'SessionsController@update');
 Route::get('/dashboard/classes', 'ClassController@index')->middleware('active_session');
 Route::get('/dashboard/create-class', 'ClassController@create')->middleware('active_session');
 Route::post('/dashboard/create-class', 'ClassController@store');
-Route::get('/dashboard/applications', 'PupilController@applications')->middleware('active_session');
+Route::get('/dashboard/applications', 'PupilController@applications');
 Route::get('/dashboard/all-pupils', 'PupilController@all_pupils')->middleware('active_session');
 Route::get('/dashboard/assistants', 'StaffController@all_assistants');
 
