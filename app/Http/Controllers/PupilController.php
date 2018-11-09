@@ -37,16 +37,15 @@ class PupilController extends Controller
         return view('forms.student.create', ['classes' => $classes, 'levels' => $levels]);
     }
 
-
     public function applications()
     {
         $active_session = Session::where('is_active', '=', 1)->first();
 
         $classes = Classes::where('session_id', '=', $active_session->id)->get();
 
-        $pending_applications = Student::where('application_status', '=', 'pending')->get();
-        $accepted_applications = Student::where('application_status', '=', 'accepted')->where('admission_status', 'pending')->get();
-        $rejected_applications = Student::where('application_status', '=', 'rejected')->get();
+        $pending_applications = Student::where('application_status', '=', 'pending')->orderBy('updated_at','desc')->get();
+        $accepted_applications = Student::where('application_status', '=', 'accepted')->where('admission_status', 'pending')->orderBy('updated_at','desc')->get();
+        $rejected_applications = Student::where('application_status', '=', 'rejected')->orderBy('updated_at','desc')->get();
 
         return view('forms.student.applications', ['pending_applications' => $pending_applications, 'accepted_applications' => $accepted_applications, 'rejected_applications' => $rejected_applications, 'classes' => $classes]);
     }
