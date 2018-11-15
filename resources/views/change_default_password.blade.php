@@ -39,19 +39,23 @@
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="login">
-<!-- BEGIN LOGO -->
-<div class="logo">
-    <a href="/">
-        <img src="{{asset('assets/images/logo-riztatschool.png')}}" alt=""/>
-    </a>
-</div>
-<!-- END LOGO -->
+
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
 </div>
 <!-- END SIDEBAR TOGGLER BUTTON -->
+
 <!-- BEGIN LOGIN -->
 <div class="content">
+
+        <!-- BEGIN LOGO -->
+    <div class="logo">
+        <a href="/">
+            <img src="{{asset('assets/images/logo-riztatschool.png')}}" alt=""/>
+        </a>
+    </div>
+    <!-- END LOGO -->
+
     <!-- BEGIN LOGIN FORM -->
     {{ Form::open(array('action' => 'RegisterController@changePassword' )) }}
     {{ csrf_field() }}
@@ -62,7 +66,7 @@
         <div class="input-icon">
             <i class="fa fa-lock"></i>
             <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password"
-                   name="password" value="{{ old('password') }}" required autofocus/>
+                   name="password" value="{{ old('password') }}" id="password1" required autofocus/>
         </div>
         @if ($errors->has('password'))
             <span class="help-block">
@@ -74,7 +78,7 @@
         <label class="control-label visible-ie8 visible-ie9">Password</label>
         <div class="input-icon">
             <i class="fa fa-lock"></i>
-            <input id="password" class="form-control placeholder-no-fix" type="password" autocomplete="off"
+            <input id="password2" class="form-control placeholder-no-fix" type="password" autocomplete="off"
                    placeholder="Password (again)" name="password2" required/>
             @if ($errors->has('password2'))
                 <span class="help-block">
@@ -84,6 +88,11 @@
         </div>
     </div>
     <div class="form-actions">
+
+        <label class="hideShowPassword">
+                <input type="checkbox" onclick="hideShowPassword()"> Show Password
+        </label>
+
         <button type="submit" class="btn green-haze pull-right">
             Change <i class="m-icon-swapright m-icon-white"></i>
         </button>
@@ -131,6 +140,22 @@
         Login.init();
 
     });
+
+    function hideShowPassword() {
+        var x1 = document.getElementById("password1");
+        var x2 = document.getElementById("password2");
+        if (x1.type === "password") {
+            x1.type = "text";
+        } else {
+            x1.type = "password";
+        }
+
+        if (x2.type === "password") {
+            x2.type = "text";
+        } else {
+            x2.type = "password";
+        }
+    }
 </script>
 <!-- END JAVASCRIPTS -->
 </body>

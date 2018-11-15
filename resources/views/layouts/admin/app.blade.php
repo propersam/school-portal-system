@@ -136,7 +136,7 @@
 						<span class="username username-hide-on-mobile">
 						{{ Auth::user()->name }} </span>
                             @if (Auth::user()->photo)
-                                <img alt="" class="img-circle" src="uploads/profile_photos/{{ Auth::user()->photo }}"/>
+                                <img alt="" class="img-circle" src="/uploads/profile_photos/{{ Auth::user()->photo }}"/>
                             @else
                                 <img alt="" class="img-circle" src="/assets/admin/layout4/img/avatar9.jpg"/>
                             @endif
