@@ -48,7 +48,7 @@
                                         <tr>
                                             <td>
                                                 <img style="height: 80px" width="80px"
-                                                     src="uploads/profile_photos/{{ $i->user->photo }}" alt=""/>
+                                                     src="/uploads/profile_photos/{{ $i->user->photo }}" alt=""/>
                                             </td>
                                             <td>
                                                 {{ $i->firstname }}

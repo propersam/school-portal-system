@@ -47,22 +47,22 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="login">
-<!-- BEGIN LOGO -->
-<div class="logo">
-    <a href="/">
-    <img src="/assets/admin/layout4/img/logo-big.png" alt=""/>
-    </a>
-</div>
-<!-- END LOGO -->
+
 <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 <div class="menu-toggler sidebar-toggler">
 </div>
 <!-- END SIDEBAR TOGGLER BUTTON -->
 <!-- BEGIN LOGIN -->
 <div class="content">
-    <!-- BEGIN LOGIN FORM -->
-    
+        <!-- BEGIN LOGO -->
+    <div class="logo">
+        <a href="/">
+        <img src="/assets/admin/layout4/img/logo-big.png" alt=""/>
+        </a>
+    </div>
+    <!-- END LOGO -->
 
+    <!-- BEGIN LOGIN FORM -->
 
         @if ($message = Session::get('success'))
 
@@ -118,7 +118,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <div class="col-md-12 alert alert-info" style="margin-top: 20px">
 
-                    <p>select a photo and click on the "Upload" button, please note that that max photo size allowed is <b>1mb</b></p>
+                    <p>select a photo and click on the "Upload" button, please note that the max photo size allowed is <b>1mb</b></p>
                 </div>
             </div>
 
