@@ -68,7 +68,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="#">
-                <img src="{{asset('assets/images/logo-twinsbukkyschool.png')}}" alt="logo" height="80px" width="200px"
+                <img src="{{asset('assets/images/logo-riztatschool.png')}}" alt="logo" height="80px" width="200px"
                      style="padding: 10px" class="logo-sdefault"/>
             </a>
             <div class="menu-toggler sidebar-toggler">
@@ -136,7 +136,7 @@
 						<span class="username username-hide-on-mobile">
 						{{ Auth::user()->name }} </span>
                             @if (Auth::user()->photo)
-                                <img alt="" class="img-circle" src="uploads/profile_photos/{{ Auth::user()->photo }}"/>
+                                <img alt="" class="img-circle" src="/uploads/profile_photos/{{ Auth::user()->photo }}"/>
                             @else
                                 <img alt="" class="img-circle" src="/assets/admin/layout4/img/avatar9.jpg"/>
                             @endif

@@ -77,7 +77,7 @@
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-											<h4 class="modal-title">Edit Class: {{ $i->name }}</h4>
+											<h4 class="modal-title">Edit Class: {{ $i->classname }}</h4>
 										</div>
 										<form action="/dashboard/update-class/{{ $i->id }}" method="POST" class="horizontal-form">
 										<div class="modal-body">
@@ -87,7 +87,7 @@
 														{{ csrf_field() }}
 														<div class="form-group">
 															<label class="control-label">Class Name</label>
-															<input type="text" value="{{ $i->name }}" id="sessionName" class="form-control" placeholder="eg: 2017/2018" name="name">
+															<input type="text" value="{{ $i->classname }}" id="sessionName" class="form-control" placeholder="eg: Primary 3 B" name="name">
 														</div>
 													</div>
 
