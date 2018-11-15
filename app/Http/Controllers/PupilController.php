@@ -37,7 +37,6 @@ class PupilController extends Controller
         return view('forms.student.create', ['classes' => $classes, 'levels' => $levels]);
     }
 
-
     public function applications()
     {
         $active_session = Session::where('is_active', '=', 1)->first();

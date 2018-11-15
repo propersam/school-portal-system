@@ -66,7 +66,7 @@
 								<tr>
 									<td>
                                         <img style="height: 80px" width="80px"
-                                             src="/uploads/profile_photos/{{ $i->user->photo }}" alt=""/>
+                                            src="/uploads/profile_photos/{{ $i->user->photo }}" alt=""/>
                                     </td>
                                     <td>
                                         {{ $i->firstname }}
@@ -99,15 +99,15 @@
                                                     <h4 class="modal-title">View Teacher</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="childd_section">
+                                                    <div class="child_section">
                                                         <div class="row">
                                                             <center>
                                                                 <h4>{{ $i->firstname }} {{ $i->lastname }}</h4>
 
-                                                                @if($i->class_id)
+                                                                @if($i->user->photo)
                                                                     <img style="height: 80px" width="80px"
-                                                                         src="uploads/profile_photos/{{ $i->user->photo }}"
-                                                                         alt=""/>
+                                                                         src="/uploads/profile_photos/{{ $i->user->photo }}"
+                                                                         alt="profile photo"/>
                                                                 @else
                                                                     <img alt="" style="height: 80px" width="80px"
                                                                          class="img-circle"

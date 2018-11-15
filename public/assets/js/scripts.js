@@ -309,6 +309,10 @@
         }
     });
 
+     // toggle password visibility
+    
+    
+
     // brand-active
      $('.news-img-active').owlCarousel({
         margin:0,
@@ -378,5 +382,8 @@
 			}
 			return false;
 	});
+
+        
+});
 
 })(jQuery);

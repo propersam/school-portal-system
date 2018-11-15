@@ -51,7 +51,7 @@
      <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="/">
-                <img src="/assets/images/logo-twinsbukkyschool.png" alt="" style="max-width: 15em"/>
+                <img src="{{asset('assets/images/logo-riztatschool.png')}}" alt="" style="max-width: 15em"/>
             </a>
         </div>
         <!-- END LOGO -->
@@ -107,9 +107,9 @@
                 </span>
             @endif
         </div>
-        <div class="form-group">
+        <div class="form-group has-feedback">
             <label class="control-label visible-ie8 visible-ie9">Password</label>
-            <div class="input-icon">
+            <div class="input-icon ">
                 <i class="fa fa-lock"></i>
                 <input id="password" class="form-control placeholder-no-fix" type="password" autocomplete="off"
                        placeholder="Password" name="password" required>
@@ -118,9 +118,15 @@
                         <strong>{{ $errors->first('password') }}</strong>
                     </span>
                 @endif
+
             </div>
+
         </div>
         <div class="form-actions">
+             <label class="hideShowPassword">
+                <input type="checkbox" onclick="hideShowPassword()"> Show Password
+            </label>
+
             <label class="checkbox">
                 <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember me
             </label>
@@ -183,6 +189,15 @@
         Login.init();
         Demo.init();
     });
+
+    function hideShowPassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    } 
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
