@@ -68,7 +68,7 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="#">
-                <img src="{{asset('assets/images/logo-riztatschool.png')}}" alt="logo" height="80px" width="200px"
+                <img src="{{asset('assets/images/logo.png')}}" alt="logo" height="80px" width="200px"
                      style="padding: 10px" class="logo-sdefault"/>
             </a>
             <div class="menu-toggler sidebar-toggler">

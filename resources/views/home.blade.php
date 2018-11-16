@@ -11,7 +11,7 @@
                     <div class="portlet light" style="text-align: center;">
                         <div class="portlet-body">
                             <h1>Welcome to our E-portal</h1>
-                            <img src="assets/images/logo-riztatschool.png" alt="" style="margin: 40px"/>
+                            <img src="assets/images/logo.png" alt="" style="margin: 40px"/>
                             <p>Please use the menu on the left to access various pages</p>
                         </div>
                     </div>
