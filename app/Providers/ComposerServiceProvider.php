@@ -19,6 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(['*'], function ($view) {
             // get active session
             $active_session = Session::where('is_active', '=', 1)->first();
+            $google_analytics_id = env('GOOGLE_ANALYTICS_ID');
             $school_name = env('APP_NAME');
             $support_email = env('MAIL_FROM_ADDRESS');
             $school_phone = env('APP_PHONE');
@@ -29,6 +30,7 @@ class ComposerServiceProvider extends ServiceProvider
                 'support_email'  => $support_email,
                 'school_email'   => $support_email,
                 'school_phone'   => $school_phone,
+                'google_analytics_id'=> $google_analytics_id,
             ]);
         });
     }
