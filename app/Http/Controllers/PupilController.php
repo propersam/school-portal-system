@@ -273,12 +273,6 @@ class PupilController extends Controller
 
     protected function createparent(array $data)
     {
-<<<<<<< HEAD
-        
-=======
-        // var_dump($data);
-       
->>>>>>> ec588234ddbd12ac4a800f7ad376e2912f95e1a3
         $parent = Parents::create($data);
 
         return $parent;
