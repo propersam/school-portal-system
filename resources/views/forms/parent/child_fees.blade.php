@@ -33,7 +33,7 @@
 						<div class="portlet-title">
 							<div class="caption font-blue-sharp">
 								<span class="caption-subject" style="text-transform: uppercase;"> {{ $student['firstname'] }} {{ $student['lastname'] }}</span>
-								<p style="color: #666"><small>level: {{ $level['levelname'] }}</small></p>
+								<p style="color: #666"><small>level: {{ $student->level }}</small></p>
 							</div>
 							<div class="actions">
 								<h3><span class="muted">Term: {{ $active_session->current_term }} </span>| {{ $active_session->name }} </h3>
