@@ -22,7 +22,8 @@ class ComposerServiceProvider extends ServiceProvider
             $google_analytics_id = env('GOOGLE_ANALYTICS_ID');
             $school_name = env('APP_NAME');
             $support_email = env('MAIL_FROM_ADDRESS');
-            $school_phone = env('APP_PHONE');
+            $school_phone = env('SCHOOL_PHONE');
+            $school_address = env('SCHOOL_ADDRESS');
 
             $view->with([
                 'active_session' => $active_session,
@@ -30,7 +31,11 @@ class ComposerServiceProvider extends ServiceProvider
                 'support_email'  => $support_email,
                 'school_email'   => $support_email,
                 'school_phone'   => $school_phone,
+
                 'google_analytics_id'=> $google_analytics_id,
+
+                'school_address' => $school_address,
+
             ]);
         });
     }

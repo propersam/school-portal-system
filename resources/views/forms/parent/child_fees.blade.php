@@ -33,7 +33,7 @@
 						<div class="portlet-title">
 							<div class="caption font-blue-sharp">
 								<span class="caption-subject" style="text-transform: uppercase;"> {{ $student['firstname'] }} {{ $student['lastname'] }}</span>
-								<p style="color: #666"><small>level: {{ $level['levelname'] }}</small></p>
+								<p style="color: #666"><small>level: {{ $student->level }}</small></p>
 							</div>
 							<div class="actions">
 								<h3><span class="muted">Term: {{ $active_session->current_term }} </span>| {{ $active_session->name }} </h3>
@@ -74,10 +74,10 @@
 										@foreach ($fees as $i) 
 											<tr>
 												<td>
-										          <p>{{ $i['type']['name'] }}</p>
+										          <p>{{ $i->type['name'] }}</p>
 												</td>
 												<td>
-										          <p>{{ $i['type']['description'] }}</p>
+										          <p>{{ $i->type['description'] }}</p>
 												</td>
 												<td>
 										          <p>{{ $i['amount'] }}</p>
@@ -93,7 +93,7 @@
 									<address>
 									<strong>Address</strong><br>
 									{{$school_address}}<br>
-									<abbr title="Phone">P:</abbr> {{$school_phone}} </address>
+									<abbr title="Phone">Phone:</abbr> {{$school_phone}} </address>
 									<address>
 									<strong>Email</strong><br>
 									<a href="mailto:{{$support_email}}">
