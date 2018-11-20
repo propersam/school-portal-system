@@ -158,9 +158,9 @@ class ParentController extends Controller
     {
         $student = Student::where('id', '=', $id)->first();
 
-        $level = Level::where('id', '=', $student->level)->first();
+        $level = Level::where('levelname', '=', $student->level)->first();
 
-        $fees = Fee::where('level_id', '=', $student->level)->get();
+        $fees = Fee::where('level_id', '=', $level->id)->get();
 
         $total = 0;
 
