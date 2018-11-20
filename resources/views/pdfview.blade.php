@@ -171,15 +171,15 @@
         <div id="invoice-top">
             <div class="logo"></div>
             <div class="info">
-                <h2>{{$scool_name}}</h2>
+                <h2>{{$school_name}}</h2>
                 <p>{{$school_email}}</br>
                     {{$school_phone}}
                 </p>
             </div><!--End Info-->
             <div class="title">
                 <h1>Invoice #1069</h1>
-                <p>Date: May 27, 2015</br>
-                    Time: 12:22
+                <p>Date: date("m-d-Y")</br>
+                    Time: date("H:i:s")
                 </p>
             </div><!--End Title-->
         </div><!--End InvoiceTop-->
