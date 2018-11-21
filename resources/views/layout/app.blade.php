@@ -87,11 +87,7 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
                             <div class="newsletter-wrap">
-<<<<<<< HEAD
-                                <img src="assets/images/logo-riztatschool.png" alt="" style="max-width: 12em">
-=======
                                 <img src="assets/images/logo-twinsbukkyschool.png" alt="" style="max-width: 12em">
->>>>>>> af1c9f9ce6f3cda3219467bdad55ab3b0690bb7a
                                 <p>## your school motto goes here ##</p>
                                 <h2>SUBSCRIBE TO NEWSLETTER</h2>
                                 <form action="#">
