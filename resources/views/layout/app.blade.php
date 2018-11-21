@@ -49,7 +49,7 @@
                 <div class="col-md-4 col-sm-10 col-xs-10">
                     <div class="logo">
                         <a href="/">
-                            <img src="assets/images/logo-riztatschool.png" alt="" class="img-responsive"
+                            <img src="assets/images/logo-twinsbukkyschool.png" alt="" class="img-responsive"
                                  style="max-width: 8em"/>
                             <span class="hidden">Logo</span>
                         </a>
