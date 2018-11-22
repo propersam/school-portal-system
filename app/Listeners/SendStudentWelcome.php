@@ -33,7 +33,7 @@ class SendStudentWelcome implements ShouldQueue
      */
     public function handle(NewStudentRegistered $event)
     {
-        $verify_link = env(ACCOUNT_VERIFY)
+        
         /**
          * @var User $user
          */
@@ -45,6 +45,7 @@ class SendStudentWelcome implements ShouldQueue
         if (is_object($user) and is_numeric($user->phone)) {
             //send sms
             $code = $user->verifyUser->phone_token;
+            $verify_link = env('ACCOUNT_VERIFY');
             $message = 'Your child '.str_limit($student->firstname, 30).
                 ' has just applied on '.config('app.name').'. Use '.
                 $code.' to verify your account on this page '.$verify_link;
