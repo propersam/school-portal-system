@@ -6,7 +6,7 @@
 	<!-- BEGIN SIDEBAR -->
 	<div class="page-sidebar-wrapper">
 		<div class="page-sidebar navbar-collapse collapse">
-			@if (Auth::user()->role == 'SuperAdmin')
+			@if (Auth::user()->role == 'SuperAdmin' || Auth::user()->role=='HeadTeacher')
 				<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
 					<li class="start ">
 						<a href="/dashboard">
@@ -193,6 +193,11 @@
 							</li>
 						</ul>
 						
+					</li>
+					<li class="{{ Request::is('dashboard/payment-settings') ? 'active' : '' }}">
+						<a href="/dashboard/payment-settings">
+						<i class="icon-settings"></i>
+						Settings</a>
 					</li>
 					<li>
 						<a href="/logout">
