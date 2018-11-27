@@ -15,7 +15,7 @@
 								<div class="portlet box blue">
 									<div class="portlet-title">
 										<div class="caption">
-											<i class="fa fa-gift"></i> Subjects
+											<i class="fa fa-gift"></i> {{ $class->classlevel['levelname'] }} Subjects
 										</div>
 										<div class="tools">
                                             <a href="javascript:" class="collapse">

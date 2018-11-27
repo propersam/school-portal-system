@@ -175,8 +175,8 @@ class ParentController extends Controller
 
 
         return view('forms.parent.child_fees', ['payment' => $payment, 'student' => $student, 'fees' => $fees, 'total' => $total, 'level' => $level]);
-
     }
+    
 
     public function view_child_record($id)
     {

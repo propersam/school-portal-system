@@ -432,8 +432,8 @@
                                                               style="display: inline-block;float: left;">
                                                             {{ csrf_field() }}
                                                             <div class="form-group">
-                                                                <label class="control-label">Admit to class</label>
-                                                                {{is_object($i) ? $classId = $i -> class_id : 'nil'}}
+                                                                <label class="control-label">Admit to level</label>
+                                                                {{is_object($i) ? $classId = $i -> class_details->classlevel['levelname'] : 'nil'}}
                                                                 <input type="hidden" value="{{ $classes->where('id','=', $classId)->first()}}">
                                                                
                                                                 <select name="class_id" class="form-control">

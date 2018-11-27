@@ -53,6 +53,11 @@ class Student extends Model
         return $this->hasOne('App\Parents', 'student_id', 'id')->get();
     }
 
+    public function getLevelAttributes()
+    {
+        $o = $this->class_details;
+        return is_object($o) ? $o->classlevel['levelname'] : '';
+    }
 
     public function result()
     {

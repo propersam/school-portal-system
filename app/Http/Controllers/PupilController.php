@@ -80,7 +80,7 @@ class PupilController extends Controller
 
         $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name', 'id');
 
-        $students = Student::where('application_status', '=', 'accepted')->where('admission_status', 'admitted')->get();
+        $students = Student::where('application_status', '=', 'accepted')->where('admission_status', 'admitted')->orderBy('updated_at','desc')->get();
 
         return view('forms.student.view_all', ['students' => $students, 'classes' => $classes]);
     }

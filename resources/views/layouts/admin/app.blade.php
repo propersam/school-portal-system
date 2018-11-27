@@ -134,7 +134,7 @@
                         <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-close-others="true">
 						<span class="username username-hide-on-mobile">
-						{{ Auth::user()->name.' ('.Auth::user()->role.')' }} </span>
+						{{ Auth::user()->name. '('.Auth::user()->role.')' }} </span>
                             @if (Auth::user()->photo)
                                 <img alt="" class="img-circle" src="/uploads/profile_photos/{{ Auth::user()->photo }}"/>
                             @else
