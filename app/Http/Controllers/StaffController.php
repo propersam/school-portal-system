@@ -187,7 +187,7 @@ class StaffController extends Controller
             'lastname'    => 'required|string|max:255',
             'phonenumber' => 'required|string|max:255',
 
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'nullable|string|email|max:255',
 
         ]);
     }

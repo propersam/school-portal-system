@@ -80,7 +80,7 @@ class PupilController extends Controller
 
         $classes = Classes::where('session_id', '=', $active_session->id)->pluck('name', 'id');
 
-        $students = Student::where('application_status', '=', 'accepted')->where('admission_status', 'admitted')->get();
+        $students = Student::where('application_status', '=', 'accepted')->where('admission_status', 'admitted')->orderBy('updated_at','desc')->get();
 
         return view('forms.student.view_all', ['students' => $students, 'classes' => $classes]);
     }
@@ -112,7 +112,7 @@ class PupilController extends Controller
             'level'               => 'nullable|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
 
-            'email' => 'nullable|email|max:255|unique:users',
+            'email' => 'nullable|email|max:255',
 
         ]);
     }
@@ -273,8 +273,6 @@ class PupilController extends Controller
 
     protected function createparent(array $data)
     {
-        // var_dump($data);
-       
         $parent = Parents::create($data);
 
         return $parent;

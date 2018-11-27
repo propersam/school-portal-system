@@ -52,7 +52,7 @@
                                             <p>{{ $i->lastname }}</p>
                                         </td>
                                         <td>
-                                            <p>{{ $i->class_details['name'] }}</p>
+                                            <p>{{ $i->class_details['classname'] }}</p>
                                         </td>
                                         <td>
                                             <p>{{ $i->date }}</p>

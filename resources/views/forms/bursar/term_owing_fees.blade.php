@@ -48,15 +48,16 @@
 									          <p>{{ $i->lastname }}</p>
 											</td>
 											<td>
-									          <p>{{ $i->class_details['name'] }}</p>
+									          <p>{{ $i->class_details['classname'] }}</p>
 											</td>
 											<td>
 												<a class="btn blue-madison" data-toggle="modal" href="#view{{ $i->id }}">
 												Confirm Payment </a>
 											</td>
 											<div class="modal fade student_modal" id="view{{ $i->id }}" tabindex="-1" role="basic" aria-hidden="true">
-
-													<form action="/dashboard/confirm-fees-as-paid/" method="POST" class="horizontal-form">
+<!-- 
+													<form action="/dashboard/confirm-fees-as-paid/" method="POST" class="horizontal-form"> -->
+													{!! Form::open( array('url' => '/dashboard/confirm-fees-as-paid/', 'method' => 'POST', 'class'=> 'horizontal-form')) !!}
 																{{ csrf_field() }}
 																<input type="hidden" name="student_id" value="{{ $i->id }}">
 																<input type="hidden" name="session_id" value="{{ $active_session->id }}">
@@ -86,7 +87,8 @@
 													<!-- /.modal-content -->
 												</div>
 												<!-- /.modal-dialog -->
-												</form>
+												<!-- </form> -->
+												{!! Form::close() !!}
 											</div>
 										</tr>
 									@endforeach

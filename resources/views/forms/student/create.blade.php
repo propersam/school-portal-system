@@ -58,12 +58,12 @@
 
                                         <div class="col-sm-12 col-xs-12" style="padding: 24px; background-color: #efefef; border-radius: 10px; margin: 15px; margin-bottom: 40px">
                                             <div class="col-sm-2">
-                                                <label>Add to Class</label>
+                                                <label>Add to Level</label>
                                             </div>
                                             <div class="col-xs-3">
                                                 <select name="class_id" class="form-control">
-                                                    @foreach ($classes as $clas)
-                                                        <option value="{{ $clas->id }}">{{ $clas->classname }}</option>
+                                                    @foreach ($classes as $class)
+                                                        <option value="{{ $class->id }}">{{ $class->classlevel['levelname'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

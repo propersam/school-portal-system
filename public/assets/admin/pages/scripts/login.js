@@ -123,15 +123,6 @@ var Login = function() {
 
     };
 
-    function hideShowPassword() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-        x.type = "text";
-    } else {
-        x.type = "password";
-    }
-} 
-
     var handleRegister = function() {
 
         function format(state) {

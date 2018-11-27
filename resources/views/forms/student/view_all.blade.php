@@ -42,7 +42,7 @@
 															 Name
 														</th>
 														<th>
-															Level
+															Class
 														</th>
 														<th>
 															Date Enrolled
@@ -76,7 +76,7 @@
                                                 <p>{{ $i->firstname }} {{ $i->lastname }}</p>
 															</td>
 															<td>
-													          <p>{{ $i->level }}</p>
+													          <p>{{ $i->class_details['classname'] }}</p>
 															</td>
 															<td>								          
 													          <p>{{ $i->updated_at }}</p>
@@ -156,7 +156,7 @@
                                                                                 </div>
                                                                                 <div class="col-sm-4 col-xs-12">
                                                                                     <label>Applied Level</label>
-                                                                                    <p>{{ $i->classlevel['levelname'] }}</p>
+                                                                                    <p>{{ $i->level }}</p>
                                                                                 </div>
                                                                             </div>
 

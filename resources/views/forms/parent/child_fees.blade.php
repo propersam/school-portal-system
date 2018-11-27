@@ -22,7 +22,7 @@
 						<div class="note note-danger note-shadow">
 							<h4 class="block">School Fee Unpaid</h4>
 							<p>
-								 School fee has been not been paid for this semester
+								 School fee has not been paid for this semester
 							</p>
 						</div>
                     @endif

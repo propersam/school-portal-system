@@ -57,7 +57,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN LOGO -->
     <div class="logo">
         <a href="/">
-        <img src="/assets/admin/layout4/img/logo-big.png" alt=""/>
+        <img src="/assets/admin/layout4/img/logo-twinsbukkyschool.png" alt=""/>
         </a>
     </div>
     <!-- END LOGO -->

@@ -35,11 +35,11 @@ class SubjectRegistrationController extends Controller
     {   
 
         // get active session
-        $all_subjects = Subject::get();
+        $all_subjects = Subject::get(); // This selects all registered subjects in the database
 
         $class = Classes::where('id', '=', $id)->first();
 
-        $subjects = SubjectRegistration::where('level', '=', $class->level)->get();
+        $subjects = SubjectRegistration::where('level', '=', $class->level)->get(); //this is for subjects for a given class.
 
         return view('forms.subject_registration.view_class', [ 'class' => $class, 'subjects' => $subjects, 'all_subjects' => $all_subjects]);
     }
