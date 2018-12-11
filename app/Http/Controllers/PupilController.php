@@ -388,7 +388,6 @@ class PupilController extends Controller
 
         return view('auth.verify_phone');
     }
-
     public function requestVerificationToken(Request $request)
     {
         if ($request->isMethod('post')) {
@@ -396,14 +395,16 @@ class PupilController extends Controller
                 'phone' => 'required|exists:users,phone',
             ]);
             $user = User::where('phone', $request->input('phone'))->first();
+           // $verifyUser = VerifyUser::where('phone', $request->input('phone'))->first();
 
-            if(isset($user)) {
+
+            if(is_object($user)) {
                 $student = Student::where('user_id', $user->id);
                 event(new NewStudentRegistered($student));
 
                 return redirect('/user/verify-phone')->with('status', 'Verification token sent');
             } else {
-                return redirect('warning', 'user with such number don\'t exist');
+                return redirect()->back()->with('warning', 'user with such number don\'t exist');
             }
         }
 
