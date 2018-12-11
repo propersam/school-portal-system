@@ -397,11 +397,14 @@ class PupilController extends Controller
             ]);
             $user = User::where('phone', $request->input('phone'))->first();
 
-            $student = Student::where('user_id', $user->id);
-            event(new NewStudentRegistered($student));
+            if(isset($user)) {
+                $student = Student::where('user_id', $user->id);
+                event(new NewStudentRegistered($student));
 
-            return redirect('/user/verify-phone')->with('status', 'Verification token sent');
-
+                return redirect('/user/verify-phone')->with('status', 'Verification token sent');
+            } else {
+                return redirect('warning', 'user with such number don\'t exist');
+            }
         }
 
 
