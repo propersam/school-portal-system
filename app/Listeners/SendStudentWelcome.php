@@ -51,6 +51,7 @@ class SendStudentWelcome implements ShouldQueue
                 $code.' to verify your account on this page '.$verify_link;
 
             SmsSender::sendSMS($user->phone, $message);
+
         }
 
         if ($user->email) {
