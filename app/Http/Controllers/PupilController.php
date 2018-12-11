@@ -24,7 +24,7 @@ class PupilController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['verifyUserByPhone']);
+        $this->middleware('auth')->except(['verifyUserByPhone','RequestVerificationToken']);
     }
 
     public function index()
@@ -387,6 +387,14 @@ class PupilController extends Controller
         }
 
         return view('auth.verify_phone');
+    }
+
+    public function requestVerificationToken(Request $request)
+    {
+
+
+
+        return view('auth.request_token');
     }
 
     /**

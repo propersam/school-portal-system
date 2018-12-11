@@ -57,7 +57,7 @@
         <!-- END LOGO -->
         {{ csrf_field() }}
 
-        <h3 class="form-title">Activate Your Account</h3>
+        <h3 class="form-title">Resend Verification Token</h3>
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
@@ -77,36 +77,12 @@
             @endif
         </div>
 
-        <div class="form-group{{ $errors->has('token') ? ' has-error' : '' }}">
-            <label class="control-label visible-ie8 visible-ie9" for="token">Verification Token</label>
-            <div class="input-icon">
-                <i class="fa fa-key"></i>
-                <input id="token" class="form-control placeholder-no-fix" type="text" autocomplete="off"
-                       placeholder="Verification Token" name="token" value="{{ old('token') }}" required>
-            </div>
-            @if ($errors->has('token'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('token') }}</strong>
-                </span>
-            @endif
-        </div>
+            <div class="row form-actions">
 
-        <div class = "row form-actions">
-            <div class="col-md-6 pull-left">
-                <a href="/user/request-verify-token">
-                    <input type="button" class="btn btn-primary" value="Resend Token">
-                </a>
-            </div>
-
-            <div class="col-md-6 pull-right">
-
-                <button type="submit" class="btn green-haze">
-                    Activate Account <i class="m-icon-swapright m-icon-white"></i>
+                <button type="submit" class="btn green-haze pull-right">
+                    Resend Token Now <i class="m-icon-swapup m-icon-white"></i>
                 </button>
             </div>
-        </div>
-
-
     </form>
 </div>
 <!-- END LOGIN -->

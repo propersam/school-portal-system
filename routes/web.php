@@ -173,3 +173,4 @@ Route::resources([
 
 Route::get('/user/verify/{token}', 'StaffController@verifyUser');
 Route::match(['get', 'post'], '/user/verify-phone', ['as' => 'verify_by_phone', 'uses' => 'PupilController@verifyUserByPhone']);
+Route::match(['get', 'post'], '/user/request-verify-token', ['as' => 'request_verify_token', 'uses' => 'PupilController@RequestVerificationToken']);
