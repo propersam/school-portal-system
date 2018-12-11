@@ -68,7 +68,7 @@
             <div class="input-icon">
                 <i class="fa fa-user"></i>
                 <input id="phone" class="form-control placeholder-no-fix" autocomplete="off" type="text"
-                       placeholder="Phone Number" name="phone" value="{{ old('phone') }}" required>
+                       placeholder="Enter Phone Number" name="phone" value="{{ old('phone') }}" required>
             </div>
             @if ($errors->has('phone'))
                 <span class="help-block">

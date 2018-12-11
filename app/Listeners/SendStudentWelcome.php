@@ -46,8 +46,8 @@ class SendStudentWelcome implements ShouldQueue
             //send sms
             $code = $user->verifyUser->phone_token;
             $verify_link = env('ACCOUNT_VERIFY');
-            $message = 'Your child '.str_limit($student->firstname, 30).
-                ' has just applied on '.config('app.name').'. Use '.
+            $message = 'Login to access '.str_limit($student->firstname, 30).
+                ' Registered account on '.config('app.name').'. Use code: '.
                 $code.' to verify your account on this page '.$verify_link;
 
             SmsSender::sendSMS($user->phone, $message);

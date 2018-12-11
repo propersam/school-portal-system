@@ -391,7 +391,15 @@ class PupilController extends Controller
 
     public function requestVerificationToken(Request $request)
     {
+        if ($request->isMethod('post')) {
+            $this->validate($request, [
+                'phone' => 'required|exists:users,phone',
+            ]);
+            $user = User::where('phone', $request->input('phone'))->first();
+            $student = Student::where('user_id', $user->id);
+            event(new NewStudentRegistered($student));
 
+        }
 
 
         return view('auth.request_token');
