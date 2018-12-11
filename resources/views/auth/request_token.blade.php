@@ -46,7 +46,7 @@
 <!-- BEGIN LOGIN -->
 <div class="content">
     <!-- BEGIN LOGIN FORM -->
-    <form class="login-form" method="POST" action="{{route('verify_by_phone')}}">
+    <form class="login-form" method="POST" action="{{route('request_verify_token')}}">
 
         <!-- BEGIN LOGO -->
         <div class="logo">
