@@ -24,7 +24,7 @@ class PupilController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['verifyUserByPhone']);
+        $this->middleware('auth')->except(['verifyUserByPhone','RequestVerificationToken']);
     }
 
     public function index()
@@ -387,6 +387,29 @@ class PupilController extends Controller
         }
 
         return view('auth.verify_phone');
+    }
+    public function requestVerificationToken(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $this->validate($request, [
+                'phone' => 'required|exists:users,phone',
+            ]);
+            $user = User::where('phone', $request->input('phone'))->first();
+           // $verifyUser = VerifyUser::where('phone', $request->input('phone'))->first();
+
+
+            if(is_object($user)) {
+                $student = Student::where('user_id', $user->id)->first();
+                event(new NewStudentRegistered($student));
+
+                return redirect('/user/verify-phone')->with('status', 'Verification token sent');
+            } else {
+                return redirect()->back()->with('warning', 'user with such number don\'t exist');
+            }
+        }
+
+
+        return view('auth.request_token');
     }
 
     /**
