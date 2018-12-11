@@ -399,7 +399,7 @@ class PupilController extends Controller
 
 
             if(is_object($user)) {
-                $student = Student::where('user_id', $user->id);
+                $student = Student::where('user_id', $user->id)->first();
                 event(new NewStudentRegistered($student));
 
                 return redirect('/user/verify-phone')->with('status', 'Verification token sent');
