@@ -112,7 +112,12 @@ class PupilController extends Controller
             'level'               => 'nullable|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
 
-            'email' => 'nullable|email|max:255',
+            'genotype' => 'nullable|string|max:4',
+            'blood_group' => 'nullable|string|max:4',
+            'mother_tongue' => 'nullable|string|max:200',
+            'other_languages' => 'nullable|string|max:200',
+            'health_challenges' => 'nullable|string',
+            'email' => 'nullable|email|max:200',
 
         ]);
     }
