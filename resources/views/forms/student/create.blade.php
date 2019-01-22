@@ -130,25 +130,43 @@
                                         <div class="col-sm-12 col-xs-12">
                                             <div class="col-sm-2">
                                                 <label>Blood Group</label>
-                                                <input class="form-control" type="text"
-                                                       placeholder="Blood group" id="blood_group" name="blood_group">
+												<select name="blood_group" class="form-control" id="blood_group">
+													<option value=""> -- </option>
+													@foreach ($blood_groups as $blood_group)
+                                                        <option value="{{ $blood_group }}">{{ $blood_group }}</option>
+                                                    @endforeach
+                                                </select>
+                            
                                             </div>
 
                                             <div class="col-sm-2">
                                                 <label>Genotype</label>
+												<select name="genotype" class="form-control" id="genotype">
+													<option value=""> -- </option>
+													@foreach ($blood_genotypes as $genotype)
+                                                        <option value="{{ $genotype}}">{{ $genotype }}</option>
+                                                    @endforeach
+                                                </select>
+                                               
+                                            </div>
+											<div class="col-sm-4">
+                                                <label>Nationality </label>
                                                 <input class="form-control" type="text"
-                                                       placeholder="Blood Genotype" id="genotype" name="genotype">
+                                                       placeholder="Nigeria" id="nationality" value="Nigeria" name="nationality">
                                             </div>
 
                                             <div class="col-sm-4">
-                                                <label>Nationality </label>
-                                                <input class="form-control" type="text"
-                                                       placeholder="Nationality" id="nationality" name="nationality">
-                                            </div>
-                                            <div class="col-sm-4">
                                                 <label>State of Origin *</label>
-                                                <input required class="form-control" type="text"
-                                                       placeholder="State of Origin" id="state" name="state">
+												<select name="state" class="form-control" id="genotype">
+													<option value=""> -- </option>
+                                                    @foreach ($states as $state)
+                                                        <option value="{{ $state}}">{{ $state }}</option>
+                                                    @endforeach
+                                                </select>
+                                                
+                                            </div>
+                                            
+                                                
                                             </div>
 
                                         </div>
@@ -293,7 +311,15 @@
                                         <div class="row">
                                             <div class="col-sm-5 col-xs-12">
                                                 <label>State of origin *</label>
-                                                <input required class="form-control" type="text" placeholder="Parent State of Origin" id="origin" name="origin">
+	
+												<select name="origin" class="form-control" id="genotype">
+													<option value=""> -- </option>
+                                                    @foreach ($states as $state)
+                                                        <option value="{{ $state }}">{{ $state }}</option>
+                                                    @endforeach
+                                                </select>
+                                                
+                                            
                                             </div>
 
  	                                        <div class="col-sm-7 col-xs-12">
