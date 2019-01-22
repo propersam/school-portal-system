@@ -99,6 +99,7 @@ class PupilController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            
             'first_name'          => 'required|string|max:255',
             // 'pref_name'           => 'required|string|max:255',
             'lastname'            => 'required|string|max:255',
@@ -111,8 +112,12 @@ class PupilController extends Controller
             'home_number'         => 'nullable|string|max:255',
             'level'               => 'nullable|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
-
-            'email' => 'nullable|email|max:255',
+            'genotype' => 'nullable|string|max:4',
+            'blood_group' => 'nullable|string|max:4',
+            'mother_tongue' => 'nullable|string|max:200',
+            'other_languages' => 'nullable|string|max:200',
+            'health_challenges' => 'nullable|string',
+            'email' => 'nullable|email|max:200',
 
         ]);
     }
