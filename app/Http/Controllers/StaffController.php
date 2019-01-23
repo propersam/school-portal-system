@@ -351,12 +351,10 @@ class StaffController extends Controller
                     $user->email = $request['email'];
                     //$user->role = $request['role'];
                     $user->save();
-
                     break;
                 case "HeadTeacher":
                     $headteacher = HeadTeacher::where('id', '=', $id)->first();
                     $user_id = $headteacher->user_id;
-
 
                     $headteacher->firstname = $request['firstname'];
                     $headteacher->lastname = $request['lastname'];
@@ -366,7 +364,7 @@ class StaffController extends Controller
 
                     $user = User::find($user_id);
                     $user->email = $request['email'];
-                    //$user->role = $request['role'];
+                    
                     $user->save();
 
                     break;
