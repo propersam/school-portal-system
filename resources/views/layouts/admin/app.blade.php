@@ -60,7 +60,8 @@
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <div class="active_session_div">
-        <p>SESSION: @if ($active_session) {{ $active_session->name }} @else <span
+        <p>SESSION: @if ($active_session) {{ $active_session->name.' : '.$terms[$active_session->current_term] }} 
+        @else <span
                     style="color: red">NO ACTIVE SESSION</span> @endif</p>
     </div>
     <!-- BEGIN HEADER INNER -->
