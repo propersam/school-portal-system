@@ -52,7 +52,6 @@
     <div class="logo">
         <a href="/">
             <img src="{{asset('assets/images/logo.png')}}" style="max-width: 100%" alt=""/ >
-
         </a>
     </div>
     <!-- END LOGO -->

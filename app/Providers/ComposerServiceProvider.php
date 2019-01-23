@@ -25,6 +25,25 @@ class ComposerServiceProvider extends ServiceProvider
             $school_phone = env('SCHOOL_PHONE');
             $school_address = env('SCHOOL_ADDRESS');
 
+            $blood_groups = ['1'=>'O+', '2'=>'O-',
+             '3'=>'A+', '4'=>'A-', '5'=>'B+',
+              '6' => 'B-', '7' => 'AB+', '8' => 'AB-'];
+
+            $blood_genotypes = ['1'=>'AA', '2'=>'AS',
+             '3'=>'SS', '4'=>'AC'];
+
+            $states = [
+                'Abia', 'Abuja', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa',
+                'Benue','Borno','Cross River','Delta','Ebonyi','Edo',
+                'Ekiti','Enugu','Gombe','Imo','Jigawa','Kaduna',
+                'Kano','Katsina','kebbi','Kogi','Kwara','Lagos',
+                'Nasarawa','Niger','Ogun','Ondo','Osun', 'Oyo',
+                'Plateau', 'Rivers', 'Sokoto', 'Taraba', 'Yobe', 'Zamfara'
+
+            ];
+
+
+
             $view->with([
                 'active_session' => $active_session,
                 'school_name'    => $school_name,
@@ -35,6 +54,9 @@ class ComposerServiceProvider extends ServiceProvider
                 'google_analytics_id'=> $google_analytics_id,
 
                 'school_address' => $school_address,
+                'blood_groups' => $blood_groups,
+                'blood_genotypes' => $blood_genotypes,
+                'states' => $states,
 
             ]);
         });

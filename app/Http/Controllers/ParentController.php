@@ -71,7 +71,7 @@ class ParentController extends Controller
 
         if ($request->has('download')) {
             $pdf = PDF::loadView('pdfview');
-            return $pdf->download('pdfview.pdf');
+            return $pdf->download('fee-receipt.pdf');
         }
 
 
