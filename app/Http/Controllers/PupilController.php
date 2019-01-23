@@ -112,10 +112,6 @@ class PupilController extends Controller
             'home_number'         => 'nullable|string|max:255',
             'level'               => 'nullable|string|max:255',
             // 'phonenumber' => 'required|string|max:255',
-<<<<<<< HEAD
-
-=======
->>>>>>> 36d5d2843d1136dfb643b99cf2f647a7e237189f
             'genotype' => 'nullable|string|max:4',
             'blood_group' => 'nullable|string|max:4',
             'mother_tongue' => 'nullable|string|max:200',
