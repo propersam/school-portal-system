@@ -42,6 +42,8 @@ class ComposerServiceProvider extends ServiceProvider
 
             ];
 
+            $terms = ['--', 'first-term', 'second-term', 'third-term'];
+
 
 
             $view->with([
@@ -57,6 +59,7 @@ class ComposerServiceProvider extends ServiceProvider
                 'blood_groups' => $blood_groups,
                 'blood_genotypes' => $blood_genotypes,
                 'states' => $states,
+                'terms' => $terms,
 
             ]);
         });
