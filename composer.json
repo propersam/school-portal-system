@@ -21,7 +21,8 @@
     "laravel/tinker": "~1.0",
     "laravelcollective/html": "~5.0",
     "snowfire/beautymail": "dev-master",
-    "bugsnag/bugsnag-laravel": "^2.0"
+    "bugsnag/bugsnag-laravel": "^2.0",
+    "s-ichikawa/laravel-sendgrid-driver": "^2.0"
   },
   "require-dev": {
     "filp/whoops": "~2.0",
